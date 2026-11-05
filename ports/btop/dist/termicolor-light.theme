@@ -1,0 +1,106 @@
+# Theme: Termicolor Light
+# By: https://github.com/repraze/termicolor (generated - do not edit)
+
+# Main background, empty for terminal default
+theme[main_bg]="#ffffff"
+
+# Main text color
+theme[main_fg]="#0a0a0a"
+
+# Title color for boxes
+theme[title]="#0a0a0a"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]="#974bdc"
+
+# Background color of selected item in processes box
+theme[selected_bg]="#decbf8"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="#0a0a0a"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#737373"
+
+# Color of text appearing on top of graphs, i.e uptime and current network graph scaling
+theme[graph_text]="#525252"
+
+# Background color of the percentage meters
+theme[meter_bg]="#d4d4d4"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="#007e86"
+
+# CPU box outline color
+theme[cpu_box]="#974bdc"
+
+# Memory/disks box outline color
+theme[mem_box]="#00825b"
+
+# Net up/down box outline color
+theme[net_box]="#bd5200"
+
+# Processes box outline color
+theme[proc_box]="#216de4"
+
+# Box divider line and small boxes line color
+theme[div_line]="#d4d4d4"
+
+# Temperature graph colors
+theme[temp_start]="#216de4"
+theme[temp_mid]="#974bdc"
+theme[temp_end]="#e00063"
+
+# CPU graph colors
+theme[cpu_start]="#00825b"
+theme[cpu_mid]="#966a00"
+theme[cpu_end]="#e00063"
+
+# Mem/Disk free meter
+theme[free_start]="#00825b"
+theme[free_mid]="#2b976f"
+theme[free_end]="#2b976f"
+
+# Mem/Disk cached meter
+theme[cached_start]="#216de4"
+theme[cached_mid]="#3883fc"
+theme[cached_end]="#3883fc"
+
+# Mem/Disk available meter
+theme[available_start]="#966a00"
+theme[available_mid]="#bd5200"
+theme[available_end]="#bd5200"
+
+# Mem/Disk used meter
+theme[used_start]="#d20ca9"
+theme[used_mid]="#e00063"
+theme[used_end]="#e00063"
+
+# Download graph colors
+theme[download_start]="#216de4"
+theme[download_mid]="#974bdc"
+theme[download_end]="#d20ca9"
+
+# Upload graph colors
+theme[upload_start]="#00825b"
+theme[upload_mid]="#966a00"
+theme[upload_end]="#bd5200"
+
+# Process box color gradient for threads, mem and cpu usage
+theme[process_start]="#00825b"
+theme[process_mid]="#966a00"
+theme[process_end]="#e00063"
+
+# Process list banner when paused
+theme[proc_pause_bg]="#e00063"
+
+# Process list banner when following a process
+theme[proc_follow_bg]="#216de4"
+
+# Process list banner colors
+theme[proc_banner_bg]="#974bdc"
+theme[proc_banner_fg]="#ffffff"
+
+# Followed process
+theme[followed_bg]="#216de4"
+theme[followed_fg]="#ffffff"

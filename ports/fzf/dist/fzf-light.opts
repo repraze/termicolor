@@ -1,0 +1,6 @@
+--color=light,fg:#0a0a0a,bg:#ffffff,hl:#974bdc
+--color=fg+:#0a0a0a,bg+:#f5f5f5,hl+:#974bdc,gutter:#ffffff
+--color=selected-fg:#0a0a0a,selected-bg:#efe5fc
+--color=query:#0a0a0a,ghost:#737373,disabled:#a3a3a3,prompt:#974bdc,info:#525252
+--color=pointer:#974bdc,marker:#00825b,spinner:#974bdc,header:#216de4,footer:#216de4
+--color=border:#d4d4d4,separator:#e5e5e5,scrollbar:#d4d4d4,label:#525252
