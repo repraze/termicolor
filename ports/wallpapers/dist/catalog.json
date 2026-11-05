@@ -1,0 +1,511 @@
+{
+    "families": {
+        "gradients": "Gradients",
+        "grids": "Grids and dots",
+        "circuit": "Circuit / PCB"
+    },
+    "sizes": {
+        "uhd": {
+            "width": 3840,
+            "height": 2160
+        },
+        "ultrawide": {
+            "width": 3440,
+            "height": 1440
+        }
+    },
+    "wallpapers": [
+        {
+            "id": "linear-3",
+            "generator": "linear",
+            "name": "Linear",
+            "family": "gradients",
+            "seed": 3,
+            "params": {
+                "accents": [
+                    "purple",
+                    "blue",
+                    "cyan"
+                ],
+                "density": 0.5,
+                "grain": 0.5
+            },
+            "files": [
+                "dark/3840x2160/linear-3.svg",
+                "dark/3440x1440/linear-3.svg",
+                "light/3840x2160/linear-3.svg",
+                "light/3440x1440/linear-3.svg"
+            ]
+        },
+        {
+            "id": "linear-11",
+            "generator": "linear",
+            "name": "Linear",
+            "family": "gradients",
+            "seed": 11,
+            "params": {
+                "accents": [
+                    "pink",
+                    "purple",
+                    "orange"
+                ],
+                "density": 0.5,
+                "grain": 0.5
+            },
+            "files": [
+                "dark/3840x2160/linear-11.svg",
+                "dark/3440x1440/linear-11.svg",
+                "light/3840x2160/linear-11.svg",
+                "light/3440x1440/linear-11.svg"
+            ]
+        },
+        {
+            "id": "radial-2",
+            "generator": "radial",
+            "name": "Radial",
+            "family": "gradients",
+            "seed": 2,
+            "params": {
+                "accents": [
+                    "purple",
+                    "pink",
+                    "blue"
+                ],
+                "density": 0.5,
+                "grain": 0.5
+            },
+            "files": [
+                "dark/3840x2160/radial-2.svg",
+                "dark/3440x1440/radial-2.svg",
+                "light/3840x2160/radial-2.svg",
+                "light/3440x1440/radial-2.svg"
+            ]
+        },
+        {
+            "id": "radial-9",
+            "generator": "radial",
+            "name": "Radial",
+            "family": "gradients",
+            "seed": 9,
+            "params": {
+                "accents": [
+                    "cyan",
+                    "blue",
+                    "purple"
+                ],
+                "density": 0.5,
+                "grain": 0.5
+            },
+            "files": [
+                "dark/3840x2160/radial-9.svg",
+                "dark/3440x1440/radial-9.svg",
+                "light/3840x2160/radial-9.svg",
+                "light/3440x1440/radial-9.svg"
+            ]
+        },
+        {
+            "id": "conic-4",
+            "generator": "conic",
+            "name": "Conic fan",
+            "family": "gradients",
+            "seed": 4,
+            "params": {
+                "accents": [
+                    "purple",
+                    "pink",
+                    "orange",
+                    "blue"
+                ],
+                "density": 0.5,
+                "grain": 0.5
+            },
+            "files": [
+                "dark/3840x2160/conic-4.svg",
+                "dark/3440x1440/conic-4.svg",
+                "light/3840x2160/conic-4.svg",
+                "light/3440x1440/conic-4.svg"
+            ]
+        },
+        {
+            "id": "conic-12",
+            "generator": "conic",
+            "name": "Conic fan",
+            "family": "gradients",
+            "seed": 12,
+            "params": {
+                "accents": [
+                    "purple",
+                    "blue",
+                    "cyan",
+                    "green"
+                ],
+                "density": 0.5,
+                "grain": 0.5
+            },
+            "files": [
+                "dark/3840x2160/conic-12.svg",
+                "dark/3440x1440/conic-12.svg",
+                "light/3840x2160/conic-12.svg",
+                "light/3440x1440/conic-12.svg"
+            ]
+        },
+        {
+            "id": "mesh-1",
+            "generator": "mesh",
+            "name": "Mesh",
+            "family": "gradients",
+            "seed": 1,
+            "params": {
+                "accents": [
+                    "purple",
+                    "blue",
+                    "pink",
+                    "cyan"
+                ],
+                "density": 0.5,
+                "grain": 0.5
+            },
+            "files": [
+                "dark/3840x2160/mesh-1.svg",
+                "dark/3440x1440/mesh-1.svg",
+                "light/3840x2160/mesh-1.svg",
+                "light/3440x1440/mesh-1.svg"
+            ]
+        },
+        {
+            "id": "mesh-6",
+            "generator": "mesh",
+            "name": "Mesh",
+            "family": "gradients",
+            "seed": 6,
+            "params": {
+                "accents": [
+                    "purple",
+                    "pink",
+                    "orange",
+                    "yellow"
+                ],
+                "density": 0.5,
+                "grain": 0.5
+            },
+            "files": [
+                "dark/3840x2160/mesh-6.svg",
+                "dark/3440x1440/mesh-6.svg",
+                "light/3840x2160/mesh-6.svg",
+                "light/3440x1440/mesh-6.svg"
+            ]
+        },
+        {
+            "id": "mesh-8",
+            "generator": "mesh",
+            "name": "Mesh",
+            "family": "gradients",
+            "seed": 8,
+            "params": {
+                "accents": [
+                    "cyan",
+                    "blue",
+                    "purple",
+                    "green"
+                ],
+                "density": 1,
+                "grain": 0.5
+            },
+            "files": [
+                "dark/3840x2160/mesh-8.svg",
+                "dark/3440x1440/mesh-8.svg",
+                "light/3840x2160/mesh-8.svg",
+                "light/3440x1440/mesh-8.svg"
+            ]
+        },
+        {
+            "id": "aurora-5",
+            "generator": "aurora",
+            "name": "Aurora",
+            "family": "gradients",
+            "seed": 5,
+            "params": {
+                "accents": [
+                    "purple",
+                    "cyan",
+                    "green",
+                    "pink"
+                ],
+                "density": 0.5,
+                "grain": 0.6
+            },
+            "files": [
+                "dark/3840x2160/aurora-5.svg",
+                "dark/3440x1440/aurora-5.svg",
+                "light/3840x2160/aurora-5.svg",
+                "light/3440x1440/aurora-5.svg"
+            ]
+        },
+        {
+            "id": "aurora-13",
+            "generator": "aurora",
+            "name": "Aurora",
+            "family": "gradients",
+            "seed": 13,
+            "params": {
+                "accents": [
+                    "purple",
+                    "pink",
+                    "blue"
+                ],
+                "density": 0.5,
+                "grain": 0.6
+            },
+            "files": [
+                "dark/3840x2160/aurora-13.svg",
+                "dark/3440x1440/aurora-13.svg",
+                "light/3840x2160/aurora-13.svg",
+                "light/3440x1440/aurora-13.svg"
+            ]
+        },
+        {
+            "id": "blueprint-7",
+            "generator": "blueprint",
+            "name": "Blueprint",
+            "family": "grids",
+            "seed": 7,
+            "params": {
+                "accents": [
+                    "purple",
+                    "cyan",
+                    "pink"
+                ],
+                "density": 0.5,
+                "grain": 0.3
+            },
+            "files": [
+                "dark/3840x2160/blueprint-7.svg",
+                "dark/3440x1440/blueprint-7.svg",
+                "light/3840x2160/blueprint-7.svg",
+                "light/3440x1440/blueprint-7.svg"
+            ]
+        },
+        {
+            "id": "blueprint-21",
+            "generator": "blueprint",
+            "name": "Blueprint",
+            "family": "grids",
+            "seed": 21,
+            "params": {
+                "accents": [
+                    "cyan",
+                    "purple",
+                    "green"
+                ],
+                "density": 0.5,
+                "grain": 0.3
+            },
+            "files": [
+                "dark/3840x2160/blueprint-21.svg",
+                "dark/3440x1440/blueprint-21.svg",
+                "light/3840x2160/blueprint-21.svg",
+                "light/3440x1440/blueprint-21.svg"
+            ]
+        },
+        {
+            "id": "dots-4",
+            "generator": "dots",
+            "name": "Dot matrix",
+            "family": "grids",
+            "seed": 4,
+            "params": {
+                "accents": [
+                    "purple",
+                    "pink",
+                    "blue"
+                ],
+                "density": 0.5,
+                "grain": 0.3
+            },
+            "files": [
+                "dark/3840x2160/dots-4.svg",
+                "dark/3440x1440/dots-4.svg",
+                "light/3840x2160/dots-4.svg",
+                "light/3440x1440/dots-4.svg"
+            ]
+        },
+        {
+            "id": "dots-17",
+            "generator": "dots",
+            "name": "Dot matrix",
+            "family": "grids",
+            "seed": 17,
+            "params": {
+                "accents": [
+                    "purple",
+                    "cyan",
+                    "green"
+                ],
+                "density": 0.8,
+                "grain": 0.3
+            },
+            "files": [
+                "dark/3840x2160/dots-17.svg",
+                "dark/3440x1440/dots-17.svg",
+                "light/3840x2160/dots-17.svg",
+                "light/3440x1440/dots-17.svg"
+            ]
+        },
+        {
+            "id": "isometric-3",
+            "generator": "isometric",
+            "name": "Isometric",
+            "family": "grids",
+            "seed": 3,
+            "params": {
+                "accents": [
+                    "purple",
+                    "cyan",
+                    "pink"
+                ],
+                "density": 0.5,
+                "grain": 0.3
+            },
+            "files": [
+                "dark/3840x2160/isometric-3.svg",
+                "dark/3440x1440/isometric-3.svg",
+                "light/3840x2160/isometric-3.svg",
+                "light/3440x1440/isometric-3.svg"
+            ]
+        },
+        {
+            "id": "isometric-10",
+            "generator": "isometric",
+            "name": "Isometric",
+            "family": "grids",
+            "seed": 10,
+            "params": {
+                "accents": [
+                    "purple",
+                    "orange",
+                    "pink"
+                ],
+                "density": 0.5,
+                "grain": 0.3
+            },
+            "files": [
+                "dark/3840x2160/isometric-10.svg",
+                "dark/3440x1440/isometric-10.svg",
+                "light/3840x2160/isometric-10.svg",
+                "light/3440x1440/isometric-10.svg"
+            ]
+        },
+        {
+            "id": "synthwave-1",
+            "generator": "synthwave",
+            "name": "Synthwave floor",
+            "family": "grids",
+            "seed": 1,
+            "params": {
+                "accents": [
+                    "pink",
+                    "purple",
+                    "orange",
+                    "cyan"
+                ],
+                "density": 0.5,
+                "grain": 0.4
+            },
+            "files": [
+                "dark/3840x2160/synthwave-1.svg",
+                "dark/3440x1440/synthwave-1.svg",
+                "light/3840x2160/synthwave-1.svg",
+                "light/3440x1440/synthwave-1.svg"
+            ]
+        },
+        {
+            "id": "synthwave-8",
+            "generator": "synthwave",
+            "name": "Synthwave floor",
+            "family": "grids",
+            "seed": 8,
+            "params": {
+                "accents": [
+                    "purple",
+                    "cyan",
+                    "pink",
+                    "blue"
+                ],
+                "density": 0.5,
+                "grain": 0.4
+            },
+            "files": [
+                "dark/3840x2160/synthwave-8.svg",
+                "dark/3440x1440/synthwave-8.svg",
+                "light/3840x2160/synthwave-8.svg",
+                "light/3440x1440/synthwave-8.svg"
+            ]
+        },
+        {
+            "id": "circuit-1",
+            "generator": "circuit",
+            "name": "Circuit traces",
+            "family": "circuit",
+            "seed": 1,
+            "params": {
+                "accents": [
+                    "purple",
+                    "cyan",
+                    "pink"
+                ],
+                "density": 0.5,
+                "grain": 0.25
+            },
+            "files": [
+                "dark/3840x2160/circuit-1.svg",
+                "dark/3440x1440/circuit-1.svg",
+                "light/3840x2160/circuit-1.svg",
+                "light/3440x1440/circuit-1.svg"
+            ]
+        },
+        {
+            "id": "circuit-5",
+            "generator": "circuit",
+            "name": "Circuit traces",
+            "family": "circuit",
+            "seed": 5,
+            "params": {
+                "accents": [
+                    "green",
+                    "cyan",
+                    "purple"
+                ],
+                "density": 0.5,
+                "grain": 0.25
+            },
+            "files": [
+                "dark/3840x2160/circuit-5.svg",
+                "dark/3440x1440/circuit-5.svg",
+                "light/3840x2160/circuit-5.svg",
+                "light/3440x1440/circuit-5.svg"
+            ]
+        },
+        {
+            "id": "circuit-9",
+            "generator": "circuit",
+            "name": "Circuit traces",
+            "family": "circuit",
+            "seed": 9,
+            "params": {
+                "accents": [
+                    "purple",
+                    "pink",
+                    "orange"
+                ],
+                "density": 0.9,
+                "grain": 0.25
+            },
+            "files": [
+                "dark/3840x2160/circuit-9.svg",
+                "dark/3440x1440/circuit-9.svg",
+                "light/3840x2160/circuit-9.svg",
+                "light/3440x1440/circuit-9.svg"
+            ]
+        }
+    ]
+}
