@@ -8,7 +8,7 @@ import tseslint from "typescript-eslint";
 export default defineConfig([
     // 1. Globally ignored paths (build output, deps, and the excluded legacy tree).
     {
-        ignores: ["**/node_modules/**", "**/dist/**", "**/routeTree.gen.ts"],
+        ignores: [".claude/worktrees/**", "**/node_modules/**", "**/dist/**", "**/routeTree.gen.ts"],
     },
 
     // 2. Parser setup shared across the monorepo.

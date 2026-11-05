@@ -6,3 +6,4 @@ packages/site/dist/
 *:Zone.Identifier
 packages/site/public/data/
 packages/site/public/ports/
+.claude/worktrees/
