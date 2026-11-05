@@ -1,16 +1,41 @@
 {
-  "name": "@repraze/termicolor",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "eslint": "^9.3.0",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
-  }
+    "name": "@termicolor/root",
+    "private": true,
+    "version": "0.1.0",
+    "description": "Termicolor - high contrast, bright, techy color system",
+    "type": "module",
+    "workspaces": [
+        "packages/*"
+    ],
+    "scripts": {
+        "build": "npm run build:ports && npm run build:site",
+        "build:ports": "tsx packages/build/src/cli.ts",
+        "build:site": "npm run build -w @termicolor/site",
+        "dev": "npm run dev -w @termicolor/site",
+        "check:generated": "npm run build:ports && git diff --exit-code -- ports packages/palette/dist",
+        "test": "npm run test --workspaces --if-present",
+        "typecheck": "npm run typecheck --workspaces --if-present",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check ."
+    },
+    "author": "Thomas Dubosc (https://repraze.com)",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/repraze/termicolor"
+    },
+    "devDependencies": {
+        "@types/node": "^26.6.6",
+        "eslint": "^10.14.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-simple-import-sort": "^14.0.0",
+        "eslint-plugin-unused-imports": "^4.4.1",
+        "jiti": "^2.7.0",
+        "prettier": "^3.9.10",
+        "tsx": "^4.23.15",
+        "typescript": "^6.0.3",
+        "typescript-eslint": "^8.72.1"
+    }
 }

@@ -1,0 +1,32 @@
+{
+    "name": "termicolor",
+    "displayName": "Termicolor",
+    "description": "High contrast, bright, techy color theme",
+    "version": "0.1.0",
+    "publisher": "repraze",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/repraze/termicolor"
+    },
+    "engines": {
+        "vscode": "^1.80.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Termicolor Dark",
+                "uiTheme": "vs-dark",
+                "path": "./themes/termicolor-dark.json"
+            },
+            {
+                "label": "Termicolor Light",
+                "uiTheme": "vs",
+                "path": "./themes/termicolor-light.json"
+            }
+        ]
+    }
+}

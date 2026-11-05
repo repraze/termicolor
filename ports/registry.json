@@ -1,0 +1,419 @@
+[
+    {
+        "id": "chrome",
+        "name": "Chrome & Edge",
+        "category": "browser",
+        "description": "Browser frame, tab strip, toolbar and new tab page colors for Chromium browsers.",
+        "homepage": "https://www.google.com/chrome",
+        "tags": [
+            "chromium",
+            "edge",
+            "brave",
+            "vivaldi",
+            "browser"
+        ],
+        "install": "\n1. Open `chrome://extensions` (or `edge://extensions`) and enable **Developer mode**.\n2. **Load unpacked** → select `dist/dark` or `dist/light`.\n\nChrome keeps one theme at a time; loading the other replaces it.\n",
+        "status": "available",
+        "source": "https://github.com/repraze/termicolor/tree/main/ports/chrome",
+        "files": [
+            "dark/manifest.json",
+            "light/manifest.json"
+        ]
+    },
+    {
+        "id": "shiki",
+        "name": "Shiki & Monaco",
+        "category": "web",
+        "description": "Syntax highlighting themes for shiki (and Monaco via @shikijs/monaco). Same token rules as VS Code.",
+        "homepage": "https://shiki.style",
+        "tags": [
+            "syntax",
+            "highlight",
+            "monaco",
+            "textmate",
+            "markdown",
+            "code blocks"
+        ],
+        "install": "\nThe files are TextMate themes - load them directly:\n\n```ts\nimport termicolorDark from \"./termicolor-dark.json\";\nimport termicolorLight from \"./termicolor-light.json\";\n\nconst highlighter = await createHighlighter({themes: [termicolorDark, termicolorLight], langs: [\"ts\"]});\nhighlighter.codeToHtml(code, {lang: \"ts\", themes: {light: \"termicolor-light\", dark: \"termicolor-dark\"}});\n```\n\nFor Monaco, register the same themes through `shikiToMonaco(highlighter, monaco)`.\n",
+        "status": "available",
+        "source": "https://github.com/repraze/termicolor/tree/main/ports/shiki",
+        "files": [
+            "termicolor-dark.json",
+            "termicolor-light.json"
+        ]
+    },
+    {
+        "id": "starship",
+        "name": "Starship",
+        "category": "shell",
+        "description": "Palette blocks and a rainbow powerline preset for the Starship prompt.",
+        "homepage": "https://starship.rs",
+        "tags": [
+            "prompt",
+            "powerline",
+            "bash",
+            "zsh",
+            "fish",
+            "powershell"
+        ],
+        "install": "\n**Full preset:** copy `starship-dark.toml` (or `-light`) to `~/.config/starship.toml`.\nNeeds a [Nerd Font](https://www.nerdfonts.com).\n\n**Palette only:** append `palettes.toml` to your config and set `palette = 'termicolor_dark'`.\nColors: `red orange yellow green cyan blue purple pink text subtext surface base crust`.\n",
+        "status": "available",
+        "source": "https://github.com/repraze/termicolor/tree/main/ports/starship",
+        "files": [
+            "starship-dark.toml",
+            "starship-light.toml",
+            "palettes.toml"
+        ]
+    },
+    {
+        "id": "vscode",
+        "name": "Visual Studio Code",
+        "category": "editor",
+        "description": "Dark and light color themes for VS Code and VSCodium, matching repraze.com code blocks.",
+        "homepage": "https://code.visualstudio.com",
+        "tags": [
+            "vscodium",
+            "cursor",
+            "editor",
+            "monaco"
+        ],
+        "install": "\nNot on the Marketplace yet. Package and install the extension folder:\n\n```sh\ncd ports/vscode/dist\nnpx @vscode/vsce package -o termicolor.vsix\ncode --install-extension termicolor.vsix\n```\n\nThen pick **Termicolor Dark** or **Termicolor Light** in *Preferences: Color Theme*.\n",
+        "status": "available",
+        "source": "https://github.com/repraze/termicolor/tree/main/ports/vscode",
+        "files": [
+            "package.json",
+            "README.md",
+            "LICENSE",
+            "themes/termicolor-dark.json",
+            "themes/termicolor-light.json"
+        ]
+    },
+    {
+        "id": "windows-terminal",
+        "name": "Windows Terminal",
+        "category": "terminal",
+        "description": "Color schemes plus a matching window/tab theme for Windows Terminal.",
+        "homepage": "https://github.com/microsoft/terminal",
+        "tags": [
+            "windows",
+            "wt",
+            "ansi"
+        ],
+        "install": "\n**Option A - fragment (auto-loads):** copy `termicolor.json` to\n`%LOCALAPPDATA%\\Microsoft\\Windows Terminal\\Fragments\\termicolor\\termicolor.json` and restart.\nThe schemes appear in *Settings → Color schemes*.\n\n**Option B - settings.json:** paste the objects from `schemes.json` into `\"schemes\"` and from\n`themes.json` into `\"themes\"`. Then set:\n\n```json\n\"profiles\": {\"defaults\": {\"colorScheme\": \"Termicolor Dark\"}},\n\"theme\": \"Termicolor Dark\"\n```\n",
+        "status": "available",
+        "source": "https://github.com/repraze/termicolor/tree/main/ports/windows-terminal",
+        "files": [
+            "termicolor.json",
+            "schemes.json",
+            "themes.json"
+        ]
+    },
+    {
+        "id": "kitty",
+        "name": "kitty",
+        "category": "terminal",
+        "description": "GPU terminal",
+        "tier": 1,
+        "catppuccinStars": 899,
+        "status": "planned"
+    },
+    {
+        "id": "alacritty",
+        "name": "Alacritty",
+        "category": "terminal",
+        "description": "GPU terminal",
+        "tier": 1,
+        "catppuccinStars": 790,
+        "status": "planned"
+    },
+    {
+        "id": "ghostty",
+        "name": "Ghostty",
+        "category": "terminal",
+        "description": "Native terminal",
+        "tier": 1,
+        "catppuccinStars": 597,
+        "status": "planned"
+    },
+    {
+        "id": "wezterm",
+        "name": "WezTerm",
+        "category": "terminal",
+        "description": "Lua-configured terminal",
+        "tier": 1,
+        "catppuccinStars": 369,
+        "status": "planned"
+    },
+    {
+        "id": "iterm",
+        "name": "iTerm2",
+        "category": "terminal",
+        "description": "macOS terminal",
+        "tier": 1,
+        "catppuccinStars": 963,
+        "status": "planned"
+    },
+    {
+        "id": "warp",
+        "name": "Warp",
+        "category": "terminal",
+        "description": "AI terminal",
+        "tier": 1,
+        "catppuccinStars": 330,
+        "status": "planned"
+    },
+    {
+        "id": "gnome-terminal",
+        "name": "GNOME Terminal",
+        "category": "terminal",
+        "description": "GNOME default terminal",
+        "tier": 1,
+        "catppuccinStars": 302,
+        "status": "planned"
+    },
+    {
+        "id": "bat",
+        "name": "bat",
+        "category": "cli",
+        "description": "cat with syntax highlighting (also git-delta)",
+        "tier": 1,
+        "catppuccinStars": 516,
+        "tags": [
+            "delta",
+            "tmtheme"
+        ],
+        "status": "planned"
+    },
+    {
+        "id": "fzf",
+        "name": "fzf",
+        "category": "cli",
+        "description": "Fuzzy finder",
+        "tier": 1,
+        "catppuccinStars": 312,
+        "status": "planned"
+    },
+    {
+        "id": "lazygit",
+        "name": "lazygit",
+        "category": "cli",
+        "description": "Git TUI",
+        "tier": 1,
+        "catppuccinStars": 326,
+        "status": "planned"
+    },
+    {
+        "id": "btop",
+        "name": "btop",
+        "category": "cli",
+        "description": "Resource monitor",
+        "tier": 1,
+        "catppuccinStars": 439,
+        "status": "planned"
+    },
+    {
+        "id": "zsh-syntax-highlighting",
+        "name": "zsh-syntax-highlighting",
+        "category": "shell",
+        "description": "Fish-like highlighting for zsh",
+        "tier": 1,
+        "catppuccinStars": 281,
+        "status": "planned"
+    },
+    {
+        "id": "dircolors",
+        "name": "LS_COLORS",
+        "category": "shell",
+        "description": "ls / eza file colors",
+        "tier": 1,
+        "tags": [
+            "eza",
+            "dircolors"
+        ],
+        "status": "planned"
+    },
+    {
+        "id": "psreadline",
+        "name": "PowerShell PSReadLine",
+        "category": "shell",
+        "description": "PowerShell syntax colors",
+        "tier": 1,
+        "tags": [
+            "powershell"
+        ],
+        "status": "planned"
+    },
+    {
+        "id": "windows-theme",
+        "name": "Windows theme pack",
+        "category": "system",
+        "description": "Wallpapers + accent color in one install",
+        "tier": 1,
+        "tags": [
+            "deskthemepack"
+        ],
+        "status": "planned"
+    },
+    {
+        "id": "wallpapers",
+        "name": "Wallpapers",
+        "category": "wallpaper",
+        "description": "Generated gradients, grids, circuits, contours",
+        "tier": 1,
+        "tags": [
+            "background"
+        ],
+        "status": "planned"
+    },
+    {
+        "id": "nvim",
+        "name": "Neovim",
+        "category": "editor",
+        "description": "Lua colorscheme",
+        "tier": 2,
+        "catppuccinStars": 7657,
+        "tags": [
+            "vim"
+        ],
+        "status": "planned"
+    },
+    {
+        "id": "tmux",
+        "name": "tmux",
+        "category": "terminal",
+        "description": "Terminal multiplexer",
+        "tier": 2,
+        "catppuccinStars": 3213,
+        "status": "planned"
+    },
+    {
+        "id": "zed",
+        "name": "Zed",
+        "category": "editor",
+        "description": "Rust editor",
+        "tier": 2,
+        "catppuccinStars": 927,
+        "status": "planned"
+    },
+    {
+        "id": "jetbrains",
+        "name": "JetBrains IDEs",
+        "category": "editor",
+        "description": "IntelliJ, WebStorm, ...",
+        "tier": 2,
+        "catppuccinStars": 577,
+        "status": "planned"
+    },
+    {
+        "id": "firefox",
+        "name": "Firefox",
+        "category": "browser",
+        "description": "Browser theme",
+        "tier": 2,
+        "catppuccinStars": 752,
+        "status": "planned"
+    },
+    {
+        "id": "obsidian",
+        "name": "Obsidian",
+        "category": "app",
+        "description": "Notes app theme",
+        "tier": 2,
+        "catppuccinStars": 651,
+        "status": "planned"
+    },
+    {
+        "id": "discord",
+        "name": "Discord",
+        "category": "app",
+        "description": "Vencord / BetterDiscord CSS",
+        "tier": 2,
+        "catppuccinStars": 1456,
+        "status": "planned"
+    },
+    {
+        "id": "dark-reader",
+        "name": "Dark Reader",
+        "category": "browser",
+        "description": "Dark Reader preset",
+        "tier": 2,
+        "catppuccinStars": 466,
+        "status": "planned"
+    },
+    {
+        "id": "userstyles",
+        "name": "Userstyles",
+        "category": "browser",
+        "description": "Website restyles (GitHub first)",
+        "tier": 2,
+        "catppuccinStars": 1146,
+        "tags": [
+            "stylus",
+            "github"
+        ],
+        "status": "planned"
+    },
+    {
+        "id": "spicetify",
+        "name": "Spotify (Spicetify)",
+        "category": "app",
+        "description": "Spotify theme",
+        "tier": 2,
+        "catppuccinStars": 604,
+        "status": "planned"
+    },
+    {
+        "id": "telegram",
+        "name": "Telegram",
+        "category": "app",
+        "description": "Desktop theme",
+        "tier": 2,
+        "catppuccinStars": 307,
+        "status": "planned"
+    },
+    {
+        "id": "nilesoft-shell",
+        "name": "Nilesoft Shell",
+        "category": "system",
+        "description": "Windows context menu",
+        "tier": 2,
+        "catppuccinStars": 299,
+        "status": "planned"
+    },
+    {
+        "id": "kde",
+        "name": "KDE Plasma",
+        "category": "system",
+        "description": "Linux desktop",
+        "tier": 3,
+        "catppuccinStars": 1106,
+        "status": "planned"
+    },
+    {
+        "id": "gtk",
+        "name": "GTK",
+        "category": "system",
+        "description": "Linux toolkit",
+        "tier": 3,
+        "catppuccinStars": 945,
+        "status": "planned"
+    },
+    {
+        "id": "hyprland",
+        "name": "Hyprland",
+        "category": "system",
+        "description": "Wayland compositor",
+        "tier": 3,
+        "catppuccinStars": 424,
+        "status": "planned"
+    },
+    {
+        "id": "vscode-icons",
+        "name": "VS Code icons",
+        "category": "editor",
+        "description": "File icon set",
+        "tier": 3,
+        "catppuccinStars": 1040,
+        "status": "planned"
+    }
+]

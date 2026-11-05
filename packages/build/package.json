@@ -1,0 +1,16 @@
+{
+    "name": "@termicolor/build",
+    "version": "0.1.0",
+    "description": "Termicolor port API and build CLI",
+    "type": "module",
+    "license": "MIT",
+    "exports": {
+        ".": "./src/index.ts"
+    },
+    "scripts": {
+        "typecheck": "tsc --noEmit -p ."
+    },
+    "dependencies": {
+        "@termicolor/palette": "*"
+    }
+}

@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Termicolor Dark",
+        "tab": {
+            "background": "#171717FF",
+            "unfocusedBackground": "#0A0A0AFF",
+            "showCloseButton": "always"
+        },
+        "tabRow": {
+            "background": "#0A0A0AFF",
+            "unfocusedBackground": "#0A0A0AFF"
+        },
+        "window": {
+            "applicationTheme": "dark",
+            "useMica": false,
+            "frame": "#404040FF",
+            "unfocusedFrame": "#0A0A0AFF"
+        }
+    },
+    {
+        "name": "Termicolor Light",
+        "tab": {
+            "background": "#FFFFFFFF",
+            "unfocusedBackground": "#FAFAFAFF",
+            "showCloseButton": "always"
+        },
+        "tabRow": {
+            "background": "#FAFAFAFF",
+            "unfocusedBackground": "#FAFAFAFF"
+        },
+        "window": {
+            "applicationTheme": "light",
+            "useMica": false,
+            "frame": "#D4D4D4FF",
+            "unfocusedFrame": "#FAFAFAFF"
+        }
+    }
+]

@@ -1,0 +1,23 @@
+{
+    "name": "@termicolor/palette",
+    "version": "0.1.0",
+    "description": "Termicolor palette - seeds, derived modes, roles",
+    "type": "module",
+    "license": "MIT",
+    "exports": {
+        ".": "./src/index.ts",
+        "./palette.json": "./dist/palette.json",
+        "./palette.css": "./dist/palette.css",
+        "./shadcn.css": "./dist/shadcn.css"
+    },
+    "scripts": {
+        "test": "node --import tsx --test src/*.test.ts",
+        "typecheck": "tsc --noEmit -p ."
+    },
+    "devDependencies": {
+        "@types/culori": "^4.0.1"
+    },
+    "dependencies": {
+        "culori": "^4.0.2"
+    }
+}

@@ -1,0 +1,51 @@
+/* shadcn/ui tokens on Termicolor - generated, do not edit. Import after palette.css */
+:root,
+.dark {
+    --background: var(--tc-bg-sunken);
+    --foreground: var(--tc-fg);
+    --card: var(--tc-bg);
+    --card-foreground: var(--tc-fg);
+    --popover: var(--tc-bg);
+    --popover-foreground: var(--tc-fg);
+    --primary: var(--tc-accent);
+    --primary-foreground: var(--tc-on-accent);
+    --secondary: var(--tc-bg-raised);
+    --secondary-foreground: var(--tc-fg);
+    --muted: var(--tc-bg-raised);
+    --muted-foreground: var(--tc-fg-soft);
+    --accent: var(--tc-bg-raised);
+    --accent-foreground: var(--tc-fg);
+    --destructive: var(--tc-danger);
+    --border: var(--tc-border);
+    --input: var(--tc-border-strong);
+    --ring: var(--tc-accent);
+    --chart-1: var(--tc-purple);
+    --chart-2: var(--tc-blue);
+    --chart-3: var(--tc-cyan);
+    --chart-4: var(--tc-green);
+    --chart-5: var(--tc-orange);
+    --sidebar: var(--tc-bg-sunken);
+    --sidebar-foreground: var(--tc-fg);
+    --sidebar-primary: var(--tc-accent);
+    --sidebar-primary-foreground: var(--tc-on-accent);
+    --sidebar-accent: var(--tc-bg-raised);
+    --sidebar-accent-foreground: var(--tc-fg);
+    --sidebar-border: var(--tc-border);
+    --sidebar-ring: var(--tc-accent);
+    --tone-red: var(--tc-red);
+    --tone-red-foreground: var(--tc-red-on);
+    --tone-orange: var(--tc-orange);
+    --tone-orange-foreground: var(--tc-orange-on);
+    --tone-yellow: var(--tc-yellow);
+    --tone-yellow-foreground: var(--tc-yellow-on);
+    --tone-green: var(--tc-green);
+    --tone-green-foreground: var(--tc-green-on);
+    --tone-cyan: var(--tc-cyan);
+    --tone-cyan-foreground: var(--tc-cyan-on);
+    --tone-blue: var(--tc-blue);
+    --tone-blue-foreground: var(--tc-blue-on);
+    --tone-purple: var(--tc-purple);
+    --tone-purple-foreground: var(--tc-purple-on);
+    --tone-pink: var(--tc-pink);
+    --tone-pink-foreground: var(--tc-pink-on);
+}
