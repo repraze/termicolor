@@ -10,7 +10,7 @@ Color presets for the iTerm2 macOS terminal, plus a combined preset that follows
 3. Choose the imported preset from the same menu.
 
 **Follow the system appearance:** tick *Use separate colors for light and dark mode* in the Colors tab,
-then import and select `Termicolor.itermcolors`. It carries both modes in one preset.
+then import and select `termicolor.itermcolors`. It carries both modes in one preset.
 
 ## Files
 
