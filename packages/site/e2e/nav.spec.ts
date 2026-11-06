@@ -29,3 +29,22 @@ test("desktop: a long sidebar scrolls with the page, then its end stays reachabl
     const last = sidebar.getByRole("button").last();
     await expect(last).toBeInViewport();
 });
+
+test("header nav marks only the most specific section as current", async ({page}) => {
+    const nav = page.getByRole("banner").getByRole("navigation", {name: "Site"});
+    const current = nav.locator("[aria-current=page]");
+    for (const [path, label] of [
+        ["ports", "Ports"],
+        ["ports/kitty", "Ports"],
+        ["ports/wallpapers", "Wallpapers"],
+        ["palette", "Palette"],
+    ] as const) {
+        await page.goto(path);
+        await expect(current).toHaveCount(1);
+        await expect(current).toHaveText(label);
+    }
+    await page.goto("");
+    await expect(current).toHaveCount(0);
+    await nav.getByRole("link", {name: "Wallpapers"}).click();
+    await expect(page).toHaveURL(/ports\/wallpapers$/);
+});

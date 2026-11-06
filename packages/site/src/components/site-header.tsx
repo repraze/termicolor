@@ -1,4 +1,4 @@
-import {Link} from "@tanstack/react-router";
+import {Link, useLocation} from "@tanstack/react-router";
 import {MenuIcon} from "lucide-react";
 import {useState} from "react";
 
@@ -15,12 +15,37 @@ import {Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger} from "@/comp
 export const HEADER_OFFSET = 53;
 
 const navLink =
-    "text-muted-foreground hover:text-foreground data-[status=active]:text-foreground data-[status=active]:underline data-[status=active]:decoration-primary data-[status=active]:decoration-2 data-[status=active]:underline-offset-8";
+    "text-muted-foreground hover:text-foreground aria-[current=page]:text-foreground aria-[current=page]:underline aria-[current=page]:decoration-primary aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-8";
 
 const NAV = [
     {to: "/ports", label: "Ports"},
     {to: "/palette", label: "Palette"},
+    {to: "/ports/wallpapers", label: "Wallpapers"},
 ] as const;
+
+/** The nav entry for a path: the most specific prefix, so /ports/wallpapers is Wallpapers, not Ports. */
+export function activeNav(pathname: string): string | undefined {
+    return NAV.filter((n) => pathname === n.to || pathname.startsWith(`${n.to}/`)).sort(
+        (a, b) => b.to.length - a.to.length,
+    )[0]?.to;
+}
+
+function NavLinks({onNavigate}: {onNavigate?: () => void}) {
+    const active = activeNav(useLocation({select: (l) => l.pathname}));
+    return NAV.map((n) => (
+        <Link
+            key={n.to}
+            to={n.to}
+            className={navLink}
+            // the router marks every prefix match current (Ports on /ports/wallpapers): only the most
+            // specific entry may match by prefix, the others must match exactly
+            activeOptions={{exact: active !== n.to}}
+            onClick={onNavigate}
+        >
+            {n.label}
+        </Link>
+    ));
+}
 
 /** Sticky site header. Below `md` the nav and the ports tree move into a sheet. */
 export function SiteHeader() {
@@ -42,11 +67,7 @@ export function SiteHeader() {
                             </SheetTitle>
                         </SheetHeader>
                         <nav className="flex flex-col gap-1 border-b px-4 pb-4 font-mono text-sm" aria-label="Site">
-                            {NAV.map((n) => (
-                                <Link key={n.to} to={n.to} className={navLink} onClick={() => setOpen(false)}>
-                                    {n.label}
-                                </Link>
-                            ))}
+                            <NavLinks onNavigate={() => setOpen(false)} />
                         </nav>
                         <div className="px-2 pb-6">
                             <PortsTree onNavigate={() => setOpen(false)} />
@@ -60,11 +81,7 @@ export function SiteHeader() {
                     </span>
                 </Link>
                 <nav className="hidden gap-4 md:flex" aria-label="Site">
-                    {NAV.map((n) => (
-                        <Link key={n.to} to={n.to} className={navLink}>
-                            {n.label}
-                        </Link>
-                    ))}
+                    <NavLinks />
                 </nav>
                 <div className="ml-auto flex items-center gap-1">
                     <SiteSearch />
