@@ -75,5 +75,14 @@ for (const theme of THEMES) {
         await expect
             .poll(async () => hex(await name.evaluate((el) => getComputedStyle(el).color)))
             .toBe(mode.accentRoles[SITE_ACCENT].accent);
+        // rows show an accent side bar; their divider keeps the border color (it used to turn accent too)
+        await expect.poll(async () => row.evaluate((el) => getComputedStyle(el, "::before").scale)).toMatch(/^1( 1)?$/);
+        expect(hex(await row.evaluate((el) => getComputedStyle(el, "::before").backgroundColor))).toBe(
+            mode.accentRoles[SITE_ACCENT].accent,
+        );
+        expect(hex(await row.evaluate((el) => getComputedStyle(el).borderBottomColor))).toBe(mode.roles.border);
+        expect(hex(await row.evaluate((el) => getComputedStyle(el).borderLeftColor))).not.toBe(
+            mode.accentRoles[SITE_ACCENT].accent,
+        );
     });
 }

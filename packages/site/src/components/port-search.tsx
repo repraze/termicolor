@@ -1,15 +1,14 @@
-import {useDebouncedValue, useHotkeys} from "@mantine/hooks";
+import {useDebouncedValue} from "@mantine/hooks";
 import {useSuspenseQuery} from "@tanstack/react-query";
 import {useWindowVirtualizer} from "@tanstack/react-virtual";
 import {CATEGORIES, type Category} from "@termicolor/build";
 import {cva} from "class-variance-authority";
-import {ArrowRightIcon, SearchIcon} from "lucide-react";
+import {ArrowRightIcon, FilterIcon} from "lucide-react";
 import {useEffect, useMemo, useRef, useState} from "react";
 
 import {PortLink} from "@/components/port-link";
 import {Badge} from "@/components/ui/badge";
 import {Input} from "@/components/ui/input";
-import {Kbd} from "@/components/ui/kbd";
 import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
 import {clickable} from "@/lib/interactive";
 import {type RegistryEntry, registryQuery, searchText, type Status} from "@/lib/registry";
@@ -27,7 +26,7 @@ const rowVariants = cva("flex h-full items-center gap-4 border-b px-3 text-sm", 
     variants: {
         status: {
             // the row is the link: accent indicator on the left, accent name, arrow nudges (DESIGN.md §6)
-            available: `border-l-2 border-l-transparent hover:border-l-primary focus-visible:border-l-primary outline-none ${clickable.surface}`,
+            available: clickable.row,
             planned: "text-muted-foreground",
         },
     },
@@ -35,13 +34,10 @@ const rowVariants = cva("flex h-full items-center gap-4 border-b px-3 text-sm", 
 
 export function PortSearch({params, onChange}: {params: PortSearchParams; onChange: (next: PortSearchParams) => void}) {
     const {data: registry} = useSuspenseQuery(registryQuery);
-    const inputRef = useRef<HTMLInputElement>(null);
     const listRef = useRef<HTMLDivElement>(null);
     const [query, setQuery] = useState(params.q ?? "");
     const [debounced] = useDebouncedValue(query, 150);
     const status = params.status ?? "all";
-
-    useHotkeys([["/", () => inputRef.current?.focus()]]);
 
     useEffect(() => {
         if ((debounced || undefined) !== params.q) {
@@ -101,16 +97,14 @@ export function PortSearch({params, onChange}: {params: PortSearchParams; onChan
             </div>
 
             <div className="relative">
-                <SearchIcon className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2" />
+                <FilterIcon className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2" />
                 <Input
-                    ref={inputRef}
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    placeholder="Search apps, e.g. terminal, vscode, chrome…"
+                    placeholder="Filter ports, e.g. terminal, vscode, chrome…"
                     className="h-10 pl-9"
-                    aria-label="Search ports"
+                    aria-label="Filter ports"
                 />
-                <Kbd className="absolute top-1/2 right-3 -translate-y-1/2">/</Kbd>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">

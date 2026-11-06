@@ -31,7 +31,7 @@ describe("components use role tokens for structure and state", () => {
         // the active tab may take the content surface because it also carries an indicator (§7)
         const withoutIndicatedTabs = source.replace(/data-active:bg-card(?=[^"]*data-active:shadow)/g, "");
         const shadeAsState = withoutIndicatedTabs.match(
-            /\b(?:hover|focus|aria-expanded|aria-pressed|aria-selected|data-active|data-\[state=on\]):bg-(?:muted|secondary|background|card)\b/g,
+            /\b(?:hover|focus|aria-expanded|aria-pressed|aria-selected|data-active|data-selected|data-highlighted|data-\[(?:state=on|selected=true)\]):bg-(?:muted|secondary|background|card)\b/g,
         );
         expect({translucentNeutral, shadeAsState}).toEqual({translucentNeutral: null, shadeAsState: null});
     });

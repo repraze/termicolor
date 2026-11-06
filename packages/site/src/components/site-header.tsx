@@ -5,6 +5,7 @@ import {useState} from "react";
 import {Logo} from "@/brand/logo";
 import {GithubIcon} from "@/components/github-icon";
 import {PortsTree} from "@/components/ports-tree";
+import {SiteSearch} from "@/components/site-search";
 import {SpectrumBar} from "@/components/spectrum-bar";
 import {ThemeToggle} from "@/components/theme-toggle";
 import {Button} from "@/components/ui/button";
@@ -66,6 +67,7 @@ export function SiteHeader() {
                     ))}
                 </nav>
                 <div className="ml-auto flex items-center gap-1">
+                    <SiteSearch />
                     <ThemeToggle />
                     <Button
                         variant="ghost"

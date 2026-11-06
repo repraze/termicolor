@@ -37,7 +37,12 @@ function ModeSection({mode}: {mode: Mode}) {
     const r = mode.roles;
     const checks = checkMode(mode);
     return (
-        <ModeScope mode={mode} className="bg-card flex flex-col gap-4 border p-4" data-testid={`mode-${mode.id}`}>
+        <ModeScope
+            id={mode.id}
+            mode={mode}
+            className="bg-card flex scroll-mt-16 flex-col gap-4 border p-4"
+            data-testid={`mode-${mode.id}`}
+        >
             <h2 className="text-lg font-bold">{MODE_LABELS[mode.id]}</h2>
 
             <Group title="Accent tiers · fill · text · tint · bright">
