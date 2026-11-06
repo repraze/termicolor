@@ -1,5 +1,5 @@
 import {definePort} from "@termicolor/build";
-import {flatten, type Hex, type Mode, rgb} from "@termicolor/palette";
+import {type Hex, type Mode, rgb} from "@termicolor/palette";
 
 /** 24-bit SGR body, e.g. `38;2;255;76;130`. */
 function sgr(hex: Hex, layer: "fg" | "bg" = "fg"): string {
@@ -13,24 +13,24 @@ const esc = (...parts: string[]) => `"\${e}[${parts.join(";")}m"`;
 type Entry = [key: string, value: string];
 
 function script(mode: Mode): string {
-    const {roles: r, syntax: s, accents: a} = mode;
+    const {roles: r, syntax: s} = mode;
     const base: Entry[] = [
         ["Default", esc(sgr(r.fg))],
         ["Comment", esc(sgr(s.comment))],
         ["Keyword", esc(sgr(s.keyword))],
         ["String", esc(sgr(s.string))],
         ["Operator", esc(sgr(s.operator))],
-        // PowerShell `$variables` read better with their own hue; syntax.variable is plain fg.
-        ["Variable", esc(sgr(a.pink))],
+        // PowerShell `$variables` read better with their own hue (syntax.parameter, not plain-fg variable).
+        ["Variable", esc(sgr(s.parameter))],
         ["Command", esc(sgr(s.function))],
-        ["Parameter", esc(sgr(a.cyan))],
+        ["Parameter", esc(sgr(s.builtin))],
         ["Type", esc(sgr(s.type))],
         ["Number", esc(sgr(s.number))],
         ["Member", esc(sgr(s.property))],
         ["Emphasis", esc(sgr(r.accent), "1")],
         ["Error", esc(sgr(r.danger))],
         ["ContinuationPrompt", esc(sgr(r.fgMuted))],
-        ["Selection", esc(sgr(r.fg), sgr(flatten(r.selection, r.bg), "bg"))],
+        ["Selection", esc(sgr(r.fg), sgr(r.selectionSolid, "bg"))],
     ];
     const v21: Entry[] = [["InlinePrediction", esc(sgr(r.fgMuted))]];
     const v22: Entry[] = [

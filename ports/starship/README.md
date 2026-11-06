@@ -9,7 +9,8 @@ Palette blocks and a rainbow powerline preset for the Starship prompt.
 Needs a [Nerd Font](https://www.nerdfonts.com).
 
 **Palette only:** append `palettes.toml` to your config and set `palette = 'termicolor_dark'`.
-Colors: `red orange yellow green cyan blue purple pink text subtext surface base crust`.
+Colors: `red orange yellow green cyan blue purple pink` for text, `fill_<accent>` for solid segments
+with `on_fill_<accent>` text on them, and `text subtext surface base crust` for neutrals.
 
 ## Files
 

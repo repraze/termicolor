@@ -3,14 +3,14 @@
         "id": "alacritty",
         "name": "Alacritty",
         "category": "terminal",
-        "description": "Dark and light Alacritty color files: ANSI colors plus cursor, vi-mode, selection, search, hints and footer bar.",
+        "description": "Dark and light Alacritty color files: ANSI colors (normal, bright and dim) plus cursor, vi-mode, selection, search, hints and footer bar.",
         "homepage": "https://alacritty.org",
         "tags": [
             "gpu",
             "toml",
             "ansi"
         ],
-        "install": "\nCopy `termicolor-dark.toml` (or `-light`) next to your config, e.g. `~/.config/alacritty/`\n(`%APPDATA%\\alacritty\\` on Windows), and import it from `alacritty.toml`:\n\n```toml\n[general]\nimport = [\"~/.config/alacritty/termicolor-dark.toml\"]\n```\n\nAlacritty reloads the config live. Dim colors are left for Alacritty to derive from the normal ones.\nNeeds Alacritty 0.13+ (TOML config).\n",
+        "install": "\nCopy `termicolor-dark.toml` (or `-light`) next to your config, e.g. `~/.config/alacritty/`\n(`%APPDATA%\\alacritty\\` on Windows), and import it from `alacritty.toml`:\n\n```toml\n[general]\nimport = [\"~/.config/alacritty/termicolor-dark.toml\"]\n```\n\nAlacritty reloads the config live.\nNeeds Alacritty 0.13+ (TOML config).\n",
         "status": "available",
         "source": "https://github.com/repraze/termicolor/tree/main/ports/alacritty",
         "files": [
@@ -297,7 +297,7 @@
             "fish",
             "powershell"
         ],
-        "install": "\n**Full preset:** copy `starship-dark.toml` (or `-light`) to `~/.config/starship.toml`.\nNeeds a [Nerd Font](https://www.nerdfonts.com).\n\n**Palette only:** append `palettes.toml` to your config and set `palette = 'termicolor_dark'`.\nColors: `red orange yellow green cyan blue purple pink text subtext surface base crust`.\n",
+        "install": "\n**Full preset:** copy `starship-dark.toml` (or `-light`) to `~/.config/starship.toml`.\nNeeds a [Nerd Font](https://www.nerdfonts.com).\n\n**Palette only:** append `palettes.toml` to your config and set `palette = 'termicolor_dark'`.\nColors: `red orange yellow green cyan blue purple pink` for text, `fill_<accent>` for solid segments\nwith `on_fill_<accent>` text on them, and `text subtext surface base crust` for neutrals.\n",
         "status": "available",
         "source": "https://github.com/repraze/termicolor/tree/main/ports/starship",
         "files": [
