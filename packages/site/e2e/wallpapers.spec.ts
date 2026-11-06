@@ -62,7 +62,7 @@ test("wallpaper thumbnail opens a preview with the SVG and downloads", async ({p
         .click();
     const dialog = page.getByRole("dialog");
     await expect(dialog).toBeVisible();
-    await expect(dialog.locator("img")).toHaveAttribute("src", /\/dist\/(dark|light)\/1920x1080\/.+\.svg$/);
+    await expect(dialog.locator("img")).toHaveAttribute("src", /\/dist\/(dark|light)\/1920x1080\/.+\.svg\?v=\w+$/);
     await expect(dialog.getByRole("button", {name: /^Download/})).toHaveCount(3);
     await page.keyboard.press("Escape");
     await expect(dialog).toBeHidden();

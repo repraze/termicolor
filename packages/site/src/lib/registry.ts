@@ -9,7 +9,8 @@ export type RegistryEntry = PortMeta &
 
 export type Status = RegistryEntry["status"];
 
-export const dataUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+/** URL of a generated data file, versioned by build so a deploy never mixes with cached files. */
+export const dataUrl = (path: string) => `${import.meta.env.BASE_URL}${path}?v=${import.meta.env.VITE_BUILD_ID}`;
 
 async function fetchJson<T>(path: string): Promise<T> {
     const res = await fetch(dataUrl(path));

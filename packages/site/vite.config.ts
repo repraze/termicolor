@@ -23,6 +23,11 @@ function spaFallback(): Plugin {
 // GitHub Pages serves the site under /<repo>/; override with BASE_PATH for other hosts.
 export default defineConfig({
     base: process.env.BASE_PATH ?? "/termicolor/",
+    define: {
+        // Cache-busts data files (registry, catalog, thumbnails, SVGs) per deploy: GitHub Pages caches
+        // everything for 10 min, and an old catalog next to new thumbnails shows broken images.
+        "import.meta.env.VITE_BUILD_ID": JSON.stringify(process.env.GITHUB_SHA?.slice(0, 12) ?? "dev"),
+    },
     plugins: [tanstackRouter({target: "react", autoCodeSplitting: true}), react(), tailwindcss(), spaFallback()],
     resolve: {
         alias: {"@": fileURLToPath(new URL("./src", import.meta.url))},
