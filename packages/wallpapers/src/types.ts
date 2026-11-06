@@ -7,8 +7,8 @@ export type Size = {width: number; height: number};
 
 export const FAMILIES = {
     gradients: "Gradients",
-    grids: "Grids and dots",
-    circuit: "Circuit / PCB",
+    lines: "Lines and waves",
+    patterns: "Patterns and grids",
 } as const;
 export type Family = keyof typeof FAMILIES;
 
@@ -30,7 +30,10 @@ export type RenderContext = {
     params: Params;
     /** Seeded from generator id + seed only, so dark and light share one composition. */
     rng: Rng;
-    /** Layout unit: 1 at 1440px on the short side. Strokes and spacing scale with it. */
+    /**
+     * Layout unit. Generators draw in a design space whose short side is 1440, so `u` is 1 there; the
+     * SVG `viewBox` then scales that to the requested pixel size.
+     */
     u: number;
     colors: Colors;
 };
