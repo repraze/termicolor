@@ -1,5 +1,5 @@
 import {definePort} from "@termicolor/build";
-import {type Ansi, flatten, type Mode} from "@termicolor/palette";
+import type {Ansi, Mode} from "@termicolor/palette";
 
 type Value = string | string[] | {[key: string]: Value};
 type Table = {[key: string]: Value};
@@ -11,9 +11,8 @@ const title = (mode: Mode) => `Termicolor ${mode.type === "dark" ? "Dark" : "Lig
 
 /** The `colors` table, shared by the TOML scheme files and the Lua module. */
 function colors(mode: Mode): Table {
-    const {roles: r, accents: a, on, ansi} = mode;
-    // Opaque everywhere so the result doesn't depend on wezterm's blending.
-    const solid = (hex: string) => flatten(hex, r.bg);
+    const {roles: r, accents: a, fills, onFill, ansi} = mode;
+    // Opaque everywhere (the `*Solid` roles) so the result doesn't depend on wezterm's blending.
     const tab = (bg: string, fg: string) => ({bg_color: bg, fg_color: fg});
     return {
         foreground: r.fg,
@@ -22,29 +21,29 @@ function colors(mode: Mode): Table {
         cursor_fg: r.onAccent,
         cursor_border: r.cursor,
         compose_cursor: a.orange,
-        selection_bg: solid(r.selection),
+        selection_bg: r.selectionSolid,
         selection_fg: r.fg,
         scrollbar_thumb: r.borderStrong,
         split: r.borderStrong,
         visual_bell: r.bgRaised,
         ansi: ANSI_NAMES.map((n) => ansi[n]),
         brights: BRIGHT_NAMES.map((n) => ansi[n]),
-        copy_mode_active_highlight_bg: a.orange,
-        copy_mode_active_highlight_fg: on.orange,
-        copy_mode_inactive_highlight_bg: solid(r.findMatch),
+        copy_mode_active_highlight_bg: r.matchActive,
+        copy_mode_active_highlight_fg: r.onMatchActive,
+        copy_mode_inactive_highlight_bg: r.findMatchSolid,
         copy_mode_inactive_highlight_fg: r.fg,
-        quick_select_label_bg: a.yellow,
-        quick_select_label_fg: on.yellow,
-        quick_select_match_bg: solid(r.findMatch),
+        quick_select_label_bg: fills.yellow,
+        quick_select_label_fg: onFill.yellow,
+        quick_select_match_bg: r.findMatchSolid,
         quick_select_match_fg: r.fg,
         tab_bar: {
             // retro tab bar only; the fancy one is drawn on window_frame
-            background: r.bgSunken,
+            background: r.tabInactive,
             inactive_tab_edge: r.border,
-            active_tab: tab(r.bg, r.fg),
-            inactive_tab: tab(r.bgSunken, r.fgSoft),
+            active_tab: tab(r.tabActive, r.tabActiveFg),
+            inactive_tab: tab(r.tabInactive, r.tabInactiveFg),
             inactive_tab_hover: tab(r.bgRaised, r.fg),
-            new_tab: tab(r.bgSunken, r.fgSoft),
+            new_tab: tab(r.tabInactive, r.tabInactiveFg),
             new_tab_hover: tab(r.accent, r.onAccent),
         },
     };
@@ -53,14 +52,14 @@ function colors(mode: Mode): Table {
 /** Fancy tab bar / titlebar colors. Not part of a color scheme, so only the Lua module sets them. */
 function windowFrame({roles: r}: Mode): Table {
     return {
-        active_titlebar_bg: r.bgSunken,
-        inactive_titlebar_bg: r.bgSunken,
+        active_titlebar_bg: r.titlebar,
+        inactive_titlebar_bg: r.titlebar,
         active_titlebar_fg: r.fg,
         inactive_titlebar_fg: r.fgSoft,
         active_titlebar_border_bottom: r.border,
         inactive_titlebar_border_bottom: r.border,
         button_fg: r.fgSoft,
-        button_bg: r.bgSunken,
+        button_bg: r.titlebar,
         button_hover_fg: r.fg,
         button_hover_bg: r.bgRaised,
     };

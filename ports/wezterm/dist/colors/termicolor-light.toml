@@ -19,12 +19,12 @@ split = "#d4d4d4"
 visual_bell = "#f5f5f5"
 ansi = ["#262626", "#e20064", "#00835c", "#a16500", "#006af6", "#a331fb", "#007f87", "#a3a3a3"]
 brights = ["#525252", "#fc3378", "#2c9870", "#b77a27", "#3885ff", "#b262ff", "#2c949c", "#d4d4d4"]
-copy_mode_active_highlight_bg = "#bb5500"
-copy_mode_active_highlight_fg = "#ffffff"
+copy_mode_active_highlight_bg = "#ff9243"
+copy_mode_active_highlight_fg = "#241004"
 copy_mode_inactive_highlight_bg = "#e8bca4"
 copy_mode_inactive_highlight_fg = "#0a0a0a"
-quick_select_label_bg = "#a16500"
-quick_select_label_fg = "#ffffff"
+quick_select_label_bg = "#f2c224"
+quick_select_label_fg = "#1d1500"
 quick_select_match_bg = "#e8bca4"
 quick_select_match_fg = "#0a0a0a"
 

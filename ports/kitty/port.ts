@@ -1,5 +1,5 @@
 import {definePort} from "@termicolor/build";
-import {type Ansi, flatten, type Mode} from "@termicolor/palette";
+import type {Ansi, Mode} from "@termicolor/palette";
 
 const ANSI_ORDER: (keyof Ansi)[] = [
     "black",
@@ -23,9 +23,8 @@ const ANSI_ORDER: (keyof Ansi)[] = [
 const title = (mode: Mode) => `Termicolor ${mode.type === "dark" ? "Dark" : "Light"}`;
 
 function theme(mode: Mode): string {
-    const {roles: r, accents: a, on, ansi} = mode;
-    // kitty has no alpha in colors: flatten translucent roles over the terminal background.
-    const solid = (hex: string) => flatten(hex, r.bg);
+    const {roles: r, fills, onFill, ansi} = mode;
+    // kitty has no alpha in colors: use the `*Solid` roles.
     const sections: [string, [string, string][]][] = [
         [
             "Basic colors",
@@ -34,7 +33,7 @@ function theme(mode: Mode): string {
                 ["background", r.bg],
                 // keep each cell's own color inside the selection
                 ["selection_foreground", "none"],
-                ["selection_background", solid(r.selection)],
+                ["selection_background", r.selectionSolid],
             ],
         ],
         [
@@ -65,21 +64,21 @@ function theme(mode: Mode): string {
             [
                 ["tab_bar_background", r.bgSunken],
                 ["tab_bar_margin_color", r.bgSunken],
-                ["active_tab_foreground", r.onAccent],
-                ["active_tab_background", r.accent],
-                ["inactive_tab_foreground", r.fgSoft],
-                ["inactive_tab_background", r.bgRaised],
+                ["active_tab_foreground", r.tabActiveFg],
+                ["active_tab_background", r.tabActive],
+                ["inactive_tab_foreground", r.tabInactiveFg],
+                ["inactive_tab_background", r.tabInactive],
             ],
         ],
         [
             "Marks (search highlights)",
             [
-                ["mark1_foreground", on.purple],
-                ["mark1_background", a.purple],
-                ["mark2_foreground", on.blue],
-                ["mark2_background", a.blue],
-                ["mark3_foreground", on.orange],
-                ["mark3_background", a.orange],
+                ["mark1_foreground", onFill.purple],
+                ["mark1_background", fills.purple],
+                ["mark2_foreground", onFill.blue],
+                ["mark2_background", fills.blue],
+                ["mark3_foreground", onFill.orange],
+                ["mark3_background", fills.orange],
             ],
         ],
         ["The 16 terminal colors", ANSI_ORDER.map((key, i) => [`color${i}`, ansi[key]])],

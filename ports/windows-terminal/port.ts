@@ -1,5 +1,5 @@
 import {definePort, json} from "@termicolor/build";
-import {flatten, type Mode} from "@termicolor/palette";
+import type {Mode} from "@termicolor/palette";
 
 const upper = (hex: string) => hex.toUpperCase();
 
@@ -9,8 +9,8 @@ function scheme({type, roles: r, ansi}: Mode) {
         background: upper(r.bg),
         foreground: upper(r.fg),
         cursorColor: upper(r.cursor),
-        // WT draws the selection with its own translucency; give it the flattened tint.
-        selectionBackground: upper(flatten(r.selection, r.bg)),
+        // WT draws the selection with its own translucency; give it the opaque tint.
+        selectionBackground: upper(r.selectionSolid),
         black: upper(ansi.black),
         red: upper(ansi.red),
         green: upper(ansi.green),
@@ -34,11 +34,11 @@ function theme({type, roles: r}: Mode) {
     return {
         name: `Termicolor ${type === "dark" ? "Dark" : "Light"}`,
         tab: {
-            background: `${upper(r.bg)}FF`,
-            unfocusedBackground: `${upper(r.bgSunken)}FF`,
+            background: `${upper(r.tabActive)}FF`,
+            unfocusedBackground: `${upper(r.tabInactive)}FF`,
             showCloseButton: "always",
         },
-        tabRow: {background: `${upper(r.bgSunken)}FF`, unfocusedBackground: `${upper(r.bgSunken)}FF`},
+        tabRow: {background: `${upper(r.titlebar)}FF`, unfocusedBackground: `${upper(r.titlebar)}FF`},
         window: {
             applicationTheme: type,
             useMica: false,

@@ -1,5 +1,5 @@
 import {definePort} from "@termicolor/build";
-import {flatten, type Mode} from "@termicolor/palette";
+import type {Mode} from "@termicolor/palette";
 
 type Table = [string, [string, string][]];
 
@@ -9,9 +9,19 @@ const bright = (name: (typeof ANSI_NAMES)[number]) =>
     `bright${name.charAt(0).toUpperCase()}${name.slice(1)}` as `bright${Capitalize<typeof name>}`;
 
 function theme(mode: Mode): string {
-    const {roles: r, accents: a, on, ansi} = mode;
-    // Alacritty colors are opaque `#rrggbb`: flatten translucent roles over the background.
-    const solid = (hex: string) => flatten(hex, r.bg);
+    const {roles: r, accents: a, on, fills, onFill, ansi, dims} = mode;
+    // Alacritty colors are opaque `#rrggbb`: use the `*Solid` roles.
+    const dim: Record<(typeof ANSI_NAMES)[number], string> = {
+        // no dim neutral roles: black is already the darkest, white dims to muted text
+        black: ansi.black,
+        red: dims.red,
+        green: dims.green,
+        yellow: dims.yellow,
+        blue: dims.blue,
+        magenta: dims.purple,
+        cyan: dims.cyan,
+        white: r.fgMuted,
+    };
     const tables: Table[] = [
         [
             "colors.primary",
@@ -39,14 +49,14 @@ function theme(mode: Mode): string {
             "colors.search.matches",
             [
                 ["foreground", r.fg],
-                ["background", solid(r.findMatch)],
+                ["background", r.findMatchSolid],
             ],
         ],
         [
             "colors.search.focused_match",
             [
-                ["foreground", on.orange],
-                ["background", a.orange],
+                ["foreground", r.onMatchActive],
+                ["background", r.matchActive],
             ],
         ],
         [
@@ -59,8 +69,8 @@ function theme(mode: Mode): string {
         [
             "colors.hints.start",
             [
-                ["foreground", on.yellow],
-                ["background", a.yellow],
+                ["foreground", onFill.yellow],
+                ["background", fills.yellow],
             ],
         ],
         [
@@ -82,11 +92,12 @@ function theme(mode: Mode): string {
             [
                 // keep each cell's own color inside the selection
                 ["text", "CellForeground"],
-                ["background", solid(r.selection)],
+                ["background", r.selectionSolid],
             ],
         ],
         ["colors.normal", ANSI_NAMES.map((name) => [name, ansi[name]])],
         ["colors.bright", ANSI_NAMES.map((name) => [name, ansi[bright(name)]])],
+        ["colors.dim", ANSI_NAMES.map((name) => [name, dim[name]])],
     ];
     const body = tables
         .map(([name, entries]) => [`[${name}]`, ...entries.map(([k, v]) => `${k} = "${v}"`)].join("\n"))
@@ -102,7 +113,7 @@ export default definePort({
     name: "Alacritty",
     category: "terminal",
     description:
-        "Dark and light Alacritty color files: ANSI colors plus cursor, vi-mode, selection, search, hints and footer bar.",
+        "Dark and light Alacritty color files: ANSI colors (normal, bright and dim) plus cursor, vi-mode, selection, search, hints and footer bar.",
     homepage: "https://alacritty.org",
     tags: ["gpu", "toml", "ansi"],
     install: `
@@ -114,7 +125,7 @@ Copy \`termicolor-dark.toml\` (or \`-light\`) next to your config, e.g. \`~/.con
 import = ["~/.config/alacritty/termicolor-dark.toml"]
 \`\`\`
 
-Alacritty reloads the config live. Dim colors are left for Alacritty to derive from the normal ones.
+Alacritty reloads the config live.
 Needs Alacritty 0.13+ (TOML config).
 `,
     build: (palette) => [
