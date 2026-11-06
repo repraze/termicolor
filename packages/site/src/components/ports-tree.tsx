@@ -4,6 +4,7 @@ import {CATEGORIES, type Category} from "@termicolor/build";
 import {ChevronRightIcon} from "lucide-react";
 import {useMemo} from "react";
 
+import {PortLink} from "@/components/port-link";
 import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "@/components/ui/collapsible";
 import {type RegistryEntry, registryQuery} from "@/lib/registry";
 
@@ -48,15 +49,9 @@ export function PortsTree({onNavigate}: {onNavigate?: () => void}) {
                     </CollapsibleTrigger>
                     <CollapsibleContent className="ml-3.5 flex flex-col border-l">
                         {g.available.map((e) => (
-                            <Link
-                                key={e.id}
-                                to="/ports/$portId"
-                                params={{portId: e.id}}
-                                onClick={onNavigate}
-                                className={treeLink}
-                            >
+                            <PortLink key={e.id} portId={e.id} onClick={onNavigate} className={treeLink}>
                                 {e.name}
-                            </Link>
+                            </PortLink>
                         ))}
                         {g.planned > 0 && (
                             <Link
