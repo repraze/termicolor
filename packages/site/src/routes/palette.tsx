@@ -2,9 +2,12 @@ import {useClipboard} from "@mantine/hooks";
 import {createFileRoute} from "@tanstack/react-router";
 import {ACCENTS, allModes, checkMode, contrast, type Hex, type Mode} from "@termicolor/palette";
 import {cva} from "class-variance-authority";
+import {CopyIcon} from "lucide-react";
 
 import {MODE_LABELS, ModeScope} from "@/components/mode-scope";
 import {Badge} from "@/components/ui/badge";
+import {clickable} from "@/lib/interactive";
+import {cn} from "@/lib/utils";
 
 export const Route = createFileRoute("/palette")({
     component: PalettePage,
@@ -117,10 +120,14 @@ function Group({title, children}: {title: string; children: React.ReactNode}) {
     );
 }
 
-const swatchVariants = cva("flex items-end justify-between p-2 text-left text-xs transition-opacity hover:opacity-90", {
-    variants: {tall: {true: "h-16", false: "h-8"}},
-    defaultVariants: {tall: false},
-});
+// a copy target: inset outline in the swatch's own text color + a copy icon on hover/focus
+const swatchVariants = cva(
+    "group/click relative flex items-end justify-between p-2 text-left text-xs outline-none hover:shadow-[inset_0_0_0_2px_currentColor] focus-visible:shadow-[inset_0_0_0_2px_currentColor]",
+    {
+        variants: {tall: {true: "h-16", false: "h-8"}},
+        defaultVariants: {tall: false},
+    },
+);
 
 function Swatch({hex, label, text, tall}: {hex: Hex; label: string; text: Hex; tall?: boolean}) {
     const clipboard = useClipboard({timeout: 1000});
@@ -132,6 +139,7 @@ function Swatch({hex, label, text, tall}: {hex: Hex; label: string; text: Hex; t
             onClick={() => clipboard.copy(hex)}
             title={`Copy ${hex}`}
         >
+            <CopyIcon className={cn("absolute top-1.5 right-1.5 size-3", clickable.reveal)} aria-hidden />
             <span className="font-medium">{label}</span>
             <span>{clipboard.copied ? "copied" : hex}</span>
         </button>

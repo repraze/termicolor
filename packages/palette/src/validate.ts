@@ -44,7 +44,8 @@ export function checkMode(mode: Mode): Check[] {
         ["onMatchActive on matchActive", r.onMatchActive, r.matchActive, 4.5],
         ["fg on solid(findMatch)", r.fg, solid(r.findMatch, r.bg), 7],
         ["tabInactiveFg on tabInactive", r.tabInactiveFg, r.tabInactive, 4.5],
-        ["hover visible on bg", solid(r.bgHover, r.bg), r.bg, mode.contrast === "high" ? 1.5 : 1.05],
+        ["hover visible on bg", solid(r.bgHover, r.bg), r.bg, mode.contrast === "high" ? 1.35 : 1.05],
+        ["fgSoft on hover", r.fgSoft, solid(r.bgHover, r.bg), 4.5],
         ["fg on hover", r.fg, solid(r.bgHover, r.bg), mode.contrast === "high" ? 7 : 12],
         // every accent must be a valid choice, not just the default
         ...ACCENTS.flatMap((n): [string, Hex, Hex, number][] => [

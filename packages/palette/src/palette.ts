@@ -292,7 +292,7 @@ function buildMode(name: ModeName, contrast: Contrast, accent: AccentName): Mode
         ...s,
         ...byAccent[accent],
         // hc: hover must be visible on the single flat surface (DESIGN.md §6)
-        bgHover: wash(s.fg, contrast === "high" ? "soft" : "faint"),
+        bgHover: wash(s.fg, contrast === "high" ? (name === "dark" ? "soft" : "subtle") : "faint"),
         findMatch: wash(a.orange, "medium"),
         shadow: alpha(N[1000], name === "dark" ? 0.5 : 0.15),
         matchActive: fills.orange,

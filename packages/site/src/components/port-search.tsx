@@ -11,7 +11,9 @@ import {Badge} from "@/components/ui/badge";
 import {Input} from "@/components/ui/input";
 import {Kbd} from "@/components/ui/kbd";
 import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
+import {clickable} from "@/lib/interactive";
 import {type RegistryEntry, registryQuery, searchText, type Status} from "@/lib/registry";
+import {cn} from "@/lib/utils";
 
 export type PortSearchParams = {
     q?: string;
@@ -24,7 +26,8 @@ const ROW_HEIGHT = 64;
 const rowVariants = cva("flex h-full items-center gap-4 border-b px-3 text-sm", {
     variants: {
         status: {
-            available: "hover:bg-hover",
+            // the row is the link: accent indicator on the left, accent name, arrow nudges (DESIGN.md §6)
+            available: `border-l-2 border-l-transparent hover:border-l-primary focus-visible:border-l-primary outline-none ${clickable.surface}`,
             planned: "text-muted-foreground",
         },
     },
@@ -180,14 +183,16 @@ function PortRow({entry}: {entry: RegistryEntry}) {
     const body = (
         <>
             <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                <span className="text-foreground font-medium">{entry.name}</span>
+                <span className={cn("text-foreground font-medium", entry.status === "available" && clickable.title)}>
+                    {entry.name}
+                </span>
                 <span className="text-muted-foreground truncate text-xs">{entry.description}</span>
             </div>
             <Badge variant="outline" className="hidden sm:inline-flex">
                 {CATEGORIES[entry.category]}
             </Badge>
             {entry.status === "available" ? (
-                <ArrowRightIcon className="text-primary size-4" />
+                <ArrowRightIcon className={cn("text-primary size-4", clickable.arrow)} />
             ) : (
                 <Badge variant="secondary">planned</Badge>
             )}

@@ -31,7 +31,7 @@ for (const theme of THEMES) {
                     pageBg,
                 ),
             )
-            .toBeGreaterThanOrEqual(theme.contrast ? 1.5 : 1.05);
+            .toBeGreaterThanOrEqual(theme.contrast ? 1.35 : 1.05);
     });
 
     test(`menu popup has the mode's border and a visible highlight ${theme.name}`, async ({page}) => {
@@ -48,5 +48,31 @@ for (const theme of THEMES) {
         await expect
             .poll(async () => hex(await item.evaluate((el) => getComputedStyle(el).backgroundColor)))
             .toBe(r.accentTint);
+    });
+}
+
+/** DESIGN.md §6 "Clickable surfaces": hover shows an accent border and an accent title. */
+for (const theme of THEMES) {
+    const mode = theme.contrast ? palette.highContrast[theme.scheme] : palette.modes[theme.scheme];
+    test(`clickable cards and rows react to hover ${theme.name}`, async ({page}) => {
+        await useTheme(page, theme);
+        await page.goto("ports/wallpapers");
+        const card = page.getByTestId("wallpaper-card").first();
+        await card.getByRole("button", {name: /^Preview/}).hover();
+        await expect
+            .poll(async () => hex(await card.evaluate((el) => getComputedStyle(el).borderTopColor)))
+            .toBe(mode.roles.accent);
+        await expect(card.getByText("preview", {exact: true})).toBeVisible();
+
+        await page.goto("ports");
+        const row = page
+            .locator("section")
+            .getByRole("link", {name: /^Alacritty/})
+            .first();
+        await row.hover();
+        const name = row.getByText("Alacritty", {exact: true});
+        await expect
+            .poll(async () => hex(await name.evaluate((el) => getComputedStyle(el).color)))
+            .toBe(mode.roles.accent);
     });
 }

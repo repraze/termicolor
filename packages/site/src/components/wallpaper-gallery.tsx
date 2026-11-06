@@ -1,13 +1,15 @@
 import {useLocalStorage} from "@mantine/hooks";
-import {DownloadIcon, LoaderIcon} from "lucide-react";
+import {DownloadIcon, ExpandIcon, LoaderIcon} from "lucide-react";
 import {createContext, useContext, useMemo, useState} from "react";
 
 import {Badge} from "@/components/ui/badge";
 import {buttonVariants} from "@/components/ui/button";
 import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} from "@/components/ui/dialog";
 import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
+import {clickable} from "@/lib/interactive";
 import {type RasterFormat, rasterize, saveBlob} from "@/lib/rasterize";
 import {dataUrl} from "@/lib/registry";
+import {cn} from "@/lib/utils";
 import {
     filesFor,
     filterWallpapers,
@@ -131,13 +133,22 @@ function WallpaperCard({
     const files = filesFor(entry, filter.mode, filter.orientation);
     const thumb = THUMB_SIZES[filter.orientation];
     return (
-        <li className="bg-card flex flex-col border" data-testid="wallpaper-card">
+        <li className={cn("bg-card flex flex-col border", clickable.surface)} data-testid="wallpaper-card">
             <button
                 type="button"
                 onClick={onOpen}
-                className="focus-visible:ring-ring/50 group block overflow-hidden border-b outline-none focus-visible:ring-[3px]"
+                className="relative block cursor-zoom-in overflow-hidden border-b outline-none"
                 aria-label={`Preview ${entry.name} ${entry.seed}`}
             >
+                <span
+                    className={cn(
+                        "bg-primary text-primary-foreground absolute top-2 right-2 z-10 flex items-center gap-1 px-1.5 py-0.5 font-mono text-xs",
+                        clickable.reveal,
+                    )}
+                    aria-hidden
+                >
+                    <ExpandIcon className="size-3" /> preview
+                </span>
                 <img
                     src={dataUrl(`${BASE}/${thumbPath(entry.id, filter.mode, filter.orientation)}`)}
                     alt=""
@@ -145,13 +156,13 @@ function WallpaperCard({
                     height={thumb.height}
                     loading="lazy"
                     decoding="async"
-                    className="block h-auto w-full transition-transform group-hover:scale-[1.02]"
+                    className="block h-auto w-full transition-transform group-hover/click:scale-[1.03]"
                     style={{aspectRatio: `${thumb.width} / ${thumb.height}`}}
                 />
             </button>
             <div className="flex flex-col gap-2 p-2">
                 <div className="flex items-center justify-between gap-2">
-                    <span className="truncate text-sm font-medium">
+                    <span className={cn("truncate text-sm font-medium", clickable.title)}>
                         {entry.name} <span className="text-muted-foreground font-mono text-xs">#{entry.seed}</span>
                     </span>
                     <Badge variant="outline">{familyLabel}</Badge>

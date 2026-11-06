@@ -105,6 +105,19 @@ State checklist for any component:
 - **Focus**: `focusRing` outline, always visible, never removed.
 - **Disabled**: `fgDisabled` text. Keep the layout, drop the color.
 
+### Clickable surfaces
+
+A card, row or swatch that responds to a click must **look** clickable on hover and keyboard focus,
+not just change the cursor:
+
+- **Border or indicator → `accent`.** Cards get an accent border, list rows an accent side bar.
+- **Title → `accent`.**
+- **Affordance:** an arrow nudges toward the destination, or an icon or label appears (preview, copy).
+- No hover wash under accent text: an accent title on a wash drops below 4.5:1 in light modes. The
+  border, title and affordance are enough.
+
+In the site this is `clickable` in `packages/site/src/lib/interactive.ts` (a Tailwind `group`).
+
 ## 7. Window chrome
 
 | Role                            | Use                                                         |
