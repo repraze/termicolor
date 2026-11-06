@@ -14,7 +14,8 @@ const linear: Generator = {
     family: "gradients",
     name: "Linear",
     description: "Diagonal OKLCH ramp across 2-3 accents, sinking into the base color at one corner.",
-    defaults: {accents: ["purple", "blue", "cyan"], density: 0.5, grain: 0.5},
+    harmonies: ["analogous", "sweep", "complementary", "split"],
+    defaults: {density: 0.5, grain: 0.5},
     render(ctx) {
         const {rng, colors: c} = ctx;
         const angle = rng.range(-35, 35) + (rng.chance(0.5) ? 0 : 180);
@@ -51,7 +52,8 @@ const radial: Generator = {
     family: "gradients",
     name: "Radial",
     description: "One large off-center glow with a smaller counter-glow, on the base color.",
-    defaults: {accents: ["purple", "pink", "blue"], density: 0.5, grain: 0.5},
+    harmonies: ["analogous", "sweep", "complementary", "split"],
+    defaults: {density: 0.5, grain: 0.5},
     render(ctx) {
         const {rng, colors: c, size} = ctx;
         const {width: w, height: h} = size;
@@ -88,7 +90,8 @@ const conic: Generator = {
     family: "gradients",
     name: "Conic fan",
     description: "Conic sweep from a point below the frame, rays fanning upward and fading into the base.",
-    defaults: {accents: ["purple", "pink", "orange", "blue"], density: 0.5, grain: 0.5},
+    harmonies: ["sweep", "analogous", "split", "tetrad"],
+    defaults: {density: 0.5, grain: 0.5},
     render(ctx) {
         const {rng, colors: c, size} = ctx;
         const {width: w, height: h} = size;
@@ -142,7 +145,8 @@ const mesh: Generator = {
     family: "gradients",
     name: "Mesh",
     description: "4-6 soft accent points over the base, blended like a mesh gradient.",
-    defaults: {accents: ["purple", "blue", "pink", "cyan"], density: 0.5, grain: 0.5},
+    harmonies: ["analogous", "sweep", "split", "tetrad"],
+    defaults: {density: 0.5, grain: 0.5},
     render(ctx) {
         const {rng, colors: c, size} = ctx;
         const {width: w, height: h} = size;
@@ -193,7 +197,8 @@ const aurora: Generator = {
     family: "gradients",
     name: "Aurora",
     description: "Blurred wavy bands of light across the upper half, over a dark-to-surface sky.",
-    defaults: {accents: ["purple", "cyan", "green", "pink"], density: 0.5, grain: 0.6},
+    harmonies: ["analogous", "sweep", "split"],
+    defaults: {density: 0.5, grain: 0.6},
     render(ctx) {
         const {rng, colors: c, size, u} = ctx;
         const {height: h} = size;
@@ -304,7 +309,8 @@ const noise: Generator = {
     family: "gradients",
     name: "Noise gradient",
     description: "Smooth fractal noise mapped onto a base → accent ramp: liquid, organic color fields.",
-    defaults: {accents: ["purple", "blue", "pink"], density: 0.4, grain: 0.5},
+    harmonies: ["analogous", "sweep", "complementary", "split"],
+    defaults: {density: 0.4, grain: 0.5},
     render: (ctx) => noiseField(ctx, false),
 };
 
@@ -313,7 +319,8 @@ const posterize: Generator = {
     family: "gradients",
     name: "Posterized noise",
     description: "The noise gradient quantized into flat terraces: hard-edged bands like a heat map.",
-    defaults: {accents: ["purple", "cyan", "pink"], density: 0.4, grain: 0.3},
+    harmonies: ["analogous", "sweep", "complementary", "split"],
+    defaults: {density: 0.4, grain: 0.3},
     render: (ctx) => noiseField(ctx, true),
 };
 
@@ -322,7 +329,8 @@ const bands: Generator = {
     family: "gradients",
     name: "Spectrum bands",
     description: "Stepped OKLCH gradient as tilted bars with hairline gaps, sinking into the base at one end.",
-    defaults: {accents: ["purple", "blue", "cyan", "green"], density: 0.5, grain: 0.3},
+    harmonies: ["sweep", "analogous", "tetrad"],
+    defaults: {density: 0.5, grain: 0.3},
     render(ctx) {
         const {rng, colors: c, size, u} = ctx;
         const {width: w, height: h} = size;

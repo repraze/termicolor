@@ -1,5 +1,13 @@
 import {definePort, json} from "@termicolor/build";
-import {CATALOG, CATALOG_SIZES, FAMILIES, getGenerator, renderCatalog, SIZES} from "@termicolor/wallpapers";
+import {
+    CATALOG,
+    CATALOG_SIZES,
+    describeEntry,
+    FAMILIES,
+    getGenerator,
+    renderCatalog,
+    SIZES,
+} from "@termicolor/wallpapers";
 
 export default definePort({
     id: "wallpapers",
@@ -29,14 +37,17 @@ Generators, parameters and kept seeds are documented in
             families: FAMILIES,
             sizes: Object.fromEntries(CATALOG_SIZES.map((name) => [name, SIZES[name]])),
             wallpapers: CATALOG.map((entry) => {
-                const generator = getGenerator(entry.generator);
+                const {harmony, lead, params} = describeEntry(entry);
                 return {
                     id: entry.id,
                     generator: entry.generator,
-                    name: generator.name,
-                    family: generator.family,
+                    name: getGenerator(entry.generator).name,
+                    family: getGenerator(entry.generator).family,
                     seed: entry.seed,
-                    params: {...generator.defaults, ...entry.params},
+                    harmony,
+                    lead,
+                    // Resolved: the accents the seed picked, plus density and grain.
+                    params,
                     files: files.filter((f) => f.entry === entry).map((f) => f.path),
                 };
             }),

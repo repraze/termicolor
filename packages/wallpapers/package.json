@@ -8,7 +8,9 @@
         ".": "./src/index.ts"
     },
     "scripts": {
-        "typecheck": "tsc --noEmit -p ."
+        "typecheck": "tsc --noEmit -p .",
+        "preview": "tsx scripts/preview.ts",
+        "catalog": "tsx scripts/catalog-md.ts"
     },
     "dependencies": {
         "@termicolor/palette": "*"

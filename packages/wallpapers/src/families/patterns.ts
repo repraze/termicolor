@@ -18,7 +18,8 @@ const halftone: Generator = {
     family: "patterns",
     name: "Halftone",
     description: "Hex dot screen; dot size follows a noise field plus a soft focus, colored by an accent gradient.",
-    defaults: {accents: ["purple", "pink", "cyan"], density: 0.5, grain: 0.2},
+    harmonies: ["analogous", "sweep", "complementary"],
+    defaults: {density: 0.5, grain: 0.2},
     render(ctx) {
         const {rng, colors: c, size, u} = ctx;
         const {width: w, height: h} = size;
@@ -86,7 +87,8 @@ const plaid: Generator = {
     family: "patterns",
     name: "Plaid",
     description: "Crossing translucent accent bands and pinstripes over a fine diagonal twill.",
-    defaults: {accents: ["purple", "blue", "pink"], density: 0.5, grain: 0.3},
+    harmonies: ["complementary", "split", "analogous", "tetrad"],
+    defaults: {density: 0.5, grain: 0.3},
     render(ctx) {
         const {rng, colors: c, size, u} = ctx;
         const {width: w, height: h} = size;
@@ -175,7 +177,8 @@ const truchet: Generator = {
     family: "patterns",
     name: "Truchet",
     description: "Quarter-circle Truchet tiles with 3 parallel strands, forming endless winding paths.",
-    defaults: {accents: ["purple", "cyan", "blue"], density: 0.5, grain: 0.25},
+    harmonies: ["mono", "analogous", "sweep", "complementary"],
+    defaults: {density: 0.5, grain: 0.25},
     render(ctx) {
         const p = Math.round((130 - ctx.params.density * 50) * ctx.u);
         const g = p / 6;
@@ -210,7 +213,8 @@ const maze: Generator = {
     family: "patterns",
     name: "Diagonal maze",
     description: "10 PRINT-style tiles: one diagonal per cell, either way, for an endless maze texture.",
-    defaults: {accents: ["purple", "pink", "orange"], density: 0.5, grain: 0.25},
+    harmonies: ["sweep", "analogous", "complementary"],
+    defaults: {density: 0.5, grain: 0.25},
     render(ctx) {
         const {rng, colors: c, size} = ctx;
         const {width: w, height: h} = size;
@@ -286,7 +290,8 @@ const cells: Generator = {
     family: "patterns",
     name: "Cells",
     description: "Voronoi cells with dark gaps; a few cells lit in accents, the rest in near-base tints.",
-    defaults: {accents: ["purple", "blue", "pink"], density: 0.5, grain: 0.3},
+    harmonies: ["analogous", "sweep", "split", "tetrad"],
+    defaults: {density: 0.5, grain: 0.3},
     render(ctx) {
         const {rng, colors: c, size, u} = ctx;
         const {width: w, height: h} = size;
