@@ -1,6 +1,7 @@
 import {useClipboard} from "@mantine/hooks";
-import {useQuery, useSuspenseQuery} from "@tanstack/react-query";
+import {keepPreviousData, useQuery, useSuspenseQuery} from "@tanstack/react-query";
 import {createFileRoute, Link, notFound} from "@tanstack/react-router";
+import {type AccentName, ACCENTS} from "@termicolor/palette";
 import {ArrowLeftIcon, CheckIcon, CopyIcon, DownloadIcon} from "lucide-react";
 import {useState} from "react";
 
@@ -8,10 +9,18 @@ import {CodeBlock} from "@/components/code-block";
 import {PortHeader, PortInstall} from "@/components/port-header";
 import {Button} from "@/components/ui/button";
 import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs";
+import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
+import {useSearchUpdate} from "@/hooks/use-search-update";
+import {useTheme} from "@/hooks/use-theme";
 import {langFor} from "@/lib/highlight";
-import {dataUrl, portFileQuery, registryQuery} from "@/lib/registry";
+import {portBuildQuery, usesAccentQuery} from "@/lib/port-build";
+import {saveBlob} from "@/lib/rasterize";
+import {registryQuery} from "@/lib/registry";
 
 export const Route = createFileRoute("/ports/$portId")({
+    validateSearch: (search: Record<string, unknown>): {accent?: AccentName} => ({
+        accent: ACCENTS.includes(search.accent as AccentName) ? (search.accent as AccentName) : undefined,
+    }),
     loader: async ({context, params}) => {
         const registry = await context.queryClient.ensureQueryData(registryQuery);
         const entry = registry.find((e) => e.id === params.portId);
@@ -42,44 +51,103 @@ function PortPage() {
             <PortHeader entry={entry} />
             <PortInstall entry={entry} />
 
-            <FileViewer portId={entry.id} files={entry.files} />
+            <FileViewer portId={entry.id} />
         </div>
     );
 }
 
-function FileViewer({portId, files}: {portId: string; files: string[]}) {
-    const [active, setActive] = useState(files[0]!);
-    const {data, isPending, error} = useQuery(portFileQuery(portId, active));
+/**
+ * Files of a port, built in the browser for the chosen accent (DESIGN.md §2). The default accent's
+ * output is byte-identical to the committed dist (port-build.test.ts).
+ */
+function FileViewer({portId}: {portId: string}) {
+    const search = Route.useSearch();
+    const updateSearch = useSearchUpdate<{accent?: AccentName}>();
+    const theme = useTheme();
+    const accent = search.accent ?? theme.accent;
+    const {data: accentDriven} = useQuery(usesAccentQuery(portId));
+    const {data: files, error} = useQuery({...portBuildQuery(portId, accent), placeholderData: keepPreviousData});
+    const [activePath, setActive] = useState<string>();
+    const active = files?.find((f) => f.path === activePath) ?? files?.[0];
     const clipboard = useClipboard({timeout: 1500});
-    const href = dataUrl(`ports/${portId}/dist/${active}`);
 
     return (
-        <section className="flex flex-col gap-3">
-            <h2 className="text-lg font-bold">Files</h2>
-            <Tabs value={active} onValueChange={(value: string) => setActive(value)}>
-                <TabsList className="flex-wrap">
-                    {files.map((file) => (
-                        <TabsTrigger key={file} value={file}>
-                            {file}
-                        </TabsTrigger>
-                    ))}
-                </TabsList>
-            </Tabs>
+        <section className="flex flex-col gap-3" data-testid="port-files">
+            <div className="flex flex-wrap items-end justify-between gap-3">
+                <h2 className="text-lg font-bold">Files</h2>
+                {accentDriven && (
+                    <AccentPicker
+                        value={accent}
+                        onChange={(next) => updateSearch({accent: next === theme.accent ? undefined : next})}
+                    />
+                )}
+            </div>
+            {files && (
+                <Tabs value={active?.path} onValueChange={(value: string) => setActive(value)}>
+                    <TabsList className="flex-wrap">
+                        {files.map((file) => (
+                            <TabsTrigger key={file.path} value={file.path}>
+                                {file.path}
+                            </TabsTrigger>
+                        ))}
+                    </TabsList>
+                </Tabs>
+            )}
             <div className="bg-card border">
                 <div className="flex items-center justify-end gap-1 border-b p-1">
-                    <Button variant="ghost" size="sm" disabled={!data} onClick={() => data && clipboard.copy(data)}>
+                    {accentDriven && (
+                        <span className="text-muted-foreground mr-auto pl-2 font-mono text-xs">accent: {accent}</span>
+                    )}
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        disabled={!active}
+                        onClick={() => active && clipboard.copy(active.contents)}
+                    >
                         {clipboard.copied ? <CheckIcon /> : <CopyIcon />} {clipboard.copied ? "Copied" : "Copy"}
                     </Button>
-                    <Button variant="ghost" size="sm" render={<a href={href} download={active.split("/").pop()} />}>
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        disabled={!active}
+                        onClick={() =>
+                            active &&
+                            saveBlob(new Blob([active.contents], {type: "text/plain"}), active.path.split("/").pop()!)
+                        }
+                    >
                         <DownloadIcon /> Download
                     </Button>
                 </div>
-                {data !== undefined ? (
-                    <CodeBlock code={data} lang={langFor(active)} size="tall" className="border-0" />
+                {active ? (
+                    <CodeBlock code={active.contents} lang={langFor(active.path)} size="tall" className="border-0" />
                 ) : (
-                    <pre className="p-3 text-xs">{isPending ? "Loading…" : `Failed to load: ${error?.message}`}</pre>
+                    <pre className="p-3 text-xs">{error ? `Failed to build: ${error.message}` : "Building…"}</pre>
                 )}
             </div>
         </section>
+    );
+}
+
+function AccentPicker({value, onChange}: {value: AccentName; onChange: (accent: AccentName) => void}) {
+    return (
+        <div className="flex flex-col gap-1">
+            <span className="text-muted-foreground font-mono text-xs tracking-widest uppercase">Accent</span>
+            <ToggleGroup
+                aria-label="Accent"
+                value={[value]}
+                onValueChange={(next: string[]) => next[0] && onChange(next[0] as AccentName)}
+                variant="outline"
+                size="sm"
+                spacing={0}
+                className="flex-wrap"
+            >
+                {ACCENTS.map((name) => (
+                    <ToggleGroupItem key={name} value={name} aria-label={name} title={name} className="capitalize">
+                        <span className="size-3 border" style={{background: `var(--tc-${name}-fill)`}} />
+                        <span className="hidden sm:inline">{name}</span>
+                    </ToggleGroupItem>
+                ))}
+            </ToggleGroup>
+        </div>
     );
 }

@@ -2,7 +2,7 @@ import {mkdir, readdir, rm, writeFile} from "node:fs/promises";
 import {dirname, join, resolve} from "node:path";
 import {fileURLToPath, pathToFileURL} from "node:url";
 
-import {checkPalette, palette} from "@termicolor/palette";
+import {ACCENTS, type AccentName, checkPalette, createPalette, palette} from "@termicolor/palette";
 
 import {PLANNED} from "./planned.ts";
 import type {PortDefinition, PortFile} from "./port.ts";
@@ -54,8 +54,40 @@ ${files.map((f) => `- [\`dist/${f.path}\`](dist/${f.path})`).join("\n")}
 `;
 }
 
+/**
+ * `cli.ts [port]`                         regenerate the repo: palette dist, every port dist, the registry
+ * `cli.ts [port] --accent pink [--out d]` build ports around another accent into `d` (default
+ *                                         `out/termicolor-<accent>`), leaving the repo untouched
+ */
+function parseArgs(argv: string[]) {
+    const flag = (name: string) => {
+        const i = argv.indexOf(`--${name}`);
+        return i === -1 ? undefined : argv[i + 1];
+    };
+    const accent = flag("accent");
+    if (accent && !ACCENTS.includes(accent as AccentName)) {
+        throw new Error(`--accent must be one of ${ACCENTS.join(", ")}`);
+    }
+    const only = argv.find((a, i) => !a.startsWith("--") && !argv[i - 1]?.startsWith("--"));
+    return {only, accent: accent as AccentName | undefined, out: flag("out")};
+}
+
+async function buildAccent(only: string | undefined, accent: AccentName, out: string) {
+    const themed = createPalette({accent});
+    const ports = (await loadPorts(only)).filter((p) => p.id !== "wallpapers");
+    for (const port of ports) {
+        const files = port.build(themed);
+        await writeFiles(join(out, port.id), files);
+        console.log(`✓ ${join(out, port.id)} (${files.length} files)`);
+    }
+}
+
 async function main() {
-    const only = process.argv[2];
+    const {only, accent, out} = parseArgs(process.argv.slice(2));
+    if (accent) {
+        await buildAccent(only, accent, resolve(out ?? `out/termicolor-${accent}`));
+        return;
+    }
 
     const checks = checkPalette(palette);
     const failed = checks.filter((c) => !c.pass);
