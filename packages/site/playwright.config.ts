@@ -13,7 +13,8 @@ const launchOptions = existsSync(LOCAL_LIBS)
     ? {env: {...process.env, LD_LIBRARY_PATH: `${LOCAL_LIBS}:${LOCAL_LIBS}/nss`} as Record<string, string>}
     : {};
 
-const PORT = 5173;
+/** `PORT=5174 npm run e2e` runs against a separate server, e.g. from a second checkout. */
+const PORT = Number(process.env.PORT ?? 5173);
 
 /**
  * E2E + visual checks against the Vite dev server (reused when already running).
@@ -33,7 +34,7 @@ export default defineConfig({
     },
     projects: [{name: "chromium", use: {...devices["Desktop Chrome"], viewport: {width: 1280, height: 900}}}],
     webServer: {
-        command: "npm run dev",
+        command: `npm run dev -- --port ${PORT} --strictPort`,
         url: `http://localhost:${PORT}/termicolor/`,
         reuseExistingServer: !process.env.CI,
         timeout: 60_000,

@@ -1,12 +1,12 @@
 import {useDebouncedValue, useHotkeys} from "@mantine/hooks";
 import {useSuspenseQuery} from "@tanstack/react-query";
-import {Link} from "@tanstack/react-router";
 import {useWindowVirtualizer} from "@tanstack/react-virtual";
 import {CATEGORIES, type Category} from "@termicolor/build";
 import {cva} from "class-variance-authority";
 import {ArrowRightIcon, SearchIcon} from "lucide-react";
 import {useEffect, useMemo, useRef, useState} from "react";
 
+import {PortLink} from "@/components/port-link";
 import {Badge} from "@/components/ui/badge";
 import {Input} from "@/components/ui/input";
 import {Kbd} from "@/components/ui/kbd";
@@ -195,8 +195,8 @@ function PortRow({entry}: {entry: RegistryEntry}) {
         return <div className={rowVariants({status: "planned"})}>{body}</div>;
     }
     return (
-        <Link to="/ports/$portId" params={{portId: entry.id}} className={rowVariants({status: "available"})}>
+        <PortLink portId={entry.id} className={rowVariants({status: "available"})}>
             {body}
-        </Link>
+        </PortLink>
     );
 }

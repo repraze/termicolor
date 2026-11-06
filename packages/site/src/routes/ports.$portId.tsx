@@ -1,13 +1,11 @@
 import {useClipboard} from "@mantine/hooks";
 import {useQuery, useSuspenseQuery} from "@tanstack/react-query";
 import {createFileRoute, Link, notFound} from "@tanstack/react-router";
-import {CATEGORIES} from "@termicolor/build";
-import {ArrowLeftIcon, CheckIcon, CopyIcon, DownloadIcon, ExternalLinkIcon} from "lucide-react";
+import {ArrowLeftIcon, CheckIcon, CopyIcon, DownloadIcon} from "lucide-react";
 import {useState} from "react";
 
 import {CodeBlock} from "@/components/code-block";
-import {Markdown} from "@/components/markdown";
-import {Badge} from "@/components/ui/badge";
+import {PortHeader, PortInstall} from "@/components/port-header";
 import {Button} from "@/components/ui/button";
 import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {langFor} from "@/lib/highlight";
@@ -41,42 +39,8 @@ function PortPage() {
     }
     return (
         <div className="flex flex-col gap-8">
-            <div className="flex flex-col gap-3">
-                <nav
-                    className="text-muted-foreground flex items-center gap-1 font-mono text-xs"
-                    aria-label="Breadcrumb"
-                >
-                    <Link to="/ports" className="hover:text-foreground">
-                        ports
-                    </Link>
-                    <span>/</span>
-                    <Link to="/ports" search={{category: entry.category}} className="hover:text-foreground">
-                        {entry.category}
-                    </Link>
-                    <span>/</span>
-                    <span className="text-foreground">{entry.id}</span>
-                </nav>
-                <div className="flex flex-wrap items-center gap-3">
-                    <h1 className="text-2xl font-bold">{entry.name}</h1>
-                    <Badge variant="outline">{CATEGORIES[entry.category]}</Badge>
-                </div>
-                <p className="text-muted-foreground text-sm">{entry.description}</p>
-                <div className="flex gap-2">
-                    <Button variant="outline" size="sm" render={<a href={entry.source} />}>
-                        Source <ExternalLinkIcon />
-                    </Button>
-                    {entry.homepage && (
-                        <Button variant="ghost" size="sm" render={<a href={entry.homepage} />}>
-                            {new URL(entry.homepage).hostname} <ExternalLinkIcon />
-                        </Button>
-                    )}
-                </div>
-            </div>
-
-            <section className="flex flex-col gap-3">
-                <h2 className="text-lg font-bold">Install</h2>
-                <Markdown source={entry.install} />
-            </section>
+            <PortHeader entry={entry} />
+            <PortInstall entry={entry} />
 
             <FileViewer portId={entry.id} files={entry.files} />
         </div>

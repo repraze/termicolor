@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "type": "module",
     "scripts": {
-        "data": "tsx scripts/copy-data.ts",
+        "data": "tsx scripts/copy-data.ts && tsx scripts/thumbnails.ts",
         "dev": "npm run data && vite",
         "build": "npm run data && vite build && tsc --noEmit -p .",
         "preview": "vite preview",
@@ -13,12 +13,14 @@
         "snap": "SNAP=1 playwright test snap"
     },
     "devDependencies": {
+        "@resvg/resvg-js": "^2.6.2",
         "@tailwindcss/vite": "^4.3.4",
         "@tanstack/router-plugin": "^1.168.48",
         "@types/react": "^19.3.0",
         "@types/react-dom": "^19.3.0",
         "@vitejs/plugin-react": "^6.2.1",
         "shadcn": "^4.23.0",
+        "sharp": "^0.35.5",
         "tailwindcss": "^4.3.4",
         "vite": "^8.3.6"
     },
