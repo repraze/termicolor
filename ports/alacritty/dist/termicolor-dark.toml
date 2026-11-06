@@ -60,3 +60,13 @@ blue = "#6fa6ff"
 magenta = "#c898ff"
 cyan = "#4ff3ff"
 white = "#ffffff"
+
+[colors.dim]
+black = "#404040"
+red = "#9b3b54"
+green = "#358866"
+yellow = "#92782d"
+blue = "#385d9a"
+magenta = "#735199"
+cyan = "#34888e"
+white = "#737373"

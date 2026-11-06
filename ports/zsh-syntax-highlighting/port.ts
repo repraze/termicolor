@@ -6,17 +6,17 @@ import type {Mode} from "@termicolor/palette";
  * understands `fg=#rrggbb` (24-bit, or nearest 256 color with `zmodload zsh/nearcolor`). zle has
  * no italic, so comments are only dimmed by color.
  */
-function styles({roles: r, accents: a, syntax: s}: Mode): [string, string][] {
+function styles({roles: r, syntax: s}: Mode): [string, string][] {
     const fg = (hex: string, ...attrs: string[]) => [`fg=${hex}`, ...attrs].join(",");
     return [
         // main highlighter
         ["default", "none"],
         ["unknown-token", fg(r.danger, "bold")],
         ["reserved-word", fg(s.keyword)],
-        ["alias", fg(a.cyan)],
-        ["suffix-alias", fg(a.cyan, "underline")],
-        ["global-alias", fg(a.cyan)],
-        ["builtin", fg(s.function)],
+        ["alias", fg(s.builtin)],
+        ["suffix-alias", fg(s.builtin, "underline")],
+        ["global-alias", fg(s.builtin)],
+        ["builtin", fg(s.builtin)],
         ["function", fg(s.function)],
         ["command", fg(s.function)],
         ["precommand", fg(s.keyword, "underline")],
@@ -33,9 +33,10 @@ function styles({roles: r, accents: a, syntax: s}: Mode): [string, string][] {
         ["path_prefix_pathseparator", fg(r.fgSoft, "underline")],
         ["globbing", fg(s.regexp)],
         ["history-expansion", fg(s.regexp)],
-        ["single-hyphen-option", fg(s.type)],
-        ["double-hyphen-option", fg(s.type)],
-        ["assign", fg(s.variable)],
+        ["single-hyphen-option", fg(s.builtin)],
+        ["double-hyphen-option", fg(s.builtin)],
+        // shell variables get their own hue so they don't vanish among commands
+        ["assign", fg(s.parameter)],
         ["arithmetic-expansion", fg(s.number)],
         ["command-substitution", "none"],
         ["command-substitution-unquoted", "none"],
@@ -55,16 +56,18 @@ function styles({roles: r, accents: a, syntax: s}: Mode): [string, string][] {
         ["dollar-quoted-argument", fg(s.string)],
         ["dollar-quoted-argument-unclosed", fg(r.danger)],
         ["rc-quote", fg(s.escape)],
-        ["dollar-double-quoted-argument", fg(s.variable)],
+        ["dollar-double-quoted-argument", fg(s.parameter)],
         ["back-double-quoted-argument", fg(s.escape)],
         ["back-dollar-quoted-argument", fg(s.escape)],
         ["comment", fg(s.comment)],
         // brackets highlighter: same order as the VS Code bracket pair colors
         ["bracket-error", fg(r.danger, "bold")],
-        ["bracket-level-1", fg(a.yellow)],
-        ["bracket-level-2", fg(a.purple)],
-        ["bracket-level-3", fg(a.cyan)],
-        ["bracket-level-4", fg(a.pink)],
+        ["bracket-level-1", fg(s.bracket1)],
+        ["bracket-level-2", fg(s.bracket2)],
+        ["bracket-level-3", fg(s.bracket3)],
+        ["bracket-level-4", fg(s.bracket4)],
+        ["bracket-level-5", fg(s.bracket5)],
+        ["bracket-level-6", fg(s.bracket6)],
         ["cursor-matchingbracket", "standout"],
     ];
 }

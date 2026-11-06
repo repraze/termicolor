@@ -1,5 +1,5 @@
 import {definePort} from "@termicolor/build";
-import {alpha, flatten, type Mode} from "@termicolor/palette";
+import type {Mode} from "@termicolor/palette";
 
 import {tokenColors} from "../vscode/token-colors.ts";
 import {tmTheme} from "./tmtheme.ts";
@@ -11,7 +11,7 @@ const UUIDS = {
 
 /** Same token rules as the VS Code theme, so bat/delta highlight code exactly like the editor. */
 function theme(mode: Mode): string {
-    const {roles: r, accents: a} = mode;
+    const {roles: r} = mode;
     return tmTheme({
         name: `Termicolor ${mode.name === "dark" ? "Dark" : "Light"}`,
         uuid: UUIDS[mode.name],
@@ -20,7 +20,7 @@ function theme(mode: Mode): string {
             foreground: r.fg,
             caret: r.cursor,
             invisibles: r.fgDisabled,
-            lineHighlight: alpha(r.fg, 0.03),
+            lineHighlight: r.bgHover,
             selection: r.selection,
             selectionBorder: r.selection,
             inactiveSelection: r.selectionInactive,
@@ -31,7 +31,7 @@ function theme(mode: Mode): string {
             guide: r.guide,
             activeGuide: r.guideActive,
             stackGuide: r.guide,
-            bracketsForeground: a.yellow,
+            bracketsForeground: mode.syntax.bracket1,
             accent: r.accent,
             shadow: r.shadow,
         },
@@ -41,8 +41,7 @@ function theme(mode: Mode): string {
 
 /** A delta feature named `termicolor-<mode>`, enabled with `features = termicolor-dark`. */
 function deltaFeature(mode: Mode): string {
-    const {roles: r, accents: a} = mode;
-    const tint = (hex: string, amount: number) => flatten(alpha(hex, amount), r.bg);
+    const {roles: r, accents: a, tints} = mode;
     return `[delta "termicolor-${mode.name}"]
     ${mode.type} = true
     syntax-theme = termicolor-${mode.name}
@@ -59,14 +58,14 @@ function deltaFeature(mode: Mode): string {
     commit-style = "${a.yellow}"
     commit-decoration-style = "${r.borderStrong}" box ul
     zero-style = syntax
-    minus-style = syntax "${tint(r.removed, 0.15)}"
-    minus-non-emph-style = syntax "${tint(r.removed, 0.15)}"
-    minus-emph-style = syntax "${tint(r.removed, 0.4)}"
-    minus-empty-line-marker-style = syntax "${tint(r.removed, 0.15)}"
-    plus-style = syntax "${tint(r.added, 0.15)}"
-    plus-non-emph-style = syntax "${tint(r.added, 0.15)}"
-    plus-emph-style = syntax "${tint(r.added, 0.4)}"
-    plus-empty-line-marker-style = syntax "${tint(r.added, 0.15)}"
+    minus-style = syntax "${r.removedTint}"
+    minus-non-emph-style = syntax "${r.removedTint}"
+    minus-emph-style = syntax "${r.removedTintStrong}"
+    minus-empty-line-marker-style = syntax "${r.removedTint}"
+    plus-style = syntax "${r.addedTint}"
+    plus-non-emph-style = syntax "${r.addedTint}"
+    plus-emph-style = syntax "${r.addedTintStrong}"
+    plus-empty-line-marker-style = syntax "${r.addedTint}"
     whitespace-error-style = reverse "${r.danger}"
     line-numbers-minus-style = "${r.removed}"
     line-numbers-plus-style = "${r.added}"
@@ -83,10 +82,10 @@ function deltaFeature(mode: Mode): string {
     merge-conflict-theirs-diff-header-decoration-style = "${r.borderStrong}" box
     # restyles git's --color-moved output (set diff.colorMoved = default)
     map-styles = \\
-        bold purple => syntax "${tint(a.purple, 0.2)}", \\
-        bold blue => syntax "${tint(a.blue, 0.2)}", \\
-        bold cyan => syntax "${tint(a.cyan, 0.2)}", \\
-        bold yellow => syntax "${tint(a.yellow, 0.2)}"
+        bold purple => syntax "${tints.purple}", \\
+        bold blue => syntax "${tints.blue}", \\
+        bold cyan => syntax "${tints.cyan}", \\
+        bold yellow => syntax "${tints.yellow}"
 `;
 }
 

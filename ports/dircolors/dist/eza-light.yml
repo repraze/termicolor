@@ -53,7 +53,7 @@ users:
 
 links:
   normal: {foreground: "#007f87", is_bold: true}
-  multi_link_file: {foreground: "#ffffff", background: "#007f87"}
+  multi_link_file: {foreground: "#001a1d", background: "#2edfeb"}
 
 git:
   new: {foreground: "#00835c"}
@@ -88,7 +88,7 @@ file_type:
   temp: {foreground: "#737373"}
   compiled: {foreground: "#a16500"}
   build: {foreground: "#a16500", is_bold: true, is_underline: true}
-  source: {foreground: "#a16500", is_bold: true}
+  source: {foreground: "#0a0a0a", is_bold: true}
 
 punctuation: {foreground: "#737373"}
 date: {foreground: "#006af6"}

@@ -1,12 +1,11 @@
 import {definePort} from "@termicolor/build";
-import {flatten, type Hex, type Mode} from "@termicolor/palette";
+import {DEFAULT_ACCENT, type Hex, type Mode} from "@termicolor/palette";
 
 type Gradient = [start: Hex, mid: Hex, end: Hex];
 
 /** Every key of btop's `Default_theme` (src/btop_theme.cpp), with the comments btop's own themes use. */
 function theme(mode: Mode): string {
-    const {roles: r, accents: a, brights: b, on} = mode;
-    const flat = (hex: Hex) => flatten(hex, r.bg);
+    const {roles: r, accents: a, brights: b, fills, onFill} = mode;
     const line = (key: string, value: Hex) => `theme[${key}]="${value}"`;
     const gradient = (key: string, [start, mid, end]: Gradient) =>
         [line(`${key}_start`, start), line(`${key}_mid`, mid), line(`${key}_end`, end)].join("\n");
@@ -16,7 +15,7 @@ function theme(mode: Mode): string {
         ["Main text color", line("main_fg", r.fg)],
         ["Title color for boxes", line("title", r.fg)],
         ["Highlight color for keyboard shortcuts", line("hi_fg", r.accent)],
-        ["Background color of selected item in processes box", line("selected_bg", flat(r.selection))],
+        ["Background color of selected item in processes box", line("selected_bg", r.selectionSolid)],
         ["Foreground color of selected item in processes box", line("selected_fg", r.fg)],
         ["Color of inactive/disabled text", line("inactive_fg", r.fgMuted)],
         [
@@ -42,13 +41,13 @@ function theme(mode: Mode): string {
         ["Download graph colors", gradient("download", [a.blue, a.purple, a.pink])],
         ["Upload graph colors", gradient("upload", [a.green, a.yellow, a.orange])],
         ["Process box color gradient for threads, mem and cpu usage", gradient("process", [a.green, a.yellow, a.red])],
-        ["Process list banner when paused", line("proc_pause_bg", a.red)],
-        ["Process list banner when following a process", line("proc_follow_bg", a.blue)],
+        ["Process list banner when paused", line("proc_pause_bg", fills.red)],
+        ["Process list banner when following a process", line("proc_follow_bg", fills.blue)],
         [
             "Process list banner colors",
-            [line("proc_banner_bg", r.accent), line("proc_banner_fg", r.onAccent)].join("\n"),
+            [line("proc_banner_bg", fills[DEFAULT_ACCENT]), line("proc_banner_fg", onFill[DEFAULT_ACCENT])].join("\n"),
         ],
-        ["Followed process", [line("followed_bg", a.blue), line("followed_fg", on.blue)].join("\n")],
+        ["Followed process", [line("followed_bg", fills.blue), line("followed_fg", onFill.blue)].join("\n")],
     ];
 
     return `# Theme: Termicolor ${mode.name === "dark" ? "Dark" : "Light"}

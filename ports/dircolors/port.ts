@@ -79,35 +79,35 @@ const GROUPS = {
 } as const;
 type Group = keyof typeof GROUPS;
 
-function rules({accents: a, on, roles: r}: Mode) {
+function rules({accents: a, fills, onFill, files: f}: Mode) {
     const types: Record<FileType, Style> = {
         RESET: {},
-        DIR: {fg: a.blue, bold: true},
-        LINK: {fg: a.cyan},
+        DIR: {fg: f.directory, bold: true},
+        LINK: {fg: f.symlink},
         MULTIHARDLINK: {},
         FIFO: {fg: a.yellow},
         SOCK: {fg: a.pink, bold: true},
         DOOR: {fg: a.pink, bold: true},
         BLK: {fg: a.yellow, bold: true},
         CHR: {fg: a.yellow, bold: true},
-        ORPHAN: {fg: r.danger, bold: true, underline: true},
-        MISSING: {fg: r.danger},
-        // permission highlights: solid fills with each accent's paired text color
-        SETUID: {fg: on.red, bg: a.red},
-        SETGID: {fg: on.yellow, bg: a.yellow},
+        ORPHAN: {fg: f.brokenLink, bold: true, underline: true},
+        MISSING: {fg: f.brokenLink},
+        // permission highlights: solid fills with their paired text color
+        SETUID: {fg: onFill.red, bg: fills.red},
+        SETGID: {fg: onFill.yellow, bg: fills.yellow},
         CAPABILITY: {},
-        STICKY_OTHER_WRITABLE: {fg: on.green, bg: a.green},
-        OTHER_WRITABLE: {fg: on.cyan, bg: a.cyan},
-        STICKY: {fg: on.blue, bg: a.blue},
-        EXEC: {fg: a.green, bold: true},
+        STICKY_OTHER_WRITABLE: {fg: onFill.green, bg: fills.green},
+        OTHER_WRITABLE: {fg: onFill.cyan, bg: fills.cyan},
+        STICKY: {fg: onFill.blue, bg: fills.blue},
+        EXEC: {fg: f.executable, bold: true},
     };
     const groups: Record<Group, Style> = {
-        archive: {fg: a.red},
-        image: {fg: a.purple},
-        video: {fg: a.pink},
-        audio: {fg: a.cyan},
-        document: {fg: a.orange},
-        temp: {fg: r.fgMuted},
+        archive: {fg: f.archive},
+        image: {fg: f.image},
+        video: {fg: f.video},
+        audio: {fg: f.audio},
+        document: {fg: f.document},
+        temp: {fg: f.temp},
     };
     return {types, groups};
 }
@@ -149,7 +149,7 @@ function lsColors(mode: Mode): string {
 
 /** eza `theme.yml`: covers what LS_COLORS can't (permissions, sizes, users, git, dates). */
 function ezaTheme(mode: Mode): string {
-    const {accents: a, roles: r} = mode;
+    const {accents: a, roles: r, files: f} = mode;
     const {types, groups} = rules(mode);
     const yamlStyle = ({fg, bg, bold, underline, dim}: Style) => {
         const parts = [
@@ -172,7 +172,7 @@ function ezaTheme(mode: Mode): string {
 colourful: true
 
 ${section("filekinds", {
-    normal: {fg: r.fg},
+    normal: {fg: f.source},
     directory: t.DIR,
     symlink: t.LINK,
     pipe: t.FIFO,
@@ -181,7 +181,7 @@ ${section("filekinds", {
     socket: t.SOCK,
     special: {fg: a.yellow},
     executable: t.EXEC,
-    mount_point: {fg: a.blue, bold: true, underline: true},
+    mount_point: {fg: f.directory, bold: true, underline: true},
 })}
 
 ${section("perms", {
@@ -225,8 +225,8 @@ ${section("users", {
 })}
 
 ${section("links", {
-    normal: {fg: a.cyan, bold: true},
-    multi_link_file: {fg: mode.on.cyan, bg: a.cyan},
+    normal: {fg: f.symlink, bold: true},
+    multi_link_file: {fg: mode.onFill.cyan, bg: mode.fills.cyan},
 })}
 
 ${section("git", {
@@ -264,8 +264,8 @@ ${section("file_type", {
     compressed: groups.archive,
     temp: groups.temp,
     compiled: {fg: a.yellow},
-    build: {fg: a.yellow, bold: true, underline: true},
-    source: {fg: a.yellow, bold: true},
+    build: {fg: f.config, bold: true, underline: true},
+    source: {fg: f.source, bold: true},
 })}
 
 ${line("punctuation", {fg: r.fgMuted})}
@@ -276,7 +276,7 @@ ${line("header", {fg: r.fg, underline: true})}
 ${line("octal", {fg: a.purple})}
 ${line("flags", {fg: r.fgSoft})}
 
-${line("symlink_path", {fg: a.cyan})}
+${line("symlink_path", {fg: f.symlink})}
 ${line("control_char", {fg: r.danger})}
 ${line("broken_symlink", t.ORPHAN)}
 ${line("broken_path_overlay", {underline: true})}
