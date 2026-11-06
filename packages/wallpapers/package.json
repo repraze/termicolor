@@ -1,0 +1,17 @@
+{
+    "name": "@termicolor/wallpapers",
+    "version": "0.1.0",
+    "description": "Termicolor wallpaper generators - deterministic, seeded SVG",
+    "type": "module",
+    "license": "MIT",
+    "exports": {
+        ".": "./src/index.ts"
+    },
+    "scripts": {
+        "test": "node --import tsx --test src/*.test.ts",
+        "typecheck": "tsc --noEmit -p ."
+    },
+    "dependencies": {
+        "@termicolor/palette": "*"
+    }
+}
