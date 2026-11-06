@@ -1,29 +1,44 @@
 /**
- * Termicolor brand mark: a 32x32 pixel-art cyborg head, drawn Doom-HUD style with fake 3D shading
- * (light from the top left, cyan rim light on the right, dithered ramps). The left half is purple armor,
- * the right half is exposed metal, and the visor reads as a terminal prompt: `>` and a `_` cursor eye.
+ * Termicolor brand mark: a 32x32 pixel-art split-face portrait, drawn Doom-HUD style with fake 3D shading
+ * (light from the top left, dithered ramps, a red rim light on the right). The left half is human; the right
+ * half is a machine whose slit eye glows red like a terminal `_` cursor, with the glow spilling onto the socket.
  *
  * Every color is resolved from the dark palette mode; nothing is hardcoded.
  */
-import {palette} from "@termicolor/palette";
+import {mix, palette} from "@termicolor/palette";
 
 const dark = palette.modes.dark;
 const n = dark.neutrals;
+const a = dark.accents;
+
+/**
+ * Skin: the palette has no skin role, so the four tones are derived from it. Light is the bright orange
+ * washed toward white; mid is orange pulled toward the bright red and greyed so it stays warm but not neon;
+ * shadow and deep shadow are the red accent sunk into the dark neutrals, so the shading shares the brand hue.
+ */
+const SKIN = {
+    light: mix(dark.brights.orange, n[0], 0.35),
+    mid: mix(mix(a.orange, dark.brights.red, 0.3), n[500], 0.25),
+    shadow: mix(a.red, n[800], 0.45),
+    deep: mix(a.red, n[950], 0.7),
+};
 
 /** Single-char key to palette color. `.` is transparent. */
 export const SPRITE_COLORS = {
     k: n[950], // outline, deep shadow
-    d: n[800], // metal shadow
-    m: n[700], // metal core shadow
+    d: n[800], // metal shadow, hair
+    m: n[700], // metal core shadow, hair light
     g: n[500], // metal midtone
     l: n[300], // metal light
-    w: n[0], // specular
-    q: dark.on.purple, // visor glass, armor deep shadow
-    p: dark.accents.purple, // armor
-    P: dark.brights.purple, // armor light
-    r: dark.accents.red, // eye glow
-    R: dark.brights.red, // eye core
-    c: dark.accents.cyan, // rim light
+    w: n[0], // eye white, specular
+    b: a.blue, // iris
+    S: SKIN.light,
+    s: SKIN.mid,
+    t: SKIN.shadow,
+    u: SKIN.deep,
+    q: dark.on.red, // eye socket glass
+    r: a.red, // glow falloff, rim light
+    R: dark.brights.red, // glow hot core
 } as const;
 
 export type SpriteKey = keyof typeof SPRITE_COLORS;
@@ -33,43 +48,43 @@ export const SPRITE_SIZE = 32;
 // prettier-ignore
 export const SPRITE: readonly string[] = [
     "................................",
-    ".........kkkkkkkkkkkkkk.........",
-    ".......kkPPPPPPPklllllgkk.......",
-    "......kPPwwPPPPPkllllllgmk......",
-    ".....kPPwwPPPPPPklllllgggmk.....",
-    "....kPPPPPPpPpppkllgggggmmck....",
-    "....kPPPPpPpppppklgggggmmdck....",
-    "....kPPPpPppppppkggggggmmdck....",
-    "....kPPPPPPPPPPPklllllllllck....",
-    "....kPppppppppppkgggggggmmck....",
-    ".kkkkPkkkkkkppppkgggkkkkkdckkkk.",
-    ".kPpkPqrrqqqqkppkgkqqqqqqdckgck.",
-    ".kPpkPqqrrqqqqkkkkqqqqqqqdckmck.",
-    ".kppkPqqqRRqqqqqqqqqqqqqqdckRck.",
-    ".kppkPqqrrqqqqqqqRRRRRRRqdckmck.",
-    ".kqqkPqrrqqqqqqqqrrrrrrrqdckdck.",
-    ".kkkkPPPPPPPPPPPklllllllldckkkk.",
-    "....kPPpppppppppkgggggmmmdck....",
-    "....kPPpppppppppkgggwgmmmdck....",
-    "....kPppppppppppkgggdgmmddck....",
-    "....kPppqpqkkkkkkkkkkkmmddck....",
-    ".....kpqpqkggggggggmmkmddck.....",
-    ".....kqqqqkkkkkkkkkkkkdddck.....",
-    "......kqqqkggggggggmmkddck......",
-    ".......kqqkkkkkkkkkkkkdck.......",
-    "........kkkkkkkkkkkkkkkkk.......",
-    "...........kddddddddk...........",
-    "........kkkklgggmmddkkkk........",
-    ".....kkkPPPklgggmmddklllkkk.....",
-    "...kkPPPPPPPkkkkkkkklllllgmckk..",
-    "..kPPpppppppppppkgggggggmmddck..",
-    ".kPpppppppppppppkgggggggmmmddck.",
+    "........kkkkkkkkkkkkkkk.........",
+    "......kkddmddmddkllllllgkk......",
+    ".....kdmmdgmddmdklllllggmmk.....",
+    "....kdmgmdmmdmddkllllgggmmrk....",
+    "....kdmdmdddmdddklgggggmmdrk....",
+    "....kddSdSSSdSSklggggggmmdrk....",
+    "....kdSSSSSSSSSklmmmmmmmddrk....",
+    "....kdSSSSSSSSsklllllllllgrk....",
+    "....kSSSSSSSSssklgggggggmmrk....",
+    "..kkkSdddkkkSssskkqqqqqqkdrk....",
+    ".kSsuSskkkkkkssskqqqqqqqqdrk....",
+    ".kSsuSskwbkwtsSskqrrrrrrqrrk....",
+    ".kttuSssttttttSskRRRRRRRRRrk....",
+    "..kkuSssssssssStkqrrrrrrqrrk....",
+    "....kSssssssssStkkqqqqqqkdrk....",
+    "....kSssssssssttkgggggmmmdrk....",
+    "....kSsssssssttskggggwgmmdrk....",
+    "....kSssssssssstkgggdgmmddrk....",
+    "....kSssssstttttkkkkkkkmddrk....",
+    ".....ksssstuuuuugggggkmddrk.....",
+    ".....kssssssttsskkkkkkddrk......",
+    "......kSsssttttsgggggkdrk.......",
+    ".......kttuuuuuukkkkkkrk........",
+    "........kkkkkkkkkkkkkkk.........",
+    "...........kuuutddmdk...........",
+    "...........kttstgmdmk...........",
+    "........kkkkttstgmdmkkkk........",
+    ".....kkkddddktttgmdmklllkkk.....",
+    "...kkmmmddddddkkkkklllllllgrkk..",
+    "..kmmmddddddddddkgggggggmmddrk..",
+    ".kmmddddddddddddkgggggggmmmddrk.",
 ];
 
 export type SpriteSvgOptions = {
     /** Pixel size of one sprite cell in the emitted width/height. The viewBox is unaffected. */
     scale?: number;
-    /** Wrap the sprite in a square bordered badge (dark fill, 1px purple border). */
+    /** Wrap the sprite in a square bordered badge (dark fill, 1px red border). */
     badge?: boolean;
 };
 
@@ -84,7 +99,7 @@ export function spriteSvg(opts: SpriteSvgOptions = {}): string {
     if (badge) {
         parts.push(`<rect width="${size}" height="${size}" fill="${dark.roles.bgSunken}"/>`);
         parts.push(
-            `<rect x=".5" y=".5" width="${size - 1}" height="${size - 1}" fill="none" stroke="${dark.roles.accent}"/>`,
+            `<rect x=".5" y=".5" width="${size - 1}" height="${size - 1}" fill="none" stroke="${dark.fills.red}"/>`,
         );
     }
     SPRITE.forEach((row, y) => {

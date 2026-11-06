@@ -1,3 +1,4 @@
+import {palette} from "@termicolor/palette";
 import {describe, expect, it} from "vitest";
 
 import {SPRITE, SPRITE_COLORS, SPRITE_SIZE, spriteSvg} from "./sprite";
@@ -43,9 +44,16 @@ describe("brand sprite", () => {
         expect(spriteSvg().match(/<rect /g)).toHaveLength(runs);
     });
 
-    it("wraps the sprite in a bordered badge", () => {
+    it("leads with the red accent for the glow", () => {
+        const {accents, brights} = palette.modes.dark;
+        expect(SPRITE_COLORS.r).toBe(accents.red);
+        expect(SPRITE_COLORS.R).toBe(brights.red);
+        expect(SPRITE.join("")).toContain("RRRRRRRR");
+    });
+
+    it("wraps the sprite in a red-bordered badge", () => {
         const badge = spriteSvg({badge: true});
         expect(badge).toContain('viewBox="0 0 36 36"');
-        expect(badge).toMatch(/stroke="#[0-9a-f]{6}"/i);
+        expect(badge).toContain(`stroke="${palette.modes.dark.fills.red}"`);
     });
 });
