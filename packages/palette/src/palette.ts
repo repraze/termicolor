@@ -286,7 +286,7 @@ function accentRolesFor(
 function buildMode(name: ModeName, contrast: Contrast, accent: AccentName): Mode {
     const {accents: a, brights, on, fills, onFill} = name === "dark" ? deriveDark() : deriveLight();
     const s = (contrast === "high" ? HC_SURFACES : SURFACES)[name];
-    const tints = mapAccents((n) => mix(s.bg, a[n], RULES.tint[name]));
+    const tints = mapAccents((n) => mix(s.bg, a[n], (contrast === "high" ? RULES.tintHighContrast : RULES.tint)[name]));
     const byAccent = mapAccentRoles((n) => accentRolesFor(n, {a, on, tints, brights}));
     const roles: Roles = {
         ...s,

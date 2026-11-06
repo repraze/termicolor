@@ -488,6 +488,14 @@
 
 :root.hc:not(.dark),
 .light.hc {
+    --tc-red-tint: #ffd3db;
+    --tc-orange-tint: #f3dacd;
+    --tc-yellow-tint: #ebdccd;
+    --tc-green-tint: #cfe3d9;
+    --tc-cyan-tint: #cfe2e4;
+    --tc-blue-tint: #cce1ff;
+    --tc-purple-tint: #ead8ff;
+    --tc-pink-tint: #fcd3ed;
     --tc-bg-sunken: #ffffff;
     --tc-bg-raised: #fafafa;
     --tc-border: #525252;
@@ -498,6 +506,7 @@
     --tc-fg-soft: #404040;
     --tc-fg-muted: #525252;
     --tc-fg-disabled: #737373;
+    --tc-accent-tint: #ffd3db;
     --tc-bg-hover: #0000004d;
     --tc-titlebar: #ffffff;
     --tc-tab-active-fg: #000000;
@@ -512,17 +521,25 @@
     --tc-syntax-punctuation: #404040;
     --tc-file-source: #000000;
     --tc-file-temp: #525252;
+    --tc-accent-red-accent-tint: #ffd3db;
+    --tc-accent-orange-accent-tint: #f3dacd;
+    --tc-accent-yellow-accent-tint: #ebdccd;
+    --tc-accent-green-accent-tint: #cfe3d9;
+    --tc-accent-cyan-accent-tint: #cfe2e4;
+    --tc-accent-blue-accent-tint: #cce1ff;
+    --tc-accent-purple-accent-tint: #ead8ff;
+    --tc-accent-pink-accent-tint: #fcd3ed;
 }
 
 .dark.hc {
-    --tc-red-tint: #0d0103;
-    --tc-orange-tint: #0d0401;
-    --tc-yellow-tint: #0c0700;
-    --tc-green-tint: #000a05;
-    --tc-cyan-tint: #000a0b;
-    --tc-blue-tint: #01040d;
-    --tc-purple-tint: #07030d;
-    --tc-pink-tint: #0d0209;
+    --tc-red-tint: #4d1023;
+    --tc-orange-tint: #4d280d;
+    --tc-yellow-tint: #493804;
+    --tc-green-tint: #09422e;
+    --tc-cyan-tint: #074246;
+    --tc-blue-tint: #11284d;
+    --tc-purple-tint: #36204d;
+    --tc-pink-tint: #4d173e;
     --tc-bg: #000000;
     --tc-bg-sunken: #000000;
     --tc-bg-raised: #0a0a0a;
@@ -534,7 +551,7 @@
     --tc-fg-soft: #d4d4d4;
     --tc-fg-muted: #a3a3a3;
     --tc-fg-disabled: #737373;
-    --tc-accent-tint: #0d0103;
+    --tc-accent-tint: #4d1023;
     --tc-bg-hover: #ffffff4d;
     --tc-titlebar: #000000;
     --tc-tab-active: #000000;
@@ -566,14 +583,14 @@
     --tc-syntax-punctuation: #d4d4d4;
     --tc-file-source: #ffffff;
     --tc-file-temp: #a3a3a3;
-    --tc-accent-red-accent-tint: #0d0103;
-    --tc-accent-orange-accent-tint: #0d0401;
-    --tc-accent-yellow-accent-tint: #0c0700;
-    --tc-accent-green-accent-tint: #000a05;
-    --tc-accent-cyan-accent-tint: #000a0b;
-    --tc-accent-blue-accent-tint: #01040d;
-    --tc-accent-purple-accent-tint: #07030d;
-    --tc-accent-pink-accent-tint: #0d0209;
+    --tc-accent-red-accent-tint: #4d1023;
+    --tc-accent-orange-accent-tint: #4d280d;
+    --tc-accent-yellow-accent-tint: #493804;
+    --tc-accent-green-accent-tint: #09422e;
+    --tc-accent-cyan-accent-tint: #074246;
+    --tc-accent-blue-accent-tint: #11284d;
+    --tc-accent-purple-accent-tint: #36204d;
+    --tc-accent-pink-accent-tint: #4d173e;
 }
 
 /* Accent override: put .accent-<name> on <html> (or any ancestor). Last, so it wins over mode scopes. */

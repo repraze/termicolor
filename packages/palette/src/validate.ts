@@ -19,7 +19,16 @@ export function checkMode(mode: Mode): Check[] {
         ...ACCENTS.map((n): [string, Hex, Hex, number] => [`${n} on bgSunken`, accents[n], r.bgSunken, 4.5]),
         ...ACCENTS.map((n): [string, Hex, Hex, number] => [`on-${n} on ${n}`, on[n], accents[n], 4.5]),
         ...ACCENTS.map((n): [string, Hex, Hex, number] => [`onFill-${n} on fill-${n}`, onFill[n], fills[n], 4.5]),
-        ...ACCENTS.map((n): [string, Hex, Hex, number] => [`fg on tint-${n}`, r.fg, tints[n], 12]),
+        ...ACCENTS.map((n): [string, Hex, Hex, number] => [
+            `fg on tint-${n}`,
+            r.fg,
+            tints[n],
+            mode.contrast === "high" ? 7 : 12,
+        ]),
+        // a tinted state (menu highlight, selected row) must be visible on the flat hc surface
+        ...(mode.contrast === "high"
+            ? ACCENTS.map((n): [string, Hex, Hex, number] => [`tint-${n} visible on bg (hc)`, tints[n], r.bg, 1.3])
+            : []),
         ...ACCENTS.map((n): [string, Hex, Hex, number] => [
             `fg on tint(${n}, medium)`,
             r.fg,
@@ -40,7 +49,7 @@ export function checkMode(mode: Mode): Check[] {
         // every accent must be a valid choice, not just the default
         ...ACCENTS.flatMap((n): [string, Hex, Hex, number][] => [
             [`fg on selection (${n})`, r.fg, solid(mode.accentRoles[n].selection, r.bg), 7],
-            [`fg on accentTint (${n})`, r.fg, mode.accentRoles[n].accentTint, 12],
+            [`fg on accentTint (${n})`, r.fg, mode.accentRoles[n].accentTint, mode.contrast === "high" ? 7 : 12],
         ]),
         ["ansi black on bg", ansi.black, r.bg, mode.type === "dark" ? 1.5 : 7],
         ["ansi brightBlack on bg", ansi.brightBlack, r.bg, 3.5],
