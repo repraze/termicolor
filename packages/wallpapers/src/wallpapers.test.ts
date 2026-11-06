@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
-import {test} from "node:test";
 
 import {palette} from "@termicolor/palette";
+import {test} from "vitest";
 
 import {CATALOG, renderCatalog} from "./catalog.ts";
 import {createRng} from "./random.ts";

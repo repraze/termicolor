@@ -14,14 +14,6 @@ export const PLANNED: PlannedPort[] = [
         tier: 1,
         tags: ["deskthemepack"],
     },
-    {
-        id: "wallpapers",
-        name: "Wallpapers",
-        category: "wallpaper",
-        description: "Generated gradients, grids, circuits, contours",
-        tier: 1,
-        tags: ["background"],
-    },
     // tier 2 - moderate work
     {
         id: "nvim",
