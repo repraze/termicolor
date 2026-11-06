@@ -6,16 +6,16 @@ export default definePort({
     name: "Wallpapers",
     category: "wallpaper",
     description:
-        "Generated gradients, grids and circuit boards in the palette, dark and light. Seeded, reproducible SVG.",
-    tags: ["background", "desktop", "svg", "gradient", "grid", "circuit", "pcb", "synthwave"],
+        "Abstract generated wallpapers: gradients, lines and patterns in the palette, dark and light. Seeded, reproducible SVG.",
+    tags: ["background", "desktop", "svg", "gradient", "pattern", "abstract", "portrait", "phone"],
     install: `
-Pick a file under \`dist/<mode>/<width>x<height>/\`. \`3840x2160\` is 16:9 and scales cleanly to 1920×1080 and
-2560×1440; \`3440x1440\` is 21:9 ultrawide. \`catalog.json\` lists every wallpaper with its generator, seed and
-parameters.
+Pick a file under \`dist/<mode>/<width>x<height>/\`: landscape \`1920x1080\`, \`2560x1440\`, \`3840x2160\` or portrait
+\`1080x1920\`, \`1440x2560\`, \`2160x3840\`. Portrait files have their own layout, not a crop of landscape.
+\`catalog.json\` lists every wallpaper with its generator, seed and parameters.
 
 The files are SVG. Most desktops want a raster image, so convert once, e.g.
-\`rsvg-convert -w 3840 dist/dark/3840x2160/circuit-1.svg -o circuit-1.png\` (librsvg), Inkscape's export, or open
-the SVG in a browser and save a screenshot. PNG renders attached to GitHub releases are planned.
+\`rsvg-convert dist/dark/3840x2160/flow-2.svg -o flow-2.png\` (librsvg), Inkscape's export, or open the SVG in a
+browser and save a screenshot. PNG renders attached to GitHub releases are planned.
 
 Generators, parameters and kept seeds are documented in
 [\`packages/wallpapers/CATALOG.md\`](../../packages/wallpapers/CATALOG.md).

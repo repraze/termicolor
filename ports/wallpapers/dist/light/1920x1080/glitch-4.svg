@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 2560 1440">
+<title>Termicolor Glitch bands #4 (light, 1920x1080)</title>
+<defs><linearGradient id="hue" gradientUnits="userSpaceOnUse" x1="2573" y1="695.9" x2="-13" y2="744.1"><stop offset="0" stop-color="#bb7aff"/><stop offset="0.111" stop-color="#9a9bff"/><stop offset="0.222" stop-color="#7fb1ff"/><stop offset="0.333" stop-color="#5ec5ff"/><stop offset="0.444" stop-color="#17d8f8"/><stop offset="0.556" stop-color="#20e0e5"/><stop offset="0.667" stop-color="#00e1d7"/><stop offset="0.778" stop-color="#00e1c8"/><stop offset="0.889" stop-color="#15e1b6"/><stop offset="1" stop-color="#35e0a3"/></linearGradient><linearGradient id="veil" gradientUnits="userSpaceOnUse" x1="1293.9" y1="1463.6" x2="1266.1" y2="-23.6"><stop offset="0" stop-color="#ffffff" stop-opacity="0"/><stop offset="0.125" stop-color="#ffffff" stop-opacity="0.03"/><stop offset="0.25" stop-color="#ffffff" stop-opacity="0.109"/><stop offset="0.375" stop-color="#ffffff" stop-opacity="0.221"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0.35"/><stop offset="0.625" stop-color="#ffffff" stop-opacity="0.479"/><stop offset="0.75" stop-color="#ffffff" stop-opacity="0.591"/><stop offset="0.875" stop-color="#ffffff" stop-opacity="0.67"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.7"/></linearGradient><pattern id="scan" patternUnits="userSpaceOnUse" width="8" height="6"><rect width="8" height="2.5" fill="#fff"/></pattern><filter id="grain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.525" numOctaves="2" seed="32710" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0 0 0 0 1"/></filter></defs>
+<rect width="2560" height="1440" fill="url(#hue)"/>
+<rect x="-512" y="102.7" width="3584" height="8.4" fill="url(#hue)" transform="translate(-254.7 0)"/>
+<rect x="1206.7" y="107.6" width="1186.7" height="2" fill="#18adb7" opacity="0.85"/>
+<rect x="-512" y="143.3" width="3584" height="128.4" fill="url(#hue)" transform="translate(123.9 0)"/>
+<rect x="-512" y="271.6" width="3584" height="14.2" fill="url(#hue)" transform="translate(-132.8 0)"/>
+<rect x="38.3" y="277.1" width="419.9" height="2.1" fill="#1db07e" opacity="0.85"/>
+<rect x="-512" y="304.2" width="3584" height="22.3" fill="url(#hue)" transform="translate(-248.3 0)"/>
+<rect x="-512" y="332.5" width="3584" height="22.6" fill="url(#hue)" transform="translate(-9.2 0)"/>
+<rect x="-512" y="355.1" width="3584" height="11.1" fill="url(#hue)" transform="translate(320.8 0)"/>
+<rect x="1150.1" y="358.1" width="414.5" height="2" fill="#1db07e" opacity="0.85"/>
+<rect x="-512" y="366.2" width="3584" height="66.5" fill="url(#hue)" transform="translate(124.7 0)"/>
+<rect x="1453.3" y="401.4" width="313.7" height="10" fill="#18adb7" opacity="0.85"/>
+<rect x="-512" y="432.7" width="3584" height="15.7" fill="url(#hue)" transform="translate(422.2 0)"/>
+<rect x="-512" y="637.4" width="3584" height="23.3" fill="url(#hue)" transform="translate(315.2 0)"/>
+<rect x="-512" y="660.7" width="3584" height="145.2" fill="url(#hue)" transform="translate(-18 0)"/>
+<rect x="438.8" y="680.2" width="812.9" height="21.8" fill="#18adb7" opacity="0.85"/>
+<rect x="-512" y="805.8" width="3584" height="11.5" fill="url(#hue)" transform="translate(-372.1 0)"/>
+<rect x="1231.1" y="810.6" width="1218" height="2" fill="#1db07e" opacity="0.85"/>
+<rect x="-512" y="817.3" width="3584" height="103.5" fill="url(#hue)" transform="translate(351.1 0)"/>
+<rect x="425.3" y="888.5" width="466.9" height="15.5" fill="#1db07e" opacity="0.85"/>
+<rect x="-512" y="920.8" width="3584" height="22.1" fill="url(#hue)" transform="translate(444 0)"/>
+<rect x="-512" y="942.9" width="3584" height="14.5" fill="url(#hue)" transform="translate(6 0)"/>
+<rect x="-512" y="985.8" width="3584" height="23.2" fill="url(#hue)" transform="translate(-223.7 0)"/>
+<rect x="-512" y="1009" width="3584" height="20.2" fill="url(#hue)" transform="translate(88.3 0)"/>
+<rect x="787.9" y="1012.5" width="966.2" height="3" fill="#18adb7" opacity="0.85"/>
+<rect x="-512" y="1036.9" width="3584" height="7.3" fill="url(#hue)" transform="translate(-384.2 0)"/>
+<rect x="-512" y="1044.2" width="3584" height="18.8" fill="url(#hue)" transform="translate(248.5 0)"/>
+<rect x="-512" y="1095.7" width="3584" height="8.5" fill="url(#hue)" transform="translate(448.2 0)"/>
+<rect x="-512" y="1122.1" width="3584" height="56.5" fill="url(#hue)" transform="translate(64.1 0)"/>
+<rect x="469.1" y="1133.9" width="739" height="8.5" fill="#1db07e" opacity="0.85"/>
+<rect x="-512" y="1178.6" width="3584" height="136.8" fill="url(#hue)" transform="translate(-254.2 0)"/>
+<rect x="-512" y="1410.7" width="3584" height="140.9" fill="url(#hue)" transform="translate(158.2 0)"/>
+<rect x="291.6" y="1485" width="276.9" height="21.1" fill="#1db07e" opacity="0.85"/>
+<rect width="2560" height="1440" fill="url(#veil)"/>
+<rect width="2560" height="1440" fill="url(#scan)" opacity="0.25"/>
+<rect width="2560" height="1440" filter="url(#grain)" opacity="0.064" style="mix-blend-mode:overlay"/>
+</svg>
