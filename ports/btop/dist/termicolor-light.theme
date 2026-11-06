@@ -92,15 +92,15 @@ theme[process_mid]="#a16500"
 theme[process_end]="#e20064"
 
 # Process list banner when paused
-theme[proc_pause_bg]="#e20064"
+theme[proc_pause_bg]="#ff4c82"
 
 # Process list banner when following a process
-theme[proc_follow_bg]="#006af6"
+theme[proc_follow_bg]="#4d91ff"
 
 # Process list banner colors
-theme[proc_banner_bg]="#a331fb"
-theme[proc_banner_fg]="#ffffff"
+theme[proc_banner_bg]="#bb7aff"
+theme[proc_banner_fg]="#1a1125"
 
 # Followed process
-theme[followed_bg]="#006af6"
-theme[followed_fg]="#ffffff"
+theme[followed_bg]="#4d91ff"
+theme[followed_fg]="#0b1628"
