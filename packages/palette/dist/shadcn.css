@@ -14,7 +14,7 @@
     --secondary-foreground: var(--tc-fg);
     --muted: var(--tc-bg-raised);
     --muted-foreground: var(--tc-fg-soft);
-    --accent: var(--tc-bg-raised);
+    --accent: var(--tc-accent-tint);
     --accent-foreground: var(--tc-fg);
     --destructive: var(--tc-danger);
     --border: var(--tc-border);
@@ -29,7 +29,7 @@
     --sidebar-foreground: var(--tc-fg);
     --sidebar-primary: var(--tc-accent);
     --sidebar-primary-foreground: var(--tc-on-accent);
-    --sidebar-accent: var(--tc-bg-raised);
+    --sidebar-accent: var(--tc-accent-tint);
     --sidebar-accent-foreground: var(--tc-fg);
     --sidebar-border: var(--tc-border);
     --sidebar-ring: var(--tc-accent);

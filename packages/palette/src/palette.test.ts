@@ -4,7 +4,7 @@ import {test} from "vitest";
 
 import {contrast, oklch} from "./color.ts";
 import {allModes, palette} from "./palette.ts";
-import {ACCENTS, DARK_ACCENTS} from "./seeds.ts";
+import {ACCENTS, DARK_ACCENTS, RULES} from "./seeds.ts";
 import {checkPalette} from "./validate.ts";
 
 test("every contrast guarantee holds", () => {
@@ -24,7 +24,8 @@ test("light accents keep the dark hue (within the configured shift)", () => {
         const dark = oklch(palette.modes.dark.accents[name]).h;
         const light = oklch(palette.modes.light.accents[name]).h;
         const delta = Math.abs(((light - dark + 540) % 360) - 180);
-        assert.ok(delta <= 14, `${name} hue drifted ${delta.toFixed(1)}°`);
+        const allowed = Math.abs(RULES.lightHueShift[name] ?? 0) + 4;
+        assert.ok(delta <= allowed, `${name} hue drifted ${delta.toFixed(1)}° (allowed ${allowed})`);
     }
 });
 
@@ -67,4 +68,32 @@ test("high contrast flattens surfaces and brightens structure", () => {
 test("mode ids are unique", () => {
     const ids = allModes().map((m) => m.id);
     assert.deepEqual(ids, ["dark", "light", "dark-hc", "light-hc"]);
+});
+
+test("fills are the vivid brand seeds in every mode", () => {
+    for (const mode of allModes()) {
+        assert.deepEqual(mode.fills, DARK_ACCENTS, mode.id);
+    }
+});
+
+test("light text accents are as vivid as the contrast floor allows", () => {
+    for (const name of ACCENTS) {
+        const {c} = oklch(palette.modes.light.accents[name]);
+        assert.ok(c >= 0.11 || name === "cyan", `${name} chroma ${c.toFixed(3)}`);
+    }
+});
+
+test("solid roles are opaque", () => {
+    for (const mode of allModes()) {
+        const r = mode.roles;
+        for (const hex of [
+            r.selectionSolid,
+            r.selectionInactiveSolid,
+            r.findMatchSolid,
+            r.addedTint,
+            ...Object.values(mode.tints),
+        ]) {
+            assert.equal(hex.length, 7, `${mode.id} ${hex}`);
+        }
+    }
 });

@@ -10,10 +10,16 @@ function modeVars(mode: Mode): string[] {
             [name, hex],
             [`${name}-bright`, mode.brights[name as keyof typeof mode.brights]],
             [`${name}-on`, mode.on[name as keyof typeof mode.on]],
+            [`${name}-fill`, mode.fills[name as keyof typeof mode.fills]],
+            [`${name}-on-fill`, mode.onFill[name as keyof typeof mode.onFill]],
+            [`${name}-tint`, mode.tints[name as keyof typeof mode.tints]],
+            [`${name}-tint-strong`, mode.tintsStrong[name as keyof typeof mode.tintsStrong]],
+            [`${name}-dim`, mode.dims[name as keyof typeof mode.dims]],
         ]),
         ...Object.entries(mode.roles).map(([name, hex]): [string, string] => [kebab(name), hex]),
         ...Object.entries(mode.ansi).map(([name, hex]): [string, string] => [`ansi-${kebab(name)}`, hex]),
         ...Object.entries(mode.syntax).map(([name, hex]): [string, string] => [`syntax-${name}`, hex]),
+        ...Object.entries(mode.files).map(([name, hex]): [string, string] => [`file-${kebab(name)}`, hex]),
     ];
     return vars.map(([name, value]) => `    --tc-${name}: ${value};`);
 }
@@ -80,7 +86,7 @@ function shadcnCss(palette: Palette): string {
     --secondary-foreground: var(--tc-fg);
     --muted: var(--tc-bg-raised);
     --muted-foreground: var(--tc-fg-soft);
-    --accent: var(--tc-bg-raised);
+    --accent: var(--tc-accent-tint);
     --accent-foreground: var(--tc-fg);
     --destructive: var(--tc-danger);
     --border: var(--tc-border);
@@ -95,7 +101,7 @@ function shadcnCss(palette: Palette): string {
     --sidebar-foreground: var(--tc-fg);
     --sidebar-primary: var(--tc-accent);
     --sidebar-primary-foreground: var(--tc-on-accent);
-    --sidebar-accent: var(--tc-bg-raised);
+    --sidebar-accent: var(--tc-accent-tint);
     --sidebar-accent-foreground: var(--tc-fg);
     --sidebar-border: var(--tc-border);
     --sidebar-ring: var(--tc-accent);
@@ -121,6 +127,12 @@ function paletteJson(palette: Palette): string {
                     accents: expandAll(m.accents),
                     brights: expandAll(m.brights),
                     on: expandAll(m.on),
+                    fills: expandAll(m.fills),
+                    onFill: expandAll(m.onFill),
+                    tints: expandAll(m.tints),
+                    tintsStrong: expandAll(m.tintsStrong),
+                    dims: expandAll(m.dims),
+                    files: m.files,
                     neutrals: expandAll(m.neutrals),
                     roles: m.roles,
                     ansi: m.ansi,

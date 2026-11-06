@@ -54,8 +54,12 @@ function onColor(accent: Hex): Hex {
 }
 
 export type DerivedAccents = {
-    /** Base accents (ANSI 1-6, syntax, UI). */
+    /** Base accents (ANSI 1-6, syntax, UI). Text-safe on bg. */
     accents: AccentSet;
+    /** Vivid solid fills (buttons, badges, swatches, powerline). The brand seeds in both modes. */
+    fills: AccentSet;
+    /** Text on a fill. */
+    onFill: AccentSet;
     /** Bright variants (ANSI 9-14, hover states). */
     brights: AccentSet;
     /** Text color to put on a solid fill of each accent. */
@@ -66,6 +70,8 @@ export function deriveDark(): DerivedAccents {
     const accents = {...DARK_ACCENTS};
     return {
         accents,
+        fills: accents,
+        onFill: mapAccents((n) => onColor(accents[n])),
         brights: mapAccents((n) => lighten(accents[n], RULES.darkBrightLightness)),
         on: mapAccents((n) => onColor(accents[n])),
     };
@@ -73,10 +79,13 @@ export function deriveDark(): DerivedAccents {
 
 export function deriveLight(): DerivedAccents {
     const accents = mapAccents((n) =>
-        darkenToContrast(DARK_ACCENTS[n], RULES.lightAccentContrast, NEUTRALS[0], RULES.lightHueShift[n]),
+        // against bgSunken (n50), the darkest light surface text sits on, so text is safe on every surface
+        darkenToContrast(DARK_ACCENTS[n], RULES.lightAccentContrast, NEUTRALS[50], RULES.lightHueShift[n]),
     );
     return {
         accents,
+        fills: {...DARK_ACCENTS},
+        onFill: mapAccents((n) => onColor(DARK_ACCENTS[n])),
         brights: mapAccents((n) => lighten(accents[n], RULES.lightBrightLightness)),
         on: mapAccents((n) => onColor(accents[n])),
     };

@@ -7,19 +7,19 @@
     $colors = @{
         Default            = "${e}[38;2;10;10;10m"
         Comment            = "${e}[38;2;82;82;82m"
-        Keyword            = "${e}[38;2;151;75;220m"
-        String             = "${e}[38;2;0;130;91m"
+        Keyword            = "${e}[38;2;163;49;251m"
+        String             = "${e}[38;2;0;131;92m"
         Operator           = "${e}[38;2;10;10;10m"
-        Variable           = "${e}[38;2;210;12;169m"
-        Command            = "${e}[38;2;33;109;228m"
-        Parameter          = "${e}[38;2;0;126;134m"
-        Type               = "${e}[38;2;150;106;0m"
-        Number             = "${e}[38;2;189;82;0m"
+        Variable           = "${e}[38;2;212;0;171m"
+        Command            = "${e}[38;2;0;106;246m"
+        Parameter          = "${e}[38;2;0;127;135m"
+        Type               = "${e}[38;2;161;101;0m"
+        Number             = "${e}[38;2;187;85;0m"
         Member             = "${e}[38;2;10;10;10m"
-        Emphasis           = "${e}[38;2;151;75;220;1m"
-        Error              = "${e}[38;2;224;0;99m"
+        Emphasis           = "${e}[38;2;163;49;251;1m"
+        Error              = "${e}[38;2;226;0;100m"
         ContinuationPrompt = "${e}[38;2;115;115;115m"
-        Selection          = "${e}[38;2;10;10;10;48;2;222;203;248m"
+        Selection          = "${e}[38;2;10;10;10;48;2;226;201;255m"
     }
 
     $psrl = (Get-Module PSReadLine).Version
@@ -27,7 +27,7 @@
         $colors.InlinePrediction = "${e}[38;2;115;115;115m"
     }
     if ($psrl -ge [version]"2.2.0") {
-        $colors.ListPrediction = "${e}[38;2;151;75;220m"
+        $colors.ListPrediction = "${e}[38;2;163;49;251m"
         $colors.ListPredictionSelected = "${e}[48;2;245;245;245m"
     }
 

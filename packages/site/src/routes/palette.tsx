@@ -37,15 +37,22 @@ function ModeSection({mode}: {mode: Mode}) {
         <ModeScope mode={mode} className="bg-card flex flex-col gap-4 border p-4" data-testid={`mode-${mode.id}`}>
             <h2 className="text-lg font-bold">{MODE_LABELS[mode.id]}</h2>
 
-            <Group title="Accents · bright · on">
+            <Group title="Accent tiers · fill · text · tint · bright · dim">
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                     {ACCENTS.map((name) => (
                         <div key={name} className="flex flex-col">
-                            <Swatch hex={mode.accents[name]} label={name} text={mode.on[name]} tall />
+                            <Swatch hex={mode.fills[name]} label={name} text={mode.onFill[name]} tall />
+                            <Swatch hex={mode.accents[name]} label="text" text={mode.on[name]} />
+                            <Swatch hex={mode.tints[name]} label="tint" text={r.fg} />
                             <Swatch
                                 hex={mode.brights[name]}
                                 label="bright"
                                 text={readable(mode.brights[name], r, mode.on[name])}
+                            />
+                            <Swatch
+                                hex={mode.dims[name]}
+                                label="dim"
+                                text={readable(mode.dims[name], r, "#000000", "#ffffff")}
                             />
                         </div>
                     ))}

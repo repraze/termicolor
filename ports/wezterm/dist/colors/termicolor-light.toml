@@ -8,24 +8,24 @@ origin_url = "https://github.com/repraze/termicolor"
 [colors]
 foreground = "#0a0a0a"
 background = "#ffffff"
-cursor_bg = "#974bdc"
+cursor_bg = "#a331fb"
 cursor_fg = "#ffffff"
-cursor_border = "#974bdc"
-compose_cursor = "#bd5200"
-selection_bg = "#decbf8"
+cursor_border = "#a331fb"
+compose_cursor = "#bb5500"
+selection_bg = "#e2c9ff"
 selection_fg = "#0a0a0a"
 scrollbar_thumb = "#d4d4d4"
 split = "#d4d4d4"
 visual_bell = "#f5f5f5"
-ansi = ["#262626", "#e00063", "#00825b", "#966a00", "#216de4", "#974bdc", "#007e86", "#a3a3a3"]
-brights = ["#525252", "#fa3377", "#2b976f", "#ac7f27", "#3883fc", "#ac62f4", "#2b939b", "#d4d4d4"]
-copy_mode_active_highlight_bg = "#bd5200"
+ansi = ["#262626", "#e20064", "#00835c", "#a16500", "#006af6", "#a331fb", "#007f87", "#a3a3a3"]
+brights = ["#525252", "#fc3378", "#2c9870", "#b77a27", "#3885ff", "#b262ff", "#2c949c", "#d4d4d4"]
+copy_mode_active_highlight_bg = "#bb5500"
 copy_mode_active_highlight_fg = "#ffffff"
-copy_mode_inactive_highlight_bg = "#e9bba4"
+copy_mode_inactive_highlight_bg = "#e8bca4"
 copy_mode_inactive_highlight_fg = "#0a0a0a"
-quick_select_label_bg = "#966a00"
+quick_select_label_bg = "#a16500"
 quick_select_label_fg = "#ffffff"
-quick_select_match_bg = "#e9bba4"
+quick_select_match_bg = "#e8bca4"
 quick_select_match_fg = "#0a0a0a"
 
 [colors.tab_bar]
@@ -49,5 +49,5 @@ bg_color = "#fafafa"
 fg_color = "#525252"
 
 [colors.tab_bar.new_tab_hover]
-bg_color = "#974bdc"
+bg_color = "#a331fb"
 fg_color = "#ffffff"

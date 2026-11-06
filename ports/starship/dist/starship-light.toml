@@ -169,14 +169,14 @@ show_notifications = true
 min_time_to_notify = 45000
 
 [palettes.termicolor_light]
-red = "#e00063"
-orange = "#bd5200"
-yellow = "#966a00"
-green = "#00825b"
-cyan = "#007e86"
-blue = "#216de4"
-purple = "#974bdc"
-pink = "#d20ca9"
+red = "#e20064"
+orange = "#bb5500"
+yellow = "#a16500"
+green = "#00835c"
+cyan = "#007f87"
+blue = "#006af6"
+purple = "#a331fb"
+pink = "#d400ab"
 text = "#0a0a0a"
 subtext = "#525252"
 surface = "#f5f5f5"

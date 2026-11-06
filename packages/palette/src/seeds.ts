@@ -50,16 +50,22 @@ export const RULES = {
     /** Dark brights: same hue and chroma, pushed lighter. */
     darkBrightLightness: 0.06,
     /** Light accents must reach this contrast on white (text-safe with margin over 4.5). */
-    lightAccentContrast: 4.8,
+    lightAccentContrast: 4.55,
     /** Light accents may carry slightly more chroma than dark seeds to stay vivid when darkened. */
-    lightChromaBoost: 1.1,
+    lightChromaBoost: 1.4,
     /**
      * Per-accent hue shift for light mode (degrees). Darkened yellow turns olive at its dark
      * hue; nudging it warmer keeps it reading as amber/gold.
      */
-    lightHueShift: {yellow: -10, orange: -6} as Partial<Record<AccentName, number>>,
+    lightHueShift: {yellow: -20, orange: -4} as Partial<Record<AccentName, number>>,
     /** Light brights (ANSI 9-14): lighter than the light accent - conventional, used for emphasis. */
     lightBrightLightness: 0.07,
     /** Text on a solid accent fill must reach this contrast. */
     onAccentContrast: 4.5,
+    /** Tints: opaque accent washes for badges, diff lines and selected rows (share of accent over bg). */
+    tint: {dark: 0.16, light: 0.12},
+    /** Strong tints: inline diff words, current-line highlights. */
+    tintStrong: {dark: 0.32, light: 0.26},
+    /** Dims: ANSI "faint" colors, accent mixed toward bg. */
+    dim: 0.4,
 };

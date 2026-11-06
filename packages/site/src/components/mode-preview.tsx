@@ -28,7 +28,7 @@ export function ModePreview({mode}: {mode: Mode}) {
                     <div
                         key={name}
                         className="flex h-10 items-end p-1 font-mono text-[0.6rem]"
-                        style={{background: `var(--tc-${name})`, color: `var(--tc-${name}-on)`}}
+                        style={{background: `var(--tc-${name}-fill)`, color: `var(--tc-${name}-on-fill)`}}
                         title={`${name} ${mode.accents[name]}`}
                     >
                         {name.slice(0, 3)}

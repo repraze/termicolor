@@ -1,6 +1,6 @@
-import {alpha, type Hex} from "./color.ts";
+import {alpha, flatten, type Hex, mix} from "./color.ts";
 import {type AccentSet, deriveDark, deriveLight} from "./derive.ts";
-import {type AccentName, DEFAULT_ACCENT, type ModeName, NEUTRALS} from "./seeds.ts";
+import {type AccentName, ACCENTS, DEFAULT_ACCENT, type ModeName, NEUTRALS, RULES} from "./seeds.ts";
 
 /** Semantic roles. Ports should map these, not raw neutrals. */
 export type Roles = {
@@ -22,13 +22,28 @@ export type Roles = {
     // interaction
     accent: Hex;
     onAccent: Hex;
+    accentTint: Hex; // opaque accent wash: highlighted menu item, selected row (fg text on it)
     accentBright: Hex;
     cursor: Hex;
     selection: Hex; // translucent
     selectionInactive: Hex; // translucent
-    findMatch: Hex; // translucent
+    findMatch: Hex; // translucent - other matches
     focusRing: Hex; // translucent
     shadow: Hex; // translucent
+    // opaque versions for targets without alpha (terminals, TUIs): flattened over bg
+    selectionSolid: Hex;
+    selectionInactiveSolid: Hex;
+    findMatchSolid: Hex;
+    // the current / focused search match: a solid fill, never just a stronger wash
+    matchActive: Hex;
+    onMatchActive: Hex;
+    // window chrome
+    titlebar: Hex;
+    tabActive: Hex; // merges into the content below it
+    tabActiveFg: Hex;
+    tabIndicator: Hex; // accent line on the active tab
+    tabInactive: Hex;
+    tabInactiveFg: Hex;
     // status
     danger: Hex;
     warning: Hex;
@@ -42,7 +57,30 @@ export type Roles = {
     renamed: Hex;
     conflict: Hex;
     ignored: Hex;
+    // diff backgrounds (opaque): line tint and inline-word strong tint
+    addedTint: Hex;
+    removedTint: Hex;
+    modifiedTint: Hex;
+    addedTintStrong: Hex;
+    removedTintStrong: Hex;
 };
+
+/** File kinds for ls / eza / file trees. */
+export type Files = Record<
+    | "directory"
+    | "symlink"
+    | "brokenLink"
+    | "executable"
+    | "archive"
+    | "image"
+    | "video"
+    | "audio"
+    | "document"
+    | "config"
+    | "source"
+    | "temp",
+    Hex
+>;
 
 export type Ansi = Record<
     | "black"
@@ -83,7 +121,15 @@ export type Syntax = Record<
     | "punctuation"
     | "heading"
     | "link"
-    | "invalid",
+    | "invalid"
+    | "parameter"
+    | "builtin"
+    | "bracket1"
+    | "bracket2"
+    | "bracket3"
+    | "bracket4"
+    | "bracket5"
+    | "bracket6",
     Hex
 >;
 
@@ -97,13 +143,27 @@ export type Mode = {
     name: ModeName;
     type: "dark" | "light";
     contrast: Contrast;
+    /** Text tier: readable on bg. Use for colored text, icons, borders. */
     accents: AccentSet;
-    brights: AccentSet;
+    /** Text on a solid `accents` fill. */
     on: AccentSet;
+    /** Fill tier: vivid solid surfaces (buttons, badges, swatches, powerline segments). */
+    fills: AccentSet;
+    /** Text on a `fills` surface. */
+    onFill: AccentSet;
+    /** Tint tier: opaque washes behind fg text (badges, diff lines, selected rows). */
+    tints: AccentSet;
+    /** Stronger tint (inline diff words, current line). */
+    tintsStrong: AccentSet;
+    /** ANSI 9-14 and hover states. */
+    brights: AccentSet;
+    /** ANSI faint / dim text. */
+    dims: AccentSet;
     neutrals: typeof NEUTRALS;
     roles: Roles;
     ansi: Ansi;
     syntax: Syntax;
+    files: Files;
 };
 
 export type Palette = {
@@ -195,15 +255,21 @@ const ANSI_NEUTRALS: Record<ModeName, Pick<Ansi, "black" | "white" | "brightBlac
     light: {black: N[800], white: N[400], brightBlack: N[600], brightWhite: N[300]},
 };
 
+const mapAccents = (fn: (n: AccentName) => Hex) => Object.fromEntries(ACCENTS.map((n) => [n, fn(n)])) as AccentSet;
+
 function buildMode(name: ModeName, contrast: Contrast = "normal"): Mode {
-    const {accents: a, brights, on} = name === "dark" ? deriveDark() : deriveLight();
+    const {accents: a, brights, on, fills, onFill} = name === "dark" ? deriveDark() : deriveLight();
     const s = (contrast === "high" ? HC_SURFACES : SURFACES)[name];
+    const tints = mapAccents((n) => mix(s.bg, a[n], RULES.tint[name]));
+    const tintsStrong = mapAccents((n) => mix(s.bg, a[n], RULES.tintStrong[name]));
+    const dims = mapAccents((n) => mix(a[n], s.bg, RULES.dim));
     const accent = DEFAULT_ACCENT;
     const roles: Roles = {
         ...s,
         bgHover: alpha(s.fg, name === "dark" ? 0.06 : 0.05),
         accent: a[accent],
         onAccent: on[accent],
+        accentTint: tints[accent],
         accentBright: brights[accent],
         cursor: a[accent],
         selection: alpha(a[accent], 0.3),
@@ -211,6 +277,17 @@ function buildMode(name: ModeName, contrast: Contrast = "normal"): Mode {
         findMatch: alpha(a.orange, 0.4),
         focusRing: alpha(a[accent], 0.6),
         shadow: alpha(N[1000], name === "dark" ? 0.5 : 0.15),
+        selectionSolid: flatten(alpha(a[accent], 0.3), s.bg),
+        selectionInactiveSolid: flatten(alpha(a[accent], 0.15), s.bg),
+        findMatchSolid: flatten(alpha(a.orange, 0.4), s.bg),
+        matchActive: fills.orange,
+        onMatchActive: onFill.orange,
+        titlebar: s.bgSunken,
+        tabActive: s.bg,
+        tabActiveFg: s.fg,
+        tabIndicator: a[accent],
+        tabInactive: s.bgSunken,
+        tabInactiveFg: s.fgSoft,
         danger: a.red,
         warning: a.yellow,
         success: a.green,
@@ -222,6 +299,11 @@ function buildMode(name: ModeName, contrast: Contrast = "normal"): Mode {
         renamed: a.cyan,
         conflict: a.orange,
         ignored: s.fgMuted,
+        addedTint: tints.green,
+        removedTint: tints.red,
+        modifiedTint: tints.blue,
+        addedTintStrong: tintsStrong.green,
+        removedTintStrong: tintsStrong.red,
     };
     const ansi: Ansi = {
         ...ANSI_NEUTRALS[name],
@@ -257,9 +339,49 @@ function buildMode(name: ModeName, contrast: Contrast = "normal"): Mode {
         heading: a.purple,
         link: a.blue,
         invalid: a.red,
+        parameter: a.pink,
+        builtin: a.cyan,
+        bracket1: a.yellow,
+        bracket2: a.purple,
+        bracket3: a.cyan,
+        bracket4: a.pink,
+        bracket5: a.green,
+        bracket6: a.blue,
+    };
+    const files: Files = {
+        directory: a.blue,
+        symlink: a.cyan,
+        brokenLink: a.red,
+        executable: a.green,
+        archive: a.red,
+        image: a.purple,
+        video: a.pink,
+        audio: a.cyan,
+        document: a.orange,
+        config: a.yellow,
+        source: s.fg,
+        temp: s.fgMuted,
     };
     const id: ModeId = contrast === "high" ? `${name}-hc` : name;
-    return {id, name, type: name, contrast, accents: a, brights, on, neutrals: NEUTRALS, roles, ansi, syntax};
+    return {
+        id,
+        name,
+        type: name,
+        contrast,
+        accents: a,
+        on,
+        fills,
+        onFill,
+        tints,
+        tintsStrong,
+        brights,
+        dims,
+        neutrals: NEUTRALS,
+        roles,
+        ansi,
+        syntax,
+        files,
+    };
 }
 
 export const palette: Palette = {

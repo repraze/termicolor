@@ -7,7 +7,7 @@ export function SpectrumBar({className}: {className?: string}) {
     return (
         <div className={cn("flex", className)} aria-hidden>
             {ACCENTS.map((name) => (
-                <div key={name} className="flex-1" style={{background: `var(--tc-${name})`}} />
+                <div key={name} className="flex-1" style={{background: `var(--tc-${name}-fill)`}} />
             ))}
         </div>
     );
