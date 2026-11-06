@@ -1,4 +1,4 @@
-import {allModes, type Mode, oklch, type Palette, rgb} from "@termicolor/palette";
+import {ACCENT_ROLES, ACCENTS, allModes, type Mode, oklch, type Palette, rgb} from "@termicolor/palette";
 
 import {json, type PortFile} from "./port.ts";
 
@@ -20,6 +20,10 @@ function modeVars(mode: Mode): string[] {
         ...Object.entries(mode.ansi).map(([name, hex]): [string, string] => [`ansi-${kebab(name)}`, hex]),
         ...Object.entries(mode.syntax).map(([name, hex]): [string, string] => [`syntax-${name}`, hex]),
         ...Object.entries(mode.files).map(([name, hex]): [string, string] => [`file-${kebab(name)}`, hex]),
+        // the accent-dependent roles for every accent; `.accent-<name>` points the live roles at these
+        ...ACCENTS.flatMap((n) =>
+            ACCENT_ROLES.map((role): [string, string] => [`accent-${n}-${kebab(role)}`, mode.accentRoles[n][role]]),
+        ),
     ];
     return vars.map(([name, value]) => `    --tc-${name}: ${value};`);
 }
@@ -61,6 +65,14 @@ function paletteCss(palette: Palette): string {
         ...hcOverrides("dark"),
         "}",
         "",
+        "/* Accent override: put .accent-<name> on <html> (or any ancestor). Last, so it wins over mode scopes. */",
+        ...ACCENTS.flatMap((n) => [
+            `.accent-${n}:is(:root, .light, .dark),`,
+            `.accent-${n} :is(.light, .dark) {`,
+            ...ACCENT_ROLES.map((role) => `    --tc-${kebab(role)}: var(--tc-accent-${n}-${kebab(role)});`),
+            "}",
+            "",
+        ]),
     ].join("\n");
 }
 
@@ -133,6 +145,7 @@ function paletteJson(palette: Palette): string {
                     tintsStrong: expandAll(m.tintsStrong),
                     dims: expandAll(m.dims),
                     files: m.files,
+                    accentRoles: m.accentRoles,
                     neutrals: expandAll(m.neutrals),
                     roles: m.roles,
                     ansi: m.ansi,

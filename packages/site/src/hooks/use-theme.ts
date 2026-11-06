@@ -1,5 +1,5 @@
 import {useColorScheme, useLocalStorage} from "@mantine/hooks";
-import type {ModeId} from "@termicolor/palette";
+import {type AccentName, ACCENTS, DEFAULT_ACCENT, type ModeId} from "@termicolor/palette";
 import {useEffect} from "react";
 
 export type ThemePreference = "system" | "dark" | "light";
@@ -8,10 +8,20 @@ export type ContrastPreference = "normal" | "high";
 /** Same keys as the pre-paint script in index.html and the e2e fixtures. */
 export const THEME_KEY = "termicolor-theme";
 export const CONTRAST_KEY = "termicolor-contrast";
+export const ACCENT_KEY = "termicolor-accent";
 
-/** `.light`/`.dark` plus `.hc` on <html>; palette.css scopes every variable to those classes. */
-export function themeClasses(scheme: "dark" | "light", contrast: ContrastPreference) {
-    return {light: scheme === "light", dark: scheme === "dark", hc: contrast === "high"};
+/** `.light`/`.dark`, `.hc` and `.accent-<name>` on <html>; palette.css scopes every variable to those classes. */
+export function themeClasses(
+    scheme: "dark" | "light",
+    contrast: ContrastPreference,
+    accent: AccentName = DEFAULT_ACCENT,
+): Record<string, boolean> {
+    return {
+        light: scheme === "light",
+        dark: scheme === "dark",
+        hc: contrast === "high",
+        ...Object.fromEntries(ACCENTS.map((n) => [`accent-${n}`, n === accent])),
+    };
 }
 
 export function modeId(scheme: "dark" | "light", contrast: ContrastPreference): ModeId {
@@ -31,13 +41,27 @@ export function useTheme() {
         defaultValue: "normal",
         getInitialValueInEffect: false,
     });
+    const [accent, setAccent] = useLocalStorage<AccentName>({
+        key: ACCENT_KEY,
+        defaultValue: DEFAULT_ACCENT,
+        getInitialValueInEffect: false,
+    });
     const resolved = preference === "system" ? system : preference;
 
     useEffect(() => {
-        for (const [name, on] of Object.entries(themeClasses(resolved, contrast))) {
+        for (const [name, on] of Object.entries(themeClasses(resolved, contrast, accent))) {
             document.documentElement.classList.toggle(name, on);
         }
-    }, [resolved, contrast]);
+    }, [resolved, contrast, accent]);
 
-    return {preference, resolved, setPreference, contrast, setContrast, mode: modeId(resolved, contrast)};
+    return {
+        preference,
+        resolved,
+        setPreference,
+        contrast,
+        setContrast,
+        accent,
+        setAccent,
+        mode: modeId(resolved, contrast),
+    };
 }

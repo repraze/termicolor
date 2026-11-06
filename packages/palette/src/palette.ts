@@ -160,7 +160,10 @@ export type Mode = {
     /** ANSI faint / dim text. */
     dims: AccentSet;
     neutrals: typeof NEUTRALS;
+    /** Accent-dependent roles (`accent`, `cursor`, `selection`, ...) are those of the palette's accent. */
     roles: Roles;
+    /** The accent-dependent roles for every accent, to switch accent without rebuilding. */
+    accentRoles: Record<AccentName, AccentRoles>;
     ansi: Ansi;
     syntax: Syntax;
     files: Files;
@@ -255,37 +258,65 @@ const ANSI_NEUTRALS: Record<ModeName, Pick<Ansi, "black" | "white" | "brightBlac
     light: {black: N[800], white: N[400], brightBlack: N[600], brightWhite: N[300]},
 };
 
+const mapAccentRoles = (fn: (n: AccentName) => AccentRoles) =>
+    Object.fromEntries(ACCENTS.map((n) => [n, fn(n)])) as Record<AccentName, AccentRoles>;
+
 const mapAccents = (fn: (n: AccentName) => Hex) => Object.fromEntries(ACCENTS.map((n) => [n, fn(n)])) as AccentSet;
 
-function buildMode(name: ModeName, contrast: Contrast = "normal"): Mode {
+/** Roles that follow the chosen accent. Switching accent swaps exactly these (see `.accent-*` in palette.css). */
+export const ACCENT_ROLES = [
+    "accent",
+    "onAccent",
+    "accentTint",
+    "accentBright",
+    "cursor",
+    "selection",
+    "selectionInactive",
+    "focusRing",
+    "selectionSolid",
+    "selectionInactiveSolid",
+    "tabIndicator",
+] as const satisfies readonly (keyof Roles)[];
+export type AccentRoles = Pick<Roles, (typeof ACCENT_ROLES)[number]>;
+
+function accentRolesFor(
+    n: AccentName,
+    t: {a: AccentSet; on: AccentSet; tints: AccentSet; brights: AccentSet; bg: Hex},
+): AccentRoles {
+    return {
+        accent: t.a[n],
+        onAccent: t.on[n],
+        accentTint: t.tints[n],
+        accentBright: t.brights[n],
+        cursor: t.a[n],
+        selection: alpha(t.a[n], 0.3),
+        selectionInactive: alpha(t.a[n], 0.15),
+        focusRing: alpha(t.a[n], 0.6),
+        selectionSolid: flatten(alpha(t.a[n], 0.3), t.bg),
+        selectionInactiveSolid: flatten(alpha(t.a[n], 0.15), t.bg),
+        tabIndicator: t.a[n],
+    };
+}
+
+function buildMode(name: ModeName, contrast: Contrast, accent: AccentName): Mode {
     const {accents: a, brights, on, fills, onFill} = name === "dark" ? deriveDark() : deriveLight();
     const s = (contrast === "high" ? HC_SURFACES : SURFACES)[name];
     const tints = mapAccents((n) => mix(s.bg, a[n], RULES.tint[name]));
     const tintsStrong = mapAccents((n) => mix(s.bg, a[n], RULES.tintStrong[name]));
     const dims = mapAccents((n) => mix(a[n], s.bg, RULES.dim));
-    const accent = DEFAULT_ACCENT;
+    const byAccent = mapAccentRoles((n) => accentRolesFor(n, {a, on, tints, brights, bg: s.bg}));
     const roles: Roles = {
         ...s,
+        ...byAccent[accent],
         bgHover: alpha(s.fg, name === "dark" ? 0.06 : 0.05),
-        accent: a[accent],
-        onAccent: on[accent],
-        accentTint: tints[accent],
-        accentBright: brights[accent],
-        cursor: a[accent],
-        selection: alpha(a[accent], 0.3),
-        selectionInactive: alpha(a[accent], 0.15),
         findMatch: alpha(a.orange, 0.4),
-        focusRing: alpha(a[accent], 0.6),
         shadow: alpha(N[1000], name === "dark" ? 0.5 : 0.15),
-        selectionSolid: flatten(alpha(a[accent], 0.3), s.bg),
-        selectionInactiveSolid: flatten(alpha(a[accent], 0.15), s.bg),
         findMatchSolid: flatten(alpha(a.orange, 0.4), s.bg),
         matchActive: fills.orange,
         onMatchActive: onFill.orange,
         titlebar: s.bgSunken,
         tabActive: s.bg,
         tabActiveFg: s.fg,
-        tabIndicator: a[accent],
         tabInactive: s.bgSunken,
         tabInactiveFg: s.fgSoft,
         danger: a.red,
@@ -378,18 +409,28 @@ function buildMode(name: ModeName, contrast: Contrast = "normal"): Mode {
         dims,
         neutrals: NEUTRALS,
         roles,
+        accentRoles: byAccent,
         ansi,
         syntax,
         files,
     };
 }
 
-export const palette: Palette = {
-    name: "Termicolor",
-    defaultAccent: DEFAULT_ACCENT,
-    modes: {dark: buildMode("dark"), light: buildMode("light")},
-    highContrast: {dark: buildMode("dark", "high"), light: buildMode("light", "high")},
-};
+/**
+ * Builds the palette around one accent. Termicolor itself is red; consumers pick their own
+ * (repraze.com: purple, the UI library: pink) here for generated files, or with an
+ * `.accent-<name>` class at runtime in CSS.
+ */
+export function createPalette({accent = DEFAULT_ACCENT}: {accent?: AccentName} = {}): Palette {
+    return {
+        name: "Termicolor",
+        defaultAccent: accent,
+        modes: {dark: buildMode("dark", "normal", accent), light: buildMode("light", "normal", accent)},
+        highContrast: {dark: buildMode("dark", "high", accent), light: buildMode("light", "high", accent)},
+    };
+}
+
+export const palette: Palette = createPalette();
 
 /** Every variant, normal first: dark, light, dark-hc, light-hc. */
 export function allModes(p: Palette = palette): Mode[] {

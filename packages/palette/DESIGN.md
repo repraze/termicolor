@@ -17,7 +17,27 @@ change that breaks one fails CI.
 High contrast **keeps every accent and syntax color**. It changes surfaces, lines and secondary text
 only, so a theme stays recognisable when you switch to it.
 
-## 2. The accent tiers
+## 2. The accent (overridable)
+
+One accent drives every interactive role: `accent`, `onAccent`, `accentTint`, `accentBright`, `cursor`,
+`selection*`, `focusRing`, `tabIndicator` (`ACCENT_ROLES`). It's part of the theme, not the palette:
+
+| Consumer    | Accent | How                                                              |
+| ----------- | ------ | ---------------------------------------------------------------- |
+| Termicolor  | red    | default (`DEFAULT_ACCENT`)                                       |
+| repraze.com | purple | `.accent-purple` on `<html>`                                     |
+| UI library  | pink   | `.accent-pink` on `<html>`, or `createPalette({accent: "pink"})` |
+
+- **Generated files** (ports): `createPalette({accent})` builds every role around that accent.
+- **CSS**: `palette.css` holds the accent roles for all eight accents (`--tc-accent-<name>-<role>`), and
+  `.accent-<name>` on any ancestor points the live roles (`--tc-accent`, `--tc-selection`, ...) at
+  them. It works in nested mode scopes too. shadcn's `--primary`, `--ring` and `--accent` follow.
+- Every accent must pass the same checks as the default (the build validates all eight), so any
+  accent is a safe choice.
+- Status colors never follow the accent: `danger` stays red even when the accent is red. Pair
+  danger with an icon or a label, not color alone.
+
+## 3. The accent tiers
 
 Eight accents: `red orange yellow green cyan blue purple pink`. Each one comes in tiers. Pick the
 tier by **what sits on top of it**.
@@ -41,7 +61,7 @@ Rules:
   the tint, plus an accent border or icon if you need more.
 - **One accent per job.** Don't use two accents to mean the same thing in one UI.
 
-## 3. Surfaces and lines
+## 4. Surfaces and lines
 
 | Role                    | Use                                                                    |
 | ----------------------- | ---------------------------------------------------------------------- |
@@ -55,9 +75,9 @@ Rules:
 
 In high contrast `bgSunken = bg`: structure comes from `border`, which is bright, not from shading.
 So **never signal state with surface shade alone**. `bgRaised` vs `bg` is invisible in high
-contrast. Selected, active or pressed things get a fill, an indicator line or a border (§5).
+contrast. Selected, active or pressed things get a fill, an indicator line or a border (§6).
 
-## 4. Text
+## 5. Text
 
 | Role         | Use                                                  | Guarantee             |
 | ------------ | ---------------------------------------------------- | --------------------- |
@@ -68,27 +88,27 @@ contrast. Selected, active or pressed things get a fill, an indicator line or a 
 
 Small essential text (< 18px) is never `fgMuted` in normal modes. Use `fgSoft`.
 
-## 5. Interaction and state
+## 6. Interaction and state
 
-| Role                                        | Use                                                                |
-| ------------------------------------------- | ------------------------------------------------------------------ |
-| `accent` / `onAccent`                       | the one interactive color (purple): primary buttons, focus, cursor |
-| `accentTint`                                | highlighted menu item, selected list row (with `fg` text)          |
-| `focusRing`                                 | keyboard focus outline (translucent accent)                        |
-| `selection` / `selectionInactive`           | text selection, when the target supports alpha                     |
-| `selectionSolid` / `selectionInactiveSolid` | the same, flattened over `bg`, for terminals and TUIs              |
-| `findMatch` / `findMatchSolid`              | other search matches (a wash)                                      |
-| `matchActive` / `onMatchActive`             | the current match: a **solid fill**, never just a stronger wash    |
+| Role                                        | Use                                                                              |
+| ------------------------------------------- | -------------------------------------------------------------------------------- |
+| `accent` / `onAccent`                       | the one interactive color (the theme accent, §2): primary buttons, focus, cursor |
+| `accentTint`                                | highlighted menu item, selected list row (with `fg` text)                        |
+| `focusRing`                                 | keyboard focus outline (translucent accent)                                      |
+| `selection` / `selectionInactive`           | text selection, when the target supports alpha                                   |
+| `selectionSolid` / `selectionInactiveSolid` | the same, flattened over `bg`, for terminals and TUIs                            |
+| `findMatch` / `findMatchSolid`              | other search matches (a wash)                                                    |
+| `matchActive` / `onMatchActive`             | the current match: a **solid fill**, never just a stronger wash                  |
 
 State checklist for any component:
 
 - **Selected / pressed / current**: `accent` fill with `onAccent` text, **or** an accent indicator
-  (border, underline, side bar) next to `fg` text. Never a surface shade alone (see §3).
+  (border, underline, side bar) next to `fg` text. Never a surface shade alone (see §4).
 - **Hover**: `bgHover`, or the `brights` version of an accent-colored element.
 - **Focus**: `focusRing` outline, always visible, never removed.
 - **Disabled**: `fgDisabled` text. Keep the layout, drop the color.
 
-## 6. Window chrome
+## 7. Window chrome
 
 | Role                            | Use                                                         |
 | ------------------------------- | ----------------------------------------------------------- |
@@ -99,7 +119,7 @@ State checklist for any component:
 
 Every app themes tabs the same way: the active tab looks like the content it opens.
 
-## 7. Status, VCS and diff
+## 8. Status, VCS and diff
 
 `danger` red · `warning` yellow · `success` green · `info` blue · `hint` cyan.
 `added` green · `removed` red · `modified` blue · `renamed` cyan · `conflict` orange · `ignored` muted.
@@ -107,7 +127,7 @@ Every app themes tabs the same way: the active tab looks like the content it ope
 Diff backgrounds are tints: `addedTint` / `removedTint` / `modifiedTint` for lines, and
 `addedTintStrong` / `removedTintStrong` for the changed words inside them.
 
-## 8. Syntax
+## 9. Syntax
 
 Principle: **structure is colored, data is plain.** Keywords, functions, types and literals get
 accents, while variables, properties and operators stay `fg`, so the code's shape reads at a glance
@@ -127,19 +147,19 @@ and the names you read most stay highest contrast.
 | `invalid`                                       | red                                     |                                                                                                              |
 | `bracket1`–`bracket6`                           | yellow, purple, cyan, pink, green, blue | bracket-pair colorization, in that order                                                                     |
 
-## 9. Files
+## 10. Files
 
 For `ls`, eza, file trees and pickers: `directory` blue · `symlink` cyan · `brokenLink` red ·
 `executable` green · `archive` red · `image` purple · `video` pink · `audio` cyan ·
 `document` orange · `config` yellow · `source` fg · `temp` muted.
 
-## 10. ANSI
+## 11. ANSI
 
 ANSI 1–6 are the text accents (magenta = purple), 9–14 the brights, and the neutrals come from
 `ansi`. Terminals that support dim/faint use `dims`. A port maps ANSI from `mode.ansi`, never by
 re-picking accents.
 
-## 11. Alpha
+## 12. Alpha
 
 Translucent roles (`selection`, `findMatch`, `focusRing`, `bgHover`, `shadow`) are 8-digit hex.
 When the target has no alpha, use the `*Solid` role or a tint. Don't flatten in the port.

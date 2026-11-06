@@ -7,7 +7,7 @@ dim_foreground = "#525252"
 
 [colors.cursor]
 text = "#ffffff"
-cursor = "#a331fb"
+cursor = "#e20064"
 
 [colors.vi_mode_cursor]
 text = "#ffffff"
@@ -39,7 +39,7 @@ background = "#f5f5f5"
 
 [colors.selection]
 text = "CellForeground"
-background = "#e2c9ff"
+background = "#ffc3ce"
 
 [colors.normal]
 black = "#262626"

@@ -21,8 +21,11 @@ export const DARK_ACCENTS: Record<AccentName, Hex> = {
     pink: "#ff60d4",
 };
 
-/** Accent used for cursor, selection, focus and buttons. Swappable later. */
-export const DEFAULT_ACCENT: AccentName = "purple";
+/**
+ * Termicolor's own accent: cursor, selection, focus and buttons. Overridable per consumer with
+ * `createPalette({accent})` or the `.accent-<name>` CSS classes.
+ */
+export const DEFAULT_ACCENT: AccentName = "red";
 
 /**
  * Pure grey ramp (Tailwind neutral). Shared by both modes - roles pick from it. No tint is

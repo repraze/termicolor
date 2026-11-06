@@ -24,6 +24,11 @@ export function checkMode(mode: Mode): Check[] {
         ["onMatchActive on matchActive", r.onMatchActive, r.matchActive, 4.5],
         ["fg on findMatchSolid", r.fg, r.findMatchSolid, 7],
         ["tabInactiveFg on tabInactive", r.tabInactiveFg, r.tabInactive, 4.5],
+        // every accent must be a valid choice, not just the default
+        ...ACCENTS.flatMap((n): [string, Hex, Hex, number][] => [
+            [`fg on selection (${n})`, r.fg, mode.accentRoles[n].selectionSolid, 7],
+            [`fg on accentTint (${n})`, r.fg, mode.accentRoles[n].accentTint, 12],
+        ]),
         ["ansi black on bg", ansi.black, r.bg, mode.type === "dark" ? 1.5 : 7],
         ["ansi brightBlack on bg", ansi.brightBlack, r.bg, 3.5],
         ["ansi white on bg", ansi.white, r.bg, mode.type === "dark" ? 7 : 2],

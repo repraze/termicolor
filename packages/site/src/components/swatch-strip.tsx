@@ -1,6 +1,6 @@
 import {ACCENTS} from "@termicolor/palette";
 
-/** Accent fills (DESIGN.md §2) with their paired foreground; follows the active mode through CSS vars. */
+/** Accent fills (DESIGN.md §3) with their paired foreground; follows the active mode through CSS vars. */
 export function SwatchStrip() {
     return (
         <div className="grid grid-cols-4 border sm:grid-cols-8">

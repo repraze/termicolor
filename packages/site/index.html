@@ -26,6 +26,7 @@
                 root.toggle("dark", dark);
                 root.toggle("light", !dark);
                 root.toggle("hc", read("termicolor-contrast", "normal") === "high");
+                root.add("accent-" + read("termicolor-accent", "red"));
             })();
         </script>
     </head>

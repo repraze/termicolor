@@ -19,17 +19,17 @@
 				<key>foreground</key>
 				<string>#0a0a0a</string>
 				<key>caret</key>
-				<string>#a331fb</string>
+				<string>#e20064</string>
 				<key>invisibles</key>
 				<string>#a3a3a3</string>
 				<key>lineHighlight</key>
 				<string>#f6f6f6</string>
 				<key>selection</key>
-				<string>#e2c9ff</string>
+				<string>#ffc3ce</string>
 				<key>selectionBorder</key>
-				<string>#e2c9ff</string>
+				<string>#ffc3ce</string>
 				<key>inactiveSelection</key>
-				<string>#f1e5ff</string>
+				<string>#ffe1e6</string>
 				<key>findHighlight</key>
 				<string>#e8bca4</string>
 				<key>findHighlightForeground</key>
@@ -47,7 +47,7 @@
 				<key>bracketsForeground</key>
 				<string>#a16500</string>
 				<key>accent</key>
-				<string>#a331fb</string>
+				<string>#e20064</string>
 				<key>shadow</key>
 				<string>#cecece</string>
 			</dict>

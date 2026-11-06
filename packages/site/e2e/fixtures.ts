@@ -9,13 +9,16 @@ export const THEMES = [
 export type Theme = (typeof THEMES)[number];
 
 /** Seeds the persisted theme before any page script runs. */
-export async function useTheme(page: Page, theme: Theme) {
+export async function useTheme(page: Page, theme: Theme, accent?: string) {
     await page.addInitScript(
-        ([scheme, contrast]) => {
+        ([scheme, contrast, accent]) => {
             localStorage.setItem("termicolor-theme", JSON.stringify(scheme));
             localStorage.setItem("termicolor-contrast", JSON.stringify(contrast ? "high" : "normal"));
+            if (accent) {
+                localStorage.setItem("termicolor-accent", JSON.stringify(accent));
+            }
         },
-        [theme.scheme, theme.contrast] as const,
+        [theme.scheme, theme.contrast, accent] as const,
     );
 }
 

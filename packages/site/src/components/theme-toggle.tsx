@@ -1,3 +1,4 @@
+import {type AccentName, ACCENTS} from "@termicolor/palette";
 import {ContrastIcon, MonitorIcon, MoonIcon, SunIcon} from "lucide-react";
 
 import {Button} from "@/components/ui/button";
@@ -21,7 +22,7 @@ const OPTIONS = [
 ] as const;
 
 export function ThemeToggle() {
-    const {preference, setPreference, resolved, contrast, setContrast} = useTheme();
+    const {preference, setPreference, resolved, contrast, setContrast, accent, setAccent} = useTheme();
     const Current = resolved === "dark" ? MoonIcon : SunIcon;
     return (
         <DropdownMenu>
@@ -41,6 +42,18 @@ export function ThemeToggle() {
                         {OPTIONS.map(({value, label, icon: Icon}) => (
                             <DropdownMenuRadioItem key={value} value={value}>
                                 <Icon /> {label}
+                            </DropdownMenuRadioItem>
+                        ))}
+                    </DropdownMenuRadioGroup>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                    <DropdownMenuLabel>Accent</DropdownMenuLabel>
+                    <DropdownMenuRadioGroup value={accent} onValueChange={(value) => setAccent(value as AccentName)}>
+                        {ACCENTS.map((name) => (
+                            <DropdownMenuRadioItem key={name} value={name} className="capitalize">
+                                <span className="size-3 border" style={{background: `var(--tc-${name}-fill)`}} />
+                                {name}
                             </DropdownMenuRadioItem>
                         ))}
                     </DropdownMenuRadioGroup>
