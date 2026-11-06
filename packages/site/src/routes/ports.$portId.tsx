@@ -11,7 +11,7 @@ import {Button} from "@/components/ui/button";
 import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
 import {useSearchUpdate} from "@/hooks/use-search-update";
-import {useTheme} from "@/hooks/use-theme";
+import {usePortAccent} from "@/hooks/use-theme";
 import {langFor} from "@/lib/highlight";
 import {portBuildQuery, usesAccentQuery} from "@/lib/port-build";
 import {saveBlob} from "@/lib/rasterize";
@@ -63,8 +63,9 @@ function PortPage() {
 function FileViewer({portId}: {portId: string}) {
     const search = Route.useSearch();
     const updateSearch = useSearchUpdate<{accent?: AccentName}>();
-    const theme = useTheme();
-    const accent = search.accent ?? theme.accent;
+    const [portAccent, setPortAccent] = usePortAccent();
+    // a shared link's ?accent= wins; picking one makes it the sticky choice and drops the param
+    const accent = search.accent ?? portAccent;
     const {data: accentDriven} = useQuery(usesAccentQuery(portId));
     const {data: files, error} = useQuery({...portBuildQuery(portId, accent), placeholderData: keepPreviousData});
     const [activePath, setActive] = useState<string>();
@@ -78,7 +79,12 @@ function FileViewer({portId}: {portId: string}) {
                 {accentDriven && (
                     <AccentPicker
                         value={accent}
-                        onChange={(next) => updateSearch({accent: next === theme.accent ? undefined : next})}
+                        onChange={(next) => {
+                            setPortAccent(next);
+                            if (search.accent) {
+                                updateSearch({accent: undefined});
+                            }
+                        }}
                     />
                 )}
             </div>
