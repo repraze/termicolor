@@ -21,11 +21,11 @@ ansi = ["#404040", "#ff4c82", "#35e0a3", "#f2c224", "#4d91ff", "#bb7aff", "#2edf
 brights = ["#737373", "#ff7a9a", "#52f4b6", "#ffd86a", "#6fa6ff", "#c898ff", "#4ff3ff", "#ffffff"]
 copy_mode_active_highlight_bg = "#ff9243"
 copy_mode_active_highlight_fg = "#241004"
-copy_mode_inactive_highlight_bg = "#6b452d"
+copy_mode_inactive_highlight_bg = "#764b2f"
 copy_mode_inactive_highlight_fg = "#fafafa"
 quick_select_label_bg = "#f2c224"
 quick_select_label_fg = "#1d1500"
-quick_select_match_bg = "#6b452d"
+quick_select_match_bg = "#764b2f"
 quick_select_match_fg = "#fafafa"
 
 [colors.tab_bar]

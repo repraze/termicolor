@@ -1,5 +1,5 @@
 import {definePort} from "@termicolor/build";
-import type {Ansi, Mode} from "@termicolor/palette";
+import {type Ansi, type Mode, solid} from "@termicolor/palette";
 
 const ANSI_ORDER: (keyof Ansi)[] = [
     "black",
@@ -33,7 +33,7 @@ function theme(mode: Mode): string {
                 ["background", r.bg],
                 // keep each cell's own color inside the selection
                 ["selection_foreground", "none"],
-                ["selection_background", r.selectionSolid],
+                ["selection_background", solid(r.selection, r.bg)],
             ],
         ],
         [

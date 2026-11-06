@@ -1,5 +1,5 @@
 import {definePort} from "@termicolor/build";
-import type {Ansi, Mode} from "@termicolor/palette";
+import {type Ansi, type Mode, solid} from "@termicolor/palette";
 
 type Value = string | string[] | {[key: string]: Value};
 type Table = {[key: string]: Value};
@@ -21,7 +21,7 @@ function colors(mode: Mode): Table {
         cursor_fg: r.onAccent,
         cursor_border: r.cursor,
         compose_cursor: a.orange,
-        selection_bg: r.selectionSolid,
+        selection_bg: solid(r.selection, r.bg),
         selection_fg: r.fg,
         scrollbar_thumb: r.borderStrong,
         split: r.borderStrong,
@@ -30,11 +30,11 @@ function colors(mode: Mode): Table {
         brights: BRIGHT_NAMES.map((n) => ansi[n]),
         copy_mode_active_highlight_bg: r.matchActive,
         copy_mode_active_highlight_fg: r.onMatchActive,
-        copy_mode_inactive_highlight_bg: r.findMatchSolid,
+        copy_mode_inactive_highlight_bg: solid(r.findMatch, r.bg),
         copy_mode_inactive_highlight_fg: r.fg,
         quick_select_label_bg: fills.yellow,
         quick_select_label_fg: onFill.yellow,
-        quick_select_match_bg: r.findMatchSolid,
+        quick_select_match_bg: solid(r.findMatch, r.bg),
         quick_select_match_fg: r.fg,
         tab_bar: {
             // retro tab bar only; the fancy one is drawn on window_frame

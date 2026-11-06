@@ -1,5 +1,5 @@
 import {definePort} from "@termicolor/build";
-import type {Mode} from "@termicolor/palette";
+import {type Mode, solid} from "@termicolor/palette";
 
 /** Fixed profile ids, so re-running the installer updates the same profiles. */
 const UUIDS = {dark: "46edc057-d8e6-4aa1-a6a2-3b83272ead24", light: "5c7f0537-5c7f-4f86-8e09-fadd0a973257"};
@@ -43,7 +43,7 @@ function keys(mode: Mode): [string, string][] {
         ["cursor-foreground-color", str(r.onAccent)],
         // GNOME Terminal paints the selection opaque: use the solid selection.
         ["highlight-colors-set", "true"],
-        ["highlight-background-color", str(r.selectionSolid)],
+        ["highlight-background-color", str(solid(r.selection, r.bg))],
         ["highlight-foreground-color", str(r.fg)],
     ];
 }

@@ -67,8 +67,6 @@ export const RULES = {
     onAccentContrast: 4.5,
     /** Tints: opaque accent washes for badges, diff lines and selected rows (share of accent over bg). */
     tint: {dark: 0.16, light: 0.12},
-    /** Strong tints: inline diff words, current-line highlights. */
-    tintStrong: {dark: 0.32, light: 0.26},
-    /** Dims: ANSI "faint" colors, accent mixed toward bg. */
+    /** ANSI faint/dim: each ANSI color mixed this far toward bg. */
     dim: 0.4,
 };

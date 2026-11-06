@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {test} from "vitest";
 
 import {contrast, oklch} from "./color.ts";
+import {LEVELS, solid, tint, wash} from "./levels.ts";
 import {allModes, palette} from "./palette.ts";
 import {ACCENTS, DARK_ACCENTS, RULES} from "./seeds.ts";
 import {checkPalette} from "./validate.ts";
@@ -83,17 +84,36 @@ test("light text accents are as vivid as the contrast floor allows", () => {
     }
 });
 
-test("solid roles are opaque", () => {
+test("tints, solid() and tint() are opaque; wash() is translucent", () => {
     for (const mode of allModes()) {
         const r = mode.roles;
         for (const hex of [
-            r.selectionSolid,
-            r.selectionInactiveSolid,
-            r.findMatchSolid,
-            r.addedTint,
+            solid(r.selection, r.bg),
+            tint(mode.accents.green, "subtle", r.bg),
             ...Object.values(mode.tints),
         ]) {
             assert.equal(hex.length, 7, `${mode.id} ${hex}`);
+        }
+        assert.equal(wash(r.fg, "soft").length, 9);
+    }
+});
+
+test("levels are ordered and the stored palette uses them", () => {
+    const values = Object.values(LEVELS);
+    assert.deepEqual(
+        [...values].sort((a, b) => a - b),
+        values,
+    );
+    assert.equal(palette.modes.dark.roles.selection, wash(palette.modes.dark.accents.red, "soft"));
+});
+
+test("ansi dim keeps hue and sits between the color and bg", () => {
+    for (const mode of allModes()) {
+        const {l: bgL} = oklch(mode.roles.bg);
+        for (const k of ["red", "green", "blue"] as const) {
+            const c = oklch(mode.ansi[k]).l;
+            const d = oklch(mode.ansiDim[k]).l;
+            assert.ok((d - bgL) * (c - bgL) > 0 && Math.abs(d - bgL) < Math.abs(c - bgL), `${mode.id} ${k}`);
         }
     }
 });

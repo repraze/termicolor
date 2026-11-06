@@ -1,5 +1,6 @@
-import {alpha, flatten, type Hex, mix} from "./color.ts";
+import {alpha, type Hex, mix} from "./color.ts";
 import {type AccentSet, deriveDark, deriveLight} from "./derive.ts";
+import {wash} from "./levels.ts";
 import {type AccentName, ACCENTS, DEFAULT_ACCENT, type ModeName, NEUTRALS, RULES} from "./seeds.ts";
 
 /** Semantic roles. Ports should map these, not raw neutrals. */
@@ -30,10 +31,6 @@ export type Roles = {
     findMatch: Hex; // translucent - other matches
     focusRing: Hex; // translucent
     shadow: Hex; // translucent
-    // opaque versions for targets without alpha (terminals, TUIs): flattened over bg
-    selectionSolid: Hex;
-    selectionInactiveSolid: Hex;
-    findMatchSolid: Hex;
     // the current / focused search match: a solid fill, never just a stronger wash
     matchActive: Hex;
     onMatchActive: Hex;
@@ -57,12 +54,6 @@ export type Roles = {
     renamed: Hex;
     conflict: Hex;
     ignored: Hex;
-    // diff backgrounds (opaque): line tint and inline-word strong tint
-    addedTint: Hex;
-    removedTint: Hex;
-    modifiedTint: Hex;
-    addedTintStrong: Hex;
-    removedTintStrong: Hex;
 };
 
 /** File kinds for ls / eza / file trees. */
@@ -153,18 +144,16 @@ export type Mode = {
     onFill: AccentSet;
     /** Tint tier: opaque washes behind fg text (badges, diff lines, selected rows). */
     tints: AccentSet;
-    /** Stronger tint (inline diff words, current line). */
-    tintsStrong: AccentSet;
     /** ANSI 9-14 and hover states. */
     brights: AccentSet;
-    /** ANSI faint / dim text. */
-    dims: AccentSet;
     neutrals: typeof NEUTRALS;
     /** Accent-dependent roles (`accent`, `cursor`, `selection`, ...) are those of the palette's accent. */
     roles: Roles;
     /** The accent-dependent roles for every accent, to switch accent without rebuilding. */
     accentRoles: Record<AccentName, AccentRoles>;
     ansi: Ansi;
+    /** ANSI faint/dim (SGR 2): every slot pulled toward bg by one rule. */
+    ansiDim: Ansi;
     syntax: Syntax;
     files: Files;
 };
@@ -273,15 +262,13 @@ export const ACCENT_ROLES = [
     "selection",
     "selectionInactive",
     "focusRing",
-    "selectionSolid",
-    "selectionInactiveSolid",
     "tabIndicator",
 ] as const satisfies readonly (keyof Roles)[];
 export type AccentRoles = Pick<Roles, (typeof ACCENT_ROLES)[number]>;
 
 function accentRolesFor(
     n: AccentName,
-    t: {a: AccentSet; on: AccentSet; tints: AccentSet; brights: AccentSet; bg: Hex},
+    t: {a: AccentSet; on: AccentSet; tints: AccentSet; brights: AccentSet},
 ): AccentRoles {
     return {
         accent: t.a[n],
@@ -289,11 +276,9 @@ function accentRolesFor(
         accentTint: t.tints[n],
         accentBright: t.brights[n],
         cursor: t.a[n],
-        selection: alpha(t.a[n], 0.3),
-        selectionInactive: alpha(t.a[n], 0.15),
-        focusRing: alpha(t.a[n], 0.6),
-        selectionSolid: flatten(alpha(t.a[n], 0.3), t.bg),
-        selectionInactiveSolid: flatten(alpha(t.a[n], 0.15), t.bg),
+        selection: wash(t.a[n], "soft"),
+        selectionInactive: wash(t.a[n], "subtle"),
+        focusRing: wash(t.a[n], "strong"),
         tabIndicator: t.a[n],
     };
 }
@@ -302,16 +287,13 @@ function buildMode(name: ModeName, contrast: Contrast, accent: AccentName): Mode
     const {accents: a, brights, on, fills, onFill} = name === "dark" ? deriveDark() : deriveLight();
     const s = (contrast === "high" ? HC_SURFACES : SURFACES)[name];
     const tints = mapAccents((n) => mix(s.bg, a[n], RULES.tint[name]));
-    const tintsStrong = mapAccents((n) => mix(s.bg, a[n], RULES.tintStrong[name]));
-    const dims = mapAccents((n) => mix(a[n], s.bg, RULES.dim));
-    const byAccent = mapAccentRoles((n) => accentRolesFor(n, {a, on, tints, brights, bg: s.bg}));
+    const byAccent = mapAccentRoles((n) => accentRolesFor(n, {a, on, tints, brights}));
     const roles: Roles = {
         ...s,
         ...byAccent[accent],
-        bgHover: alpha(s.fg, name === "dark" ? 0.06 : 0.05),
-        findMatch: alpha(a.orange, 0.4),
+        bgHover: wash(s.fg, "faint"),
+        findMatch: wash(a.orange, "medium"),
         shadow: alpha(N[1000], name === "dark" ? 0.5 : 0.15),
-        findMatchSolid: flatten(alpha(a.orange, 0.4), s.bg),
         matchActive: fills.orange,
         onMatchActive: onFill.orange,
         titlebar: s.bgSunken,
@@ -330,11 +312,6 @@ function buildMode(name: ModeName, contrast: Contrast, accent: AccentName): Mode
         renamed: a.cyan,
         conflict: a.orange,
         ignored: s.fgMuted,
-        addedTint: tints.green,
-        removedTint: tints.red,
-        modifiedTint: tints.blue,
-        addedTintStrong: tintsStrong.green,
-        removedTintStrong: tintsStrong.red,
     };
     const ansi: Ansi = {
         ...ANSI_NEUTRALS[name],
@@ -404,13 +381,12 @@ function buildMode(name: ModeName, contrast: Contrast, accent: AccentName): Mode
         fills,
         onFill,
         tints,
-        tintsStrong,
         brights,
-        dims,
         neutrals: NEUTRALS,
         roles,
         accentRoles: byAccent,
         ansi,
+        ansiDim: Object.fromEntries(Object.entries(ansi).map(([k, v]) => [k, mix(v, s.bg, RULES.dim)])) as Ansi,
         syntax,
         files,
     };

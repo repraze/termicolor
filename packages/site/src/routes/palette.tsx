@@ -37,7 +37,7 @@ function ModeSection({mode}: {mode: Mode}) {
         <ModeScope mode={mode} className="bg-card flex flex-col gap-4 border p-4" data-testid={`mode-${mode.id}`}>
             <h2 className="text-lg font-bold">{MODE_LABELS[mode.id]}</h2>
 
-            <Group title="Accent tiers · fill · text · tint · bright · dim">
+            <Group title="Accent tiers · fill · text · tint · bright">
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                     {ACCENTS.map((name) => (
                         <div key={name} className="flex flex-col">
@@ -48,11 +48,6 @@ function ModeSection({mode}: {mode: Mode}) {
                                 hex={mode.brights[name]}
                                 label="bright"
                                 text={readable(mode.brights[name], r, mode.on[name])}
-                            />
-                            <Swatch
-                                hex={mode.dims[name]}
-                                label="dim"
-                                text={readable(mode.dims[name], r, "#000000", "#ffffff")}
                             />
                         </div>
                     ))}
@@ -69,7 +64,7 @@ function ModeSection({mode}: {mode: Mode}) {
                 </div>
             </Group>
 
-            <Group title="ANSI 16">
+            <Group title="ANSI 16 · dim">
                 <div className="grid grid-cols-8">
                     {Object.entries(mode.ansi).map(([name, hex]) => (
                         <Swatch
@@ -77,6 +72,14 @@ function ModeSection({mode}: {mode: Mode}) {
                             hex={hex}
                             label={String(Object.keys(mode.ansi).indexOf(name))}
                             text={readable(hex, r)}
+                        />
+                    ))}
+                    {Object.entries(mode.ansiDim).map(([name, hex]) => (
+                        <Swatch
+                            key={`dim-${name}`}
+                            hex={hex}
+                            label="dim"
+                            text={readable(hex, r, "#000000", "#ffffff")}
                         />
                     ))}
                 </div>

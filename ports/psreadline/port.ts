@@ -1,5 +1,5 @@
 import {definePort} from "@termicolor/build";
-import {type Hex, type Mode, rgb} from "@termicolor/palette";
+import {type Hex, type Mode, rgb, solid} from "@termicolor/palette";
 
 /** 24-bit SGR body, e.g. `38;2;255;76;130`. */
 function sgr(hex: Hex, layer: "fg" | "bg" = "fg"): string {
@@ -30,7 +30,7 @@ function script(mode: Mode): string {
         ["Emphasis", esc(sgr(r.accent), "1")],
         ["Error", esc(sgr(r.danger))],
         ["ContinuationPrompt", esc(sgr(r.fgMuted))],
-        ["Selection", esc(sgr(r.fg), sgr(r.selectionSolid, "bg"))],
+        ["Selection", esc(sgr(r.fg), sgr(solid(r.selection, r.bg), "bg"))],
     ];
     const v21: Entry[] = [["InlinePrediction", esc(sgr(r.fgMuted))]];
     const v22: Entry[] = [

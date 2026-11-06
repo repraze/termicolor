@@ -1,5 +1,5 @@
 import {definePort} from "@termicolor/build";
-import type {Mode} from "@termicolor/palette";
+import {type Mode, tint} from "@termicolor/palette";
 
 import {tokenColors} from "../vscode/token-colors.ts";
 import {tmTheme} from "./tmtheme.ts";
@@ -58,14 +58,14 @@ function deltaFeature(mode: Mode): string {
     commit-style = "${a.yellow}"
     commit-decoration-style = "${r.borderStrong}" box ul
     zero-style = syntax
-    minus-style = syntax "${r.removedTint}"
-    minus-non-emph-style = syntax "${r.removedTint}"
-    minus-emph-style = syntax "${r.removedTintStrong}"
-    minus-empty-line-marker-style = syntax "${r.removedTint}"
-    plus-style = syntax "${r.addedTint}"
-    plus-non-emph-style = syntax "${r.addedTint}"
-    plus-emph-style = syntax "${r.addedTintStrong}"
-    plus-empty-line-marker-style = syntax "${r.addedTint}"
+    minus-style = syntax "${tint(a.red, "subtle", r.bg)}"
+    minus-non-emph-style = syntax "${tint(a.red, "subtle", r.bg)}"
+    minus-emph-style = syntax "${tint(a.red, "medium", r.bg)}"
+    minus-empty-line-marker-style = syntax "${tint(a.red, "subtle", r.bg)}"
+    plus-style = syntax "${tint(a.green, "subtle", r.bg)}"
+    plus-non-emph-style = syntax "${tint(a.green, "subtle", r.bg)}"
+    plus-emph-style = syntax "${tint(a.green, "medium", r.bg)}"
+    plus-empty-line-marker-style = syntax "${tint(a.green, "subtle", r.bg)}"
     whitespace-error-style = reverse "${r.danger}"
     line-numbers-minus-style = "${r.removed}"
     line-numbers-plus-style = "${r.added}"

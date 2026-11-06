@@ -1,5 +1,5 @@
 import {definePort} from "@termicolor/build";
-import {DEFAULT_ACCENT, type Hex, type Mode} from "@termicolor/palette";
+import {DEFAULT_ACCENT, type Hex, type Mode, solid} from "@termicolor/palette";
 
 type Gradient = [start: Hex, mid: Hex, end: Hex];
 
@@ -15,7 +15,7 @@ function theme(mode: Mode): string {
         ["Main text color", line("main_fg", r.fg)],
         ["Title color for boxes", line("title", r.fg)],
         ["Highlight color for keyboard shortcuts", line("hi_fg", r.accent)],
-        ["Background color of selected item in processes box", line("selected_bg", r.selectionSolid)],
+        ["Background color of selected item in processes box", line("selected_bg", solid(r.selection, r.bg))],
         ["Foreground color of selected item in processes box", line("selected_fg", r.fg)],
         ["Color of inactive/disabled text", line("inactive_fg", r.fgMuted)],
         [

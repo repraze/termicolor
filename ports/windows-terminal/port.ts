@@ -1,5 +1,5 @@
 import {definePort, json} from "@termicolor/build";
-import type {Mode} from "@termicolor/palette";
+import {type Mode, solid} from "@termicolor/palette";
 
 const upper = (hex: string) => hex.toUpperCase();
 
@@ -10,7 +10,7 @@ function scheme({type, roles: r, ansi}: Mode) {
         foreground: upper(r.fg),
         cursorColor: upper(r.cursor),
         // WT draws the selection with its own translucency; give it the opaque tint.
-        selectionBackground: upper(r.selectionSolid),
+        selectionBackground: upper(solid(r.selection, r.bg)),
         black: upper(ansi.black),
         red: upper(ansi.red),
         green: upper(ansi.green),

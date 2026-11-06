@@ -42,15 +42,13 @@ One accent drives every interactive role: `accent`, `onAccent`, `accentTint`, `a
 Eight accents: `red orange yellow green cyan blue purple pink`. Each one comes in tiers. Pick the
 tier by **what sits on top of it**.
 
-| Tier        | Name in palette | Use for                                                                             | Guarantee                        |
-| ----------- | --------------- | ----------------------------------------------------------------------------------- | -------------------------------- |
-| **text**    | `accents`       | colored text, icons, links, syntax, borders, indicators                             | ≥ 4.5:1 on `bg`                  |
-| **fill**    | `fills`         | vivid solid surfaces: buttons, badges, swatches, powerline segments, active matches | text on it is `onFill`, ≥ 4.5:1  |
-| on accent   | `on`            | text on an `accents` surface, when a slot must reuse the text color as a fill       | ≥ 4.5:1                          |
-| **tint**    | `tints`         | opaque wash behind **`fg`** text: soft badges, diff lines, selected list rows       | `fg` on it ≥ 12:1                |
-| tint strong | `tintsStrong`   | inline diff words, current line, emphasised rows                                    | `fg` on it ≥ 7:1                 |
-| bright      | `brights`       | ANSI 9–14, hover states of accent-colored elements                                  | none (decorative)                |
-| dim         | `dims`          | ANSI faint/dim text, de-emphasised accents                                          | ≥ 2:1 (never for essential text) |
+| Tier      | Name in palette | Use for                                                                             | Guarantee                       |
+| --------- | --------------- | ----------------------------------------------------------------------------------- | ------------------------------- |
+| **text**  | `accents`       | colored text, icons, links, syntax, borders, indicators                             | ≥ 4.5:1 on `bg`                 |
+| **fill**  | `fills`         | vivid solid surfaces: buttons, badges, swatches, powerline segments, active matches | text on it is `onFill`, ≥ 4.5:1 |
+| on accent | `on`            | text on an `accents` surface, when a slot must reuse the text color as a fill       | ≥ 4.5:1                         |
+| **tint**  | `tints`         | opaque wash behind **`fg`** text: soft badges, diff lines, selected list rows       | `fg` on it ≥ 12:1               |
+| bright    | `brights`       | ANSI 9–14, hover states of accent-colored elements                                  | none (decorative)               |
 
 Rules:
 
@@ -90,15 +88,14 @@ Small essential text (< 18px) is never `fgMuted` in normal modes. Use `fgSoft`.
 
 ## 6. Interaction and state
 
-| Role                                        | Use                                                                              |
-| ------------------------------------------- | -------------------------------------------------------------------------------- |
-| `accent` / `onAccent`                       | the one interactive color (the theme accent, §2): primary buttons, focus, cursor |
-| `accentTint`                                | highlighted menu item, selected list row (with `fg` text)                        |
-| `focusRing`                                 | keyboard focus outline (translucent accent)                                      |
-| `selection` / `selectionInactive`           | text selection, when the target supports alpha                                   |
-| `selectionSolid` / `selectionInactiveSolid` | the same, flattened over `bg`, for terminals and TUIs                            |
-| `findMatch` / `findMatchSolid`              | other search matches (a wash)                                                    |
-| `matchActive` / `onMatchActive`             | the current match: a **solid fill**, never just a stronger wash                  |
+| Role                              | Use                                                                              |
+| --------------------------------- | -------------------------------------------------------------------------------- |
+| `accent` / `onAccent`             | the one interactive color (the theme accent, §2): primary buttons, focus, cursor |
+| `accentTint`                      | highlighted menu item, selected list row (with `fg` text)                        |
+| `focusRing`                       | keyboard focus outline (translucent accent)                                      |
+| `selection` / `selectionInactive` | text selection (translucent; `solid(r.selection, r.bg)` without alpha)           |
+| `findMatch`                       | other search matches (a medium wash)                                             |
+| `matchActive` / `onMatchActive`   | the current match: a **solid fill**, never just a stronger wash                  |
 
 State checklist for any component:
 
@@ -124,8 +121,8 @@ Every app themes tabs the same way: the active tab looks like the content it ope
 `danger` red · `warning` yellow · `success` green · `info` blue · `hint` cyan.
 `added` green · `removed` red · `modified` blue · `renamed` cyan · `conflict` orange · `ignored` muted.
 
-Diff backgrounds are tints: `addedTint` / `removedTint` / `modifiedTint` for lines, and
-`addedTintStrong` / `removedTintStrong` for the changed words inside them.
+Diff backgrounds are derived, not stored (§13): lines are `tint(a.green|a.red|a.blue, "subtle", r.bg)`
+and changed words inside them `"medium"`. Translucent targets use `wash(..., "subtle" | "medium")`.
 
 ## 9. Syntax
 
@@ -156,10 +153,40 @@ For `ls`, eza, file trees and pickers: `directory` blue · `symlink` cyan · `br
 ## 11. ANSI
 
 ANSI 1–6 are the text accents (magenta = purple), 9–14 the brights, and the neutrals come from
-`ansi`. Terminals that support dim/faint use `dims`. A port maps ANSI from `mode.ansi`, never by
+`ansi`. Terminals that support dim/faint (SGR 2) use `ansiDim`: every slot pulled toward `bg` by
+one rule (`RULES.dim`), so dim red is still red and dim white is still the lightest neutral. A port maps ANSI from `mode.ansi`, never by
 re-picking accents.
 
-## 12. Alpha
+## 12. What the palette stores, and what it doesn't
 
-Translucent roles (`selection`, `findMatch`, `focusRing`, `bgHover`, `shadow`) are 8-digit hex.
-When the target has no alpha, use the `*Solid` role or a tint. Don't flatten in the port.
+The palette stores **choices**: seeds, the tiers (§3), semantic roles, ANSI (+ dim), syntax and files.
+Everything else is a **derivation** of a stored color at a named level (§13), computed where it's
+needed. The palette doesn't grow a role for every overlay an app happens to have.
+
+Add a role only when it's a decision (which color means "current match"?), not a strength (how
+see-through is a word highlight?). Strength is always a level.
+
+## 13. Derived colors: levels
+
+```ts
+import {LEVELS, solid, tint, wash} from "@termicolor/palette";
+```
+
+| Level    | Value | Typical use                                     |
+| -------- | ----- | ----------------------------------------------- |
+| `faint`  | 0.06  | hover washes, barely-there highlights           |
+| `subtle` | 0.15  | inactive selection, line highlights, diff lines |
+| `soft`   | 0.30  | selection, word highlights                      |
+| `medium` | 0.45  | search matches, changed diff words              |
+| `strong` | 0.60  | focus rings, emphasis overlays                  |
+
+- `wash(color, level)`: a translucent color, for targets that composite (VS Code, browsers).
+- `solid(translucent, over)`: a translucent role laid over a surface, for targets without alpha
+  (terminals, TUIs): `solid(r.selection, r.bg)`.
+- `tint(color, level, over)`: an opaque blend, e.g. diff lines in delta.
+
+The stored translucent roles (`selection` = soft, `selectionInactive` = subtle, `findMatch` = medium,
+`focusRing` = strong, `bgHover` = faint) use the same levels. `ports/roles.test.ts` fails if a port
+imports raw color math (`alpha`, `mix`, `flatten`) or passes a number where a level name belongs.
+
+In CSS, use `color-mix(in oklab, var(--tc-red) 15%, transparent)` with the same percentages.

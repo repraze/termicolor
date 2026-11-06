@@ -23,7 +23,7 @@
 				<key>invisibles</key>
 				<string>#a3a3a3</string>
 				<key>lineHighlight</key>
-				<string>#f0f0f0</string>
+				<string>#eeeeee</string>
 				<key>selection</key>
 				<string>#ffc3ce</string>
 				<key>selectionBorder</key>
@@ -31,7 +31,7 @@
 				<key>inactiveSelection</key>
 				<string>#ffe1e6</string>
 				<key>findHighlight</key>
-				<string>#e8bca4</string>
+				<string>#e5b399</string>
 				<key>findHighlightForeground</key>
 				<string>#0a0a0a</string>
 				<key>gutter</key>

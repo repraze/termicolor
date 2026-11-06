@@ -1,0 +1,31 @@
+import {expect, test} from "./fixtures";
+
+test("mobile: the menu sheet holds the nav and the ports tree", async ({page}) => {
+    await page.setViewportSize({width: 390, height: 844});
+    await page.goto("ports");
+    await expect(page.getByRole("complementary")).toBeHidden(); // desktop sidebar
+    await page.getByRole("button", {name: "Menu"}).click();
+    const sheet = page.getByRole("dialog");
+    await expect(sheet.getByRole("link", {name: "Palette"})).toBeVisible();
+    await sheet.getByRole("link", {name: "kitty"}).click();
+    await expect(page).toHaveURL(/ports\/kitty$/);
+    await expect(sheet).toBeHidden();
+});
+
+test("header stays on screen while scrolling", async ({page}) => {
+    await page.goto("palette");
+    await page.mouse.wheel(0, 3000);
+    await expect(page.locator("header").first()).toBeInViewport();
+});
+
+test("desktop: a long sidebar scrolls with the page, then its end stays reachable", async ({page}) => {
+    await page.setViewportSize({width: 1280, height: 500});
+    await page.goto("ports");
+    const sidebar = page.getByRole("complementary");
+    await expect(page.getByText("Alacritty").last()).toBeVisible();
+    for (let i = 0; i < 10; i++) {
+        await page.mouse.wheel(0, 400);
+    }
+    const last = sidebar.getByRole("button").last();
+    await expect(last).toBeInViewport();
+});

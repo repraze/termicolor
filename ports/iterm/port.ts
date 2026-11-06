@@ -1,5 +1,5 @@
 import {definePort} from "@termicolor/build";
-import {type Hex, type Mode, rgb} from "@termicolor/palette";
+import {type Hex, type Mode, rgb, solid} from "@termicolor/palette";
 
 const ANSI_ORDER = [
     "black",
@@ -30,7 +30,7 @@ function colors({ansi, roles: r}: Mode): [string, Hex, number?][] {
         ["Cursor Color", r.cursor],
         ["Cursor Text Color", r.onAccent],
         // iTerm2 paints the selection opaque, so use the solid selection.
-        ["Selection Color", r.selectionSolid],
+        ["Selection Color", solid(r.selection, r.bg)],
         ["Selected Text Color", r.fg],
         ["Link Color", r.info],
         ["Badge Color", r.accent, 0.5],

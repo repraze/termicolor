@@ -1,5 +1,5 @@
 import {definePort} from "@termicolor/build";
-import type {Mode} from "@termicolor/palette";
+import {type Mode, solid} from "@termicolor/palette";
 
 type Table = [string, [string, string][]];
 
@@ -9,19 +9,9 @@ const bright = (name: (typeof ANSI_NAMES)[number]) =>
     `bright${name.charAt(0).toUpperCase()}${name.slice(1)}` as `bright${Capitalize<typeof name>}`;
 
 function theme(mode: Mode): string {
-    const {roles: r, accents: a, on, fills, onFill, ansi, dims} = mode;
-    // Alacritty colors are opaque `#rrggbb`: use the `*Solid` roles.
-    const dim: Record<(typeof ANSI_NAMES)[number], string> = {
-        // no dim neutral roles: black is already the darkest, white dims to muted text
-        black: ansi.black,
-        red: dims.red,
-        green: dims.green,
-        yellow: dims.yellow,
-        blue: dims.blue,
-        magenta: dims.purple,
-        cyan: dims.cyan,
-        white: r.fgMuted,
-    };
+    const {roles: r, accents: a, on, fills, onFill, ansi, ansiDim} = mode;
+    // Alacritty colors are opaque `#rrggbb`: translucent roles go through `solid()`.
+    const dim = ansiDim;
     const tables: Table[] = [
         [
             "colors.primary",
@@ -49,7 +39,7 @@ function theme(mode: Mode): string {
             "colors.search.matches",
             [
                 ["foreground", r.fg],
-                ["background", r.findMatchSolid],
+                ["background", solid(r.findMatch, r.bg)],
             ],
         ],
         [
@@ -92,7 +82,7 @@ function theme(mode: Mode): string {
             [
                 // keep each cell's own color inside the selection
                 ["text", "CellForeground"],
-                ["background", r.selectionSolid],
+                ["background", solid(r.selection, r.bg)],
             ],
         ],
         ["colors.normal", ANSI_NAMES.map((name) => [name, ansi[name]])],

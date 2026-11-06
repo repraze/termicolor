@@ -641,218 +641,6 @@
                     }
                 }
             },
-            "tintsStrong": {
-                "red": {
-                    "hex": "#5a2c36",
-                    "rgb": {
-                        "r": 90,
-                        "g": 44,
-                        "b": 54
-                    },
-                    "oklch": {
-                        "l": 0.3574123979223582,
-                        "c": 0.06819122879711548,
-                        "h": 7.298920737130983
-                    }
-                },
-                "orange": {
-                    "hex": "#593c29",
-                    "rgb": {
-                        "r": 89,
-                        "g": 60,
-                        "b": 41
-                    },
-                    "oklch": {
-                        "l": 0.38448813985240193,
-                        "c": 0.05089692420285523,
-                        "h": 53.85777788270642
-                    }
-                },
-                "yellow": {
-                    "hex": "#544827",
-                    "rgb": {
-                        "r": 84,
-                        "g": 72,
-                        "b": 39
-                    },
-                    "oklch": {
-                        "l": 0.4055307818904535,
-                        "c": 0.051723866625553484,
-                        "h": 90.03256662895882
-                    }
-                },
-                "green": {
-                    "hex": "#2b503f",
-                    "rgb": {
-                        "r": 43,
-                        "g": 80,
-                        "b": 63
-                    },
-                    "oklch": {
-                        "l": 0.3979325230661685,
-                        "c": 0.051955689813689004,
-                        "h": 162.9406202165093
-                    }
-                },
-                "cyan": {
-                    "hex": "#2b5052",
-                    "rgb": {
-                        "r": 43,
-                        "g": 80,
-                        "b": 82
-                    },
-                    "oklch": {
-                        "l": 0.4045787041472167,
-                        "c": 0.04256859903354348,
-                        "h": 200.11338123042884
-                    }
-                },
-                "blue": {
-                    "hex": "#293b59",
-                    "rgb": {
-                        "r": 41,
-                        "g": 59,
-                        "b": 89
-                    },
-                    "oklch": {
-                        "l": 0.35155098063145057,
-                        "c": 0.057665362380602006,
-                        "h": 260.2575257921031
-                    }
-                },
-                "purple": {
-                    "hex": "#453559",
-                    "rgb": {
-                        "r": 69,
-                        "g": 53,
-                        "b": 89
-                    },
-                    "oklch": {
-                        "l": 0.3627096161365795,
-                        "c": 0.06350709835258204,
-                        "h": 303.84512448547935
-                    }
-                },
-                "pink": {
-                    "hex": "#5a304d",
-                    "rgb": {
-                        "r": 90,
-                        "g": 48,
-                        "b": 77
-                    },
-                    "oklch": {
-                        "l": 0.37347653516705287,
-                        "c": 0.07374955790520428,
-                        "h": 339.76677104807493
-                    }
-                }
-            },
-            "dims": {
-                "red": {
-                    "hex": "#9b3b54",
-                    "rgb": {
-                        "r": 155,
-                        "g": 59,
-                        "b": 84
-                    },
-                    "oklch": {
-                        "l": 0.4919304127822066,
-                        "c": 0.1296942445209808,
-                        "h": 7.120186570417756
-                    }
-                },
-                "orange": {
-                    "hex": "#9a5e35",
-                    "rgb": {
-                        "r": 154,
-                        "g": 94,
-                        "b": 53
-                    },
-                    "oklch": {
-                        "l": 0.5405358886738,
-                        "c": 0.09636475037411839,
-                        "h": 53.535514742514664
-                    }
-                },
-                "yellow": {
-                    "hex": "#92782d",
-                    "rgb": {
-                        "r": 146,
-                        "g": 120,
-                        "b": 45
-                    },
-                    "oklch": {
-                        "l": 0.5828025497499112,
-                        "c": 0.09813716496205777,
-                        "h": 89.66887893724883
-                    }
-                },
-                "green": {
-                    "hex": "#358866",
-                    "rgb": {
-                        "r": 53,
-                        "g": 136,
-                        "b": 102
-                    },
-                    "oklch": {
-                        "l": 0.5662686460015243,
-                        "c": 0.09692422397564432,
-                        "h": 163.2786823362127
-                    }
-                },
-                "cyan": {
-                    "hex": "#34888e",
-                    "rgb": {
-                        "r": 52,
-                        "g": 136,
-                        "b": 142
-                    },
-                    "oklch": {
-                        "l": 0.5788601427675643,
-                        "c": 0.07998569930724161,
-                        "h": 201.79106600429213
-                    }
-                },
-                "blue": {
-                    "hex": "#385d9a",
-                    "rgb": {
-                        "r": 56,
-                        "g": 93,
-                        "b": 154
-                    },
-                    "oklch": {
-                        "l": 0.4811706326572693,
-                        "c": 0.10757105349587073,
-                        "h": 259.8954758702278
-                    }
-                },
-                "purple": {
-                    "hex": "#735199",
-                    "rgb": {
-                        "r": 115,
-                        "g": 81,
-                        "b": 153
-                    },
-                    "oklch": {
-                        "l": 0.5028513069430891,
-                        "c": 0.11590223296467518,
-                        "h": 304.3509076450578
-                    }
-                },
-                "pink": {
-                    "hex": "#9a4481",
-                    "rgb": {
-                        "r": 154,
-                        "g": 68,
-                        "b": 129
-                    },
-                    "oklch": {
-                        "l": 0.5189852450039353,
-                        "c": 0.1368755031200414,
-                        "h": 340.025037191779
-                    }
-                }
-            },
             "files": {
                 "directory": "#4d91ff",
                 "symlink": "#2edfeb",
@@ -877,8 +665,6 @@
                     "selection": "#ff4c824d",
                     "selectionInactive": "#ff4c8226",
                     "focusRing": "#ff4c8299",
-                    "selectionSolid": "#562b34",
-                    "selectionInactiveSolid": "#362125",
                     "tabIndicator": "#ff4c82"
                 },
                 "orange": {
@@ -890,8 +676,6 @@
                     "selection": "#ff92434d",
                     "selectionInactive": "#ff924326",
                     "focusRing": "#ff924399",
-                    "selectionSolid": "#553928",
-                    "selectionInactiveSolid": "#342820",
                     "tabIndicator": "#ff9243"
                 },
                 "yellow": {
@@ -903,8 +687,6 @@
                     "selection": "#f2c2244d",
                     "selectionInactive": "#f2c22426",
                     "focusRing": "#f2c22499",
-                    "selectionSolid": "#514526",
-                    "selectionInactiveSolid": "#322d1f",
                     "tabIndicator": "#f2c224"
                 },
                 "green": {
@@ -916,8 +698,6 @@
                     "selection": "#35e0a34d",
                     "selectionInactive": "#35e0a326",
                     "focusRing": "#35e0a399",
-                    "selectionSolid": "#2a4c3d",
-                    "selectionInactiveSolid": "#213029",
                     "tabIndicator": "#35e0a3"
                 },
                 "cyan": {
@@ -929,8 +709,6 @@
                     "selection": "#2edfeb4d",
                     "selectionInactive": "#2edfeb26",
                     "focusRing": "#2edfeb99",
-                    "selectionSolid": "#2a4c4f",
-                    "selectionInactiveSolid": "#213031",
                     "tabIndicator": "#2edfeb"
                 },
                 "blue": {
@@ -942,8 +720,6 @@
                     "selection": "#4d91ff4d",
                     "selectionInactive": "#4d91ff26",
                     "focusRing": "#4d91ff99",
-                    "selectionSolid": "#283955",
-                    "selectionInactiveSolid": "#202834",
                     "tabIndicator": "#4d91ff"
                 },
                 "purple": {
@@ -955,8 +731,6 @@
                     "selection": "#bb7aff4d",
                     "selectionInactive": "#bb7aff26",
                     "focusRing": "#bb7aff99",
-                    "selectionSolid": "#433455",
-                    "selectionInactiveSolid": "#2c2534",
                     "tabIndicator": "#bb7aff"
                 },
                 "pink": {
@@ -968,8 +742,6 @@
                     "selection": "#ff60d44d",
                     "selectionInactive": "#ff60d426",
                     "focusRing": "#ff60d499",
-                    "selectionSolid": "#562f49",
-                    "selectionInactiveSolid": "#35232f",
                     "tabIndicator": "#ff60d4"
                 }
             },
@@ -1164,13 +936,10 @@
                 "selection": "#ff4c824d",
                 "selectionInactive": "#ff4c8226",
                 "focusRing": "#ff4c8299",
-                "selectionSolid": "#562b34",
-                "selectionInactiveSolid": "#362125",
                 "tabIndicator": "#ff4c82",
                 "bgHover": "#fafafa0f",
-                "findMatch": "#ff924366",
+                "findMatch": "#ff924373",
                 "shadow": "#00000080",
-                "findMatchSolid": "#6b452d",
                 "matchActive": "#ff9243",
                 "onMatchActive": "#241004",
                 "titlebar": "#0a0a0a",
@@ -1188,12 +957,7 @@
                 "modified": "#4d91ff",
                 "renamed": "#2edfeb",
                 "conflict": "#ff9243",
-                "ignored": "#737373",
-                "addedTint": "#22322a",
-                "removedTint": "#382226",
-                "modifiedTint": "#202937",
-                "addedTintStrong": "#2b503f",
-                "removedTintStrong": "#5a2c36"
+                "ignored": "#737373"
             },
             "ansi": {
                 "black": "#404040",
@@ -1212,6 +976,24 @@
                 "brightBlue": "#6fa6ff",
                 "brightMagenta": "#c898ff",
                 "brightCyan": "#4ff3ff"
+            },
+            "ansiDim": {
+                "black": "#2f2f2f",
+                "white": "#818181",
+                "brightBlack": "#4c4c4c",
+                "brightWhite": "#999999",
+                "red": "#9b3b54",
+                "green": "#358866",
+                "yellow": "#92782d",
+                "blue": "#385d9a",
+                "magenta": "#735199",
+                "cyan": "#34888e",
+                "brightRed": "#9a5161",
+                "brightGreen": "#419371",
+                "brightYellow": "#99844a",
+                "brightBlue": "#4a6899",
+                "brightMagenta": "#7b6199",
+                "brightCyan": "#409299"
             },
             "syntax": {
                 "keyword": "#bb7aff",
@@ -1881,218 +1663,6 @@
                     }
                 }
             },
-            "tintsStrong": {
-                "red": {
-                    "hex": "#ffcbd4",
-                    "rgb": {
-                        "r": 255,
-                        "g": 203,
-                        "b": 212
-                    },
-                    "oklch": {
-                        "l": 0.8900163567999352,
-                        "c": 0.05995137786382979,
-                        "h": 6.739086164372048
-                    }
-                },
-                "orange": {
-                    "hex": "#f1d3c4",
-                    "rgb": {
-                        "r": 241,
-                        "g": 211,
-                        "b": 196
-                    },
-                    "oklch": {
-                        "l": 0.8879135156741293,
-                        "c": 0.039398614022977715,
-                        "h": 48.25495399237242
-                    }
-                },
-                "yellow": {
-                    "hex": "#e7d6c3",
-                    "rgb": {
-                        "r": 231,
-                        "g": 214,
-                        "b": 195
-                    },
-                    "oklch": {
-                        "l": 0.8848374690400335,
-                        "c": 0.031774213363221164,
-                        "h": 70.48898941862228
-                    }
-                },
-                "green": {
-                    "hex": "#c7ded2",
-                    "rgb": {
-                        "r": 199,
-                        "g": 222,
-                        "b": 210
-                    },
-                    "oklch": {
-                        "l": 0.8801415881419415,
-                        "c": 0.02944588183622188,
-                        "h": 163.1436602336447
-                    }
-                },
-                "cyan": {
-                    "hex": "#c7dddf",
-                    "rgb": {
-                        "r": 199,
-                        "g": 221,
-                        "b": 223
-                    },
-                    "oklch": {
-                        "l": 0.8818118020920551,
-                        "c": 0.023652689768439553,
-                        "h": 203.3555945415035
-                    }
-                },
-                "blue": {
-                    "hex": "#c3dbff",
-                    "rgb": {
-                        "r": 195,
-                        "g": 219,
-                        "b": 255
-                    },
-                    "oklch": {
-                        "l": 0.885401430193987,
-                        "c": 0.056163409105922754,
-                        "h": 258.36843006544126
-                    }
-                },
-                "purple": {
-                    "hex": "#e6d1ff",
-                    "rgb": {
-                        "r": 230,
-                        "g": 209,
-                        "b": 255
-                    },
-                    "oklch": {
-                        "l": 0.8923824776148269,
-                        "c": 0.06600067598962726,
-                        "h": 305.7668954199454
-                    }
-                },
-                "pink": {
-                    "hex": "#fbcbea",
-                    "rgb": {
-                        "r": 251,
-                        "g": 203,
-                        "b": 234
-                    },
-                    "oklch": {
-                        "l": 0.8927673852722542,
-                        "c": 0.06717312924972063,
-                        "h": 339.6740817858343
-                    }
-                }
-            },
-            "dims": {
-                "red": {
-                    "hex": "#f8869f",
-                    "rgb": {
-                        "r": 248,
-                        "g": 134,
-                        "b": 159
-                    },
-                    "oklch": {
-                        "l": 0.7516501701651833,
-                        "c": 0.1404371619268125,
-                        "h": 7.051868307425421
-                    }
-                },
-                "orange": {
-                    "hex": "#db9a77",
-                    "rgb": {
-                        "r": 219,
-                        "g": 154,
-                        "b": 119
-                    },
-                    "oklch": {
-                        "l": 0.7413233284494632,
-                        "c": 0.0918864176149498,
-                        "h": 49.156280996792894
-                    }
-                },
-                "yellow": {
-                    "hex": "#c8a277",
-                    "rgb": {
-                        "r": 200,
-                        "g": 162,
-                        "b": 119
-                    },
-                    "oklch": {
-                        "l": 0.7365135236327953,
-                        "c": 0.07321024034867377,
-                        "h": 69.76164729066369
-                    }
-                },
-                "green": {
-                    "hex": "#7db49a",
-                    "rgb": {
-                        "r": 125,
-                        "g": 180,
-                        "b": 154
-                    },
-                    "oklch": {
-                        "l": 0.7241220026013723,
-                        "c": 0.06921828639041928,
-                        "h": 163.6532975987141
-                    }
-                },
-                "cyan": {
-                    "hex": "#7db1b6",
-                    "rgb": {
-                        "r": 125,
-                        "g": 177,
-                        "b": 182
-                    },
-                    "oklch": {
-                        "l": 0.7257263267473735,
-                        "c": 0.05510345384731785,
-                        "h": 203.53365336966846
-                    }
-                },
-                "blue": {
-                    "hex": "#76aaff",
-                    "rgb": {
-                        "r": 118,
-                        "g": 170,
-                        "b": 255
-                    },
-                    "oklch": {
-                        "l": 0.7374725668401242,
-                        "c": 0.13581455005392143,
-                        "h": 259.84022595536555
-                    }
-                },
-                "purple": {
-                    "hex": "#c692ff",
-                    "rgb": {
-                        "r": 198,
-                        "g": 146,
-                        "b": 255
-                    },
-                    "oklch": {
-                        "l": 0.7517688432251909,
-                        "c": 0.15975998723359705,
-                        "h": 304.855938678998
-                    }
-                },
-                "pink": {
-                    "hex": "#ed85cd",
-                    "rgb": {
-                        "r": 237,
-                        "g": 133,
-                        "b": 205
-                    },
-                    "oklch": {
-                        "l": 0.7514646738545031,
-                        "c": 0.15319384175880912,
-                        "h": 339.7901453301183
-                    }
-                }
-            },
             "files": {
                 "directory": "#006af6",
                 "symlink": "#007f87",
@@ -2117,8 +1687,6 @@
                     "selection": "#e200644d",
                     "selectionInactive": "#e2006426",
                     "focusRing": "#e2006499",
-                    "selectionSolid": "#ffc3ce",
-                    "selectionInactiveSolid": "#ffe1e6",
                     "tabIndicator": "#e20064"
                 },
                 "orange": {
@@ -2130,8 +1698,6 @@
                     "selection": "#bb55004d",
                     "selectionInactive": "#bb550026",
                     "focusRing": "#bb550099",
-                    "selectionSolid": "#eeccba",
-                    "selectionInactiveSolid": "#f7e6dd",
                     "tabIndicator": "#bb5500"
                 },
                 "yellow": {
@@ -2143,8 +1709,6 @@
                     "selection": "#a165004d",
                     "selectionInactive": "#a1650026",
                     "focusRing": "#a1650099",
-                    "selectionSolid": "#e4d0ba",
-                    "selectionInactiveSolid": "#f2e7dd",
                     "tabIndicator": "#a16500"
                 },
                 "green": {
@@ -2156,8 +1720,6 @@
                     "selection": "#00835c4d",
                     "selectionInactive": "#00835c26",
                     "focusRing": "#00835c99",
-                    "selectionSolid": "#bed9cb",
-                    "selectionInactiveSolid": "#dfece5",
                     "tabIndicator": "#00835c"
                 },
                 "cyan": {
@@ -2169,8 +1731,6 @@
                     "selection": "#007f874d",
                     "selectionInactive": "#007f8726",
                     "focusRing": "#007f8799",
-                    "selectionSolid": "#bdd7da",
-                    "selectionInactiveSolid": "#dfebec",
                     "tabIndicator": "#007f87"
                 },
                 "blue": {
@@ -2182,8 +1742,6 @@
                     "selection": "#006af64d",
                     "selectionInactive": "#006af626",
                     "focusRing": "#006af699",
-                    "selectionSolid": "#bad5ff",
-                    "selectionInactiveSolid": "#ddebff",
                     "tabIndicator": "#006af6"
                 },
                 "purple": {
@@ -2195,8 +1753,6 @@
                     "selection": "#a331fb4d",
                     "selectionInactive": "#a331fb26",
                     "focusRing": "#a331fb99",
-                    "selectionSolid": "#e2c9ff",
-                    "selectionInactiveSolid": "#f1e5ff",
                     "tabIndicator": "#a331fb"
                 },
                 "pink": {
@@ -2208,8 +1764,6 @@
                     "selection": "#d400ab4d",
                     "selectionInactive": "#d400ab26",
                     "focusRing": "#d400ab99",
-                    "selectionSolid": "#fac3e6",
-                    "selectionInactiveSolid": "#fde1f3",
                     "tabIndicator": "#d400ab"
                 }
             },
@@ -2404,13 +1958,10 @@
                 "selection": "#e200644d",
                 "selectionInactive": "#e2006426",
                 "focusRing": "#e2006499",
-                "selectionSolid": "#ffc3ce",
-                "selectionInactiveSolid": "#ffe1e6",
                 "tabIndicator": "#e20064",
-                "bgHover": "#0a0a0a0d",
-                "findMatch": "#bb550066",
+                "bgHover": "#0a0a0a0f",
+                "findMatch": "#bb550073",
                 "shadow": "#00000026",
-                "findMatchSolid": "#e8bca4",
                 "matchActive": "#ff9243",
                 "onMatchActive": "#241004",
                 "titlebar": "#fafafa",
@@ -2428,12 +1979,7 @@
                 "modified": "#006af6",
                 "renamed": "#007f87",
                 "conflict": "#bb5500",
-                "ignored": "#737373",
-                "addedTint": "#e5f0ea",
-                "removedTint": "#ffe7eb",
-                "modifiedTint": "#e3efff",
-                "addedTintStrong": "#c7ded2",
-                "removedTintStrong": "#ffcbd4"
+                "ignored": "#737373"
             },
             "ansi": {
                 "black": "#262626",
@@ -2452,6 +1998,24 @@
                 "brightBlue": "#3885ff",
                 "brightMagenta": "#b262ff",
                 "brightCyan": "#2c949c"
+            },
+            "ansiDim": {
+                "black": "#757575",
+                "white": "#c7c7c7",
+                "brightBlack": "#939393",
+                "brightWhite": "#e5e5e5",
+                "red": "#f8869f",
+                "green": "#7db49a",
+                "yellow": "#c8a277",
+                "blue": "#76aaff",
+                "magenta": "#c692ff",
+                "cyan": "#7db1b6",
+                "brightRed": "#ff93ac",
+                "brightGreen": "#8ac1a7",
+                "brightYellow": "#d5af84",
+                "brightBlue": "#8ab9ff",
+                "brightMagenta": "#d0a5ff",
+                "brightCyan": "#8abec3"
             },
             "syntax": {
                 "keyword": "#a331fb",
@@ -3121,218 +2685,6 @@
                     }
                 }
             },
-            "tintsStrong": {
-                "red": {
-                    "hex": "#330815",
-                    "rgb": {
-                        "r": 51,
-                        "g": 8,
-                        "b": 21
-                    },
-                    "oklch": {
-                        "l": 0.219383572764,
-                        "c": 0.06936983258397827,
-                        "h": 6.726241723786541
-                    }
-                },
-                "orange": {
-                    "hex": "#331806",
-                    "rgb": {
-                        "r": 51,
-                        "g": 24,
-                        "b": 6
-                    },
-                    "oklch": {
-                        "l": 0.24366690594802215,
-                        "c": 0.05187378641644815,
-                        "h": 52.03885124784465
-                    }
-                },
-                "yellow": {
-                    "hex": "#302402",
-                    "rgb": {
-                        "r": 48,
-                        "g": 36,
-                        "b": 2
-                    },
-                    "oklch": {
-                        "l": 0.2671447623702574,
-                        "c": 0.052169684872809576,
-                        "h": 88.82028568343837
-                    }
-                },
-                "green": {
-                    "hex": "#042b1d",
-                    "rgb": {
-                        "r": 4,
-                        "g": 43,
-                        "b": 29
-                    },
-                    "oklch": {
-                        "l": 0.2579005371906588,
-                        "c": 0.050580539653196845,
-                        "h": 164.41082832845638
-                    }
-                },
-                "cyan": {
-                    "hex": "#032b2e",
-                    "rgb": {
-                        "r": 3,
-                        "g": 43,
-                        "b": 46
-                    },
-                    "oklch": {
-                        "l": 0.2642921130631559,
-                        "c": 0.04260618024857833,
-                        "h": 202.46385665556878
-                    }
-                },
-                "blue": {
-                    "hex": "#081833",
-                    "rgb": {
-                        "r": 8,
-                        "g": 24,
-                        "b": 51
-                    },
-                    "oklch": {
-                        "l": 0.21281653772085182,
-                        "c": 0.057622992861595626,
-                        "h": 260.086379898641
-                    }
-                },
-                "purple": {
-                    "hex": "#221333",
-                    "rgb": {
-                        "r": 34,
-                        "g": 19,
-                        "b": 51
-                    },
-                    "oklch": {
-                        "l": 0.2252196730052248,
-                        "c": 0.06189366730399264,
-                        "h": 303.4526197741575
-                    }
-                },
-                "pink": {
-                    "hex": "#330c28",
-                    "rgb": {
-                        "r": 51,
-                        "g": 12,
-                        "b": 40
-                    },
-                    "oklch": {
-                        "l": 0.23341053268693385,
-                        "c": 0.0736162314126723,
-                        "h": 340.608235216648
-                    }
-                }
-            },
-            "dims": {
-                "red": {
-                    "hex": "#80223e",
-                    "rgb": {
-                        "r": 128,
-                        "g": 34,
-                        "b": 62
-                    },
-                    "oklch": {
-                        "l": 0.40993247193799714,
-                        "c": 0.12925194284000738,
-                        "h": 7.115895447242276
-                    }
-                },
-                "orange": {
-                    "hex": "#80461d",
-                    "rgb": {
-                        "r": 128,
-                        "g": 70,
-                        "b": 29
-                    },
-                    "oklch": {
-                        "l": 0.45707183534017176,
-                        "c": 0.0960002737743394,
-                        "h": 52.74866337771887
-                    }
-                },
-                "yellow": {
-                    "hex": "#79600c",
-                    "rgb": {
-                        "r": 121,
-                        "g": 96,
-                        "b": 12
-                    },
-                    "oklch": {
-                        "l": 0.5002328732609677,
-                        "c": 0.09803926036073937,
-                        "h": 89.99443566149054
-                    }
-                },
-                "green": {
-                    "hex": "#15704f",
-                    "rgb": {
-                        "r": 21,
-                        "g": 112,
-                        "b": 79
-                    },
-                    "oklch": {
-                        "l": 0.4855831989845372,
-                        "c": 0.09763119166500156,
-                        "h": 163.05610778865764
-                    }
-                },
-                "cyan": {
-                    "hex": "#126f75",
-                    "rgb": {
-                        "r": 18,
-                        "g": 111,
-                        "b": 117
-                    },
-                    "oklch": {
-                        "l": 0.49503892542605266,
-                        "c": 0.07971853504483223,
-                        "h": 201.80614624867485
-                    }
-                },
-                "blue": {
-                    "hex": "#224680",
-                    "rgb": {
-                        "r": 34,
-                        "g": 70,
-                        "b": 128
-                    },
-                    "oklch": {
-                        "l": 0.39997202961632694,
-                        "c": 0.10635367017187823,
-                        "h": 259.52999893232027
-                    }
-                },
-                "purple": {
-                    "hex": "#5c3a80",
-                    "rgb": {
-                        "r": 92,
-                        "g": 58,
-                        "b": 128
-                    },
-                    "oklch": {
-                        "l": 0.42186806249336867,
-                        "c": 0.11611575501398125,
-                        "h": 304.3106549926999
-                    }
-                },
-                "pink": {
-                    "hex": "#802c69",
-                    "rgb": {
-                        "r": 128,
-                        "g": 44,
-                        "b": 105
-                    },
-                    "oklch": {
-                        "l": 0.437951621812318,
-                        "c": 0.13651341584691323,
-                        "h": 340.090179756424
-                    }
-                }
-            },
             "files": {
                 "directory": "#4d91ff",
                 "symlink": "#2edfeb",
@@ -3357,8 +2709,6 @@
                     "selection": "#ff4c824d",
                     "selectionInactive": "#ff4c8226",
                     "focusRing": "#ff4c8299",
-                    "selectionSolid": "#2e0712",
-                    "selectionInactiveSolid": "#0b0102",
                     "tabIndicator": "#ff4c82"
                 },
                 "orange": {
@@ -3370,8 +2720,6 @@
                     "selection": "#ff92434d",
                     "selectionInactive": "#ff924326",
                     "focusRing": "#ff924399",
-                    "selectionSolid": "#2e1605",
-                    "selectionInactiveSolid": "#0b0301",
                     "tabIndicator": "#ff9243"
                 },
                 "yellow": {
@@ -3383,8 +2731,6 @@
                     "selection": "#f2c2244d",
                     "selectionInactive": "#f2c22426",
                     "focusRing": "#f2c22499",
-                    "selectionSolid": "#2b2102",
-                    "selectionInactiveSolid": "#0a0600",
                     "tabIndicator": "#f2c224"
                 },
                 "green": {
@@ -3396,8 +2742,6 @@
                     "selection": "#35e0a34d",
                     "selectionInactive": "#35e0a326",
                     "focusRing": "#35e0a399",
-                    "selectionSolid": "#03271a",
-                    "selectionInactiveSolid": "#000804",
                     "tabIndicator": "#35e0a3"
                 },
                 "cyan": {
@@ -3409,8 +2753,6 @@
                     "selection": "#2edfeb4d",
                     "selectionInactive": "#2edfeb26",
                     "focusRing": "#2edfeb99",
-                    "selectionSolid": "#02272a",
-                    "selectionInactiveSolid": "#000809",
                     "tabIndicator": "#2edfeb"
                 },
                 "blue": {
@@ -3422,8 +2764,6 @@
                     "selection": "#4d91ff4d",
                     "selectionInactive": "#4d91ff26",
                     "focusRing": "#4d91ff99",
-                    "selectionSolid": "#07162e",
-                    "selectionInactiveSolid": "#01030b",
                     "tabIndicator": "#4d91ff"
                 },
                 "purple": {
@@ -3435,8 +2775,6 @@
                     "selection": "#bb7aff4d",
                     "selectionInactive": "#bb7aff26",
                     "focusRing": "#bb7aff99",
-                    "selectionSolid": "#1f102e",
-                    "selectionInactiveSolid": "#05020b",
                     "tabIndicator": "#bb7aff"
                 },
                 "pink": {
@@ -3448,8 +2786,6 @@
                     "selection": "#ff60d44d",
                     "selectionInactive": "#ff60d426",
                     "focusRing": "#ff60d499",
-                    "selectionSolid": "#2e0b25",
-                    "selectionInactiveSolid": "#0b0107",
                     "tabIndicator": "#ff60d4"
                 }
             },
@@ -3644,13 +2980,10 @@
                 "selection": "#ff4c824d",
                 "selectionInactive": "#ff4c8226",
                 "focusRing": "#ff4c8299",
-                "selectionSolid": "#2e0712",
-                "selectionInactiveSolid": "#0b0102",
                 "tabIndicator": "#ff4c82",
                 "bgHover": "#ffffff0f",
-                "findMatch": "#ff924366",
+                "findMatch": "#ff924373",
                 "shadow": "#00000080",
-                "findMatchSolid": "#48250c",
                 "matchActive": "#ff9243",
                 "onMatchActive": "#241004",
                 "titlebar": "#000000",
@@ -3668,12 +3001,7 @@
                 "modified": "#4d91ff",
                 "renamed": "#2edfeb",
                 "conflict": "#ff9243",
-                "ignored": "#a3a3a3",
-                "addedTint": "#000a05",
-                "removedTint": "#0d0103",
-                "modifiedTint": "#01040d",
-                "addedTintStrong": "#042b1d",
-                "removedTintStrong": "#330815"
+                "ignored": "#a3a3a3"
             },
             "ansi": {
                 "black": "#404040",
@@ -3692,6 +3020,24 @@
                 "brightBlue": "#6fa6ff",
                 "brightMagenta": "#c898ff",
                 "brightCyan": "#4ff3ff"
+            },
+            "ansiDim": {
+                "black": "#1b1b1b",
+                "white": "#696969",
+                "brightBlack": "#363636",
+                "brightWhite": "#808080",
+                "red": "#80223e",
+                "green": "#15704f",
+                "yellow": "#79600c",
+                "blue": "#224680",
+                "magenta": "#5c3a80",
+                "cyan": "#126f75",
+                "brightRed": "#803a4b",
+                "brightGreen": "#257a59",
+                "brightYellow": "#806b31",
+                "brightBlue": "#345180",
+                "brightMagenta": "#634a80",
+                "brightCyan": "#237a80"
             },
             "syntax": {
                 "keyword": "#bb7aff",
@@ -4361,218 +3707,6 @@
                     }
                 }
             },
-            "tintsStrong": {
-                "red": {
-                    "hex": "#ffcbd4",
-                    "rgb": {
-                        "r": 255,
-                        "g": 203,
-                        "b": 212
-                    },
-                    "oklch": {
-                        "l": 0.8900163567999352,
-                        "c": 0.05995137786382979,
-                        "h": 6.739086164372048
-                    }
-                },
-                "orange": {
-                    "hex": "#f1d3c4",
-                    "rgb": {
-                        "r": 241,
-                        "g": 211,
-                        "b": 196
-                    },
-                    "oklch": {
-                        "l": 0.8879135156741293,
-                        "c": 0.039398614022977715,
-                        "h": 48.25495399237242
-                    }
-                },
-                "yellow": {
-                    "hex": "#e7d6c3",
-                    "rgb": {
-                        "r": 231,
-                        "g": 214,
-                        "b": 195
-                    },
-                    "oklch": {
-                        "l": 0.8848374690400335,
-                        "c": 0.031774213363221164,
-                        "h": 70.48898941862228
-                    }
-                },
-                "green": {
-                    "hex": "#c7ded2",
-                    "rgb": {
-                        "r": 199,
-                        "g": 222,
-                        "b": 210
-                    },
-                    "oklch": {
-                        "l": 0.8801415881419415,
-                        "c": 0.02944588183622188,
-                        "h": 163.1436602336447
-                    }
-                },
-                "cyan": {
-                    "hex": "#c7dddf",
-                    "rgb": {
-                        "r": 199,
-                        "g": 221,
-                        "b": 223
-                    },
-                    "oklch": {
-                        "l": 0.8818118020920551,
-                        "c": 0.023652689768439553,
-                        "h": 203.3555945415035
-                    }
-                },
-                "blue": {
-                    "hex": "#c3dbff",
-                    "rgb": {
-                        "r": 195,
-                        "g": 219,
-                        "b": 255
-                    },
-                    "oklch": {
-                        "l": 0.885401430193987,
-                        "c": 0.056163409105922754,
-                        "h": 258.36843006544126
-                    }
-                },
-                "purple": {
-                    "hex": "#e6d1ff",
-                    "rgb": {
-                        "r": 230,
-                        "g": 209,
-                        "b": 255
-                    },
-                    "oklch": {
-                        "l": 0.8923824776148269,
-                        "c": 0.06600067598962726,
-                        "h": 305.7668954199454
-                    }
-                },
-                "pink": {
-                    "hex": "#fbcbea",
-                    "rgb": {
-                        "r": 251,
-                        "g": 203,
-                        "b": 234
-                    },
-                    "oklch": {
-                        "l": 0.8927673852722542,
-                        "c": 0.06717312924972063,
-                        "h": 339.6740817858343
-                    }
-                }
-            },
-            "dims": {
-                "red": {
-                    "hex": "#f8869f",
-                    "rgb": {
-                        "r": 248,
-                        "g": 134,
-                        "b": 159
-                    },
-                    "oklch": {
-                        "l": 0.7516501701651833,
-                        "c": 0.1404371619268125,
-                        "h": 7.051868307425421
-                    }
-                },
-                "orange": {
-                    "hex": "#db9a77",
-                    "rgb": {
-                        "r": 219,
-                        "g": 154,
-                        "b": 119
-                    },
-                    "oklch": {
-                        "l": 0.7413233284494632,
-                        "c": 0.0918864176149498,
-                        "h": 49.156280996792894
-                    }
-                },
-                "yellow": {
-                    "hex": "#c8a277",
-                    "rgb": {
-                        "r": 200,
-                        "g": 162,
-                        "b": 119
-                    },
-                    "oklch": {
-                        "l": 0.7365135236327953,
-                        "c": 0.07321024034867377,
-                        "h": 69.76164729066369
-                    }
-                },
-                "green": {
-                    "hex": "#7db49a",
-                    "rgb": {
-                        "r": 125,
-                        "g": 180,
-                        "b": 154
-                    },
-                    "oklch": {
-                        "l": 0.7241220026013723,
-                        "c": 0.06921828639041928,
-                        "h": 163.6532975987141
-                    }
-                },
-                "cyan": {
-                    "hex": "#7db1b6",
-                    "rgb": {
-                        "r": 125,
-                        "g": 177,
-                        "b": 182
-                    },
-                    "oklch": {
-                        "l": 0.7257263267473735,
-                        "c": 0.05510345384731785,
-                        "h": 203.53365336966846
-                    }
-                },
-                "blue": {
-                    "hex": "#76aaff",
-                    "rgb": {
-                        "r": 118,
-                        "g": 170,
-                        "b": 255
-                    },
-                    "oklch": {
-                        "l": 0.7374725668401242,
-                        "c": 0.13581455005392143,
-                        "h": 259.84022595536555
-                    }
-                },
-                "purple": {
-                    "hex": "#c692ff",
-                    "rgb": {
-                        "r": 198,
-                        "g": 146,
-                        "b": 255
-                    },
-                    "oklch": {
-                        "l": 0.7517688432251909,
-                        "c": 0.15975998723359705,
-                        "h": 304.855938678998
-                    }
-                },
-                "pink": {
-                    "hex": "#ed85cd",
-                    "rgb": {
-                        "r": 237,
-                        "g": 133,
-                        "b": 205
-                    },
-                    "oklch": {
-                        "l": 0.7514646738545031,
-                        "c": 0.15319384175880912,
-                        "h": 339.7901453301183
-                    }
-                }
-            },
             "files": {
                 "directory": "#006af6",
                 "symlink": "#007f87",
@@ -4597,8 +3731,6 @@
                     "selection": "#e200644d",
                     "selectionInactive": "#e2006426",
                     "focusRing": "#e2006499",
-                    "selectionSolid": "#ffc3ce",
-                    "selectionInactiveSolid": "#ffe1e6",
                     "tabIndicator": "#e20064"
                 },
                 "orange": {
@@ -4610,8 +3742,6 @@
                     "selection": "#bb55004d",
                     "selectionInactive": "#bb550026",
                     "focusRing": "#bb550099",
-                    "selectionSolid": "#eeccba",
-                    "selectionInactiveSolid": "#f7e6dd",
                     "tabIndicator": "#bb5500"
                 },
                 "yellow": {
@@ -4623,8 +3753,6 @@
                     "selection": "#a165004d",
                     "selectionInactive": "#a1650026",
                     "focusRing": "#a1650099",
-                    "selectionSolid": "#e4d0ba",
-                    "selectionInactiveSolid": "#f2e7dd",
                     "tabIndicator": "#a16500"
                 },
                 "green": {
@@ -4636,8 +3764,6 @@
                     "selection": "#00835c4d",
                     "selectionInactive": "#00835c26",
                     "focusRing": "#00835c99",
-                    "selectionSolid": "#bed9cb",
-                    "selectionInactiveSolid": "#dfece5",
                     "tabIndicator": "#00835c"
                 },
                 "cyan": {
@@ -4649,8 +3775,6 @@
                     "selection": "#007f874d",
                     "selectionInactive": "#007f8726",
                     "focusRing": "#007f8799",
-                    "selectionSolid": "#bdd7da",
-                    "selectionInactiveSolid": "#dfebec",
                     "tabIndicator": "#007f87"
                 },
                 "blue": {
@@ -4662,8 +3786,6 @@
                     "selection": "#006af64d",
                     "selectionInactive": "#006af626",
                     "focusRing": "#006af699",
-                    "selectionSolid": "#bad5ff",
-                    "selectionInactiveSolid": "#ddebff",
                     "tabIndicator": "#006af6"
                 },
                 "purple": {
@@ -4675,8 +3797,6 @@
                     "selection": "#a331fb4d",
                     "selectionInactive": "#a331fb26",
                     "focusRing": "#a331fb99",
-                    "selectionSolid": "#e2c9ff",
-                    "selectionInactiveSolid": "#f1e5ff",
                     "tabIndicator": "#a331fb"
                 },
                 "pink": {
@@ -4688,8 +3808,6 @@
                     "selection": "#d400ab4d",
                     "selectionInactive": "#d400ab26",
                     "focusRing": "#d400ab99",
-                    "selectionSolid": "#fac3e6",
-                    "selectionInactiveSolid": "#fde1f3",
                     "tabIndicator": "#d400ab"
                 }
             },
@@ -4884,13 +4002,10 @@
                 "selection": "#e200644d",
                 "selectionInactive": "#e2006426",
                 "focusRing": "#e2006499",
-                "selectionSolid": "#ffc3ce",
-                "selectionInactiveSolid": "#ffe1e6",
                 "tabIndicator": "#e20064",
-                "bgHover": "#0000000d",
-                "findMatch": "#bb550066",
+                "bgHover": "#0000000f",
+                "findMatch": "#bb550073",
                 "shadow": "#00000026",
-                "findMatchSolid": "#e8bca4",
                 "matchActive": "#ff9243",
                 "onMatchActive": "#241004",
                 "titlebar": "#ffffff",
@@ -4908,12 +4023,7 @@
                 "modified": "#006af6",
                 "renamed": "#007f87",
                 "conflict": "#bb5500",
-                "ignored": "#525252",
-                "addedTint": "#e5f0ea",
-                "removedTint": "#ffe7eb",
-                "modifiedTint": "#e3efff",
-                "addedTintStrong": "#c7ded2",
-                "removedTintStrong": "#ffcbd4"
+                "ignored": "#525252"
             },
             "ansi": {
                 "black": "#262626",
@@ -4932,6 +4042,24 @@
                 "brightBlue": "#3885ff",
                 "brightMagenta": "#b262ff",
                 "brightCyan": "#2c949c"
+            },
+            "ansiDim": {
+                "black": "#757575",
+                "white": "#c7c7c7",
+                "brightBlack": "#939393",
+                "brightWhite": "#e5e5e5",
+                "red": "#f8869f",
+                "green": "#7db49a",
+                "yellow": "#c8a277",
+                "blue": "#76aaff",
+                "magenta": "#c692ff",
+                "cyan": "#7db1b6",
+                "brightRed": "#ff93ac",
+                "brightGreen": "#8ac1a7",
+                "brightYellow": "#d5af84",
+                "brightBlue": "#8ab9ff",
+                "brightMagenta": "#d0a5ff",
+                "brightCyan": "#8abec3"
             },
             "syntax": {
                 "keyword": "#a331fb",

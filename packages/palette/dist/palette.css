@@ -24,64 +24,48 @@
     --tc-red-fill: #ff4c82;
     --tc-red-on-fill: #250e13;
     --tc-red-tint: #ffe7eb;
-    --tc-red-tint-strong: #ffcbd4;
-    --tc-red-dim: #f8869f;
     --tc-orange: #bb5500;
     --tc-orange-bright: #d36b27;
     --tc-orange-on: #ffffff;
     --tc-orange-fill: #ff9243;
     --tc-orange-on-fill: #241004;
     --tc-orange-tint: #f9ebe3;
-    --tc-orange-tint-strong: #f1d3c4;
-    --tc-orange-dim: #db9a77;
     --tc-yellow: #a16500;
     --tc-yellow-bright: #b77a27;
     --tc-yellow-on: #ffffff;
     --tc-yellow-fill: #f2c224;
     --tc-yellow-on-fill: #1d1500;
     --tc-yellow-tint: #f4ece3;
-    --tc-yellow-tint-strong: #e7d6c3;
-    --tc-yellow-dim: #c8a277;
     --tc-green: #00835c;
     --tc-green-bright: #2c9870;
     --tc-green-on: #ffffff;
     --tc-green-fill: #35e0a3;
     --tc-green-on-fill: #021c11;
     --tc-green-tint: #e5f0ea;
-    --tc-green-tint-strong: #c7ded2;
-    --tc-green-dim: #7db49a;
     --tc-cyan: #007f87;
     --tc-cyan-bright: #2c949c;
     --tc-cyan-on: #ffffff;
     --tc-cyan-fill: #2edfeb;
     --tc-cyan-on-fill: #001a1d;
     --tc-cyan-tint: #e5eff0;
-    --tc-cyan-tint-strong: #c7dddf;
-    --tc-cyan-dim: #7db1b6;
     --tc-blue: #006af6;
     --tc-blue-bright: #3885ff;
     --tc-blue-on: #ffffff;
     --tc-blue-fill: #4d91ff;
     --tc-blue-on-fill: #0b1628;
     --tc-blue-tint: #e3efff;
-    --tc-blue-tint-strong: #c3dbff;
-    --tc-blue-dim: #76aaff;
     --tc-purple: #a331fb;
     --tc-purple-bright: #b262ff;
     --tc-purple-on: #ffffff;
     --tc-purple-fill: #bb7aff;
     --tc-purple-on-fill: #1a1125;
     --tc-purple-tint: #f3eaff;
-    --tc-purple-tint-strong: #e6d1ff;
-    --tc-purple-dim: #c692ff;
     --tc-pink: #d400ab;
     --tc-pink-bright: #ed33c2;
     --tc-pink-on: #ffffff;
     --tc-pink-fill: #ff60d4;
     --tc-pink-on-fill: #220e1c;
     --tc-pink-tint: #fee7f5;
-    --tc-pink-tint-strong: #fbcbea;
-    --tc-pink-dim: #ed85cd;
     --tc-bg: #ffffff;
     --tc-bg-sunken: #fafafa;
     --tc-bg-raised: #f5f5f5;
@@ -101,13 +85,10 @@
     --tc-selection: #e200644d;
     --tc-selection-inactive: #e2006426;
     --tc-focus-ring: #e2006499;
-    --tc-selection-solid: #ffc3ce;
-    --tc-selection-inactive-solid: #ffe1e6;
     --tc-tab-indicator: #e20064;
-    --tc-bg-hover: #0a0a0a0d;
-    --tc-find-match: #bb550066;
+    --tc-bg-hover: #0a0a0a0f;
+    --tc-find-match: #bb550073;
     --tc-shadow: #00000026;
-    --tc-find-match-solid: #e8bca4;
     --tc-match-active: #ff9243;
     --tc-on-match-active: #241004;
     --tc-titlebar: #fafafa;
@@ -126,11 +107,6 @@
     --tc-renamed: #007f87;
     --tc-conflict: #bb5500;
     --tc-ignored: #737373;
-    --tc-added-tint: #e5f0ea;
-    --tc-removed-tint: #ffe7eb;
-    --tc-modified-tint: #e3efff;
-    --tc-added-tint-strong: #c7ded2;
-    --tc-removed-tint-strong: #ffcbd4;
     --tc-ansi-black: #262626;
     --tc-ansi-white: #a3a3a3;
     --tc-ansi-bright-black: #525252;
@@ -147,6 +123,22 @@
     --tc-ansi-bright-blue: #3885ff;
     --tc-ansi-bright-magenta: #b262ff;
     --tc-ansi-bright-cyan: #2c949c;
+    --tc-ansi-dim-black: #757575;
+    --tc-ansi-dim-white: #c7c7c7;
+    --tc-ansi-dim-bright-black: #939393;
+    --tc-ansi-dim-bright-white: #e5e5e5;
+    --tc-ansi-dim-red: #f8869f;
+    --tc-ansi-dim-green: #7db49a;
+    --tc-ansi-dim-yellow: #c8a277;
+    --tc-ansi-dim-blue: #76aaff;
+    --tc-ansi-dim-magenta: #c692ff;
+    --tc-ansi-dim-cyan: #7db1b6;
+    --tc-ansi-dim-bright-red: #ff93ac;
+    --tc-ansi-dim-bright-green: #8ac1a7;
+    --tc-ansi-dim-bright-yellow: #d5af84;
+    --tc-ansi-dim-bright-blue: #8ab9ff;
+    --tc-ansi-dim-bright-magenta: #d0a5ff;
+    --tc-ansi-dim-bright-cyan: #8abec3;
     --tc-syntax-keyword: #a331fb;
     --tc-syntax-function: #006af6;
     --tc-syntax-type: #a16500;
@@ -193,8 +185,6 @@
     --tc-accent-red-selection: #e200644d;
     --tc-accent-red-selection-inactive: #e2006426;
     --tc-accent-red-focus-ring: #e2006499;
-    --tc-accent-red-selection-solid: #ffc3ce;
-    --tc-accent-red-selection-inactive-solid: #ffe1e6;
     --tc-accent-red-tab-indicator: #e20064;
     --tc-accent-orange-accent: #bb5500;
     --tc-accent-orange-on-accent: #ffffff;
@@ -204,8 +194,6 @@
     --tc-accent-orange-selection: #bb55004d;
     --tc-accent-orange-selection-inactive: #bb550026;
     --tc-accent-orange-focus-ring: #bb550099;
-    --tc-accent-orange-selection-solid: #eeccba;
-    --tc-accent-orange-selection-inactive-solid: #f7e6dd;
     --tc-accent-orange-tab-indicator: #bb5500;
     --tc-accent-yellow-accent: #a16500;
     --tc-accent-yellow-on-accent: #ffffff;
@@ -215,8 +203,6 @@
     --tc-accent-yellow-selection: #a165004d;
     --tc-accent-yellow-selection-inactive: #a1650026;
     --tc-accent-yellow-focus-ring: #a1650099;
-    --tc-accent-yellow-selection-solid: #e4d0ba;
-    --tc-accent-yellow-selection-inactive-solid: #f2e7dd;
     --tc-accent-yellow-tab-indicator: #a16500;
     --tc-accent-green-accent: #00835c;
     --tc-accent-green-on-accent: #ffffff;
@@ -226,8 +212,6 @@
     --tc-accent-green-selection: #00835c4d;
     --tc-accent-green-selection-inactive: #00835c26;
     --tc-accent-green-focus-ring: #00835c99;
-    --tc-accent-green-selection-solid: #bed9cb;
-    --tc-accent-green-selection-inactive-solid: #dfece5;
     --tc-accent-green-tab-indicator: #00835c;
     --tc-accent-cyan-accent: #007f87;
     --tc-accent-cyan-on-accent: #ffffff;
@@ -237,8 +221,6 @@
     --tc-accent-cyan-selection: #007f874d;
     --tc-accent-cyan-selection-inactive: #007f8726;
     --tc-accent-cyan-focus-ring: #007f8799;
-    --tc-accent-cyan-selection-solid: #bdd7da;
-    --tc-accent-cyan-selection-inactive-solid: #dfebec;
     --tc-accent-cyan-tab-indicator: #007f87;
     --tc-accent-blue-accent: #006af6;
     --tc-accent-blue-on-accent: #ffffff;
@@ -248,8 +230,6 @@
     --tc-accent-blue-selection: #006af64d;
     --tc-accent-blue-selection-inactive: #006af626;
     --tc-accent-blue-focus-ring: #006af699;
-    --tc-accent-blue-selection-solid: #bad5ff;
-    --tc-accent-blue-selection-inactive-solid: #ddebff;
     --tc-accent-blue-tab-indicator: #006af6;
     --tc-accent-purple-accent: #a331fb;
     --tc-accent-purple-on-accent: #ffffff;
@@ -259,8 +239,6 @@
     --tc-accent-purple-selection: #a331fb4d;
     --tc-accent-purple-selection-inactive: #a331fb26;
     --tc-accent-purple-focus-ring: #a331fb99;
-    --tc-accent-purple-selection-solid: #e2c9ff;
-    --tc-accent-purple-selection-inactive-solid: #f1e5ff;
     --tc-accent-purple-tab-indicator: #a331fb;
     --tc-accent-pink-accent: #d400ab;
     --tc-accent-pink-on-accent: #ffffff;
@@ -270,8 +248,6 @@
     --tc-accent-pink-selection: #d400ab4d;
     --tc-accent-pink-selection-inactive: #d400ab26;
     --tc-accent-pink-focus-ring: #d400ab99;
-    --tc-accent-pink-selection-solid: #fac3e6;
-    --tc-accent-pink-selection-inactive-solid: #fde1f3;
     --tc-accent-pink-tab-indicator: #d400ab;
 }
 
@@ -283,64 +259,48 @@
     --tc-red-fill: #ff4c82;
     --tc-red-on-fill: #250e13;
     --tc-red-tint: #382226;
-    --tc-red-tint-strong: #5a2c36;
-    --tc-red-dim: #9b3b54;
     --tc-orange: #ff9243;
     --tc-orange-bright: #ffb17e;
     --tc-orange-on: #241004;
     --tc-orange-fill: #ff9243;
     --tc-orange-on-fill: #241004;
     --tc-orange-tint: #372920;
-    --tc-orange-tint-strong: #593c29;
-    --tc-orange-dim: #9a5e35;
     --tc-yellow: #f2c224;
     --tc-yellow-bright: #ffd86a;
     --tc-yellow-on: #1d1500;
     --tc-yellow-fill: #f2c224;
     --tc-yellow-on-fill: #1d1500;
     --tc-yellow-tint: #342f20;
-    --tc-yellow-tint-strong: #544827;
-    --tc-yellow-dim: #92782d;
     --tc-green: #35e0a3;
     --tc-green-bright: #52f4b6;
     --tc-green-on: #021c11;
     --tc-green-fill: #35e0a3;
     --tc-green-on-fill: #021c11;
     --tc-green-tint: #22322a;
-    --tc-green-tint-strong: #2b503f;
-    --tc-green-dim: #358866;
     --tc-cyan: #2edfeb;
     --tc-cyan-bright: #4ff3ff;
     --tc-cyan-on: #001a1d;
     --tc-cyan-fill: #2edfeb;
     --tc-cyan-on-fill: #001a1d;
     --tc-cyan-tint: #223233;
-    --tc-cyan-tint-strong: #2b5052;
-    --tc-cyan-dim: #34888e;
     --tc-blue: #4d91ff;
     --tc-blue-bright: #6fa6ff;
     --tc-blue-on: #0b1628;
     --tc-blue-fill: #4d91ff;
     --tc-blue-on-fill: #0b1628;
     --tc-blue-tint: #202937;
-    --tc-blue-tint-strong: #293b59;
-    --tc-blue-dim: #385d9a;
     --tc-purple: #bb7aff;
     --tc-purple-bright: #c898ff;
     --tc-purple-on: #1a1125;
     --tc-purple-fill: #bb7aff;
     --tc-purple-on-fill: #1a1125;
     --tc-purple-tint: #2d2637;
-    --tc-purple-tint-strong: #453559;
-    --tc-purple-dim: #735199;
     --tc-pink: #ff60d4;
     --tc-pink-bright: #ff8ddc;
     --tc-pink-on: #220e1c;
     --tc-pink-fill: #ff60d4;
     --tc-pink-on-fill: #220e1c;
     --tc-pink-tint: #372431;
-    --tc-pink-tint-strong: #5a304d;
-    --tc-pink-dim: #9a4481;
     --tc-bg: #171717;
     --tc-bg-sunken: #0a0a0a;
     --tc-bg-raised: #262626;
@@ -360,13 +320,10 @@
     --tc-selection: #ff4c824d;
     --tc-selection-inactive: #ff4c8226;
     --tc-focus-ring: #ff4c8299;
-    --tc-selection-solid: #562b34;
-    --tc-selection-inactive-solid: #362125;
     --tc-tab-indicator: #ff4c82;
     --tc-bg-hover: #fafafa0f;
-    --tc-find-match: #ff924366;
+    --tc-find-match: #ff924373;
     --tc-shadow: #00000080;
-    --tc-find-match-solid: #6b452d;
     --tc-match-active: #ff9243;
     --tc-on-match-active: #241004;
     --tc-titlebar: #0a0a0a;
@@ -385,11 +342,6 @@
     --tc-renamed: #2edfeb;
     --tc-conflict: #ff9243;
     --tc-ignored: #737373;
-    --tc-added-tint: #22322a;
-    --tc-removed-tint: #382226;
-    --tc-modified-tint: #202937;
-    --tc-added-tint-strong: #2b503f;
-    --tc-removed-tint-strong: #5a2c36;
     --tc-ansi-black: #404040;
     --tc-ansi-white: #d4d4d4;
     --tc-ansi-bright-black: #737373;
@@ -406,6 +358,22 @@
     --tc-ansi-bright-blue: #6fa6ff;
     --tc-ansi-bright-magenta: #c898ff;
     --tc-ansi-bright-cyan: #4ff3ff;
+    --tc-ansi-dim-black: #2f2f2f;
+    --tc-ansi-dim-white: #818181;
+    --tc-ansi-dim-bright-black: #4c4c4c;
+    --tc-ansi-dim-bright-white: #999999;
+    --tc-ansi-dim-red: #9b3b54;
+    --tc-ansi-dim-green: #358866;
+    --tc-ansi-dim-yellow: #92782d;
+    --tc-ansi-dim-blue: #385d9a;
+    --tc-ansi-dim-magenta: #735199;
+    --tc-ansi-dim-cyan: #34888e;
+    --tc-ansi-dim-bright-red: #9a5161;
+    --tc-ansi-dim-bright-green: #419371;
+    --tc-ansi-dim-bright-yellow: #99844a;
+    --tc-ansi-dim-bright-blue: #4a6899;
+    --tc-ansi-dim-bright-magenta: #7b6199;
+    --tc-ansi-dim-bright-cyan: #409299;
     --tc-syntax-keyword: #bb7aff;
     --tc-syntax-function: #4d91ff;
     --tc-syntax-type: #f2c224;
@@ -452,8 +420,6 @@
     --tc-accent-red-selection: #ff4c824d;
     --tc-accent-red-selection-inactive: #ff4c8226;
     --tc-accent-red-focus-ring: #ff4c8299;
-    --tc-accent-red-selection-solid: #562b34;
-    --tc-accent-red-selection-inactive-solid: #362125;
     --tc-accent-red-tab-indicator: #ff4c82;
     --tc-accent-orange-accent: #ff9243;
     --tc-accent-orange-on-accent: #241004;
@@ -463,8 +429,6 @@
     --tc-accent-orange-selection: #ff92434d;
     --tc-accent-orange-selection-inactive: #ff924326;
     --tc-accent-orange-focus-ring: #ff924399;
-    --tc-accent-orange-selection-solid: #553928;
-    --tc-accent-orange-selection-inactive-solid: #342820;
     --tc-accent-orange-tab-indicator: #ff9243;
     --tc-accent-yellow-accent: #f2c224;
     --tc-accent-yellow-on-accent: #1d1500;
@@ -474,8 +438,6 @@
     --tc-accent-yellow-selection: #f2c2244d;
     --tc-accent-yellow-selection-inactive: #f2c22426;
     --tc-accent-yellow-focus-ring: #f2c22499;
-    --tc-accent-yellow-selection-solid: #514526;
-    --tc-accent-yellow-selection-inactive-solid: #322d1f;
     --tc-accent-yellow-tab-indicator: #f2c224;
     --tc-accent-green-accent: #35e0a3;
     --tc-accent-green-on-accent: #021c11;
@@ -485,8 +447,6 @@
     --tc-accent-green-selection: #35e0a34d;
     --tc-accent-green-selection-inactive: #35e0a326;
     --tc-accent-green-focus-ring: #35e0a399;
-    --tc-accent-green-selection-solid: #2a4c3d;
-    --tc-accent-green-selection-inactive-solid: #213029;
     --tc-accent-green-tab-indicator: #35e0a3;
     --tc-accent-cyan-accent: #2edfeb;
     --tc-accent-cyan-on-accent: #001a1d;
@@ -496,8 +456,6 @@
     --tc-accent-cyan-selection: #2edfeb4d;
     --tc-accent-cyan-selection-inactive: #2edfeb26;
     --tc-accent-cyan-focus-ring: #2edfeb99;
-    --tc-accent-cyan-selection-solid: #2a4c4f;
-    --tc-accent-cyan-selection-inactive-solid: #213031;
     --tc-accent-cyan-tab-indicator: #2edfeb;
     --tc-accent-blue-accent: #4d91ff;
     --tc-accent-blue-on-accent: #0b1628;
@@ -507,8 +465,6 @@
     --tc-accent-blue-selection: #4d91ff4d;
     --tc-accent-blue-selection-inactive: #4d91ff26;
     --tc-accent-blue-focus-ring: #4d91ff99;
-    --tc-accent-blue-selection-solid: #283955;
-    --tc-accent-blue-selection-inactive-solid: #202834;
     --tc-accent-blue-tab-indicator: #4d91ff;
     --tc-accent-purple-accent: #bb7aff;
     --tc-accent-purple-on-accent: #1a1125;
@@ -518,8 +474,6 @@
     --tc-accent-purple-selection: #bb7aff4d;
     --tc-accent-purple-selection-inactive: #bb7aff26;
     --tc-accent-purple-focus-ring: #bb7aff99;
-    --tc-accent-purple-selection-solid: #433455;
-    --tc-accent-purple-selection-inactive-solid: #2c2534;
     --tc-accent-purple-tab-indicator: #bb7aff;
     --tc-accent-pink-accent: #ff60d4;
     --tc-accent-pink-on-accent: #220e1c;
@@ -529,8 +483,6 @@
     --tc-accent-pink-selection: #ff60d44d;
     --tc-accent-pink-selection-inactive: #ff60d426;
     --tc-accent-pink-focus-ring: #ff60d499;
-    --tc-accent-pink-selection-solid: #562f49;
-    --tc-accent-pink-selection-inactive-solid: #35232f;
     --tc-accent-pink-tab-indicator: #ff60d4;
 }
 
@@ -546,7 +498,7 @@
     --tc-fg-soft: #404040;
     --tc-fg-muted: #525252;
     --tc-fg-disabled: #737373;
-    --tc-bg-hover: #0000000d;
+    --tc-bg-hover: #0000000f;
     --tc-titlebar: #ffffff;
     --tc-tab-active-fg: #000000;
     --tc-tab-inactive: #ffffff;
@@ -564,29 +516,13 @@
 
 .dark.hc {
     --tc-red-tint: #0d0103;
-    --tc-red-tint-strong: #330815;
-    --tc-red-dim: #80223e;
     --tc-orange-tint: #0d0401;
-    --tc-orange-tint-strong: #331806;
-    --tc-orange-dim: #80461d;
     --tc-yellow-tint: #0c0700;
-    --tc-yellow-tint-strong: #302402;
-    --tc-yellow-dim: #79600c;
     --tc-green-tint: #000a05;
-    --tc-green-tint-strong: #042b1d;
-    --tc-green-dim: #15704f;
     --tc-cyan-tint: #000a0b;
-    --tc-cyan-tint-strong: #032b2e;
-    --tc-cyan-dim: #126f75;
     --tc-blue-tint: #01040d;
-    --tc-blue-tint-strong: #081833;
-    --tc-blue-dim: #224680;
     --tc-purple-tint: #07030d;
-    --tc-purple-tint-strong: #221333;
-    --tc-purple-dim: #5c3a80;
     --tc-pink-tint: #0d0209;
-    --tc-pink-tint-strong: #330c28;
-    --tc-pink-dim: #802c69;
     --tc-bg: #000000;
     --tc-bg-sunken: #000000;
     --tc-bg-raised: #0a0a0a;
@@ -599,21 +535,29 @@
     --tc-fg-muted: #a3a3a3;
     --tc-fg-disabled: #737373;
     --tc-accent-tint: #0d0103;
-    --tc-selection-solid: #2e0712;
-    --tc-selection-inactive-solid: #0b0102;
     --tc-bg-hover: #ffffff0f;
-    --tc-find-match-solid: #48250c;
     --tc-titlebar: #000000;
     --tc-tab-active: #000000;
     --tc-tab-active-fg: #ffffff;
     --tc-tab-inactive: #000000;
     --tc-tab-inactive-fg: #d4d4d4;
     --tc-ignored: #a3a3a3;
-    --tc-added-tint: #000a05;
-    --tc-removed-tint: #0d0103;
-    --tc-modified-tint: #01040d;
-    --tc-added-tint-strong: #042b1d;
-    --tc-removed-tint-strong: #330815;
+    --tc-ansi-dim-black: #1b1b1b;
+    --tc-ansi-dim-white: #696969;
+    --tc-ansi-dim-bright-black: #363636;
+    --tc-ansi-dim-bright-white: #808080;
+    --tc-ansi-dim-red: #80223e;
+    --tc-ansi-dim-green: #15704f;
+    --tc-ansi-dim-yellow: #79600c;
+    --tc-ansi-dim-blue: #224680;
+    --tc-ansi-dim-magenta: #5c3a80;
+    --tc-ansi-dim-cyan: #126f75;
+    --tc-ansi-dim-bright-red: #803a4b;
+    --tc-ansi-dim-bright-green: #257a59;
+    --tc-ansi-dim-bright-yellow: #806b31;
+    --tc-ansi-dim-bright-blue: #345180;
+    --tc-ansi-dim-bright-magenta: #634a80;
+    --tc-ansi-dim-bright-cyan: #237a80;
     --tc-syntax-comment: #d4d4d4;
     --tc-syntax-attribute: #ffffff;
     --tc-syntax-property: #ffffff;
@@ -623,29 +567,13 @@
     --tc-file-source: #ffffff;
     --tc-file-temp: #a3a3a3;
     --tc-accent-red-accent-tint: #0d0103;
-    --tc-accent-red-selection-solid: #2e0712;
-    --tc-accent-red-selection-inactive-solid: #0b0102;
     --tc-accent-orange-accent-tint: #0d0401;
-    --tc-accent-orange-selection-solid: #2e1605;
-    --tc-accent-orange-selection-inactive-solid: #0b0301;
     --tc-accent-yellow-accent-tint: #0c0700;
-    --tc-accent-yellow-selection-solid: #2b2102;
-    --tc-accent-yellow-selection-inactive-solid: #0a0600;
     --tc-accent-green-accent-tint: #000a05;
-    --tc-accent-green-selection-solid: #03271a;
-    --tc-accent-green-selection-inactive-solid: #000804;
     --tc-accent-cyan-accent-tint: #000a0b;
-    --tc-accent-cyan-selection-solid: #02272a;
-    --tc-accent-cyan-selection-inactive-solid: #000809;
     --tc-accent-blue-accent-tint: #01040d;
-    --tc-accent-blue-selection-solid: #07162e;
-    --tc-accent-blue-selection-inactive-solid: #01030b;
     --tc-accent-purple-accent-tint: #07030d;
-    --tc-accent-purple-selection-solid: #1f102e;
-    --tc-accent-purple-selection-inactive-solid: #05020b;
     --tc-accent-pink-accent-tint: #0d0209;
-    --tc-accent-pink-selection-solid: #2e0b25;
-    --tc-accent-pink-selection-inactive-solid: #0b0107;
 }
 
 /* Accent override: put .accent-<name> on <html> (or any ancestor). Last, so it wins over mode scopes. */
@@ -659,8 +587,6 @@
     --tc-selection: var(--tc-accent-red-selection);
     --tc-selection-inactive: var(--tc-accent-red-selection-inactive);
     --tc-focus-ring: var(--tc-accent-red-focus-ring);
-    --tc-selection-solid: var(--tc-accent-red-selection-solid);
-    --tc-selection-inactive-solid: var(--tc-accent-red-selection-inactive-solid);
     --tc-tab-indicator: var(--tc-accent-red-tab-indicator);
 }
 
@@ -674,8 +600,6 @@
     --tc-selection: var(--tc-accent-orange-selection);
     --tc-selection-inactive: var(--tc-accent-orange-selection-inactive);
     --tc-focus-ring: var(--tc-accent-orange-focus-ring);
-    --tc-selection-solid: var(--tc-accent-orange-selection-solid);
-    --tc-selection-inactive-solid: var(--tc-accent-orange-selection-inactive-solid);
     --tc-tab-indicator: var(--tc-accent-orange-tab-indicator);
 }
 
@@ -689,8 +613,6 @@
     --tc-selection: var(--tc-accent-yellow-selection);
     --tc-selection-inactive: var(--tc-accent-yellow-selection-inactive);
     --tc-focus-ring: var(--tc-accent-yellow-focus-ring);
-    --tc-selection-solid: var(--tc-accent-yellow-selection-solid);
-    --tc-selection-inactive-solid: var(--tc-accent-yellow-selection-inactive-solid);
     --tc-tab-indicator: var(--tc-accent-yellow-tab-indicator);
 }
 
@@ -704,8 +626,6 @@
     --tc-selection: var(--tc-accent-green-selection);
     --tc-selection-inactive: var(--tc-accent-green-selection-inactive);
     --tc-focus-ring: var(--tc-accent-green-focus-ring);
-    --tc-selection-solid: var(--tc-accent-green-selection-solid);
-    --tc-selection-inactive-solid: var(--tc-accent-green-selection-inactive-solid);
     --tc-tab-indicator: var(--tc-accent-green-tab-indicator);
 }
 
@@ -719,8 +639,6 @@
     --tc-selection: var(--tc-accent-cyan-selection);
     --tc-selection-inactive: var(--tc-accent-cyan-selection-inactive);
     --tc-focus-ring: var(--tc-accent-cyan-focus-ring);
-    --tc-selection-solid: var(--tc-accent-cyan-selection-solid);
-    --tc-selection-inactive-solid: var(--tc-accent-cyan-selection-inactive-solid);
     --tc-tab-indicator: var(--tc-accent-cyan-tab-indicator);
 }
 
@@ -734,8 +652,6 @@
     --tc-selection: var(--tc-accent-blue-selection);
     --tc-selection-inactive: var(--tc-accent-blue-selection-inactive);
     --tc-focus-ring: var(--tc-accent-blue-focus-ring);
-    --tc-selection-solid: var(--tc-accent-blue-selection-solid);
-    --tc-selection-inactive-solid: var(--tc-accent-blue-selection-inactive-solid);
     --tc-tab-indicator: var(--tc-accent-blue-tab-indicator);
 }
 
@@ -749,8 +665,6 @@
     --tc-selection: var(--tc-accent-purple-selection);
     --tc-selection-inactive: var(--tc-accent-purple-selection-inactive);
     --tc-focus-ring: var(--tc-accent-purple-focus-ring);
-    --tc-selection-solid: var(--tc-accent-purple-selection-solid);
-    --tc-selection-inactive-solid: var(--tc-accent-purple-selection-inactive-solid);
     --tc-tab-indicator: var(--tc-accent-purple-tab-indicator);
 }
 
@@ -764,7 +678,5 @@
     --tc-selection: var(--tc-accent-pink-selection);
     --tc-selection-inactive: var(--tc-accent-pink-selection-inactive);
     --tc-focus-ring: var(--tc-accent-pink-focus-ring);
-    --tc-selection-solid: var(--tc-accent-pink-selection-solid);
-    --tc-selection-inactive-solid: var(--tc-accent-pink-selection-inactive-solid);
     --tc-tab-indicator: var(--tc-accent-pink-tab-indicator);
 }

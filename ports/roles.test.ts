@@ -3,16 +3,16 @@ import {join} from "node:path";
 
 import {describe, expect, it} from "vitest";
 
-/** Palette helpers that do color math. Ports pick named roles instead (DESIGN.md §11). */
-const COLOR_MATH = ["flatten", "mix", "alpha"];
+/**
+ * Raw color math. Ports pick named roles, and derive only through the level helpers
+ * (`wash`, `solid`, `tint` with a named LEVEL, DESIGN.md §13), never arbitrary numbers.
+ */
+const COLOR_MATH = ["flatten", "mix", "alpha", "fromOklch"];
 
 /** Ports allowed to do color math, and why. */
 const ALLOWED: Record<string, string[]> = {
     // owned by the wallpapers package, which renders images and blends by design
     wallpapers: COLOR_MATH,
-    // VS Code composites translucent overlays (word and bracket highlights, diff and merge washes,
-    // scrollbars, overview ruler) over syntax and selection; the palette has no named role for these
-    vscode: ["alpha"],
 };
 
 const PORTS_DIR = import.meta.dirname;
@@ -54,5 +54,13 @@ describe("ports pick roles instead of doing color math", () => {
             'import type {Mode} from "@termicolor/palette";',
         ].join("\n");
         expect(paletteImports(source)).toEqual(["alpha", "mix"]);
+    });
+});
+
+describe("level helpers use named levels", () => {
+    it.each(ports.filter((p) => p !== "wallpapers"))("%s passes level names, not numbers", (port) => {
+        const source = readFileSync(join(PORTS_DIR, port, "port.ts"), "utf8");
+        const numeric = [...source.matchAll(/\b(wash|tint)\([^()]*,\s*[\d.]+/g)].map((m) => m[0]);
+        expect(numeric).toEqual([]);
     });
 });

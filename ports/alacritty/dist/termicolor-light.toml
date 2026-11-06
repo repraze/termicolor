@@ -15,7 +15,7 @@ cursor = "#007f87"
 
 [colors.search.matches]
 foreground = "#0a0a0a"
-background = "#e8bca4"
+background = "#e5b399"
 
 [colors.search.focused_match]
 foreground = "#241004"
@@ -62,11 +62,11 @@ cyan = "#2c949c"
 white = "#d4d4d4"
 
 [colors.dim]
-black = "#262626"
+black = "#757575"
 red = "#f8869f"
 green = "#7db49a"
 yellow = "#c8a277"
 blue = "#76aaff"
 magenta = "#c692ff"
 cyan = "#7db1b6"
-white = "#737373"
+white = "#c7c7c7"

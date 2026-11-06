@@ -1,5 +1,5 @@
 import {definePort} from "@termicolor/build";
-import type {Ansi, Mode} from "@termicolor/palette";
+import {type Ansi, type Mode, solid} from "@termicolor/palette";
 
 const ANSI_ORDER: (keyof Ansi)[] = [
     "black",
@@ -29,10 +29,10 @@ function theme(mode: Mode): string {
         ["foreground", r.fg],
         ["cursor-color", r.cursor],
         ["cursor-text", r.onAccent],
-        ["selection-background", r.selectionSolid],
+        ["selection-background", solid(r.selection, r.bg)],
         // keep each cell's own color inside the selection (Ghostty 1.2+)
         ["selection-foreground", "cell-foreground"],
-        ["search-background", r.findMatchSolid],
+        ["search-background", solid(r.findMatch, r.bg)],
         ["search-foreground", r.fg],
         ["search-selected-background", r.matchActive],
         ["search-selected-foreground", r.onMatchActive],

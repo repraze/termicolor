@@ -1,4 +1,5 @@
 import {contrast, flatten, type Hex} from "./color.ts";
+import {solid, tint} from "./levels.ts";
 import {allModes, type Mode, type Palette} from "./palette.ts";
 import {ACCENTS} from "./seeds.ts";
 
@@ -6,7 +7,7 @@ export type Check = {mode: string; label: string; fg: Hex; bg: Hex; ratio: numbe
 
 /** The contrast guarantees behind "high contrast". Build fails if any of these regress. */
 export function checkMode(mode: Mode): Check[] {
-    const {roles: r, accents, on, fills, onFill, tints, tintsStrong, dims, ansi} = mode;
+    const {roles: r, accents, on, fills, onFill, tints, ansi, ansiDim} = mode;
     const pairs: [label: string, fg: Hex, bg: Hex, min: number][] = [
         ["fg on bg", r.fg, r.bg, 15],
         ["fg on bgSunken", r.fg, r.bgSunken, 15],
@@ -19,14 +20,24 @@ export function checkMode(mode: Mode): Check[] {
         ...ACCENTS.map((n): [string, Hex, Hex, number] => [`on-${n} on ${n}`, on[n], accents[n], 4.5]),
         ...ACCENTS.map((n): [string, Hex, Hex, number] => [`onFill-${n} on fill-${n}`, onFill[n], fills[n], 4.5]),
         ...ACCENTS.map((n): [string, Hex, Hex, number] => [`fg on tint-${n}`, r.fg, tints[n], 12]),
-        ...ACCENTS.map((n): [string, Hex, Hex, number] => [`fg on tintStrong-${n}`, r.fg, tintsStrong[n], 7]),
-        ...ACCENTS.map((n): [string, Hex, Hex, number] => [`dim-${n} on bg`, dims[n], r.bg, 2]),
+        ...ACCENTS.map((n): [string, Hex, Hex, number] => [
+            `fg on tint(${n}, medium)`,
+            r.fg,
+            tint(accents[n], "medium", r.bg),
+            4.5,
+        ]),
+        ...(["red", "green", "yellow", "blue", "magenta", "cyan"] as const).map((k): [string, Hex, Hex, number] => [
+            `ansi dim ${k} on bg`,
+            ansiDim[k],
+            r.bg,
+            2,
+        ]),
         ["onMatchActive on matchActive", r.onMatchActive, r.matchActive, 4.5],
-        ["fg on findMatchSolid", r.fg, r.findMatchSolid, 7],
+        ["fg on solid(findMatch)", r.fg, solid(r.findMatch, r.bg), 7],
         ["tabInactiveFg on tabInactive", r.tabInactiveFg, r.tabInactive, 4.5],
         // every accent must be a valid choice, not just the default
         ...ACCENTS.flatMap((n): [string, Hex, Hex, number][] => [
-            [`fg on selection (${n})`, r.fg, mode.accentRoles[n].selectionSolid, 7],
+            [`fg on selection (${n})`, r.fg, solid(mode.accentRoles[n].selection, r.bg), 7],
             [`fg on accentTint (${n})`, r.fg, mode.accentRoles[n].accentTint, 12],
         ]),
         ["ansi black on bg", ansi.black, r.bg, mode.type === "dark" ? 1.5 : 7],
