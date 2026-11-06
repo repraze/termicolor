@@ -87,9 +87,16 @@ export type Syntax = Record<
     Hex
 >;
 
+/** "high" keeps every accent but flattens surfaces and swaps muted borders for bright ones. */
+export type Contrast = "normal" | "high";
+export type ModeId = ModeName | `${ModeName}-hc`;
+
 export type Mode = {
+    /** Unique per variant: `dark`, `light`, `dark-hc`, `light-hc`. */
+    id: ModeId;
     name: ModeName;
     type: "dark" | "light";
+    contrast: Contrast;
     accents: AccentSet;
     brights: AccentSet;
     on: AccentSet;
@@ -103,6 +110,8 @@ export type Palette = {
     name: "Termicolor";
     defaultAccent: AccentName;
     modes: Record<ModeName, Mode>;
+    /** Same accents and syntax as `modes`; one flat surface, bright borders, stronger secondary text. */
+    highContrast: Record<ModeName, Mode>;
 };
 
 type Surfaces = Pick<
@@ -151,14 +160,44 @@ const SURFACES: Record<ModeName, Surfaces> = {
     },
 };
 
+/** High contrast: page, panels and code boxes share one background; structure comes from bright borders. */
+const HC_SURFACES: Record<ModeName, Surfaces> = {
+    dark: {
+        bg: N[1000],
+        bgSunken: N[1000],
+        bgRaised: N[950],
+        border: N[400],
+        borderStrong: N[50],
+        guide: N[700],
+        guideActive: N[400],
+        fg: N[0],
+        fgSoft: N[300],
+        fgMuted: N[400],
+        fgDisabled: N[500],
+    },
+    light: {
+        bg: N[0],
+        bgSunken: N[0],
+        bgRaised: N[50],
+        border: N[600],
+        borderStrong: N[950],
+        guide: N[300],
+        guideActive: N[600],
+        fg: N[1000],
+        fgSoft: N[700],
+        fgMuted: N[600],
+        fgDisabled: N[500],
+    },
+};
+
 const ANSI_NEUTRALS: Record<ModeName, Pick<Ansi, "black" | "white" | "brightBlack" | "brightWhite">> = {
     dark: {black: N[700], white: N[300], brightBlack: N[500], brightWhite: N[0]},
     light: {black: N[800], white: N[400], brightBlack: N[600], brightWhite: N[300]},
 };
 
-function buildMode(name: ModeName): Mode {
+function buildMode(name: ModeName, contrast: Contrast = "normal"): Mode {
     const {accents: a, brights, on} = name === "dark" ? deriveDark() : deriveLight();
-    const s = SURFACES[name];
+    const s = (contrast === "high" ? HC_SURFACES : SURFACES)[name];
     const accent = DEFAULT_ACCENT;
     const roles: Roles = {
         ...s,
@@ -219,11 +258,18 @@ function buildMode(name: ModeName): Mode {
         link: a.blue,
         invalid: a.red,
     };
-    return {name, type: name, accents: a, brights, on, neutrals: NEUTRALS, roles, ansi, syntax};
+    const id: ModeId = contrast === "high" ? `${name}-hc` : name;
+    return {id, name, type: name, contrast, accents: a, brights, on, neutrals: NEUTRALS, roles, ansi, syntax};
 }
 
 export const palette: Palette = {
     name: "Termicolor",
     defaultAccent: DEFAULT_ACCENT,
     modes: {dark: buildMode("dark"), light: buildMode("light")},
+    highContrast: {dark: buildMode("dark", "high"), light: buildMode("light", "high")},
 };
+
+/** Every variant, normal first: dark, light, dark-hc, light-hc. */
+export function allModes(p: Palette = palette): Mode[] {
+    return [...Object.values(p.modes), ...Object.values(p.highContrast)];
+}

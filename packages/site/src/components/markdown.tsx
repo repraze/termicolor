@@ -1,5 +1,8 @@
 import {Fragment, type ReactNode} from "react";
 
+import {CodeBlock} from "@/components/code-block";
+import {langFor} from "@/lib/highlight";
+
 /**
  * Just enough markdown for port install notes: fenced code, paragraphs, numbered lists,
  * **bold**, `code`, [links](url). Port notes are authored in this repo, so no sanitizing needed.
@@ -10,12 +13,9 @@ export function Markdown({source}: {source: string}) {
         <div className="flex flex-col gap-3 text-sm leading-relaxed">
             {blocks.map((block, i) => {
                 if (block.startsWith("```")) {
+                    const tag = /^```(\w*)/.exec(block)?.[1] ?? "";
                     const code = block.replace(/^```\w*\n?/, "").replace(/```$/, "");
-                    return (
-                        <pre key={i} className="bg-card overflow-x-auto border p-3 text-xs">
-                            <code>{code.trimEnd()}</code>
-                        </pre>
-                    );
+                    return <CodeBlock key={i} code={code.trimEnd()} lang={tag ? langFor(tag) : "text"} />;
                 }
                 return block
                     .split(/\n{2,}/)

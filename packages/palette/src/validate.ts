@@ -1,5 +1,5 @@
 import {contrast, flatten, type Hex} from "./color.ts";
-import type {Mode, Palette} from "./palette.ts";
+import {allModes, type Mode, type Palette} from "./palette.ts";
 import {ACCENTS} from "./seeds.ts";
 
 export type Check = {mode: string; label: string; fg: Hex; bg: Hex; ratio: number; min: number; pass: boolean};
@@ -19,13 +19,21 @@ export function checkMode(mode: Mode): Check[] {
         ["ansi black on bg", ansi.black, r.bg, mode.type === "dark" ? 1.5 : 7],
         ["ansi brightBlack on bg", ansi.brightBlack, r.bg, 3.5],
         ["ansi white on bg", ansi.white, r.bg, mode.type === "dark" ? 7 : 2],
+        ...(mode.contrast === "high"
+            ? ([
+                  ["fgSoft on bg (hc)", r.fgSoft, r.bg, 10],
+                  ["fgMuted on bg (hc)", r.fgMuted, r.bg, 4.5],
+                  ["border on bg (hc)", r.border, r.bg, 4.5],
+                  ["borderStrong on bg (hc)", r.borderStrong, r.bg, 15],
+              ] satisfies [string, Hex, Hex, number][])
+            : []),
     ];
     return pairs.map(([label, fg, bg, min]) => {
         const ratio = contrast(fg, bg);
-        return {mode: mode.name, label, fg, bg, ratio, min, pass: ratio >= min};
+        return {mode: mode.id, label, fg, bg, ratio, min, pass: ratio >= min};
     });
 }
 
 export function checkPalette(palette: Palette): Check[] {
-    return Object.values(palette.modes).flatMap(checkMode);
+    return allModes(palette).flatMap(checkMode);
 }

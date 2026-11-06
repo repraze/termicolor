@@ -1,4 +1,4 @@
-import {type Mode, oklch, type Palette, rgb} from "@termicolor/palette";
+import {allModes, type Mode, oklch, type Palette, rgb} from "@termicolor/palette";
 
 import {json, type PortFile} from "./port.ts";
 
@@ -18,17 +18,41 @@ function modeVars(mode: Mode): string[] {
     return vars.map(([name, value]) => `    --tc-${name}: ${value};`);
 }
 
+/**
+ * Every mode is a class scope, so any element can render in any mode (nested previews included):
+ * `.light` / `.dark` set every variable; adding `.hc` on the same element overrides only what high
+ * contrast changes. `:root` without a class is light.
+ */
 function paletteCss(palette: Palette): string {
     const neutrals = Object.entries(palette.modes.dark.neutrals).map(([step, hex]) => `    --tc-n-${step}: ${hex};`);
+    const hcOverrides = (name: "dark" | "light") => {
+        const base = new Set(modeVars(palette.modes[name]));
+        return modeVars(palette.highContrast[name]).filter((line) => !base.has(line));
+    };
     return [
-        "/* Termicolor palette - generated, do not edit. Light on :root, dark on .dark */",
+        "/* Termicolor palette - generated, do not edit. Scopes: .light (default on :root), .dark, + .hc */",
         ":root {",
         ...neutrals,
+        "}",
+        "",
+        ":root,",
+        ".light {",
+        "    color-scheme: light;",
         ...modeVars(palette.modes.light),
         "}",
         "",
         ".dark {",
+        "    color-scheme: dark;",
         ...modeVars(palette.modes.dark),
+        "}",
+        "",
+        ":root.hc:not(.dark),",
+        ".light.hc {",
+        ...hcOverrides("light"),
+        "}",
+        "",
+        ".dark.hc {",
+        ...hcOverrides("dark"),
         "}",
         "",
     ].join("\n");
@@ -42,6 +66,7 @@ function shadcnCss(palette: Palette): string {
     ]);
     return `/* shadcn/ui tokens on Termicolor - generated, do not edit. Import after palette.css */
 :root,
+.light,
 .dark {
     --background: var(--tc-bg-sunken);
     --foreground: var(--tc-fg);
@@ -88,10 +113,11 @@ function paletteJson(palette: Palette): string {
         name: palette.name,
         defaultAccent: palette.defaultAccent,
         modes: Object.fromEntries(
-            Object.entries(palette.modes).map(([name, m]) => [
-                name,
+            allModes(palette).map((m) => [
+                m.id,
                 {
                     type: m.type,
+                    contrast: m.contrast,
                     accents: expandAll(m.accents),
                     brights: expandAll(m.brights),
                     on: expandAll(m.on),

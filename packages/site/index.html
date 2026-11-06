@@ -10,12 +10,22 @@
         />
         <title>Termicolor</title>
         <script>
-            // Apply the stored theme before first paint to avoid a light flash.
+            // Apply the stored theme before first paint (keys match src/hooks/use-theme.ts).
             (function () {
-                var pref = JSON.parse(localStorage.getItem("termicolor-theme") || '"system"');
+                var read = function (key, fallback) {
+                    try {
+                        return JSON.parse(localStorage.getItem(key)) || fallback;
+                    } catch (e) {
+                        return fallback;
+                    }
+                };
+                var pref = read("termicolor-theme", "system");
                 var dark =
                     pref === "dark" || (pref === "system" && !matchMedia("(prefers-color-scheme: light)").matches);
-                document.documentElement.classList.toggle("dark", dark);
+                var root = document.documentElement.classList;
+                root.toggle("dark", dark);
+                root.toggle("light", !dark);
+                root.toggle("hc", read("termicolor-contrast", "normal") === "high");
             })();
         </script>
     </head>

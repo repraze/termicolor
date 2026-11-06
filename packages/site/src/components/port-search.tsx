@@ -89,9 +89,8 @@ export function PortSearch({params, onChange}: {params: PortSearchParams; onChan
 
     return (
         <section className="flex flex-col gap-4">
-            <div className="flex items-baseline justify-between">
-                <h2 className="text-lg font-bold">Ports</h2>
-                <span className="text-muted-foreground text-xs">
+            <div className="flex items-baseline justify-end">
+                <span className="text-muted-foreground font-mono text-xs">
                     {counts.available} available · {counts.planned} planned
                 </span>
             </div>

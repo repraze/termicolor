@@ -1,43 +1,53 @@
-import {createFileRoute} from "@tanstack/react-router";
-import {CATEGORIES} from "@termicolor/build";
+import {createFileRoute, Link} from "@tanstack/react-router";
+import {allModes} from "@termicolor/palette";
+import {ArrowRightIcon} from "lucide-react";
 
-import {PortSearch, type PortSearchParams} from "@/components/port-search";
+import {ModePreview} from "@/components/mode-preview";
 import {SwatchStrip} from "@/components/swatch-strip";
+import {Button} from "@/components/ui/button";
 import {registryQuery} from "@/lib/registry";
 
-const STATUSES = ["all", "available", "planned"] as const;
-
 export const Route = createFileRoute("/")({
-    validateSearch: (search: Record<string, unknown>): PortSearchParams => ({
-        q: typeof search.q === "string" && search.q ? search.q : undefined,
-        category:
-            typeof search.category === "string" && search.category in CATEGORIES
-                ? (search.category as PortSearchParams["category"])
-                : undefined,
-        status: STATUSES.includes(search.status as (typeof STATUSES)[number])
-            ? (search.status as PortSearchParams["status"])
-            : undefined,
-    }),
     loader: ({context}) => context.queryClient.ensureQueryData(registryQuery),
     component: HomePage,
 });
 
 function HomePage() {
-    const search = Route.useSearch();
-    const navigate = Route.useNavigate();
+    const {available} = Route.useLoaderData({
+        select: (r) => ({available: r.filter((e) => e.status === "available").length}),
+    });
     return (
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-12">
             <section className="flex flex-col gap-4">
-                <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
                     High contrast. Bright. <span className="text-primary">Techy.</span>
                 </h1>
-                <p className="text-muted-foreground max-w-2xl text-sm">
-                    One palette, generated into themes for your editor, terminal, prompt, browser and code blocks. Every
-                    color is checked for contrast on every build.
+                <p className="text-muted-foreground max-w-2xl text-base leading-relaxed">
+                    One palette, generated into themes for your editor, terminal, prompt, browser and code blocks. Four
+                    modes, the same eight accents, and every color checked for contrast on every build.
                 </p>
+                <div className="flex flex-wrap gap-2">
+                    <Button render={<Link to="/ports" />}>
+                        Browse {available} ports <ArrowRightIcon />
+                    </Button>
+                    <Button variant="outline" render={<Link to="/palette" />}>
+                        Palette
+                    </Button>
+                </div>
                 <SwatchStrip />
             </section>
-            <PortSearch params={search} onChange={(next) => navigate({search: next, replace: true})} />
+            <section className="flex flex-col gap-4">
+                <h2 className="text-lg font-bold">Modes</h2>
+                <p className="text-muted-foreground max-w-2xl text-sm">
+                    High contrast keeps every color, but puts code on the page background and draws structure with
+                    bright borders instead of muted ones.
+                </p>
+                <div className="grid gap-4 lg:grid-cols-2">
+                    {allModes().map((mode) => (
+                        <ModePreview key={mode.id} mode={mode} />
+                    ))}
+                </div>
+            </section>
         </div>
     );
 }

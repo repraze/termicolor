@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
-import {test} from "node:test";
+
+import {test} from "vitest";
 
 import {contrast, oklch} from "./color.ts";
-import {palette} from "./palette.ts";
+import {allModes, palette} from "./palette.ts";
 import {ACCENTS, DARK_ACCENTS} from "./seeds.ts";
 import {checkPalette} from "./validate.ts";
 
@@ -40,4 +41,30 @@ test("light accents sit close to the target, not far past it", () => {
         const ratio = contrast(palette.modes.light.accents[name], "#ffffff");
         assert.ok(ratio < 5.5, `${name} is darker than needed (${ratio.toFixed(2)})`);
     }
+});
+
+test("high contrast keeps the accents and syntax of its base mode", () => {
+    for (const name of ["dark", "light"] as const) {
+        const base = palette.modes[name];
+        const hc = palette.highContrast[name];
+        assert.equal(hc.id, `${name}-hc`);
+        assert.equal(hc.contrast, "high");
+        assert.deepEqual(hc.accents, base.accents);
+        assert.deepEqual(hc.on, base.on);
+    }
+});
+
+test("high contrast flattens surfaces and brightens structure", () => {
+    for (const name of ["dark", "light"] as const) {
+        const base = palette.modes[name].roles;
+        const hc = palette.highContrast[name].roles;
+        assert.equal(hc.bgSunken, hc.bg, `${name}: page and code boxes share one background`);
+        assert.ok(contrast(hc.border, hc.bg) > contrast(base.border, base.bg) * 2, `${name}: borders are not muted`);
+        assert.ok(contrast(hc.fg, hc.bg) >= contrast(base.fg, base.bg), `${name}: text contrast never drops`);
+    }
+});
+
+test("mode ids are unique", () => {
+    const ids = allModes().map((m) => m.id);
+    assert.deepEqual(ids, ["dark", "light", "dark-hc", "light-hc"]);
 });

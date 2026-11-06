@@ -1,4 +1,4 @@
-/* Termicolor palette - generated, do not edit. Light on :root, dark on .dark */
+/* Termicolor palette - generated, do not edit. Scopes: .light (default on :root), .dark, + .hc */
 :root {
     --tc-n-0: #ffffff;
     --tc-n-50: #fafafa;
@@ -13,6 +13,11 @@
     --tc-n-900: #171717;
     --tc-n-950: #0a0a0a;
     --tc-n-1000: #000000;
+}
+
+:root,
+.light {
+    color-scheme: light;
     --tc-red: #e00063;
     --tc-red-bright: #fa3377;
     --tc-red-on: #ffffff;
@@ -106,6 +111,7 @@
 }
 
 .dark {
+    color-scheme: dark;
     --tc-red: #ff4c82;
     --tc-red-bright: #ff7a9a;
     --tc-red-on: #250e13;
@@ -196,4 +202,48 @@
     --tc-syntax-heading: #bb7aff;
     --tc-syntax-link: #4d91ff;
     --tc-syntax-invalid: #ff4c82;
+}
+
+:root.hc:not(.dark),
+.light.hc {
+    --tc-bg-sunken: #ffffff;
+    --tc-bg-raised: #fafafa;
+    --tc-border: #525252;
+    --tc-border-strong: #0a0a0a;
+    --tc-guide: #d4d4d4;
+    --tc-guide-active: #525252;
+    --tc-fg: #000000;
+    --tc-fg-soft: #404040;
+    --tc-fg-muted: #525252;
+    --tc-fg-disabled: #737373;
+    --tc-bg-hover: #0000000d;
+    --tc-ignored: #525252;
+    --tc-syntax-comment: #404040;
+    --tc-syntax-attribute: #000000;
+    --tc-syntax-property: #000000;
+    --tc-syntax-variable: #000000;
+    --tc-syntax-operator: #000000;
+    --tc-syntax-punctuation: #404040;
+}
+
+.dark.hc {
+    --tc-bg: #000000;
+    --tc-bg-sunken: #000000;
+    --tc-bg-raised: #0a0a0a;
+    --tc-border: #a3a3a3;
+    --tc-border-strong: #fafafa;
+    --tc-guide: #404040;
+    --tc-guide-active: #a3a3a3;
+    --tc-fg: #ffffff;
+    --tc-fg-soft: #d4d4d4;
+    --tc-fg-muted: #a3a3a3;
+    --tc-fg-disabled: #737373;
+    --tc-bg-hover: #ffffff0f;
+    --tc-ignored: #a3a3a3;
+    --tc-syntax-comment: #d4d4d4;
+    --tc-syntax-attribute: #ffffff;
+    --tc-syntax-property: #ffffff;
+    --tc-syntax-variable: #ffffff;
+    --tc-syntax-operator: #ffffff;
+    --tc-syntax-punctuation: #d4d4d4;
 }

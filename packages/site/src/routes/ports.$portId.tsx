@@ -5,10 +5,12 @@ import {CATEGORIES} from "@termicolor/build";
 import {ArrowLeftIcon, CheckIcon, CopyIcon, DownloadIcon, ExternalLinkIcon} from "lucide-react";
 import {useState} from "react";
 
+import {CodeBlock} from "@/components/code-block";
 import {Markdown} from "@/components/markdown";
 import {Badge} from "@/components/ui/badge";
 import {Button} from "@/components/ui/button";
 import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs";
+import {langFor} from "@/lib/highlight";
 import {dataUrl, portFileQuery, registryQuery} from "@/lib/registry";
 
 export const Route = createFileRoute("/ports/$portId")({
@@ -23,7 +25,7 @@ export const Route = createFileRoute("/ports/$portId")({
     notFoundComponent: () => (
         <div className="flex flex-col items-start gap-4">
             <p className="text-sm">That port isn't available yet.</p>
-            <Button variant="outline" render={<Link to="/" />}>
+            <Button variant="outline" render={<Link to="/ports" />}>
                 <ArrowLeftIcon /> All ports
             </Button>
         </div>
@@ -40,9 +42,20 @@ function PortPage() {
     return (
         <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-3">
-                <Link to="/" className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-xs">
-                    <ArrowLeftIcon className="size-3" /> All ports
-                </Link>
+                <nav
+                    className="text-muted-foreground flex items-center gap-1 font-mono text-xs"
+                    aria-label="Breadcrumb"
+                >
+                    <Link to="/ports" className="hover:text-foreground">
+                        ports
+                    </Link>
+                    <span>/</span>
+                    <Link to="/ports" search={{category: entry.category}} className="hover:text-foreground">
+                        {entry.category}
+                    </Link>
+                    <span>/</span>
+                    <span className="text-foreground">{entry.id}</span>
+                </nav>
                 <div className="flex flex-wrap items-center gap-3">
                     <h1 className="text-2xl font-bold">{entry.name}</h1>
                     <Badge variant="outline">{CATEGORIES[entry.category]}</Badge>
@@ -97,9 +110,11 @@ function FileViewer({portId, files}: {portId: string; files: string[]}) {
                         <DownloadIcon /> Download
                     </Button>
                 </div>
-                <pre className="max-h-[32rem] overflow-auto p-3 text-xs">
-                    {isPending ? "Loading…" : error ? `Failed to load: ${error.message}` : data}
-                </pre>
+                {data !== undefined ? (
+                    <CodeBlock code={data} lang={langFor(active)} size="tall" className="border-0" />
+                ) : (
+                    <pre className="p-3 text-xs">{isPending ? "Loading…" : `Failed to load: ${error?.message}`}</pre>
+                )}
             </div>
         </section>
     );

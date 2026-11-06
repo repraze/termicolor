@@ -19,6 +19,9 @@ jobs:
             - run: npm run format:check
             - run: npm test
             - run: npm run typecheck
+            - run: npx playwright install --with-deps chromium
+            # Smoke + WCAG contrast (axe) on every route in all four modes.
+            - run: npm run e2e
             # Generated ports are committed; fail if the palette or a port changed without a rebuild.
             - name: Generated files are up to date
               run: npm run check:generated

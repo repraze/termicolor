@@ -1,8 +1,9 @@
 import {useClipboard} from "@mantine/hooks";
 import {createFileRoute} from "@tanstack/react-router";
-import {ACCENTS, checkMode, contrast, type Hex, type Mode, palette} from "@termicolor/palette";
+import {ACCENTS, allModes, checkMode, contrast, type Hex, type Mode} from "@termicolor/palette";
 import {cva} from "class-variance-authority";
 
+import {MODE_LABELS, ModeScope} from "@/components/mode-scope";
 import {Badge} from "@/components/ui/badge";
 
 export const Route = createFileRoute("/palette")({
@@ -16,40 +17,42 @@ function PalettePage() {
                 <h1 className="text-2xl font-bold">Palette</h1>
                 <p className="text-muted-foreground max-w-2xl text-sm">
                     Dark accents are the hand-tuned seeds. Light accents keep the same hue and are darkened in OKLCH
-                    until they reach 4.8:1 on white; each accent gets a paired foreground for solid fills. Click any
-                    swatch to copy its hex.
+                    until they reach 4.8:1 on white; each accent gets a paired foreground for solid fills. High contrast
+                    variants keep the accents and change only surfaces, borders and secondary text. Click any swatch to
+                    copy its hex.
                 </p>
             </section>
-            {Object.values(palette.modes).map((mode) => (
-                <ModeSection key={mode.name} mode={mode} />
+            {allModes().map((mode) => (
+                <ModeSection key={mode.id} mode={mode} />
             ))}
         </div>
     );
 }
 
-/** Each mode renders on its own background regardless of the site theme. */
+/** Each mode renders in its own variable scope, so shadcn components inside follow it too. */
 function ModeSection({mode}: {mode: Mode}) {
     const r = mode.roles;
     const checks = checkMode(mode);
     return (
-        <section
-            className="flex flex-col gap-4 border p-4"
-            style={{background: r.bg, color: r.fg, borderColor: r.border}}
-        >
-            <h2 className="text-lg font-bold capitalize">{mode.name}</h2>
+        <ModeScope mode={mode} className="bg-card flex flex-col gap-4 border p-4" data-testid={`mode-${mode.id}`}>
+            <h2 className="text-lg font-bold">{MODE_LABELS[mode.id]}</h2>
 
-            <Group title="Accents · bright · on" color={r.fgSoft}>
+            <Group title="Accents · bright · on">
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                     {ACCENTS.map((name) => (
                         <div key={name} className="flex flex-col">
                             <Swatch hex={mode.accents[name]} label={name} text={mode.on[name]} tall />
-                            <Swatch hex={mode.brights[name]} label="bright" text={mode.on[name]} />
+                            <Swatch
+                                hex={mode.brights[name]}
+                                label="bright"
+                                text={readable(mode.brights[name], r, mode.on[name])}
+                            />
                         </div>
                     ))}
                 </div>
             </Group>
 
-            <Group title="Roles" color={r.fgSoft}>
+            <Group title="Roles">
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                     {(["bg", "bgSunken", "bgRaised", "border", "borderStrong", "fg", "fgSoft", "fgMuted"] as const).map(
                         (name) => (
@@ -59,7 +62,7 @@ function ModeSection({mode}: {mode: Mode}) {
                 </div>
             </Group>
 
-            <Group title="ANSI 16" color={r.fgSoft}>
+            <Group title="ANSI 16">
                 <div className="grid grid-cols-8">
                     {Object.entries(mode.ansi).map(([name, hex]) => (
                         <Swatch
@@ -72,16 +75,13 @@ function ModeSection({mode}: {mode: Mode}) {
                 </div>
             </Group>
 
-            <Group title="Contrast guarantees (WCAG)" color={r.fgSoft}>
+            <Group title="Contrast guarantees (WCAG)">
                 <div className="grid gap-x-6 text-xs sm:grid-cols-2">
                     {checks.map((c) => (
                         <div key={c.label} className="flex items-center gap-2 py-0.5">
-                            <span
-                                className="inline-block size-3 border"
-                                style={{background: c.fg, borderColor: r.border}}
-                            />
+                            <span className="inline-block size-3 border" style={{background: c.fg}} />
                             <span className="flex-1">{c.label}</span>
-                            <span style={{color: r.fgSoft}}>≥ {c.min}</span>
+                            <span className="text-muted-foreground">≥ {c.min}</span>
                             <Badge variant={c.pass ? "outline" : "destructive"} className="w-14 justify-end">
                                 {c.ratio.toFixed(2)}
                             </Badge>
@@ -89,21 +89,19 @@ function ModeSection({mode}: {mode: Mode}) {
                     ))}
                 </div>
             </Group>
-        </section>
+        </ModeScope>
     );
 }
 
-/** Whichever of the mode's fg/bg reads better on `hex`. */
-function readable(hex: Hex, r: Mode["roles"]): Hex {
-    return contrast(r.fg, hex) >= contrast(r.bg, hex) ? r.fg : r.bg;
+/** Best-contrast text for a swatch: the mode's fg, bg, or an explicit pairing. */
+function readable(hex: Hex, r: Mode["roles"], ...extra: Hex[]): Hex {
+    return [r.fg, r.bg, ...extra].reduce((best, c) => (contrast(c, hex) > contrast(best, hex) ? c : best));
 }
 
-function Group({title, color, children}: {title: string; color: Hex; children: React.ReactNode}) {
+function Group({title, children}: {title: string; children: React.ReactNode}) {
     return (
         <div className="flex flex-col gap-2">
-            <h3 className="text-xs tracking-widest uppercase" style={{color}}>
-                {title}
-            </h3>
+            <h3 className="text-muted-foreground text-xs tracking-widest uppercase">{title}</h3>
             {children}
         </div>
     );

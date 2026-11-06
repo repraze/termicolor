@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PaletteRouteImport } from './routes/palette'
+import { Route as PortsRouteImport } from './routes/ports'
+import { Route as PortsIndexRouteImport } from './routes/ports.index'
 import { Route as PortsPortIdRouteImport } from './routes/ports.$portId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,40 +25,55 @@ const PaletteRoute = PaletteRouteImport.update({
   path: '/palette',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PortsPortIdRoute = PortsPortIdRouteImport.update({
-  id: '/ports/$portId',
-  path: '/ports/$portId',
+const PortsRoute = PortsRouteImport.update({
+  id: '/ports',
+  path: '/ports',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PortsIndexRoute = PortsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PortsRoute,
+} as any)
+const PortsPortIdRoute = PortsPortIdRouteImport.update({
+  id: '/$portId',
+  path: '/$portId',
+  getParentRoute: () => PortsRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/palette': typeof PaletteRoute
+  '/ports': typeof PortsRouteWithChildren
   '/ports/$portId': typeof PortsPortIdRoute
+  '/ports/': typeof PortsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/palette': typeof PaletteRoute
   '/ports/$portId': typeof PortsPortIdRoute
+  '/ports': typeof PortsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/palette': typeof PaletteRoute
+  '/ports': typeof PortsRouteWithChildren
   '/ports/$portId': typeof PortsPortIdRoute
+  '/ports/': typeof PortsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/palette' | '/ports/$portId'
+  fullPaths: '/' | '/palette' | '/ports' | '/ports/$portId' | '/ports/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/palette' | '/ports/$portId'
-  id: '__root__' | '/' | '/palette' | '/ports/$portId'
+  to: '/' | '/palette' | '/ports/$portId' | '/ports'
+  id: '__root__' | '/' | '/palette' | '/ports' | '/ports/$portId' | '/ports/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PaletteRoute: typeof PaletteRoute
-  PortsPortIdRoute: typeof PortsPortIdRoute
+  PortsRoute: typeof PortsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -75,20 +92,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PaletteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ports': {
+      id: '/ports'
+      path: '/ports'
+      fullPath: '/ports'
+      preLoaderRoute: typeof PortsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ports/': {
+      id: '/ports/'
+      path: '/'
+      fullPath: '/ports/'
+      preLoaderRoute: typeof PortsIndexRouteImport
+      parentRoute: typeof PortsRoute
+    }
     '/ports/$portId': {
       id: '/ports/$portId'
-      path: '/ports/$portId'
+      path: '/$portId'
       fullPath: '/ports/$portId'
       preLoaderRoute: typeof PortsPortIdRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PortsRoute
     }
   }
 }
 
+interface PortsRouteChildren {
+  PortsPortIdRoute: typeof PortsPortIdRoute
+  PortsIndexRoute: typeof PortsIndexRoute
+}
+
+const PortsRouteChildren: PortsRouteChildren = {
+  PortsPortIdRoute: PortsPortIdRoute,
+  PortsIndexRoute: PortsIndexRoute,
+}
+
+const PortsRouteWithChildren = PortsRoute._addFileChildren(PortsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PaletteRoute: PaletteRoute,
-  PortsPortIdRoute: PortsPortIdRoute,
+  PortsRoute: PortsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

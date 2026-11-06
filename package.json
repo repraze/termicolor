@@ -13,12 +13,15 @@
         "build:site": "npm run build -w @termicolor/site",
         "dev": "npm run dev -w @termicolor/site",
         "check:generated": "npm run build:ports && git diff --exit-code -- ports packages/palette/dist",
-        "test": "npm run test --workspaces --if-present",
+        "test": "vitest run",
         "typecheck": "npm run typecheck --workspaces --if-present",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "format": "prettier --write .",
-        "format:check": "prettier --check ."
+        "format:check": "prettier --check .",
+        "test:watch": "vitest",
+        "e2e": "npm run e2e -w @termicolor/site",
+        "snap": "npm run snap -w @termicolor/site"
     },
     "author": "Thomas Dubosc (https://repraze.com)",
     "license": "MIT",
@@ -27,6 +30,8 @@
         "url": "https://github.com/repraze/termicolor"
     },
     "devDependencies": {
+        "@axe-core/playwright": "^4.14.0",
+        "@playwright/test": "^1.65.0",
         "@types/node": "^26.6.6",
         "eslint": "^10.14.0",
         "eslint-config-prettier": "^10.1.8",
@@ -36,6 +41,7 @@
         "prettier": "^3.9.10",
         "tsx": "^4.23.15",
         "typescript": "^6.0.3",
-        "typescript-eslint": "^8.72.1"
+        "typescript-eslint": "^8.72.1",
+        "vitest": "^5.1.0"
     }
 }

@@ -7,3 +7,6 @@ packages/site/dist/
 packages/site/public/data/
 packages/site/public/ports/
 .claude/worktrees/
+packages/site/e2e/.results/
+packages/site/e2e/.snaps/
+playwright-report/

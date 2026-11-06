@@ -17,12 +17,12 @@ function RootLayout() {
         <div className="flex min-h-svh flex-col">
             <SpectrumBar className="h-1" />
             <header className="border-b">
-                <div className="mx-auto flex h-12 max-w-5xl items-center gap-6 px-4 text-xs">
+                <div className="mx-auto flex h-12 max-w-6xl items-center gap-6 px-4 font-mono text-xs">
                     <Link to="/" className="font-bold tracking-widest uppercase">
                         termicolor<span className="text-primary">_</span>
                     </Link>
                     <nav className="flex gap-4">
-                        <Link to="/" className={navLinkClass} activeOptions={{exact: true, includeSearch: false}}>
+                        <Link to="/ports" className={navLinkClass}>
                             Ports
                         </Link>
                         <Link to="/palette" className={navLinkClass}>
@@ -41,10 +41,10 @@ function RootLayout() {
                     </div>
                 </div>
             </header>
-            <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
+            <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8">
                 <Outlet />
             </main>
-            <footer className="text-muted-foreground border-t py-4 text-center text-xs">
+            <footer className="text-muted-foreground border-t py-4 text-center font-mono text-xs">
                 MIT · built from one palette ·{" "}
                 <a className="hover:text-foreground underline" href="https://repraze.com">
                     repraze.com

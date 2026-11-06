@@ -1,5 +1,6 @@
 /* shadcn/ui tokens on Termicolor - generated, do not edit. Import after palette.css */
 :root,
+.light,
 .dark {
     --background: var(--tc-bg-sunken);
     --foreground: var(--tc-fg);

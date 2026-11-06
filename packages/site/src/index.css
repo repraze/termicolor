@@ -1,13 +1,15 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource-variable/geist";
 @import "@termicolor/palette/palette.css";
 @import "@termicolor/palette/shadcn.css";
 
-@custom-variant dark (&:is(.dark *));
+/* Nearest scope wins, so a .light preview nested in a .dark page isn't styled as dark. */
+@custom-variant dark (&:is(.dark, .dark *):not(.dark .light, .dark .light *));
 
 @theme inline {
-    --font-sans: "JetBrains Mono Variable", ui-monospace, monospace;
+    --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
     --radius: 0;
     --color-background: var(--background);
@@ -47,6 +49,16 @@
     }
     body {
         @apply bg-background text-foreground font-sans antialiased;
+    }
+    /* Mono for titles, labels and code; Geist for reading. */
+    h1,
+    h2,
+    h3,
+    h4,
+    code,
+    kbd,
+    pre {
+        @apply font-mono;
     }
     ::selection {
         background: var(--tc-selection);
