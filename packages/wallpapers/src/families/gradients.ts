@@ -1,38 +1,12 @@
-import type {AccentName} from "@termicolor/palette";
+import {mix} from "@termicolor/palette";
 
-import {lerpOklch, ramp} from "../colors.ts";
+import {lerpOklch, ramp, shade} from "../colors.ts";
 import {blurFilter, el, fade, linearGradient, n, path, radialGradient, type Stop} from "../svg.ts";
 import type {Generator, RenderContext} from "../types.ts";
-
-const DEG = Math.PI / 180;
-
-function accent(ctx: RenderContext, i: number): AccentName {
-    const list = ctx.params.accents;
-    return list[i % list.length]!;
-}
+import {accent, DEG, full, span, tables, veil} from "./common.ts";
 
 function baseRect(ctx: RenderContext, fill = ctx.colors.base): string {
-    return el("rect", {width: ctx.size.width, height: ctx.size.height, fill});
-}
-
-/** Gradient line through the canvas center at `angle`, long enough to cover every corner. */
-function span(ctx: RenderContext, angle: number): [[number, number], [number, number]] {
-    const {width: w, height: h} = ctx.size;
-    const dx = Math.cos(angle * DEG);
-    const dy = Math.sin(angle * DEG);
-    const half = (Math.abs(dx) * w + Math.abs(dy) * h) / 2;
-    return [
-        [w / 2 - dx * half, h / 2 - dy * half],
-        [w / 2 + dx * half, h / 2 + dy * half],
-    ];
-}
-
-/** Eased opacity ramp of one color: 0 at the start, `max` at the end. */
-function veil(color: string, max: number, steps = 8): Stop[] {
-    return Array.from({length: steps + 1}, (_, i) => {
-        const t = i / steps;
-        return {offset: t, color, opacity: max * t * t * (3 - 2 * t)};
-    });
+    return full(ctx, fill);
 }
 
 const linear: Generator = {
@@ -272,4 +246,111 @@ const aurora: Generator = {
     },
 };
 
-export const gradients: Generator[] = [linear, radial, conic, mesh, aurora];
+/**
+ * Low-frequency `feTurbulence` mapped onto a color ramp with `feComponentTransfer`. A few hundred bytes
+ * of SVG for a full-bleed organic gradient; the noise algorithm is fixed by the SVG spec, so it is stable.
+ */
+function noiseField(ctx: RenderContext, discrete: boolean): {defs: string[]; body: string[]} {
+    const {rng, colors: c, size} = ctx;
+    const {width: w, height: h} = size;
+    const [a0, a1, a2] = [accent(ctx, 0), accent(ctx, 1), accent(ctx, 2)];
+    const f = (0.00055 + ctx.params.density * 0.0006) / ctx.u;
+    // Stretched along the long axis so the shapes flow with the screen.
+    const [fx, fy] = w >= h ? [f * 0.55, f] : [f, f * 0.55];
+    const stops = c.dark
+        ? [c.base, c.base, shade(c.fill(a1), 0.28), c.fill(a1), c.fill(a0), c.glow(a0), c.fill(a2)]
+        : [c.base, c.base, mix(c.base, c.fill(a1), 0.25), c.fill(a1), c.fill(a0), c.ink(a0), c.fill(a2)];
+    const colors = discrete ? ramp(stops, 9) : ramp(stops, 14);
+    const t = tables(colors);
+    const type = discrete ? "discrete" : "table";
+    const filter = el(
+        "filter",
+        {
+            id: "field",
+            filterUnits: "userSpaceOnUse",
+            x: "0",
+            y: "0",
+            width: String(w),
+            height: String(h),
+            "color-interpolation-filters": "sRGB",
+        },
+        [
+            el("feTurbulence", {
+                type: "fractalNoise",
+                baseFrequency: `${n(fx, 6)} ${n(fy, 6)}`,
+                numOctaves: discrete ? "4" : "3",
+                seed: String(rng.int(1, 9999)),
+            }),
+            // Red channel into r, g, b; opaque.
+            el("feColorMatrix", {type: "matrix", values: "1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1"}),
+            // fractalNoise clusters around 0.5: stretch it to the full range before the lookup.
+            el("feComponentTransfer", {}, [
+                el("feFuncR", {type: "linear", slope: "3.2", intercept: "-1.1"}),
+                el("feFuncG", {type: "linear", slope: "3.2", intercept: "-1.1"}),
+                el("feFuncB", {type: "linear", slope: "3.2", intercept: "-1.1"}),
+            ]),
+            el("feComponentTransfer", {}, [
+                el("feFuncR", {type, tableValues: t.r}),
+                el("feFuncG", {type, tableValues: t.g}),
+                el("feFuncB", {type, tableValues: t.b}),
+            ]),
+        ],
+    );
+    return {defs: [filter], body: [full(ctx, c.base, {filter: "url(#field)"})]};
+}
+
+const noise: Generator = {
+    id: "noise",
+    family: "gradients",
+    name: "Noise gradient",
+    description: "Smooth fractal noise mapped onto a base → accent ramp: liquid, organic color fields.",
+    defaults: {accents: ["purple", "blue", "pink"], density: 0.4, grain: 0.5},
+    render: (ctx) => noiseField(ctx, false),
+};
+
+const posterize: Generator = {
+    id: "posterize",
+    family: "gradients",
+    name: "Posterized noise",
+    description: "The noise gradient quantized into flat terraces: hard-edged bands like a heat map.",
+    defaults: {accents: ["purple", "cyan", "pink"], density: 0.4, grain: 0.3},
+    render: (ctx) => noiseField(ctx, true),
+};
+
+const bands: Generator = {
+    id: "bands",
+    family: "gradients",
+    name: "Spectrum bands",
+    description: "Stepped OKLCH gradient as tilted bars with hairline gaps, sinking into the base at one end.",
+    defaults: {accents: ["purple", "blue", "cyan", "green"], density: 0.5, grain: 0.3},
+    render(ctx) {
+        const {rng, colors: c, size, u} = ctx;
+        const {width: w, height: h} = size;
+        const count = Math.round(10 + ctx.params.density * 22);
+        const tilt = rng.range(-18, 18);
+        // Bars run across the short axis, stepping along the long one.
+        const diag = Math.hypot(w, h);
+        const step = (diag * 1.1) / count;
+        const colors = ramp(
+            ctx.params.accents.map((a) => c.fill(a)),
+            count,
+        );
+        const gap = Math.max(2 * u, step * 0.06);
+        const bars = colors.map((color, i) => {
+            const x = -diag * 0.55 + i * step;
+            return el("rect", {x: n(x), y: n(-diag), width: n(step - gap), height: n(diag * 2), fill: color});
+        });
+        const angle = (w >= h ? 0 : 90) + tilt;
+        const veilAngle = (w >= h ? 90 : 0) + (rng.chance(0.5) ? 0 : 180);
+        return {
+            defs: [linearGradient("veil", ...span(ctx, veilAngle), veil(c.base, c.dark ? 0.92 : 0.85, 10))],
+            body: [
+                full(ctx, c.base),
+                el("g", {transform: `translate(${n(w / 2)} ${n(h / 2)}) rotate(${n(angle)})`}, bars),
+                full(ctx, "url(#veil)"),
+            ],
+        };
+    },
+};
+
+export const gradients: Generator[] = [linear, radial, conic, mesh, aurora, noise, posterize, bands];

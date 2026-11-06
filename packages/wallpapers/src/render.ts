@@ -1,14 +1,16 @@
 import {type ModeName, MODES, type Palette} from "@termicolor/palette";
 
 import {colorsFor} from "./colors.ts";
-import {circuits} from "./families/circuit.ts";
 import {gradients} from "./families/gradients.ts";
 import {grids} from "./families/grids.ts";
+import {lines} from "./families/lines.ts";
+import {patterns} from "./families/patterns.ts";
+import {traceGenerators} from "./families/traces.ts";
 import {createRng, hash} from "./random.ts";
 import {document, el, grainFilter, n} from "./svg.ts";
 import type {Generator, Params, Size} from "./types.ts";
 
-export const GENERATORS: readonly Generator[] = [...gradients, ...grids, ...circuits];
+export const GENERATORS: readonly Generator[] = [...gradients, ...lines, ...grids, ...patterns, ...traceGenerators];
 
 export function getGenerator(id: string): Generator {
     const generator = GENERATORS.find((g) => g.id === id);
@@ -22,8 +24,11 @@ export const SIZES = {
     fhd: {width: 1920, height: 1080},
     qhd: {width: 2560, height: 1440},
     uhd: {width: 3840, height: 2160},
+    fhdPortrait: {width: 1080, height: 1920},
+    qhdPortrait: {width: 1440, height: 2560},
+    uhdPortrait: {width: 2160, height: 3840},
+    // Not in the catalog output, but generators lay out for any aspect.
     ultrawide: {width: 3440, height: 1440},
-    superUltrawide: {width: 5120, height: 1440},
     phone: {width: 1179, height: 2556},
 } as const satisfies Record<string, Size>;
 export type SizeName = keyof typeof SIZES;
@@ -54,11 +59,12 @@ export function renderWallpaper(spec: WallpaperSpec, {palette, mode, size}: Rend
         throw new Error(`${spec.generator}#${spec.seed}: accents must not be empty`);
     }
     const colors = colorsFor(palette, mode);
-    const u = Math.min(size.width, size.height) / 1440;
+    const design = designSize(size);
+    const u = 1;
     const {defs, body} = generator.render({
         palette,
         mode,
-        size,
+        size: design,
         seed: spec.seed,
         params,
         rng: createRng(`${generator.id}:${spec.seed}`),
@@ -66,12 +72,14 @@ export function renderWallpaper(spec: WallpaperSpec, {palette, mode, size}: Rend
         colors,
     });
     if (params.grain > 0) {
-        defs.push(grainFilter("grain", hash(`${generator.id}:${spec.seed}`), 0.85));
+        // Grain frequency is per output pixel, not per design unit, so it never aliases when scaled down.
+        const perPixel = size.width / design.width;
+        defs.push(grainFilter("grain", hash(`${generator.id}:${spec.seed}`), 0.7 * perPixel));
         // Overlay keeps mid-tones grainy without lifting the blacks.
         body.push(
             el("rect", {
-                width: size.width,
-                height: size.height,
+                width: design.width,
+                height: design.height,
                 filter: "url(#grain)",
                 opacity: n(params.grain * (colors.dark ? 0.22 : 0.16), 3),
                 style: "mix-blend-mode:overlay",
@@ -79,5 +87,16 @@ export function renderWallpaper(spec: WallpaperSpec, {palette, mode, size}: Rend
         );
     }
     const title = `Termicolor ${generator.name} #${spec.seed} (${mode}, ${size.width}x${size.height})`;
-    return document(size.width, size.height, title, defs, body);
+    return document(size, design, title, defs, body);
 }
+
+/**
+ * The coordinate space a generator draws in: the requested aspect ratio with a short side of 1440.
+ * Every 16:9 size (1080p, QHD, 4K) shares one design, so they differ only in the SVG header.
+ */
+export function designSize(size: Size): Size {
+    const k = DESIGN_SHORT_SIDE / Math.min(size.width, size.height);
+    return {width: Math.round(size.width * k), height: Math.round(size.height * k)};
+}
+
+export const DESIGN_SHORT_SIDE = 1440;

@@ -25,6 +25,63 @@ export function path(points: readonly (readonly [number, number])[], close = fal
     );
 }
 
+/**
+ * Compact polyline: absolute integer `M`, then relative `l` steps between rounded points (rounding
+ * the absolute positions first, so there is no drift). Much smaller than absolute decimals.
+ */
+export function relPath(points: readonly (readonly [number, number])[], close = false): string {
+    if (points.length < 2) {
+        return "";
+    }
+    const r = points.map(([x, y]) => [Math.round(x), Math.round(y)] as const);
+    let out = `M${r[0]![0]} ${r[0]![1]}l`;
+    const steps: string[] = [];
+    for (let i = 1; i < r.length; i++) {
+        const dx = r[i]![0] - r[i - 1]![0];
+        const dy = r[i]![1] - r[i - 1]![1];
+        if (dx || dy) {
+            steps.push(`${dx} ${dy}`);
+        }
+    }
+    if (!steps.length) {
+        return "";
+    }
+    // Minus signs double as separators: "3-2" parses as 3, -2.
+    out += steps.join(" ").replace(/ -/g, "-");
+    return close ? `${out}z` : out;
+}
+
+/** Ramer-Douglas-Peucker: drops points closer than `tolerance` to the simplified line. */
+export function simplify<T extends readonly [number, number]>(points: readonly T[], tolerance: number): T[] {
+    if (points.length < 3) {
+        return [...points];
+    }
+    const keep = new Uint8Array(points.length);
+    keep[0] = keep[points.length - 1] = 1;
+    const stack: [number, number][] = [[0, points.length - 1]];
+    while (stack.length) {
+        const [a, b] = stack.pop()!;
+        const [ax, ay] = points[a]!;
+        const [bx, by] = points[b]!;
+        const len = Math.hypot(bx - ax, by - ay) || 1;
+        let worst = -1;
+        let index = -1;
+        for (let i = a + 1; i < b; i++) {
+            const [px, py] = points[i]!;
+            const d = Math.abs((bx - ax) * (ay - py) - (ax - px) * (by - ay)) / len;
+            if (d > worst) {
+                worst = d;
+                index = i;
+            }
+        }
+        if (worst > tolerance && index > 0) {
+            keep[index] = 1;
+            stack.push([a, index], [index, b]);
+        }
+    }
+    return points.filter((_, i) => keep[i]);
+}
+
 export type Stop = {offset: number; color: string; opacity?: number};
 
 export function stops(list: readonly Stop[]): string[] {
@@ -97,9 +154,12 @@ export function blurFilter(id: string, blur: number): string {
     );
 }
 
-export function document(width: number, height: number, title: string, defs: string[], body: string[]): string {
+type Box = {width: number; height: number};
+
+/** `size` is the pixel size; `view` the coordinate space the content was drawn in. */
+export function document(size: Box, view: Box, title: string, defs: string[], body: string[]): string {
     return `${[
-        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`,
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${size.width}" height="${size.height}" viewBox="0 0 ${view.width} ${view.height}">`,
         `<title>${title}</title>`,
         defs.length ? `<defs>${defs.join("")}</defs>` : "",
         ...body,

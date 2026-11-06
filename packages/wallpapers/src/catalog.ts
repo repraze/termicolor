@@ -30,23 +30,41 @@ export const CATALOG: readonly CatalogEntry[] = [
     entry("mesh", 8, {params: {accents: ["cyan", "blue", "purple", "green"], density: 1}}),
     entry("aurora", 5),
     entry("aurora", 13, {params: {accents: ["purple", "pink", "blue"]}}),
-    // 2. grids and dots
+    entry("noise", 2),
+    entry("noise", 7, {params: {accents: ["purple", "pink", "orange"]}}),
+    entry("posterize", 3),
+    entry("bands", 1),
+    entry("bands", 6, {params: {accents: ["pink", "purple", "blue", "cyan"]}}),
+    // 2. lines and waves
+    entry("stripes", 2),
+    entry("stripes", 9, {params: {accents: ["cyan", "blue", "purple"]}}),
+    entry("moire", 1),
+    entry("moire", 4, {params: {accents: ["purple", "orange", "cyan"]}}),
+    entry("waves", 3),
+    entry("waves", 8, {params: {accents: ["pink", "purple", "orange"]}}),
+    entry("contours", 1),
+    entry("contours", 6, {params: {accents: ["purple", "blue", "cyan"]}}),
+    entry("flow", 2),
+    entry("flow", 5, {params: {accents: ["purple", "pink", "orange", "yellow"]}}),
+    entry("glitch", 1),
+    entry("glitch", 4, {params: {accents: ["purple", "cyan", "green"]}}),
+    // 3. patterns and grids
     entry("blueprint", 7),
-    entry("blueprint", 21, {params: {accents: ["cyan", "purple", "green"]}}),
     entry("dots", 4),
-    entry("dots", 17, {params: {accents: ["purple", "cyan", "green"], density: 0.8}}),
-    entry("isometric", 3),
-    entry("isometric", 10, {params: {accents: ["purple", "orange", "pink"]}}),
-    entry("synthwave", 1),
-    entry("synthwave", 8, {params: {accents: ["purple", "cyan", "pink", "blue"]}}),
-    // 3. circuit
-    entry("circuit", 1),
-    entry("circuit", 5, {params: {accents: ["green", "cyan", "purple"]}}),
-    entry("circuit", 9, {params: {accents: ["purple", "pink", "orange"], density: 0.9}}),
+    entry("halftone", 1),
+    entry("halftone", 5, {params: {accents: ["purple", "blue", "cyan"]}}),
+    entry("plaid", 3),
+    entry("plaid", 8, {params: {accents: ["purple", "cyan", "green"]}}),
+    entry("truchet", 2),
+    entry("maze", 1),
+    entry("cells", 4),
+    entry("cells", 9, {params: {accents: ["purple", "pink", "orange"]}}),
+    entry("traces", 1),
+    entry("traces", 5, {params: {accents: ["purple", "green", "cyan"]}}),
 ];
 
-/** Sizes the port renders. Other 16:9 sizes scale the uhd SVG; the generators lay out per size. */
-export const CATALOG_SIZES: readonly SizeName[] = ["uhd", "ultrawide"];
+/** Sizes the port renders: 16:9 landscape and 9:16 portrait at 1080p, QHD and 4K. */
+export const CATALOG_SIZES: readonly SizeName[] = ["fhd", "qhd", "uhd", "fhdPortrait", "qhdPortrait", "uhdPortrait"];
 
 export type CatalogFile = {
     path: string;
