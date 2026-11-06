@@ -66,8 +66,9 @@ function paletteCss(palette: Palette): string {
         "",
         "/* Accent override: put .accent-<name> on <html> (or any ancestor). Last, so it wins over mode scopes. */",
         ...ACCENTS.flatMap((n) => [
-            `.accent-${n}:is(:root, .light, .dark),`,
-            `.accent-${n} :is(.light, .dark) {`,
+            // doubled class: outranks the hc scopes (`:root.hc:not(.dark)` is 0,3,0) whatever the order
+            `.accent-${n}.accent-${n}:is(:root, .light, .dark),`,
+            `.accent-${n}.accent-${n} :is(.light, .dark) {`,
             ...ACCENT_ROLES.map((role) => `    --tc-${kebab(role)}: var(--tc-accent-${n}-${kebab(role)});`),
             "}",
             "",

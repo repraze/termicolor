@@ -16,10 +16,10 @@
         Type               = "${e}[38;2;161;101;0m"
         Number             = "${e}[38;2;187;85;0m"
         Member             = "${e}[38;2;10;10;10m"
-        Emphasis           = "${e}[38;2;226;0;100;1m"
+        Emphasis           = "${e}[38;2;163;49;251;1m"
         Error              = "${e}[38;2;226;0;100m"
         ContinuationPrompt = "${e}[38;2;115;115;115m"
-        Selection          = "${e}[38;2;10;10;10;48;2;255;195;206m"
+        Selection          = "${e}[38;2;10;10;10;48;2;226;201;255m"
     }
 
     $psrl = (Get-Module PSReadLine).Version
@@ -27,7 +27,7 @@
         $colors.InlinePrediction = "${e}[38;2;115;115;115m"
     }
     if ($psrl -ge [version]"2.2.0") {
-        $colors.ListPrediction = "${e}[38;2;226;0;100m"
+        $colors.ListPrediction = "${e}[38;2;163;49;251m"
         $colors.ListPredictionSelected = "${e}[48;2;245;245;245m"
     }
 

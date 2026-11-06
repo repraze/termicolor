@@ -1,6 +1,8 @@
 import {useColorScheme, useLocalStorage} from "@mantine/hooks";
-import {type AccentName, ACCENTS, DEFAULT_ACCENT, type ModeId} from "@termicolor/palette";
+import {type AccentName, ACCENTS, type ModeId} from "@termicolor/palette";
 import {useEffect} from "react";
+
+import {SITE_ACCENT} from "@/lib/site";
 
 export type ThemePreference = "system" | "dark" | "light";
 export type ContrastPreference = "normal" | "high";
@@ -10,11 +12,13 @@ export const THEME_KEY = "termicolor-theme";
 export const CONTRAST_KEY = "termicolor-contrast";
 export const ACCENT_KEY = "termicolor-accent";
 
+export {SITE_ACCENT};
+
 /** `.light`/`.dark`, `.hc` and `.accent-<name>` on <html>; palette.css scopes every variable to those classes. */
 export function themeClasses(
     scheme: "dark" | "light",
     contrast: ContrastPreference,
-    accent: AccentName = DEFAULT_ACCENT,
+    accent: AccentName = SITE_ACCENT,
 ): Record<string, boolean> {
     return {
         light: scheme === "light",
@@ -43,7 +47,7 @@ export function useTheme() {
     });
     const [accent, setAccent] = useLocalStorage<AccentName>({
         key: ACCENT_KEY,
-        defaultValue: DEFAULT_ACCENT,
+        defaultValue: SITE_ACCENT,
         getInitialValueInEffect: false,
     });
     const resolved = preference === "system" ? system : preference;

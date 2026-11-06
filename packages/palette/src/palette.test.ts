@@ -5,7 +5,7 @@ import {test} from "vitest";
 import {contrast, oklch} from "./color.ts";
 import {LEVELS, solid, tint, wash} from "./levels.ts";
 import {allModes, palette} from "./palette.ts";
-import {ACCENTS, DARK_ACCENTS, RULES} from "./seeds.ts";
+import {ACCENTS, DARK_ACCENTS, DEFAULT_ACCENT, RULES} from "./seeds.ts";
 import {checkPalette} from "./validate.ts";
 
 test("every contrast guarantee holds", () => {
@@ -104,7 +104,7 @@ test("levels are ordered and the stored palette uses them", () => {
         [...values].sort((a, b) => a - b),
         values,
     );
-    assert.equal(palette.modes.dark.roles.selection, wash(palette.modes.dark.accents.red, "soft"));
+    assert.equal(palette.modes.dark.roles.selection, wash(palette.modes.dark.accents[DEFAULT_ACCENT], "soft"));
 });
 
 test("ansi dim keeps hue and sits between the color and bg", () => {

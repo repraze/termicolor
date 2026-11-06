@@ -1,5 +1,6 @@
 import {contrast, palette} from "@termicolor/palette";
 
+import {SITE_ACCENT} from "../src/lib/site";
 import {expect, test, THEMES, useTheme} from "./fixtures";
 
 /** CSS rgb()/rgba() → #rrggbb (alpha ignored: only opaque fills are compared). */
@@ -42,14 +43,14 @@ for (const theme of THEMES) {
             await useTheme(page, theme, accent);
             await page.goto("");
             const button = page.getByText(/Browse \d+ ports/);
-            const expected = mode.accentRoles[accent ?? "red"].accent;
+            const expected = mode.accentRoles[accent ?? SITE_ACCENT].accent;
             expect(hex(await button.evaluate((el) => getComputedStyle(el).backgroundColor))).toBe(expected);
             // nested mode previews follow the page accent too
             const nested = page.locator('[data-mode="light"]');
             const nestedAccent = await nested.evaluate((el) =>
                 getComputedStyle(el).getPropertyValue("--tc-accent").trim(),
             );
-            expect(nestedAccent).toBe(palette.modes.light.accentRoles[accent ?? "red"].accent);
+            expect(nestedAccent).toBe(palette.modes.light.accentRoles[accent ?? SITE_ACCENT].accent);
         });
     }
 }

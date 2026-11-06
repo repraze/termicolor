@@ -1,5 +1,6 @@
 import {contrast, palette, solid} from "@termicolor/palette";
 
+import {SITE_ACCENT} from "../src/lib/site";
 import {expect, test, THEMES, useTheme} from "./fixtures";
 
 /** rgb()/rgba() → #rrggbb[aa] */
@@ -47,7 +48,7 @@ for (const theme of THEMES) {
         await item.hover();
         await expect
             .poll(async () => hex(await item.evaluate((el) => getComputedStyle(el).backgroundColor)))
-            .toBe(r.accentTint);
+            .toBe(mode.accentRoles[SITE_ACCENT].accentTint);
     });
 }
 
@@ -61,7 +62,7 @@ for (const theme of THEMES) {
         await card.getByRole("button", {name: /^Preview/}).hover();
         await expect
             .poll(async () => hex(await card.evaluate((el) => getComputedStyle(el).borderTopColor)))
-            .toBe(mode.roles.accent);
+            .toBe(mode.accentRoles[SITE_ACCENT].accent);
         await expect(card.getByText("preview", {exact: true})).toBeVisible();
 
         await page.goto("ports");
@@ -73,6 +74,6 @@ for (const theme of THEMES) {
         const name = row.getByText("Alacritty", {exact: true});
         await expect
             .poll(async () => hex(await name.evaluate((el) => getComputedStyle(el).color)))
-            .toBe(mode.roles.accent);
+            .toBe(mode.accentRoles[SITE_ACCENT].accent);
     });
 }

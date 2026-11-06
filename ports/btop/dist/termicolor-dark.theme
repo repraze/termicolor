@@ -11,10 +11,10 @@ theme[main_fg]="#fafafa"
 theme[title]="#fafafa"
 
 # Highlight color for keyboard shortcuts
-theme[hi_fg]="#ff4c82"
+theme[hi_fg]="#bb7aff"
 
 # Background color of selected item in processes box
-theme[selected_bg]="#562b34"
+theme[selected_bg]="#433455"
 
 # Foreground color of selected item in processes box
 theme[selected_fg]="#fafafa"
@@ -32,7 +32,7 @@ theme[meter_bg]="#404040"
 theme[proc_misc]="#2edfeb"
 
 # CPU box outline color
-theme[cpu_box]="#ff4c82"
+theme[cpu_box]="#bb7aff"
 
 # Memory/disks box outline color
 theme[mem_box]="#35e0a3"
@@ -98,8 +98,8 @@ theme[proc_pause_bg]="#ff4c82"
 theme[proc_follow_bg]="#4d91ff"
 
 # Process list banner colors
-theme[proc_banner_bg]="#ff4c82"
-theme[proc_banner_fg]="#250e13"
+theme[proc_banner_bg]="#bb7aff"
+theme[proc_banner_fg]="#1a1125"
 
 # Followed process
 theme[followed_bg]="#4d91ff"

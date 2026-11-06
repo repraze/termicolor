@@ -77,15 +77,15 @@
     --tc-fg-soft: #525252;
     --tc-fg-muted: #737373;
     --tc-fg-disabled: #a3a3a3;
-    --tc-accent: #e20064;
+    --tc-accent: #a331fb;
     --tc-on-accent: #ffffff;
-    --tc-accent-tint: #ffe7eb;
-    --tc-accent-bright: #fc3378;
-    --tc-cursor: #e20064;
-    --tc-selection: #e200644d;
-    --tc-selection-inactive: #e2006426;
-    --tc-focus-ring: #e2006499;
-    --tc-tab-indicator: #e20064;
+    --tc-accent-tint: #f3eaff;
+    --tc-accent-bright: #b262ff;
+    --tc-cursor: #a331fb;
+    --tc-selection: #a331fb4d;
+    --tc-selection-inactive: #a331fb26;
+    --tc-focus-ring: #a331fb99;
+    --tc-tab-indicator: #a331fb;
     --tc-bg-hover: #0a0a0a0f;
     --tc-find-match: #bb550073;
     --tc-shadow: #00000026;
@@ -312,15 +312,15 @@
     --tc-fg-soft: #a3a3a3;
     --tc-fg-muted: #737373;
     --tc-fg-disabled: #525252;
-    --tc-accent: #ff4c82;
-    --tc-on-accent: #250e13;
-    --tc-accent-tint: #382226;
-    --tc-accent-bright: #ff7a9a;
-    --tc-cursor: #ff4c82;
-    --tc-selection: #ff4c824d;
-    --tc-selection-inactive: #ff4c8226;
-    --tc-focus-ring: #ff4c8299;
-    --tc-tab-indicator: #ff4c82;
+    --tc-accent: #bb7aff;
+    --tc-on-accent: #1a1125;
+    --tc-accent-tint: #2d2637;
+    --tc-accent-bright: #c898ff;
+    --tc-cursor: #bb7aff;
+    --tc-selection: #bb7aff4d;
+    --tc-selection-inactive: #bb7aff26;
+    --tc-focus-ring: #bb7aff99;
+    --tc-tab-indicator: #bb7aff;
     --tc-bg-hover: #fafafa0f;
     --tc-find-match: #ff924373;
     --tc-shadow: #00000080;
@@ -506,7 +506,7 @@
     --tc-fg-soft: #404040;
     --tc-fg-muted: #525252;
     --tc-fg-disabled: #737373;
-    --tc-accent-tint: #ffd3db;
+    --tc-accent-tint: #ead8ff;
     --tc-bg-hover: #00000026;
     --tc-titlebar: #ffffff;
     --tc-tab-active-fg: #000000;
@@ -551,7 +551,7 @@
     --tc-fg-soft: #d4d4d4;
     --tc-fg-muted: #a3a3a3;
     --tc-fg-disabled: #737373;
-    --tc-accent-tint: #4d1023;
+    --tc-accent-tint: #36204d;
     --tc-bg-hover: #ffffff4d;
     --tc-titlebar: #000000;
     --tc-tab-active: #000000;
@@ -594,8 +594,8 @@
 }
 
 /* Accent override: put .accent-<name> on <html> (or any ancestor). Last, so it wins over mode scopes. */
-.accent-red:is(:root, .light, .dark),
-.accent-red :is(.light, .dark) {
+.accent-red.accent-red:is(:root, .light, .dark),
+.accent-red.accent-red :is(.light, .dark) {
     --tc-accent: var(--tc-accent-red-accent);
     --tc-on-accent: var(--tc-accent-red-on-accent);
     --tc-accent-tint: var(--tc-accent-red-accent-tint);
@@ -607,8 +607,8 @@
     --tc-tab-indicator: var(--tc-accent-red-tab-indicator);
 }
 
-.accent-orange:is(:root, .light, .dark),
-.accent-orange :is(.light, .dark) {
+.accent-orange.accent-orange:is(:root, .light, .dark),
+.accent-orange.accent-orange :is(.light, .dark) {
     --tc-accent: var(--tc-accent-orange-accent);
     --tc-on-accent: var(--tc-accent-orange-on-accent);
     --tc-accent-tint: var(--tc-accent-orange-accent-tint);
@@ -620,8 +620,8 @@
     --tc-tab-indicator: var(--tc-accent-orange-tab-indicator);
 }
 
-.accent-yellow:is(:root, .light, .dark),
-.accent-yellow :is(.light, .dark) {
+.accent-yellow.accent-yellow:is(:root, .light, .dark),
+.accent-yellow.accent-yellow :is(.light, .dark) {
     --tc-accent: var(--tc-accent-yellow-accent);
     --tc-on-accent: var(--tc-accent-yellow-on-accent);
     --tc-accent-tint: var(--tc-accent-yellow-accent-tint);
@@ -633,8 +633,8 @@
     --tc-tab-indicator: var(--tc-accent-yellow-tab-indicator);
 }
 
-.accent-green:is(:root, .light, .dark),
-.accent-green :is(.light, .dark) {
+.accent-green.accent-green:is(:root, .light, .dark),
+.accent-green.accent-green :is(.light, .dark) {
     --tc-accent: var(--tc-accent-green-accent);
     --tc-on-accent: var(--tc-accent-green-on-accent);
     --tc-accent-tint: var(--tc-accent-green-accent-tint);
@@ -646,8 +646,8 @@
     --tc-tab-indicator: var(--tc-accent-green-tab-indicator);
 }
 
-.accent-cyan:is(:root, .light, .dark),
-.accent-cyan :is(.light, .dark) {
+.accent-cyan.accent-cyan:is(:root, .light, .dark),
+.accent-cyan.accent-cyan :is(.light, .dark) {
     --tc-accent: var(--tc-accent-cyan-accent);
     --tc-on-accent: var(--tc-accent-cyan-on-accent);
     --tc-accent-tint: var(--tc-accent-cyan-accent-tint);
@@ -659,8 +659,8 @@
     --tc-tab-indicator: var(--tc-accent-cyan-tab-indicator);
 }
 
-.accent-blue:is(:root, .light, .dark),
-.accent-blue :is(.light, .dark) {
+.accent-blue.accent-blue:is(:root, .light, .dark),
+.accent-blue.accent-blue :is(.light, .dark) {
     --tc-accent: var(--tc-accent-blue-accent);
     --tc-on-accent: var(--tc-accent-blue-on-accent);
     --tc-accent-tint: var(--tc-accent-blue-accent-tint);
@@ -672,8 +672,8 @@
     --tc-tab-indicator: var(--tc-accent-blue-tab-indicator);
 }
 
-.accent-purple:is(:root, .light, .dark),
-.accent-purple :is(.light, .dark) {
+.accent-purple.accent-purple:is(:root, .light, .dark),
+.accent-purple.accent-purple :is(.light, .dark) {
     --tc-accent: var(--tc-accent-purple-accent);
     --tc-on-accent: var(--tc-accent-purple-on-accent);
     --tc-accent-tint: var(--tc-accent-purple-accent-tint);
@@ -685,8 +685,8 @@
     --tc-tab-indicator: var(--tc-accent-purple-tab-indicator);
 }
 
-.accent-pink:is(:root, .light, .dark),
-.accent-pink :is(.light, .dark) {
+.accent-pink.accent-pink:is(:root, .light, .dark),
+.accent-pink.accent-pink :is(.light, .dark) {
     --tc-accent: var(--tc-accent-pink-accent);
     --tc-on-accent: var(--tc-accent-pink-on-accent);
     --tc-accent-tint: var(--tc-accent-pink-accent-tint);

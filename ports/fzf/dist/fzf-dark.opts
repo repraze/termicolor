@@ -1,6 +1,6 @@
---color=dark,fg:#fafafa,bg:#171717,hl:#ff4c82
---color=fg+:#fafafa,bg+:#262626,hl+:#ff4c82,gutter:#171717
---color=selected-fg:#fafafa,selected-bg:#362125
---color=query:#fafafa,ghost:#737373,disabled:#525252,prompt:#ff4c82,info:#a3a3a3
---color=pointer:#ff4c82,marker:#35e0a3,spinner:#ff4c82,header:#4d91ff,footer:#4d91ff
+--color=dark,fg:#fafafa,bg:#171717,hl:#bb7aff
+--color=fg+:#fafafa,bg+:#262626,hl+:#bb7aff,gutter:#171717
+--color=selected-fg:#fafafa,selected-bg:#2c2534
+--color=query:#fafafa,ghost:#737373,disabled:#525252,prompt:#bb7aff,info:#a3a3a3
+--color=pointer:#bb7aff,marker:#35e0a3,spinner:#bb7aff,header:#4d91ff,footer:#4d91ff
 --color=border:#404040,separator:#262626,scrollbar:#404040,label:#a3a3a3

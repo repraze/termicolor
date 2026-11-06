@@ -22,10 +22,11 @@ export const DARK_ACCENTS: Record<AccentName, Hex> = {
 };
 
 /**
- * Termicolor's own accent: cursor, selection, focus and buttons. Overridable per consumer with
- * `createPalette({accent})` or the `.accent-<name>` CSS classes.
+ * Default accent of every generated port: cursor, selection, focus and buttons. Overridable per
+ * consumer with `createPalette({accent})` or the `.accent-<name>` CSS classes. (The site itself
+ * uses red, see packages/site/src/hooks/use-theme.ts.)
  */
-export const DEFAULT_ACCENT: AccentName = "red";
+export const DEFAULT_ACCENT: AccentName = "purple";
 
 /**
  * Pure grey ramp (Tailwind neutral). Shared by both modes - roles pick from it. No tint is

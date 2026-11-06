@@ -22,11 +22,15 @@ only, so a theme stays recognisable when you switch to it.
 One accent drives every interactive role: `accent`, `onAccent`, `accentTint`, `accentBright`, `cursor`,
 `selection*`, `focusRing`, `tabIndicator` (`ACCENT_ROLES`). It's part of the theme, not the palette:
 
-| Consumer    | Accent | How                                                              |
-| ----------- | ------ | ---------------------------------------------------------------- |
-| Termicolor  | red    | default (`DEFAULT_ACCENT`)                                       |
-| repraze.com | purple | `.accent-purple` on `<html>`                                     |
-| UI library  | pink   | `.accent-pink` on `<html>`, or `createPalette({accent: "pink"})` |
+| Consumer        | Accent | How                                                              |
+| --------------- | ------ | ---------------------------------------------------------------- |
+| Ports (default) | purple | `DEFAULT_ACCENT`: every generated file, the CSS fallback         |
+| Termicolor site | red    | `.accent-red` on `<html>` (brand; `SITE_ACCENT` in the site)     |
+| repraze.com     | purple | the default, or `.accent-purple` on `<html>`                     |
+| UI library      | pink   | `.accent-pink` on `<html>`, or `createPalette({accent: "pink"})` |
+
+Users of a port get the default and never choose; the site's port pages and `cli.ts --accent`
+build any other accent on demand.
 
 - **Generated files** (ports): `createPalette({accent})` builds every role around that accent.
 - **CSS**: `palette.css` holds the accent roles for all eight accents (`--tc-accent-<name>-<role>`), and
