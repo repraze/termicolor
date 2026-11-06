@@ -5,13 +5,16 @@ Abstract generated wallpapers: gradients, lines and patterns in the palette, dar
 
 ## Install
 
-Pick a file under `dist/<mode>/<width>x<height>/`: landscape `1920x1080`, `2560x1440`, `3840x2160` or portrait
+**Easiest:** pick one in the gallery below and download it as **JPG** (the default) at 1080p, QHD or 4K. It's
+rendered at full size in your browser. JPG works as a wallpaper everywhere, Windows included. Then right-click it,
+and choose *Set as desktop background* (Windows), or set it in your desktop's settings.
+
+**From the repo:** pick a file under `dist/<mode>/<width>x<height>/`: landscape `1920x1080`, `2560x1440`, `3840x2160` or portrait
 `1080x1920`, `1440x2560`, `2160x3840`. Portrait files have their own layout, not a crop of landscape.
 `catalog.json` lists every wallpaper with its generator, seed and parameters.
 
-The files are SVG. Most desktops want a raster image, so convert once, e.g.
-`rsvg-convert dist/dark/3840x2160/flow-2.svg -o flow-2.png` (librsvg), Inkscape's export, or open the SVG in a
-browser and save a screenshot. PNG renders attached to GitHub releases are planned.
+The repo files are SVG (small, exact, any size). To convert one yourself:
+`rsvg-convert dist/dark/3840x2160/flow-2.svg -o flow-2.png` (librsvg) or Inkscape's export.
 
 Generators, parameters and kept seeds are documented in
 [`packages/wallpapers/CATALOG.md`](../../packages/wallpapers/CATALOG.md).

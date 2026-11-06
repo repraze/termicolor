@@ -98,6 +98,7 @@ function shadcnCss(palette: Palette): string {
     --muted: var(--tc-bg-raised);
     --muted-foreground: var(--tc-fg-soft);
     --accent: var(--tc-accent-tint);
+    --hover: var(--tc-bg-hover);
     --accent-foreground: var(--tc-fg);
     --destructive: var(--tc-danger);
     --border: var(--tc-border);

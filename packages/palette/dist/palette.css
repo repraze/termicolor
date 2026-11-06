@@ -498,7 +498,7 @@
     --tc-fg-soft: #404040;
     --tc-fg-muted: #525252;
     --tc-fg-disabled: #737373;
-    --tc-bg-hover: #0000000f;
+    --tc-bg-hover: #0000004d;
     --tc-titlebar: #ffffff;
     --tc-tab-active-fg: #000000;
     --tc-tab-inactive: #ffffff;
@@ -535,7 +535,7 @@
     --tc-fg-muted: #a3a3a3;
     --tc-fg-disabled: #737373;
     --tc-accent-tint: #0d0103;
-    --tc-bg-hover: #ffffff0f;
+    --tc-bg-hover: #ffffff4d;
     --tc-titlebar: #000000;
     --tc-tab-active: #000000;
     --tc-tab-active-fg: #ffffff;

@@ -25,7 +25,7 @@ const NAV = [
 export function SiteHeader() {
     const [open, setOpen] = useState(false);
     return (
-        <header className="bg-background/95 supports-[backdrop-filter]:bg-background/80 sticky top-0 z-40 border-b backdrop-blur">
+        <header className="bg-background sticky top-0 z-40 border-b">
             <SpectrumBar className="h-1" />
             <div className="mx-auto flex h-12 max-w-6xl items-center gap-4 px-4 font-mono text-xs sm:gap-6">
                 <Sheet open={open} onOpenChange={setOpen}>

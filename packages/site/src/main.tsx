@@ -17,6 +17,9 @@ const router = createRouter({
     context: {queryClient},
     defaultPreload: "intent",
     scrollRestoration: true,
+    // Key saved scroll by path, not path+search: filters live in the search params and changing one
+    // must keep the scroll position (any extra render would otherwise reset it to the top).
+    getScrollRestorationKey: (location) => location.pathname,
 });
 
 declare module "@tanstack/react-router" {

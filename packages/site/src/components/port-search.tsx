@@ -24,7 +24,7 @@ const ROW_HEIGHT = 64;
 const rowVariants = cva("flex h-full items-center gap-4 border-b px-3 text-sm", {
     variants: {
         status: {
-            available: "hover:bg-muted",
+            available: "hover:bg-hover",
             planned: "text-muted-foreground",
         },
     },
@@ -85,6 +85,8 @@ export function PortSearch({params, onChange}: {params: PortSearchParams; onChan
         estimateSize: () => ROW_HEIGHT,
         overscan: 8,
         scrollMargin: listRef.current?.offsetTop ?? 0,
+        // the window is shared with the rest of the page: never jump it to 0 on (re)init
+        initialOffset: () => (typeof window === "undefined" ? 0 : window.scrollY),
     });
 
     return (

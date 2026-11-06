@@ -291,7 +291,8 @@ function buildMode(name: ModeName, contrast: Contrast, accent: AccentName): Mode
     const roles: Roles = {
         ...s,
         ...byAccent[accent],
-        bgHover: wash(s.fg, "faint"),
+        // hc: hover must be visible on the single flat surface (DESIGN.md §6)
+        bgHover: wash(s.fg, contrast === "high" ? "soft" : "faint"),
         findMatch: wash(a.orange, "medium"),
         shadow: alpha(N[1000], name === "dark" ? 0.5 : 0.15),
         matchActive: fills.orange,

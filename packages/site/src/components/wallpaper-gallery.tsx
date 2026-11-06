@@ -1,10 +1,12 @@
-import {DownloadIcon} from "lucide-react";
-import {useMemo, useState} from "react";
+import {useLocalStorage} from "@mantine/hooks";
+import {DownloadIcon, LoaderIcon} from "lucide-react";
+import {createContext, useContext, useMemo, useState} from "react";
 
 import {Badge} from "@/components/ui/badge";
 import {buttonVariants} from "@/components/ui/button";
 import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} from "@/components/ui/dialog";
 import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
+import {type RasterFormat, rasterize, saveBlob} from "@/lib/rasterize";
 import {dataUrl} from "@/lib/registry";
 import {
     filesFor,
@@ -22,8 +24,12 @@ const BASE = "ports/wallpapers";
 
 export type GalleryFilter = {family?: string; mode: WallpaperMode; orientation: Orientation};
 
-const downloadName = (entry: WallpaperEntry, file: WallpaperFile) =>
-    `termicolor-${entry.id}-${file.mode}-${file.width}x${file.height}.svg`;
+/** JPG by default: what Windows, macOS and most Linux desktops take as a wallpaper. */
+export type DownloadFormat = RasterFormat | "svg";
+const FormatContext = createContext<DownloadFormat>("jpg");
+
+const downloadName = (entry: WallpaperEntry, file: WallpaperFile, format: DownloadFormat) =>
+    `termicolor-${entry.id}-${file.mode}-${file.width}x${file.height}.${format}`;
 
 function FilterGroup({
     label,
@@ -60,22 +66,54 @@ function FilterGroup({
 }
 
 function DownloadLinks({entry, files}: {entry: WallpaperEntry; files: WallpaperFile[]}) {
+    const format = useContext(FormatContext);
     return (
         <div className="flex flex-wrap gap-1">
-            {files.map((file) => (
-                // a plain <a>: Base UI's Button would give it role="button", and these are file links
-                <a
-                    key={file.path}
-                    href={dataUrl(`${BASE}/dist/${file.path}`)}
-                    download={downloadName(entry, file)}
-                    className={buttonVariants({variant: "outline", size: "xs"})}
-                    title={`${file.width}×${file.height} SVG`}
-                    aria-label={`Download ${entry.id} ${file.mode} ${file.label} (${file.width}×${file.height}) SVG`}
-                >
-                    <DownloadIcon /> {file.label}
-                </a>
-            ))}
+            {files.map((file) =>
+                format === "svg" ? (
+                    // a plain <a>: Base UI's Button would give it role="button", and these are file links
+                    <a
+                        key={file.path}
+                        href={dataUrl(`${BASE}/dist/${file.path}`)}
+                        download={downloadName(entry, file, "svg")}
+                        className={buttonVariants({variant: "outline", size: "xs"})}
+                        title={`${file.width}×${file.height} SVG`}
+                        aria-label={`Download ${entry.id} ${file.mode} ${file.label} (${file.width}×${file.height}) SVG`}
+                    >
+                        <DownloadIcon /> {file.label}
+                    </a>
+                ) : (
+                    <RasterDownload key={file.path} entry={entry} file={file} format={format} />
+                ),
+            )}
         </div>
+    );
+}
+
+/** Rasterizes the SVG at full size in the browser, then saves it. */
+function RasterDownload({entry, file, format}: {entry: WallpaperEntry; file: WallpaperFile; format: RasterFormat}) {
+    const [busy, setBusy] = useState(false);
+    const label = `Download ${entry.id} ${file.mode} ${file.label} (${file.width}×${file.height}) ${format.toUpperCase()}`;
+    return (
+        <button
+            type="button"
+            className={buttonVariants({variant: "outline", size: "xs"})}
+            title={`${file.width}×${file.height} ${format.toUpperCase()}`}
+            aria-label={label}
+            aria-busy={busy}
+            disabled={busy}
+            onClick={async () => {
+                setBusy(true);
+                try {
+                    const blob = await rasterize(dataUrl(`${BASE}/dist/${file.path}`), file.width, file.height, format);
+                    saveBlob(blob, downloadName(entry, file, format));
+                } finally {
+                    setBusy(false);
+                }
+            }}
+        >
+            {busy ? <LoaderIcon className="animate-spin" /> : <DownloadIcon />} {file.label}
+        </button>
     );
 }
 
@@ -177,6 +215,11 @@ export function WallpaperGallery({
     onFilterChange: (next: GalleryFilter) => void;
 }) {
     const [previewId, setPreviewId] = useState<string>();
+    const [format, setFormat] = useLocalStorage<DownloadFormat>({
+        key: "termicolor-wallpaper-format",
+        defaultValue: "jpg",
+        getInitialValueInEffect: false,
+    });
     const family = filter.family && filter.family in catalog.families ? filter.family : undefined;
     const results = useMemo(
         () => filterWallpapers(catalog.wallpapers, {...filter, family}),
@@ -186,67 +229,79 @@ export function WallpaperGallery({
     const portrait = filter.orientation === "portrait";
 
     return (
-        <section className="flex flex-col gap-4" aria-labelledby="gallery-heading">
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h2 id="gallery-heading" className="text-lg font-bold">
-                    Gallery
-                </h2>
-                <span className="text-muted-foreground font-mono text-xs">
-                    {results.length} of {catalog.wallpapers.length}
-                </span>
-            </div>
-            <div className="flex flex-wrap gap-4">
-                <FilterGroup
-                    label="Family"
-                    value={family ?? "all"}
-                    options={[
-                        {value: "all", label: "All"},
-                        ...Object.entries(catalog.families).map(([value, label]) => ({value, label})),
-                    ]}
-                    onChange={(value) => onFilterChange({...filter, family: value === "all" ? undefined : value})}
-                />
-                <FilterGroup
-                    label="Mode"
-                    value={filter.mode}
-                    options={[
-                        {value: "dark", label: "Dark"},
-                        {value: "light", label: "Light"},
-                    ]}
-                    onChange={(value) => onFilterChange({...filter, mode: value as WallpaperMode})}
-                />
-                <FilterGroup
-                    label="Orientation"
-                    value={filter.orientation}
-                    options={[
-                        {value: "landscape", label: "Landscape"},
-                        {value: "portrait", label: "Portrait"},
-                    ]}
-                    onChange={(value) => onFilterChange({...filter, orientation: value as Orientation})}
-                />
-            </div>
-            <ul
-                className={
-                    portrait
-                        ? "grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
-                        : "grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3"
-                }
-            >
-                {results.map((entry) => (
-                    <WallpaperCard
-                        key={entry.id}
-                        entry={entry}
-                        familyLabel={catalog.families[entry.family] ?? entry.family}
-                        filter={filter}
-                        onOpen={() => setPreviewId(entry.id)}
+        <FormatContext value={format}>
+            <section className="flex flex-col gap-4" aria-labelledby="gallery-heading">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h2 id="gallery-heading" className="text-lg font-bold">
+                        Gallery
+                    </h2>
+                    <span className="text-muted-foreground font-mono text-xs">
+                        {results.length} of {catalog.wallpapers.length}
+                    </span>
+                </div>
+                <div className="flex flex-wrap gap-4">
+                    <FilterGroup
+                        label="Family"
+                        value={family ?? "all"}
+                        options={[
+                            {value: "all", label: "All"},
+                            ...Object.entries(catalog.families).map(([value, label]) => ({value, label})),
+                        ]}
+                        onChange={(value) => onFilterChange({...filter, family: value === "all" ? undefined : value})}
                     />
-                ))}
-            </ul>
-            <Preview
-                entry={preview}
-                familyLabel={preview ? (catalog.families[preview.family] ?? preview.family) : ""}
-                filter={filter}
-                onClose={() => setPreviewId(undefined)}
-            />
-        </section>
+                    <FilterGroup
+                        label="Mode"
+                        value={filter.mode}
+                        options={[
+                            {value: "dark", label: "Dark"},
+                            {value: "light", label: "Light"},
+                        ]}
+                        onChange={(value) => onFilterChange({...filter, mode: value as WallpaperMode})}
+                    />
+                    <FilterGroup
+                        label="Orientation"
+                        value={filter.orientation}
+                        options={[
+                            {value: "landscape", label: "Landscape"},
+                            {value: "portrait", label: "Portrait"},
+                        ]}
+                        onChange={(value) => onFilterChange({...filter, orientation: value as Orientation})}
+                    />
+                    <FilterGroup
+                        label="Download as"
+                        value={format}
+                        options={[
+                            {value: "jpg", label: "JPG"},
+                            {value: "png", label: "PNG"},
+                            {value: "svg", label: "SVG"},
+                        ]}
+                        onChange={(value) => setFormat(value as DownloadFormat)}
+                    />
+                </div>
+                <ul
+                    className={
+                        portrait
+                            ? "grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+                            : "grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3"
+                    }
+                >
+                    {results.map((entry) => (
+                        <WallpaperCard
+                            key={entry.id}
+                            entry={entry}
+                            familyLabel={catalog.families[entry.family] ?? entry.family}
+                            filter={filter}
+                            onOpen={() => setPreviewId(entry.id)}
+                        />
+                    ))}
+                </ul>
+                <Preview
+                    entry={preview}
+                    familyLabel={preview ? (catalog.families[preview.family] ?? preview.family) : ""}
+                    filter={filter}
+                    onClose={() => setPreviewId(undefined)}
+                />
+            </section>
+        </FormatContext>
     );
 }

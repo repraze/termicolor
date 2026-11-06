@@ -26,6 +26,8 @@
     --color-muted-foreground: var(--muted-foreground);
     --color-accent: var(--accent);
     --color-accent-foreground: var(--accent-foreground);
+    /* hover wash (DESIGN.md §6): visible in high contrast, unlike a surface shade */
+    --color-hover: var(--hover);
     --color-destructive: var(--destructive);
     --color-border: var(--border);
     --color-input: var(--input);

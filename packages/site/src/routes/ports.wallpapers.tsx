@@ -3,6 +3,7 @@ import {createFileRoute} from "@tanstack/react-router";
 
 import {PortHeader, PortInstall} from "@/components/port-header";
 import {type GalleryFilter, WallpaperGallery} from "@/components/wallpaper-gallery";
+import {useSearchUpdate} from "@/hooks/use-search-update";
 import {useTheme} from "@/hooks/use-theme";
 import {dataUrl, registryQuery} from "@/lib/registry";
 import {MODES, type Orientation, ORIENTATIONS, type WallpaperCatalog, type WallpaperMode} from "@/lib/wallpapers";
@@ -42,7 +43,7 @@ function WallpapersPage() {
     const {data: registry} = useSuspenseQuery(registryQuery);
     const {data: catalog} = useSuspenseQuery(catalogQuery);
     const search = Route.useSearch();
-    const navigate = Route.useNavigate();
+    const updateSearch = useSearchUpdate();
     const {resolved} = useTheme();
     const entry = registry.find((e) => e.id === "wallpapers");
     if (!entry || entry.status !== "available") {
@@ -62,13 +63,10 @@ function WallpapersPage() {
                 catalog={catalog}
                 filter={filter}
                 onFilterChange={(next) =>
-                    navigate({
-                        search: {
-                            family: next.family,
-                            mode: next.mode === resolved ? undefined : next.mode,
-                            orientation: next.orientation === "landscape" ? undefined : next.orientation,
-                        },
-                        replace: true,
+                    updateSearch({
+                        family: next.family,
+                        mode: next.mode === resolved ? undefined : next.mode,
+                        orientation: next.orientation === "landscape" ? undefined : next.orientation,
                     })
                 }
             />

@@ -2,6 +2,7 @@ import {createFileRoute} from "@tanstack/react-router";
 import {CATEGORIES} from "@termicolor/build";
 
 import {PortSearch, type PortSearchParams} from "@/components/port-search";
+import {useSearchUpdate} from "@/hooks/use-search-update";
 
 const STATUSES = ["all", "available", "planned"] as const;
 
@@ -21,7 +22,7 @@ export const Route = createFileRoute("/ports/")({
 
 function PortsIndex() {
     const search = Route.useSearch();
-    const navigate = Route.useNavigate();
+    const updateSearch = useSearchUpdate<PortSearchParams>();
     return (
         <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
@@ -31,7 +32,7 @@ function PortsIndex() {
                     people use them.
                 </p>
             </div>
-            <PortSearch params={search} onChange={(next) => navigate({search: next, replace: true})} />
+            <PortSearch params={search} onChange={updateSearch} />
         </div>
     );
 }

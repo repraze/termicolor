@@ -24,7 +24,7 @@ export function groupPorts(registry: RegistryEntry[]) {
 
 // DESIGN.md §6: the current page gets an accent indicator, not a shade.
 const treeLink =
-    "text-muted-foreground hover:text-foreground hover:bg-muted -ml-px block border-l py-1 pr-2 pl-3 text-xs data-[status=active]:border-primary data-[status=active]:text-foreground data-[status=active]:font-medium";
+    "text-muted-foreground hover:text-foreground hover:bg-hover -ml-px block border-l py-1 pr-2 pl-3 text-xs data-[status=active]:border-primary data-[status=active]:text-foreground data-[status=active]:font-medium";
 
 /** Category tree of ports. `onNavigate` lets the mobile sheet close itself. */
 export function PortsTree({onNavigate}: {onNavigate?: () => void}) {
@@ -36,13 +36,13 @@ export function PortsTree({onNavigate}: {onNavigate?: () => void}) {
                 to="/ports"
                 onClick={onNavigate}
                 activeOptions={{exact: true, includeSearch: false}}
-                className="hover:bg-muted data-[status=active]:text-primary px-2 py-1 font-mono text-xs font-bold tracking-widest uppercase"
+                className="hover:bg-hover data-[status=active]:text-primary px-2 py-1 font-mono text-xs font-bold tracking-widest uppercase"
             >
                 All ports
             </Link>
             {groups.map((g) => (
                 <Collapsible key={g.category} defaultOpen={g.available.length > 0}>
-                    <CollapsibleTrigger className="group hover:bg-muted flex w-full items-center gap-1 px-2 py-1 text-left font-mono text-xs">
+                    <CollapsibleTrigger className="group hover:bg-hover flex w-full items-center gap-1 px-2 py-1 text-left font-mono text-xs">
                         <ChevronRightIcon className="size-3 transition-transform group-data-[panel-open]:rotate-90" />
                         <span className="flex-1">{CATEGORIES[g.category]}</span>
                         <span className="text-muted-foreground">{g.available.length}</span>
