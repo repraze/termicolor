@@ -17,14 +17,14 @@ function manifest({type, roles: r}: Mode) {
         description: "High contrast, bright, techy color theme",
         theme: {
             colors: {
-                frame: arr(r.bgSunken),
-                frame_inactive: arr(r.bgSunken),
-                frame_incognito: arr(r.bgSunken),
-                toolbar: arr(r.bg),
+                frame: arr(r.titlebar),
+                frame_inactive: arr(r.titlebar),
+                frame_incognito: arr(r.titlebar),
+                toolbar: arr(r.tabActive), // the active tab is drawn in the toolbar color
                 toolbar_text: arr(r.fg),
                 toolbar_button_icon: arr(r.fgSoft),
-                tab_text: arr(r.fg),
-                tab_background_text: arr(r.fgSoft),
+                tab_text: arr(r.tabActiveFg),
+                tab_background_text: arr(r.tabInactiveFg),
                 tab_background_text_inactive: arr(r.fgMuted),
                 bookmark_text: arr(r.fgSoft),
                 omnibox_background: arr(r.bgRaised),
