@@ -30,7 +30,8 @@ export type Colors = {
 
 export function colorsFor(palette: Palette, mode: ModeName): Colors {
     const m = palette.modes[mode];
-    const vivid = palette.modes.dark.accents;
+    // `fills` are the vivid brand seeds in both modes (DESIGN.md §3): right for big soft color.
+    const vivid = m.fills;
     if (m.type === "dark") {
         return {
             dark: true,
@@ -51,10 +52,11 @@ export function colorsFor(palette: Palette, mode: ModeName): Colors {
         line: NEUTRALS[200],
         lineStrong: NEUTRALS[300],
         fg: m.roles.fg,
-        // The brand seeds read bright on white; the darkened light accents would look muddy as big fills.
         fill: (a) => vivid[a],
-        ink: (a) => m.accents[a],
-        glow: (a) => mix(m.accents[a], vivid[a], 0.5),
+        // Wallpapers aren't text and blend by design: the text tier alone turns yellow/orange lines brown on
+        // white, so lines sit halfway between it and the vivid fill; highlights are the fill itself.
+        ink: (a) => mix(m.accents[a], vivid[a], 0.5),
+        glow: (a) => vivid[a],
     };
 }
 

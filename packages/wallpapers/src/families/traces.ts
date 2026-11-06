@@ -129,7 +129,8 @@ const traces: Generator = {
     family: "patterns",
     name: "Traces",
     description: "Bundles of parallel lines on a grid with 45° bends, never crossing, ending in dots. Some are lit.",
-    defaults: {accents: ["purple", "cyan", "pink"], density: 0.5, grain: 0.25},
+    harmonies: ["mono", "analogous", "complementary", "split"],
+    defaults: {density: 0.5, grain: 0.25},
     render(ctx) {
         const {rng, colors: c, size, u} = ctx;
         const {width: w, height: h} = size;
@@ -171,30 +172,34 @@ const traces: Generator = {
             const key = `${t.lit ? 1 : 0}|${t.color ?? ""}`;
             groups.set(key, [...(groups.get(key) ?? []), t]);
         }
-        const layers = [...groups.keys()].sort().map((key) => {
-            const group = groups.get(key)!;
-            const lit = key.startsWith("1");
-            const name = (key.slice(2) || null) as AccentName | null;
-            const d = group.map((t) => t.points.map(([x, y], i) => `${i ? "L" : "M"}${x} ${y}`).join("")).join("");
-            const ends = group
-                .filter((t) => t.dots)
-                .flatMap((t) => [t.points[0]!, t.points[t.points.length - 1]!])
-                .map(([x, y]) => `M${x} ${y}h0`)
-                .join("");
-            return el(
-                "g",
-                {
-                    filter: lit && c.dark ? "url(#glow)" : undefined,
-                    stroke: strokeOf(name, lit),
-                    fill: "none",
-                    "stroke-linecap": "round",
-                },
-                [
-                    el("path", {d, "stroke-width": lit ? ".24" : ".18", "stroke-linejoin": "round"}),
-                    ends ? el("path", {d: ends, "stroke-width": ".7"}) : "",
-                ],
-            );
-        });
+        // Order by lit, then accent position (not name), so re-coloring a seed never reorders its layers.
+        const rank = (key: string) => Number(key[0]) * 100 + accents.indexOf(key.slice(2) as AccentName);
+        const layers = [...groups.keys()]
+            .sort((a, b) => rank(a) - rank(b))
+            .map((key) => {
+                const group = groups.get(key)!;
+                const lit = key.startsWith("1");
+                const name = (key.slice(2) || null) as AccentName | null;
+                const d = group.map((t) => t.points.map(([x, y], i) => `${i ? "L" : "M"}${x} ${y}`).join("")).join("");
+                const ends = group
+                    .filter((t) => t.dots)
+                    .flatMap((t) => [t.points[0]!, t.points[t.points.length - 1]!])
+                    .map(([x, y]) => `M${x} ${y}h0`)
+                    .join("");
+                return el(
+                    "g",
+                    {
+                        filter: lit && c.dark ? "url(#glow)" : undefined,
+                        stroke: strokeOf(name, lit),
+                        fill: "none",
+                        "stroke-linecap": "round",
+                    },
+                    [
+                        el("path", {d, "stroke-width": lit ? ".24" : ".18", "stroke-linejoin": "round"}),
+                        ends ? el("path", {d: ends, "stroke-width": ".7"}) : "",
+                    ],
+                );
+            });
 
         return {
             defs: [

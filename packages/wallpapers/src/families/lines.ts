@@ -17,7 +17,8 @@ const stripes: Generator = {
     family: "lines",
     name: "Halftone stripes",
     description: "Tilted parallel stripes whose width swells and thins with a noise field, in an accent gradient.",
-    defaults: {accents: ["purple", "pink", "blue"], density: 0.5, grain: 0.3},
+    harmonies: ["mono", "analogous", "sweep", "complementary"],
+    defaults: {density: 0.5, grain: 0.3},
     render(ctx) {
         const {rng, colors: c, size, u} = ctx;
         const {width: w, height: h} = size;
@@ -60,7 +61,8 @@ const moire: Generator = {
     family: "lines",
     name: "Moiré rings",
     description: "Two or three overlapping sets of fine concentric rings; the interference makes the pattern.",
-    defaults: {accents: ["purple", "cyan", "pink"], density: 0.5, grain: 0.2},
+    harmonies: ["complementary", "split", "analogous"],
+    defaults: {density: 0.5, grain: 0.2},
     render(ctx) {
         const {rng, colors: c, size, u} = ctx;
         const {width: w, height: h} = size;
@@ -105,7 +107,8 @@ const waves: Generator = {
     family: "lines",
     name: "Interference",
     description: "A stack of lines along the long axis, displaced by ripples from 2-3 point sources.",
-    defaults: {accents: ["purple", "blue", "cyan"], density: 0.5, grain: 0.3},
+    harmonies: ["analogous", "sweep", "complementary"],
+    defaults: {density: 0.5, grain: 0.3},
     render(ctx) {
         const {rng, colors: c, size, u} = ctx;
         const {width: w, height: h} = size;
@@ -257,7 +260,8 @@ const contours: Generator = {
     family: "lines",
     name: "Contours",
     description: "Topographic iso-lines of a fractal noise field; color climbs the accent ramp with elevation.",
-    defaults: {accents: ["purple", "pink", "orange"], density: 0.5, grain: 0.25},
+    harmonies: ["sweep", "analogous", "split"],
+    defaults: {density: 0.5, grain: 0.25},
     render(ctx) {
         const {rng, colors: c, size, u} = ctx;
         const {width: w, height: h} = size;
@@ -313,7 +317,8 @@ const flow: Generator = {
     family: "lines",
     name: "Flow field",
     description: "Evenly spaced streamlines through a curl-like noise field, colored in accent bands.",
-    defaults: {accents: ["purple", "cyan", "blue", "pink"], density: 0.5, grain: 0.25},
+    harmonies: ["analogous", "sweep", "split", "tetrad"],
+    defaults: {density: 0.5, grain: 0.25},
     render(ctx) {
         const {rng, colors: c, size, u} = ctx;
         const {width: w, height: h} = size;
@@ -393,7 +398,8 @@ const glitch: Generator = {
     name: "Glitch bands",
     description:
         "A gradient sliced into horizontal bands, some shifted sideways, with RGB-split slivers and scanlines.",
-    defaults: {accents: ["purple", "pink", "cyan"], density: 0.5, grain: 0.4},
+    harmonies: ["complementary", "split", "analogous"],
+    defaults: {density: 0.5, grain: 0.4},
     render(ctx) {
         const {rng, colors: c, size, u} = ctx;
         const {width: w, height: h} = size;
@@ -438,7 +444,7 @@ const glitch: Generator = {
         return {
             defs: [
                 hueGradient(ctx, "hue", fills, angle),
-                linearGradient("veil", ...span(ctx, veilAngle), veil(c.base, c.dark ? 0.8 : 0.7)),
+                linearGradient("veil", ...span(ctx, veilAngle), veil(c.base, c.dark ? 0.6 : 0.5)),
                 el(
                     "pattern",
                     {id: "scan", patternUnits: "userSpaceOnUse", width: "8", height: n(6 * u, 2)},

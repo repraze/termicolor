@@ -1,4 +1,4 @@
-import {type ModeName, MODES, type Palette} from "@termicolor/palette";
+import {type AccentName, type ModeName, MODES, type Palette} from "@termicolor/palette";
 
 import {colorsFor} from "./colors.ts";
 import {gradients} from "./families/gradients.ts";
@@ -6,9 +6,10 @@ import {grids} from "./families/grids.ts";
 import {lines} from "./families/lines.ts";
 import {patterns} from "./families/patterns.ts";
 import {traceGenerators} from "./families/traces.ts";
+import {chooseAccents, type HarmonyName} from "./harmony.ts";
 import {createRng, hash} from "./random.ts";
 import {document, el, grainFilter, n} from "./svg.ts";
-import type {Generator, Params, Size} from "./types.ts";
+import type {Generator, Params, Size, SpecParams} from "./types.ts";
 
 export const GENERATORS: readonly Generator[] = [...gradients, ...lines, ...grids, ...patterns, ...traceGenerators];
 
@@ -36,8 +37,36 @@ export type SizeName = keyof typeof SIZES;
 export type WallpaperSpec = {
     generator: string;
     seed: number;
-    params?: Partial<Params>;
+    params?: SpecParams;
 };
+
+export type ResolvedSpec = {
+    params: Params;
+    /** How the accents were chosen: a harmony name, or "custom" when the spec lists `accents`. */
+    harmony: HarmonyName | "custom";
+    lead: AccentName;
+};
+
+/**
+ * The params a spec renders with. Colors come from the seed (lead + one of the generator's harmonies)
+ * unless the spec pins `accents` (wins outright), `lead` or `harmony`.
+ */
+export function resolveSpec(spec: WallpaperSpec): ResolvedSpec {
+    const generator = getGenerator(spec.generator);
+    const {accents, lead, harmony, ...rest} = spec.params ?? {};
+    if (accents) {
+        if (!accents.length) {
+            throw new Error(`${spec.generator}#${spec.seed}: accents must not be empty`);
+        }
+        return {params: {...generator.defaults, ...rest, accents}, harmony: "custom", lead: accents[0]!};
+    }
+    const choice = chooseAccents(generator.id, spec.seed, generator.harmonies, {lead, harmony});
+    return {
+        params: {...generator.defaults, ...rest, accents: choice.accents},
+        harmony: choice.harmony,
+        lead: choice.lead,
+    };
+}
 
 export type RenderOptions = {
     palette: Palette;
@@ -54,10 +83,7 @@ export function renderWallpaper(spec: WallpaperSpec, {palette, mode, size}: Rend
         throw new Error(`Unknown mode "${mode}"`);
     }
     const generator = getGenerator(spec.generator);
-    const params: Params = {...generator.defaults, ...spec.params};
-    if (!params.accents.length) {
-        throw new Error(`${spec.generator}#${spec.seed}: accents must not be empty`);
-    }
+    const {params} = resolveSpec(spec);
     const colors = colorsFor(palette, mode);
     const design = designSize(size);
     const u = 1;

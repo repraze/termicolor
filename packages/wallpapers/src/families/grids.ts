@@ -64,7 +64,8 @@ const blueprint: Generator = {
     family: "patterns",
     name: "Blueprint",
     description: "Minor and major grid with accent annotations: crosshairs, outlined frames, dimension lines.",
-    defaults: {accents: ["purple", "cyan", "pink"], density: 0.5, grain: 0.3},
+    harmonies: ["mono", "complementary", "split"],
+    defaults: {density: 0.5, grain: 0.3},
     render(ctx) {
         const {rng, colors: c, size, u} = ctx;
         const {width: w, height: h} = size;
@@ -184,7 +185,8 @@ const dots: Generator = {
     family: "patterns",
     name: "Dot matrix",
     description: "Even dot grid; dots pick up accent color where soft glows pass behind them.",
-    defaults: {accents: ["purple", "pink", "blue"], density: 0.5, grain: 0.3},
+    harmonies: ["analogous", "sweep", "split"],
+    defaults: {density: 0.5, grain: 0.3},
     render(ctx) {
         const {rng, colors: c, size, u} = ctx;
         const {width: w, height: h} = size;

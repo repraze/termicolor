@@ -32,19 +32,52 @@
     },
     "wallpapers": [
         {
+            "id": "linear-1",
+            "generator": "linear",
+            "name": "Linear",
+            "family": "gradients",
+            "seed": 1,
+            "harmony": "complementary",
+            "lead": "cyan",
+            "params": {
+                "density": 0.5,
+                "grain": 0.5,
+                "accents": [
+                    "cyan",
+                    "red"
+                ]
+            },
+            "files": [
+                "dark/1920x1080/linear-1.svg",
+                "dark/2560x1440/linear-1.svg",
+                "dark/3840x2160/linear-1.svg",
+                "dark/1080x1920/linear-1.svg",
+                "dark/1440x2560/linear-1.svg",
+                "dark/2160x3840/linear-1.svg",
+                "light/1920x1080/linear-1.svg",
+                "light/2560x1440/linear-1.svg",
+                "light/3840x2160/linear-1.svg",
+                "light/1080x1920/linear-1.svg",
+                "light/1440x2560/linear-1.svg",
+                "light/2160x3840/linear-1.svg"
+            ]
+        },
+        {
             "id": "linear-3",
             "generator": "linear",
             "name": "Linear",
             "family": "gradients",
             "seed": 3,
+            "harmony": "analogous",
+            "lead": "blue",
             "params": {
-                "accents": [
-                    "purple",
-                    "blue",
-                    "cyan"
-                ],
                 "density": 0.5,
-                "grain": 0.5
+                "grain": 0.5,
+                "accents": [
+                    "blue",
+                    "purple",
+                    "cyan"
+                ]
             },
             "files": [
                 "dark/1920x1080/linear-3.svg",
@@ -62,49 +95,20 @@
             ]
         },
         {
-            "id": "linear-11",
-            "generator": "linear",
-            "name": "Linear",
-            "family": "gradients",
-            "seed": 11,
-            "params": {
-                "accents": [
-                    "pink",
-                    "purple",
-                    "orange"
-                ],
-                "density": 0.5,
-                "grain": 0.5
-            },
-            "files": [
-                "dark/1920x1080/linear-11.svg",
-                "dark/2560x1440/linear-11.svg",
-                "dark/3840x2160/linear-11.svg",
-                "dark/1080x1920/linear-11.svg",
-                "dark/1440x2560/linear-11.svg",
-                "dark/2160x3840/linear-11.svg",
-                "light/1920x1080/linear-11.svg",
-                "light/2560x1440/linear-11.svg",
-                "light/3840x2160/linear-11.svg",
-                "light/1080x1920/linear-11.svg",
-                "light/1440x2560/linear-11.svg",
-                "light/2160x3840/linear-11.svg"
-            ]
-        },
-        {
             "id": "radial-2",
             "generator": "radial",
             "name": "Radial",
             "family": "gradients",
             "seed": 2,
+            "harmony": "complementary",
+            "lead": "pink",
             "params": {
-                "accents": [
-                    "purple",
-                    "pink",
-                    "blue"
-                ],
                 "density": 0.5,
-                "grain": 0.5
+                "grain": 0.5,
+                "accents": [
+                    "pink",
+                    "green"
+                ]
             },
             "files": [
                 "dark/1920x1080/radial-2.svg",
@@ -122,95 +126,164 @@
             ]
         },
         {
-            "id": "radial-9",
+            "id": "radial-4",
             "generator": "radial",
             "name": "Radial",
             "family": "gradients",
-            "seed": 9,
-            "params": {
-                "accents": [
-                    "cyan",
-                    "blue",
-                    "purple"
-                ],
-                "density": 0.5,
-                "grain": 0.5
-            },
-            "files": [
-                "dark/1920x1080/radial-9.svg",
-                "dark/2560x1440/radial-9.svg",
-                "dark/3840x2160/radial-9.svg",
-                "dark/1080x1920/radial-9.svg",
-                "dark/1440x2560/radial-9.svg",
-                "dark/2160x3840/radial-9.svg",
-                "light/1920x1080/radial-9.svg",
-                "light/2560x1440/radial-9.svg",
-                "light/3840x2160/radial-9.svg",
-                "light/1080x1920/radial-9.svg",
-                "light/1440x2560/radial-9.svg",
-                "light/2160x3840/radial-9.svg"
-            ]
-        },
-        {
-            "id": "conic-4",
-            "generator": "conic",
-            "name": "Conic fan",
-            "family": "gradients",
             "seed": 4,
+            "harmony": "split",
+            "lead": "purple",
             "params": {
+                "density": 0.5,
+                "grain": 0.5,
                 "accents": [
                     "purple",
-                    "pink",
                     "orange",
-                    "blue"
-                ],
-                "density": 0.5,
-                "grain": 0.5
+                    "green"
+                ]
             },
             "files": [
-                "dark/1920x1080/conic-4.svg",
-                "dark/2560x1440/conic-4.svg",
-                "dark/3840x2160/conic-4.svg",
-                "dark/1080x1920/conic-4.svg",
-                "dark/1440x2560/conic-4.svg",
-                "dark/2160x3840/conic-4.svg",
-                "light/1920x1080/conic-4.svg",
-                "light/2560x1440/conic-4.svg",
-                "light/3840x2160/conic-4.svg",
-                "light/1080x1920/conic-4.svg",
-                "light/1440x2560/conic-4.svg",
-                "light/2160x3840/conic-4.svg"
+                "dark/1920x1080/radial-4.svg",
+                "dark/2560x1440/radial-4.svg",
+                "dark/3840x2160/radial-4.svg",
+                "dark/1080x1920/radial-4.svg",
+                "dark/1440x2560/radial-4.svg",
+                "dark/2160x3840/radial-4.svg",
+                "light/1920x1080/radial-4.svg",
+                "light/2560x1440/radial-4.svg",
+                "light/3840x2160/radial-4.svg",
+                "light/1080x1920/radial-4.svg",
+                "light/1440x2560/radial-4.svg",
+                "light/2160x3840/radial-4.svg"
             ]
         },
         {
-            "id": "conic-12",
+            "id": "conic-7",
             "generator": "conic",
             "name": "Conic fan",
             "family": "gradients",
-            "seed": 12,
+            "seed": 7,
+            "harmony": "sweep",
+            "lead": "yellow",
             "params": {
-                "accents": [
-                    "purple",
-                    "blue",
-                    "cyan",
-                    "green"
-                ],
                 "density": 0.5,
-                "grain": 0.5
+                "grain": 0.5,
+                "accents": [
+                    "yellow",
+                    "green",
+                    "cyan"
+                ]
             },
             "files": [
-                "dark/1920x1080/conic-12.svg",
-                "dark/2560x1440/conic-12.svg",
-                "dark/3840x2160/conic-12.svg",
-                "dark/1080x1920/conic-12.svg",
-                "dark/1440x2560/conic-12.svg",
-                "dark/2160x3840/conic-12.svg",
-                "light/1920x1080/conic-12.svg",
-                "light/2560x1440/conic-12.svg",
-                "light/3840x2160/conic-12.svg",
-                "light/1080x1920/conic-12.svg",
-                "light/1440x2560/conic-12.svg",
-                "light/2160x3840/conic-12.svg"
+                "dark/1920x1080/conic-7.svg",
+                "dark/2560x1440/conic-7.svg",
+                "dark/3840x2160/conic-7.svg",
+                "dark/1080x1920/conic-7.svg",
+                "dark/1440x2560/conic-7.svg",
+                "dark/2160x3840/conic-7.svg",
+                "light/1920x1080/conic-7.svg",
+                "light/2560x1440/conic-7.svg",
+                "light/3840x2160/conic-7.svg",
+                "light/1080x1920/conic-7.svg",
+                "light/1440x2560/conic-7.svg",
+                "light/2160x3840/conic-7.svg"
+            ]
+        },
+        {
+            "id": "conic-10",
+            "generator": "conic",
+            "name": "Conic fan",
+            "family": "gradients",
+            "seed": 10,
+            "harmony": "split",
+            "lead": "green",
+            "params": {
+                "density": 0.5,
+                "grain": 0.5,
+                "accents": [
+                    "green",
+                    "purple",
+                    "red"
+                ]
+            },
+            "files": [
+                "dark/1920x1080/conic-10.svg",
+                "dark/2560x1440/conic-10.svg",
+                "dark/3840x2160/conic-10.svg",
+                "dark/1080x1920/conic-10.svg",
+                "dark/1440x2560/conic-10.svg",
+                "dark/2160x3840/conic-10.svg",
+                "light/1920x1080/conic-10.svg",
+                "light/2560x1440/conic-10.svg",
+                "light/3840x2160/conic-10.svg",
+                "light/1080x1920/conic-10.svg",
+                "light/1440x2560/conic-10.svg",
+                "light/2160x3840/conic-10.svg"
+            ]
+        },
+        {
+            "id": "mesh-9",
+            "generator": "mesh",
+            "name": "Mesh",
+            "family": "gradients",
+            "seed": 9,
+            "harmony": "tetrad",
+            "lead": "orange",
+            "params": {
+                "density": 0.5,
+                "grain": 0.5,
+                "accents": [
+                    "orange",
+                    "green",
+                    "blue",
+                    "pink"
+                ]
+            },
+            "files": [
+                "dark/1920x1080/mesh-9.svg",
+                "dark/2560x1440/mesh-9.svg",
+                "dark/3840x2160/mesh-9.svg",
+                "dark/1080x1920/mesh-9.svg",
+                "dark/1440x2560/mesh-9.svg",
+                "dark/2160x3840/mesh-9.svg",
+                "light/1920x1080/mesh-9.svg",
+                "light/2560x1440/mesh-9.svg",
+                "light/3840x2160/mesh-9.svg",
+                "light/1080x1920/mesh-9.svg",
+                "light/1440x2560/mesh-9.svg",
+                "light/2160x3840/mesh-9.svg"
+            ]
+        },
+        {
+            "id": "mesh-22",
+            "generator": "mesh",
+            "name": "Mesh",
+            "family": "gradients",
+            "seed": 22,
+            "harmony": "split",
+            "lead": "red",
+            "params": {
+                "density": 0.5,
+                "grain": 0.5,
+                "accents": [
+                    "red",
+                    "green",
+                    "blue"
+                ]
+            },
+            "files": [
+                "dark/1920x1080/mesh-22.svg",
+                "dark/2560x1440/mesh-22.svg",
+                "dark/3840x2160/mesh-22.svg",
+                "dark/1080x1920/mesh-22.svg",
+                "dark/1440x2560/mesh-22.svg",
+                "dark/2160x3840/mesh-22.svg",
+                "light/1920x1080/mesh-22.svg",
+                "light/2560x1440/mesh-22.svg",
+                "light/3840x2160/mesh-22.svg",
+                "light/1080x1920/mesh-22.svg",
+                "light/1440x2560/mesh-22.svg",
+                "light/2160x3840/mesh-22.svg"
             ]
         },
         {
@@ -219,15 +292,16 @@
             "name": "Mesh",
             "family": "gradients",
             "seed": 1,
+            "harmony": "analogous",
+            "lead": "blue",
             "params": {
-                "accents": [
-                    "purple",
-                    "blue",
-                    "pink",
-                    "cyan"
-                ],
                 "density": 0.5,
-                "grain": 0.5
+                "grain": 0.5,
+                "accents": [
+                    "blue",
+                    "purple",
+                    "cyan"
+                ]
             },
             "files": [
                 "dark/1920x1080/mesh-1.svg",
@@ -245,126 +319,67 @@
             ]
         },
         {
-            "id": "mesh-6",
-            "generator": "mesh",
-            "name": "Mesh",
-            "family": "gradients",
-            "seed": 6,
-            "params": {
-                "accents": [
-                    "purple",
-                    "pink",
-                    "orange",
-                    "yellow"
-                ],
-                "density": 0.5,
-                "grain": 0.5
-            },
-            "files": [
-                "dark/1920x1080/mesh-6.svg",
-                "dark/2560x1440/mesh-6.svg",
-                "dark/3840x2160/mesh-6.svg",
-                "dark/1080x1920/mesh-6.svg",
-                "dark/1440x2560/mesh-6.svg",
-                "dark/2160x3840/mesh-6.svg",
-                "light/1920x1080/mesh-6.svg",
-                "light/2560x1440/mesh-6.svg",
-                "light/3840x2160/mesh-6.svg",
-                "light/1080x1920/mesh-6.svg",
-                "light/1440x2560/mesh-6.svg",
-                "light/2160x3840/mesh-6.svg"
-            ]
-        },
-        {
-            "id": "mesh-8",
-            "generator": "mesh",
-            "name": "Mesh",
-            "family": "gradients",
-            "seed": 8,
-            "params": {
-                "accents": [
-                    "cyan",
-                    "blue",
-                    "purple",
-                    "green"
-                ],
-                "density": 1,
-                "grain": 0.5
-            },
-            "files": [
-                "dark/1920x1080/mesh-8.svg",
-                "dark/2560x1440/mesh-8.svg",
-                "dark/3840x2160/mesh-8.svg",
-                "dark/1080x1920/mesh-8.svg",
-                "dark/1440x2560/mesh-8.svg",
-                "dark/2160x3840/mesh-8.svg",
-                "light/1920x1080/mesh-8.svg",
-                "light/2560x1440/mesh-8.svg",
-                "light/3840x2160/mesh-8.svg",
-                "light/1080x1920/mesh-8.svg",
-                "light/1440x2560/mesh-8.svg",
-                "light/2160x3840/mesh-8.svg"
-            ]
-        },
-        {
-            "id": "aurora-5",
+            "id": "aurora-4",
             "generator": "aurora",
             "name": "Aurora",
             "family": "gradients",
-            "seed": 5,
+            "seed": 4,
+            "harmony": "analogous",
+            "lead": "pink",
             "params": {
+                "density": 0.5,
+                "grain": 0.6,
                 "accents": [
-                    "purple",
-                    "cyan",
+                    "pink",
+                    "red",
+                    "purple"
+                ]
+            },
+            "files": [
+                "dark/1920x1080/aurora-4.svg",
+                "dark/2560x1440/aurora-4.svg",
+                "dark/3840x2160/aurora-4.svg",
+                "dark/1080x1920/aurora-4.svg",
+                "dark/1440x2560/aurora-4.svg",
+                "dark/2160x3840/aurora-4.svg",
+                "light/1920x1080/aurora-4.svg",
+                "light/2560x1440/aurora-4.svg",
+                "light/3840x2160/aurora-4.svg",
+                "light/1080x1920/aurora-4.svg",
+                "light/1440x2560/aurora-4.svg",
+                "light/2160x3840/aurora-4.svg"
+            ]
+        },
+        {
+            "id": "aurora-3",
+            "generator": "aurora",
+            "name": "Aurora",
+            "family": "gradients",
+            "seed": 3,
+            "harmony": "split",
+            "lead": "red",
+            "params": {
+                "density": 0.5,
+                "grain": 0.6,
+                "accents": [
+                    "red",
                     "green",
-                    "pink"
-                ],
-                "density": 0.5,
-                "grain": 0.6
-            },
-            "files": [
-                "dark/1920x1080/aurora-5.svg",
-                "dark/2560x1440/aurora-5.svg",
-                "dark/3840x2160/aurora-5.svg",
-                "dark/1080x1920/aurora-5.svg",
-                "dark/1440x2560/aurora-5.svg",
-                "dark/2160x3840/aurora-5.svg",
-                "light/1920x1080/aurora-5.svg",
-                "light/2560x1440/aurora-5.svg",
-                "light/3840x2160/aurora-5.svg",
-                "light/1080x1920/aurora-5.svg",
-                "light/1440x2560/aurora-5.svg",
-                "light/2160x3840/aurora-5.svg"
-            ]
-        },
-        {
-            "id": "aurora-13",
-            "generator": "aurora",
-            "name": "Aurora",
-            "family": "gradients",
-            "seed": 13,
-            "params": {
-                "accents": [
-                    "purple",
-                    "pink",
                     "blue"
-                ],
-                "density": 0.5,
-                "grain": 0.6
+                ]
             },
             "files": [
-                "dark/1920x1080/aurora-13.svg",
-                "dark/2560x1440/aurora-13.svg",
-                "dark/3840x2160/aurora-13.svg",
-                "dark/1080x1920/aurora-13.svg",
-                "dark/1440x2560/aurora-13.svg",
-                "dark/2160x3840/aurora-13.svg",
-                "light/1920x1080/aurora-13.svg",
-                "light/2560x1440/aurora-13.svg",
-                "light/3840x2160/aurora-13.svg",
-                "light/1080x1920/aurora-13.svg",
-                "light/1440x2560/aurora-13.svg",
-                "light/2160x3840/aurora-13.svg"
+                "dark/1920x1080/aurora-3.svg",
+                "dark/2560x1440/aurora-3.svg",
+                "dark/3840x2160/aurora-3.svg",
+                "dark/1080x1920/aurora-3.svg",
+                "dark/1440x2560/aurora-3.svg",
+                "dark/2160x3840/aurora-3.svg",
+                "light/1920x1080/aurora-3.svg",
+                "light/2560x1440/aurora-3.svg",
+                "light/3840x2160/aurora-3.svg",
+                "light/1080x1920/aurora-3.svg",
+                "light/1440x2560/aurora-3.svg",
+                "light/2160x3840/aurora-3.svg"
             ]
         },
         {
@@ -373,14 +388,16 @@
             "name": "Noise gradient",
             "family": "gradients",
             "seed": 2,
+            "harmony": "analogous",
+            "lead": "yellow",
             "params": {
-                "accents": [
-                    "purple",
-                    "blue",
-                    "pink"
-                ],
                 "density": 0.4,
-                "grain": 0.5
+                "grain": 0.5,
+                "accents": [
+                    "yellow",
+                    "green",
+                    "orange"
+                ]
             },
             "files": [
                 "dark/1920x1080/noise-2.svg",
@@ -398,125 +415,162 @@
             ]
         },
         {
-            "id": "noise-7",
+            "id": "noise-3",
             "generator": "noise",
             "name": "Noise gradient",
             "family": "gradients",
-            "seed": 7,
+            "seed": 3,
+            "harmony": "complementary",
+            "lead": "green",
             "params": {
-                "accents": [
-                    "purple",
-                    "pink",
-                    "orange"
-                ],
                 "density": 0.4,
-                "grain": 0.5
+                "grain": 0.5,
+                "accents": [
+                    "green",
+                    "pink"
+                ]
             },
             "files": [
-                "dark/1920x1080/noise-7.svg",
-                "dark/2560x1440/noise-7.svg",
-                "dark/3840x2160/noise-7.svg",
-                "dark/1080x1920/noise-7.svg",
-                "dark/1440x2560/noise-7.svg",
-                "dark/2160x3840/noise-7.svg",
-                "light/1920x1080/noise-7.svg",
-                "light/2560x1440/noise-7.svg",
-                "light/3840x2160/noise-7.svg",
-                "light/1080x1920/noise-7.svg",
-                "light/1440x2560/noise-7.svg",
-                "light/2160x3840/noise-7.svg"
+                "dark/1920x1080/noise-3.svg",
+                "dark/2560x1440/noise-3.svg",
+                "dark/3840x2160/noise-3.svg",
+                "dark/1080x1920/noise-3.svg",
+                "dark/1440x2560/noise-3.svg",
+                "dark/2160x3840/noise-3.svg",
+                "light/1920x1080/noise-3.svg",
+                "light/2560x1440/noise-3.svg",
+                "light/3840x2160/noise-3.svg",
+                "light/1080x1920/noise-3.svg",
+                "light/1440x2560/noise-3.svg",
+                "light/2160x3840/noise-3.svg"
             ]
         },
         {
-            "id": "posterize-3",
+            "id": "posterize-2",
             "generator": "posterize",
             "name": "Posterized noise",
             "family": "gradients",
-            "seed": 3,
+            "seed": 2,
+            "harmony": "analogous",
+            "lead": "orange",
             "params": {
-                "accents": [
-                    "purple",
-                    "cyan",
-                    "pink"
-                ],
                 "density": 0.4,
-                "grain": 0.3
+                "grain": 0.3,
+                "accents": [
+                    "orange",
+                    "yellow",
+                    "red"
+                ]
             },
             "files": [
-                "dark/1920x1080/posterize-3.svg",
-                "dark/2560x1440/posterize-3.svg",
-                "dark/3840x2160/posterize-3.svg",
-                "dark/1080x1920/posterize-3.svg",
-                "dark/1440x2560/posterize-3.svg",
-                "dark/2160x3840/posterize-3.svg",
-                "light/1920x1080/posterize-3.svg",
-                "light/2560x1440/posterize-3.svg",
-                "light/3840x2160/posterize-3.svg",
-                "light/1080x1920/posterize-3.svg",
-                "light/1440x2560/posterize-3.svg",
-                "light/2160x3840/posterize-3.svg"
+                "dark/1920x1080/posterize-2.svg",
+                "dark/2560x1440/posterize-2.svg",
+                "dark/3840x2160/posterize-2.svg",
+                "dark/1080x1920/posterize-2.svg",
+                "dark/1440x2560/posterize-2.svg",
+                "dark/2160x3840/posterize-2.svg",
+                "light/1920x1080/posterize-2.svg",
+                "light/2560x1440/posterize-2.svg",
+                "light/3840x2160/posterize-2.svg",
+                "light/1080x1920/posterize-2.svg",
+                "light/1440x2560/posterize-2.svg",
+                "light/2160x3840/posterize-2.svg"
             ]
         },
         {
-            "id": "bands-1",
+            "id": "bands-2",
             "generator": "bands",
             "name": "Spectrum bands",
             "family": "gradients",
-            "seed": 1,
+            "seed": 2,
+            "harmony": "sweep",
+            "lead": "cyan",
             "params": {
+                "density": 0.5,
+                "grain": 0.3,
                 "accents": [
-                    "purple",
-                    "blue",
                     "cyan",
-                    "green"
-                ],
-                "density": 0.5,
-                "grain": 0.3
+                    "blue",
+                    "purple"
+                ]
             },
             "files": [
-                "dark/1920x1080/bands-1.svg",
-                "dark/2560x1440/bands-1.svg",
-                "dark/3840x2160/bands-1.svg",
-                "dark/1080x1920/bands-1.svg",
-                "dark/1440x2560/bands-1.svg",
-                "dark/2160x3840/bands-1.svg",
-                "light/1920x1080/bands-1.svg",
-                "light/2560x1440/bands-1.svg",
-                "light/3840x2160/bands-1.svg",
-                "light/1080x1920/bands-1.svg",
-                "light/1440x2560/bands-1.svg",
-                "light/2160x3840/bands-1.svg"
+                "dark/1920x1080/bands-2.svg",
+                "dark/2560x1440/bands-2.svg",
+                "dark/3840x2160/bands-2.svg",
+                "dark/1080x1920/bands-2.svg",
+                "dark/1440x2560/bands-2.svg",
+                "dark/2160x3840/bands-2.svg",
+                "light/1920x1080/bands-2.svg",
+                "light/2560x1440/bands-2.svg",
+                "light/3840x2160/bands-2.svg",
+                "light/1080x1920/bands-2.svg",
+                "light/1440x2560/bands-2.svg",
+                "light/2160x3840/bands-2.svg"
             ]
         },
         {
-            "id": "bands-6",
+            "id": "bands-33",
             "generator": "bands",
             "name": "Spectrum bands",
             "family": "gradients",
-            "seed": 6,
+            "seed": 33,
+            "harmony": "tetrad",
+            "lead": "purple",
             "params": {
-                "accents": [
-                    "pink",
-                    "purple",
-                    "blue",
-                    "cyan"
-                ],
                 "density": 0.5,
-                "grain": 0.3
+                "grain": 0.3,
+                "accents": [
+                    "purple",
+                    "red",
+                    "yellow",
+                    "cyan"
+                ]
             },
             "files": [
-                "dark/1920x1080/bands-6.svg",
-                "dark/2560x1440/bands-6.svg",
-                "dark/3840x2160/bands-6.svg",
-                "dark/1080x1920/bands-6.svg",
-                "dark/1440x2560/bands-6.svg",
-                "dark/2160x3840/bands-6.svg",
-                "light/1920x1080/bands-6.svg",
-                "light/2560x1440/bands-6.svg",
-                "light/3840x2160/bands-6.svg",
-                "light/1080x1920/bands-6.svg",
-                "light/1440x2560/bands-6.svg",
-                "light/2160x3840/bands-6.svg"
+                "dark/1920x1080/bands-33.svg",
+                "dark/2560x1440/bands-33.svg",
+                "dark/3840x2160/bands-33.svg",
+                "dark/1080x1920/bands-33.svg",
+                "dark/1440x2560/bands-33.svg",
+                "dark/2160x3840/bands-33.svg",
+                "light/1920x1080/bands-33.svg",
+                "light/2560x1440/bands-33.svg",
+                "light/3840x2160/bands-33.svg",
+                "light/1080x1920/bands-33.svg",
+                "light/1440x2560/bands-33.svg",
+                "light/2160x3840/bands-33.svg"
+            ]
+        },
+        {
+            "id": "stripes-1",
+            "generator": "stripes",
+            "name": "Halftone stripes",
+            "family": "lines",
+            "seed": 1,
+            "harmony": "complementary",
+            "lead": "blue",
+            "params": {
+                "density": 0.5,
+                "grain": 0.3,
+                "accents": [
+                    "blue",
+                    "orange"
+                ]
+            },
+            "files": [
+                "dark/1920x1080/stripes-1.svg",
+                "dark/2560x1440/stripes-1.svg",
+                "dark/3840x2160/stripes-1.svg",
+                "dark/1080x1920/stripes-1.svg",
+                "dark/1440x2560/stripes-1.svg",
+                "dark/2160x3840/stripes-1.svg",
+                "light/1920x1080/stripes-1.svg",
+                "light/2560x1440/stripes-1.svg",
+                "light/3840x2160/stripes-1.svg",
+                "light/1080x1920/stripes-1.svg",
+                "light/1440x2560/stripes-1.svg",
+                "light/2160x3840/stripes-1.svg"
             ]
         },
         {
@@ -525,14 +579,16 @@
             "name": "Halftone stripes",
             "family": "lines",
             "seed": 2,
+            "harmony": "analogous",
+            "lead": "orange",
             "params": {
-                "accents": [
-                    "purple",
-                    "pink",
-                    "blue"
-                ],
                 "density": 0.5,
-                "grain": 0.3
+                "grain": 0.3,
+                "accents": [
+                    "orange",
+                    "yellow",
+                    "red"
+                ]
             },
             "files": [
                 "dark/1920x1080/stripes-2.svg",
@@ -550,49 +606,21 @@
             ]
         },
         {
-            "id": "stripes-9",
-            "generator": "stripes",
-            "name": "Halftone stripes",
-            "family": "lines",
-            "seed": 9,
-            "params": {
-                "accents": [
-                    "cyan",
-                    "blue",
-                    "purple"
-                ],
-                "density": 0.5,
-                "grain": 0.3
-            },
-            "files": [
-                "dark/1920x1080/stripes-9.svg",
-                "dark/2560x1440/stripes-9.svg",
-                "dark/3840x2160/stripes-9.svg",
-                "dark/1080x1920/stripes-9.svg",
-                "dark/1440x2560/stripes-9.svg",
-                "dark/2160x3840/stripes-9.svg",
-                "light/1920x1080/stripes-9.svg",
-                "light/2560x1440/stripes-9.svg",
-                "light/3840x2160/stripes-9.svg",
-                "light/1080x1920/stripes-9.svg",
-                "light/1440x2560/stripes-9.svg",
-                "light/2160x3840/stripes-9.svg"
-            ]
-        },
-        {
             "id": "moire-1",
             "generator": "moire",
             "name": "Moiré rings",
             "family": "lines",
             "seed": 1,
+            "harmony": "analogous",
+            "lead": "purple",
             "params": {
+                "density": 0.5,
+                "grain": 0.2,
                 "accents": [
                     "purple",
-                    "cyan",
-                    "pink"
-                ],
-                "density": 0.5,
-                "grain": 0.2
+                    "pink",
+                    "blue"
+                ]
             },
             "files": [
                 "dark/1920x1080/moire-1.svg",
@@ -615,14 +643,15 @@
             "name": "Moiré rings",
             "family": "lines",
             "seed": 4,
+            "harmony": "complementary",
+            "lead": "green",
             "params": {
-                "accents": [
-                    "purple",
-                    "orange",
-                    "cyan"
-                ],
                 "density": 0.5,
-                "grain": 0.2
+                "grain": 0.2,
+                "accents": [
+                    "green",
+                    "pink"
+                ]
             },
             "files": [
                 "dark/1920x1080/moire-4.svg",
@@ -645,14 +674,16 @@
             "name": "Interference",
             "family": "lines",
             "seed": 3,
+            "harmony": "analogous",
+            "lead": "yellow",
             "params": {
-                "accents": [
-                    "purple",
-                    "blue",
-                    "cyan"
-                ],
                 "density": 0.5,
-                "grain": 0.3
+                "grain": 0.3,
+                "accents": [
+                    "yellow",
+                    "green",
+                    "orange"
+                ]
             },
             "files": [
                 "dark/1920x1080/waves-3.svg",
@@ -670,33 +701,34 @@
             ]
         },
         {
-            "id": "waves-8",
+            "id": "waves-4",
             "generator": "waves",
             "name": "Interference",
             "family": "lines",
-            "seed": 8,
+            "seed": 4,
+            "harmony": "complementary",
+            "lead": "red",
             "params": {
-                "accents": [
-                    "pink",
-                    "purple",
-                    "orange"
-                ],
                 "density": 0.5,
-                "grain": 0.3
+                "grain": 0.3,
+                "accents": [
+                    "red",
+                    "cyan"
+                ]
             },
             "files": [
-                "dark/1920x1080/waves-8.svg",
-                "dark/2560x1440/waves-8.svg",
-                "dark/3840x2160/waves-8.svg",
-                "dark/1080x1920/waves-8.svg",
-                "dark/1440x2560/waves-8.svg",
-                "dark/2160x3840/waves-8.svg",
-                "light/1920x1080/waves-8.svg",
-                "light/2560x1440/waves-8.svg",
-                "light/3840x2160/waves-8.svg",
-                "light/1080x1920/waves-8.svg",
-                "light/1440x2560/waves-8.svg",
-                "light/2160x3840/waves-8.svg"
+                "dark/1920x1080/waves-4.svg",
+                "dark/2560x1440/waves-4.svg",
+                "dark/3840x2160/waves-4.svg",
+                "dark/1080x1920/waves-4.svg",
+                "dark/1440x2560/waves-4.svg",
+                "dark/2160x3840/waves-4.svg",
+                "light/1920x1080/waves-4.svg",
+                "light/2560x1440/waves-4.svg",
+                "light/3840x2160/waves-4.svg",
+                "light/1080x1920/waves-4.svg",
+                "light/1440x2560/waves-4.svg",
+                "light/2160x3840/waves-4.svg"
             ]
         },
         {
@@ -705,14 +737,16 @@
             "name": "Contours",
             "family": "lines",
             "seed": 1,
+            "harmony": "sweep",
+            "lead": "pink",
             "params": {
-                "accents": [
-                    "purple",
-                    "pink",
-                    "orange"
-                ],
                 "density": 0.5,
-                "grain": 0.25
+                "grain": 0.25,
+                "accents": [
+                    "pink",
+                    "red",
+                    "orange"
+                ]
             },
             "files": [
                 "dark/1920x1080/contours-1.svg",
@@ -730,33 +764,68 @@
             ]
         },
         {
-            "id": "contours-6",
+            "id": "contours-8",
             "generator": "contours",
             "name": "Contours",
             "family": "lines",
-            "seed": 6,
+            "seed": 8,
+            "harmony": "split",
+            "lead": "cyan",
             "params": {
-                "accents": [
-                    "purple",
-                    "blue",
-                    "cyan"
-                ],
                 "density": 0.5,
-                "grain": 0.25
+                "grain": 0.25,
+                "accents": [
+                    "cyan",
+                    "pink",
+                    "orange"
+                ]
             },
             "files": [
-                "dark/1920x1080/contours-6.svg",
-                "dark/2560x1440/contours-6.svg",
-                "dark/3840x2160/contours-6.svg",
-                "dark/1080x1920/contours-6.svg",
-                "dark/1440x2560/contours-6.svg",
-                "dark/2160x3840/contours-6.svg",
-                "light/1920x1080/contours-6.svg",
-                "light/2560x1440/contours-6.svg",
-                "light/3840x2160/contours-6.svg",
-                "light/1080x1920/contours-6.svg",
-                "light/1440x2560/contours-6.svg",
-                "light/2160x3840/contours-6.svg"
+                "dark/1920x1080/contours-8.svg",
+                "dark/2560x1440/contours-8.svg",
+                "dark/3840x2160/contours-8.svg",
+                "dark/1080x1920/contours-8.svg",
+                "dark/1440x2560/contours-8.svg",
+                "dark/2160x3840/contours-8.svg",
+                "light/1920x1080/contours-8.svg",
+                "light/2560x1440/contours-8.svg",
+                "light/3840x2160/contours-8.svg",
+                "light/1080x1920/contours-8.svg",
+                "light/1440x2560/contours-8.svg",
+                "light/2160x3840/contours-8.svg"
+            ]
+        },
+        {
+            "id": "flow-1",
+            "generator": "flow",
+            "name": "Flow field",
+            "family": "lines",
+            "seed": 1,
+            "harmony": "tetrad",
+            "lead": "blue",
+            "params": {
+                "density": 0.5,
+                "grain": 0.25,
+                "accents": [
+                    "blue",
+                    "pink",
+                    "orange",
+                    "green"
+                ]
+            },
+            "files": [
+                "dark/1920x1080/flow-1.svg",
+                "dark/2560x1440/flow-1.svg",
+                "dark/3840x2160/flow-1.svg",
+                "dark/1080x1920/flow-1.svg",
+                "dark/1440x2560/flow-1.svg",
+                "dark/2160x3840/flow-1.svg",
+                "light/1920x1080/flow-1.svg",
+                "light/2560x1440/flow-1.svg",
+                "light/3840x2160/flow-1.svg",
+                "light/1080x1920/flow-1.svg",
+                "light/1440x2560/flow-1.svg",
+                "light/2160x3840/flow-1.svg"
             ]
         },
         {
@@ -765,15 +834,16 @@
             "name": "Flow field",
             "family": "lines",
             "seed": 2,
+            "harmony": "sweep",
+            "lead": "cyan",
             "params": {
+                "density": 0.5,
+                "grain": 0.25,
                 "accents": [
-                    "purple",
                     "cyan",
                     "blue",
-                    "pink"
-                ],
-                "density": 0.5,
-                "grain": 0.25
+                    "purple"
+                ]
             },
             "files": [
                 "dark/1920x1080/flow-2.svg",
@@ -791,334 +861,320 @@
             ]
         },
         {
-            "id": "flow-5",
-            "generator": "flow",
-            "name": "Flow field",
+            "id": "glitch-2",
+            "generator": "glitch",
+            "name": "Glitch bands",
             "family": "lines",
-            "seed": 5,
+            "seed": 2,
+            "harmony": "analogous",
+            "lead": "red",
             "params": {
+                "density": 0.5,
+                "grain": 0.4,
                 "accents": [
-                    "purple",
-                    "pink",
+                    "red",
                     "orange",
-                    "yellow"
-                ],
-                "density": 0.5,
-                "grain": 0.25
+                    "pink"
+                ]
             },
             "files": [
-                "dark/1920x1080/flow-5.svg",
-                "dark/2560x1440/flow-5.svg",
-                "dark/3840x2160/flow-5.svg",
-                "dark/1080x1920/flow-5.svg",
-                "dark/1440x2560/flow-5.svg",
-                "dark/2160x3840/flow-5.svg",
-                "light/1920x1080/flow-5.svg",
-                "light/2560x1440/flow-5.svg",
-                "light/3840x2160/flow-5.svg",
-                "light/1080x1920/flow-5.svg",
-                "light/1440x2560/flow-5.svg",
-                "light/2160x3840/flow-5.svg"
+                "dark/1920x1080/glitch-2.svg",
+                "dark/2560x1440/glitch-2.svg",
+                "dark/3840x2160/glitch-2.svg",
+                "dark/1080x1920/glitch-2.svg",
+                "dark/1440x2560/glitch-2.svg",
+                "dark/2160x3840/glitch-2.svg",
+                "light/1920x1080/glitch-2.svg",
+                "light/2560x1440/glitch-2.svg",
+                "light/3840x2160/glitch-2.svg",
+                "light/1080x1920/glitch-2.svg",
+                "light/1440x2560/glitch-2.svg",
+                "light/2160x3840/glitch-2.svg"
             ]
         },
         {
-            "id": "glitch-1",
+            "id": "glitch-7",
             "generator": "glitch",
             "name": "Glitch bands",
             "family": "lines",
-            "seed": 1,
+            "seed": 7,
+            "harmony": "complementary",
+            "lead": "pink",
             "params": {
+                "density": 0.5,
+                "grain": 0.4,
                 "accents": [
-                    "purple",
                     "pink",
-                    "cyan"
-                ],
-                "density": 0.5,
-                "grain": 0.4
-            },
-            "files": [
-                "dark/1920x1080/glitch-1.svg",
-                "dark/2560x1440/glitch-1.svg",
-                "dark/3840x2160/glitch-1.svg",
-                "dark/1080x1920/glitch-1.svg",
-                "dark/1440x2560/glitch-1.svg",
-                "dark/2160x3840/glitch-1.svg",
-                "light/1920x1080/glitch-1.svg",
-                "light/2560x1440/glitch-1.svg",
-                "light/3840x2160/glitch-1.svg",
-                "light/1080x1920/glitch-1.svg",
-                "light/1440x2560/glitch-1.svg",
-                "light/2160x3840/glitch-1.svg"
-            ]
-        },
-        {
-            "id": "glitch-4",
-            "generator": "glitch",
-            "name": "Glitch bands",
-            "family": "lines",
-            "seed": 4,
-            "params": {
-                "accents": [
-                    "purple",
-                    "cyan",
                     "green"
-                ],
-                "density": 0.5,
-                "grain": 0.4
+                ]
             },
             "files": [
-                "dark/1920x1080/glitch-4.svg",
-                "dark/2560x1440/glitch-4.svg",
-                "dark/3840x2160/glitch-4.svg",
-                "dark/1080x1920/glitch-4.svg",
-                "dark/1440x2560/glitch-4.svg",
-                "dark/2160x3840/glitch-4.svg",
-                "light/1920x1080/glitch-4.svg",
-                "light/2560x1440/glitch-4.svg",
-                "light/3840x2160/glitch-4.svg",
-                "light/1080x1920/glitch-4.svg",
-                "light/1440x2560/glitch-4.svg",
-                "light/2160x3840/glitch-4.svg"
+                "dark/1920x1080/glitch-7.svg",
+                "dark/2560x1440/glitch-7.svg",
+                "dark/3840x2160/glitch-7.svg",
+                "dark/1080x1920/glitch-7.svg",
+                "dark/1440x2560/glitch-7.svg",
+                "dark/2160x3840/glitch-7.svg",
+                "light/1920x1080/glitch-7.svg",
+                "light/2560x1440/glitch-7.svg",
+                "light/3840x2160/glitch-7.svg",
+                "light/1080x1920/glitch-7.svg",
+                "light/1440x2560/glitch-7.svg",
+                "light/2160x3840/glitch-7.svg"
             ]
         },
         {
-            "id": "blueprint-7",
+            "id": "blueprint-2",
             "generator": "blueprint",
             "name": "Blueprint",
             "family": "patterns",
-            "seed": 7,
+            "seed": 2,
+            "harmony": "split",
+            "lead": "orange",
             "params": {
-                "accents": [
-                    "purple",
-                    "cyan",
-                    "pink"
-                ],
                 "density": 0.5,
-                "grain": 0.3
+                "grain": 0.3,
+                "accents": [
+                    "orange",
+                    "cyan",
+                    "purple"
+                ]
             },
             "files": [
-                "dark/1920x1080/blueprint-7.svg",
-                "dark/2560x1440/blueprint-7.svg",
-                "dark/3840x2160/blueprint-7.svg",
-                "dark/1080x1920/blueprint-7.svg",
-                "dark/1440x2560/blueprint-7.svg",
-                "dark/2160x3840/blueprint-7.svg",
-                "light/1920x1080/blueprint-7.svg",
-                "light/2560x1440/blueprint-7.svg",
-                "light/3840x2160/blueprint-7.svg",
-                "light/1080x1920/blueprint-7.svg",
-                "light/1440x2560/blueprint-7.svg",
-                "light/2160x3840/blueprint-7.svg"
+                "dark/1920x1080/blueprint-2.svg",
+                "dark/2560x1440/blueprint-2.svg",
+                "dark/3840x2160/blueprint-2.svg",
+                "dark/1080x1920/blueprint-2.svg",
+                "dark/1440x2560/blueprint-2.svg",
+                "dark/2160x3840/blueprint-2.svg",
+                "light/1920x1080/blueprint-2.svg",
+                "light/2560x1440/blueprint-2.svg",
+                "light/3840x2160/blueprint-2.svg",
+                "light/1080x1920/blueprint-2.svg",
+                "light/1440x2560/blueprint-2.svg",
+                "light/2160x3840/blueprint-2.svg"
             ]
         },
         {
-            "id": "dots-4",
+            "id": "dots-3",
             "generator": "dots",
             "name": "Dot matrix",
             "family": "patterns",
-            "seed": 4,
+            "seed": 3,
+            "harmony": "analogous",
+            "lead": "green",
             "params": {
-                "accents": [
-                    "purple",
-                    "pink",
-                    "blue"
-                ],
                 "density": 0.5,
-                "grain": 0.3
+                "grain": 0.3,
+                "accents": [
+                    "green",
+                    "cyan",
+                    "yellow"
+                ]
             },
             "files": [
-                "dark/1920x1080/dots-4.svg",
-                "dark/2560x1440/dots-4.svg",
-                "dark/3840x2160/dots-4.svg",
-                "dark/1080x1920/dots-4.svg",
-                "dark/1440x2560/dots-4.svg",
-                "dark/2160x3840/dots-4.svg",
-                "light/1920x1080/dots-4.svg",
-                "light/2560x1440/dots-4.svg",
-                "light/3840x2160/dots-4.svg",
-                "light/1080x1920/dots-4.svg",
-                "light/1440x2560/dots-4.svg",
-                "light/2160x3840/dots-4.svg"
+                "dark/1920x1080/dots-3.svg",
+                "dark/2560x1440/dots-3.svg",
+                "dark/3840x2160/dots-3.svg",
+                "dark/1080x1920/dots-3.svg",
+                "dark/1440x2560/dots-3.svg",
+                "dark/2160x3840/dots-3.svg",
+                "light/1920x1080/dots-3.svg",
+                "light/2560x1440/dots-3.svg",
+                "light/3840x2160/dots-3.svg",
+                "light/1080x1920/dots-3.svg",
+                "light/1440x2560/dots-3.svg",
+                "light/2160x3840/dots-3.svg"
             ]
         },
         {
-            "id": "halftone-1",
+            "id": "halftone-13",
             "generator": "halftone",
             "name": "Halftone",
+            "family": "patterns",
+            "seed": 13,
+            "harmony": "complementary",
+            "lead": "yellow",
+            "params": {
+                "density": 0.5,
+                "grain": 0.2,
+                "accents": [
+                    "yellow",
+                    "purple"
+                ]
+            },
+            "files": [
+                "dark/1920x1080/halftone-13.svg",
+                "dark/2560x1440/halftone-13.svg",
+                "dark/3840x2160/halftone-13.svg",
+                "dark/1080x1920/halftone-13.svg",
+                "dark/1440x2560/halftone-13.svg",
+                "dark/2160x3840/halftone-13.svg",
+                "light/1920x1080/halftone-13.svg",
+                "light/2560x1440/halftone-13.svg",
+                "light/3840x2160/halftone-13.svg",
+                "light/1080x1920/halftone-13.svg",
+                "light/1440x2560/halftone-13.svg",
+                "light/2160x3840/halftone-13.svg"
+            ]
+        },
+        {
+            "id": "halftone-30",
+            "generator": "halftone",
+            "name": "Halftone",
+            "family": "patterns",
+            "seed": 30,
+            "harmony": "sweep",
+            "lead": "purple",
+            "params": {
+                "density": 0.5,
+                "grain": 0.2,
+                "accents": [
+                    "purple",
+                    "pink",
+                    "red"
+                ]
+            },
+            "files": [
+                "dark/1920x1080/halftone-30.svg",
+                "dark/2560x1440/halftone-30.svg",
+                "dark/3840x2160/halftone-30.svg",
+                "dark/1080x1920/halftone-30.svg",
+                "dark/1440x2560/halftone-30.svg",
+                "dark/2160x3840/halftone-30.svg",
+                "light/1920x1080/halftone-30.svg",
+                "light/2560x1440/halftone-30.svg",
+                "light/3840x2160/halftone-30.svg",
+                "light/1080x1920/halftone-30.svg",
+                "light/1440x2560/halftone-30.svg",
+                "light/2160x3840/halftone-30.svg"
+            ]
+        },
+        {
+            "id": "plaid-1",
+            "generator": "plaid",
+            "name": "Plaid",
             "family": "patterns",
             "seed": 1,
+            "harmony": "tetrad",
+            "lead": "pink",
             "params": {
+                "density": 0.5,
+                "grain": 0.3,
                 "accents": [
-                    "purple",
                     "pink",
-                    "cyan"
-                ],
-                "density": 0.5,
-                "grain": 0.2
+                    "orange",
+                    "green",
+                    "blue"
+                ]
             },
             "files": [
-                "dark/1920x1080/halftone-1.svg",
-                "dark/2560x1440/halftone-1.svg",
-                "dark/3840x2160/halftone-1.svg",
-                "dark/1080x1920/halftone-1.svg",
-                "dark/1440x2560/halftone-1.svg",
-                "dark/2160x3840/halftone-1.svg",
-                "light/1920x1080/halftone-1.svg",
-                "light/2560x1440/halftone-1.svg",
-                "light/3840x2160/halftone-1.svg",
-                "light/1080x1920/halftone-1.svg",
-                "light/1440x2560/halftone-1.svg",
-                "light/2160x3840/halftone-1.svg"
+                "dark/1920x1080/plaid-1.svg",
+                "dark/2560x1440/plaid-1.svg",
+                "dark/3840x2160/plaid-1.svg",
+                "dark/1080x1920/plaid-1.svg",
+                "dark/1440x2560/plaid-1.svg",
+                "dark/2160x3840/plaid-1.svg",
+                "light/1920x1080/plaid-1.svg",
+                "light/2560x1440/plaid-1.svg",
+                "light/3840x2160/plaid-1.svg",
+                "light/1080x1920/plaid-1.svg",
+                "light/1440x2560/plaid-1.svg",
+                "light/2160x3840/plaid-1.svg"
             ]
         },
         {
-            "id": "halftone-5",
-            "generator": "halftone",
-            "name": "Halftone",
-            "family": "patterns",
-            "seed": 5,
-            "params": {
-                "accents": [
-                    "purple",
-                    "blue",
-                    "cyan"
-                ],
-                "density": 0.5,
-                "grain": 0.2
-            },
-            "files": [
-                "dark/1920x1080/halftone-5.svg",
-                "dark/2560x1440/halftone-5.svg",
-                "dark/3840x2160/halftone-5.svg",
-                "dark/1080x1920/halftone-5.svg",
-                "dark/1440x2560/halftone-5.svg",
-                "dark/2160x3840/halftone-5.svg",
-                "light/1920x1080/halftone-5.svg",
-                "light/2560x1440/halftone-5.svg",
-                "light/3840x2160/halftone-5.svg",
-                "light/1080x1920/halftone-5.svg",
-                "light/1440x2560/halftone-5.svg",
-                "light/2160x3840/halftone-5.svg"
-            ]
-        },
-        {
-            "id": "plaid-3",
+            "id": "plaid-2",
             "generator": "plaid",
             "name": "Plaid",
             "family": "patterns",
-            "seed": 3,
+            "seed": 2,
+            "harmony": "analogous",
+            "lead": "red",
             "params": {
+                "density": 0.5,
+                "grain": 0.3,
                 "accents": [
-                    "purple",
-                    "blue",
+                    "red",
+                    "orange",
                     "pink"
-                ],
-                "density": 0.5,
-                "grain": 0.3
+                ]
             },
             "files": [
-                "dark/1920x1080/plaid-3.svg",
-                "dark/2560x1440/plaid-3.svg",
-                "dark/3840x2160/plaid-3.svg",
-                "dark/1080x1920/plaid-3.svg",
-                "dark/1440x2560/plaid-3.svg",
-                "dark/2160x3840/plaid-3.svg",
-                "light/1920x1080/plaid-3.svg",
-                "light/2560x1440/plaid-3.svg",
-                "light/3840x2160/plaid-3.svg",
-                "light/1080x1920/plaid-3.svg",
-                "light/1440x2560/plaid-3.svg",
-                "light/2160x3840/plaid-3.svg"
+                "dark/1920x1080/plaid-2.svg",
+                "dark/2560x1440/plaid-2.svg",
+                "dark/3840x2160/plaid-2.svg",
+                "dark/1080x1920/plaid-2.svg",
+                "dark/1440x2560/plaid-2.svg",
+                "dark/2160x3840/plaid-2.svg",
+                "light/1920x1080/plaid-2.svg",
+                "light/2560x1440/plaid-2.svg",
+                "light/3840x2160/plaid-2.svg",
+                "light/1080x1920/plaid-2.svg",
+                "light/1440x2560/plaid-2.svg",
+                "light/2160x3840/plaid-2.svg"
             ]
         },
         {
-            "id": "plaid-8",
-            "generator": "plaid",
-            "name": "Plaid",
-            "family": "patterns",
-            "seed": 8,
-            "params": {
-                "accents": [
-                    "purple",
-                    "cyan",
-                    "green"
-                ],
-                "density": 0.5,
-                "grain": 0.3
-            },
-            "files": [
-                "dark/1920x1080/plaid-8.svg",
-                "dark/2560x1440/plaid-8.svg",
-                "dark/3840x2160/plaid-8.svg",
-                "dark/1080x1920/plaid-8.svg",
-                "dark/1440x2560/plaid-8.svg",
-                "dark/2160x3840/plaid-8.svg",
-                "light/1920x1080/plaid-8.svg",
-                "light/2560x1440/plaid-8.svg",
-                "light/3840x2160/plaid-8.svg",
-                "light/1080x1920/plaid-8.svg",
-                "light/1440x2560/plaid-8.svg",
-                "light/2160x3840/plaid-8.svg"
-            ]
-        },
-        {
-            "id": "truchet-2",
+            "id": "truchet-1",
             "generator": "truchet",
             "name": "Truchet",
             "family": "patterns",
-            "seed": 2,
+            "seed": 1,
+            "harmony": "mono",
+            "lead": "yellow",
             "params": {
-                "accents": [
-                    "purple",
-                    "cyan",
-                    "blue"
-                ],
                 "density": 0.5,
-                "grain": 0.25
+                "grain": 0.25,
+                "accents": [
+                    "yellow"
+                ]
             },
             "files": [
-                "dark/1920x1080/truchet-2.svg",
-                "dark/2560x1440/truchet-2.svg",
-                "dark/3840x2160/truchet-2.svg",
-                "dark/1080x1920/truchet-2.svg",
-                "dark/1440x2560/truchet-2.svg",
-                "dark/2160x3840/truchet-2.svg",
-                "light/1920x1080/truchet-2.svg",
-                "light/2560x1440/truchet-2.svg",
-                "light/3840x2160/truchet-2.svg",
-                "light/1080x1920/truchet-2.svg",
-                "light/1440x2560/truchet-2.svg",
-                "light/2160x3840/truchet-2.svg"
+                "dark/1920x1080/truchet-1.svg",
+                "dark/2560x1440/truchet-1.svg",
+                "dark/3840x2160/truchet-1.svg",
+                "dark/1080x1920/truchet-1.svg",
+                "dark/1440x2560/truchet-1.svg",
+                "dark/2160x3840/truchet-1.svg",
+                "light/1920x1080/truchet-1.svg",
+                "light/2560x1440/truchet-1.svg",
+                "light/3840x2160/truchet-1.svg",
+                "light/1080x1920/truchet-1.svg",
+                "light/1440x2560/truchet-1.svg",
+                "light/2160x3840/truchet-1.svg"
             ]
         },
         {
-            "id": "maze-1",
+            "id": "maze-4",
             "generator": "maze",
             "name": "Diagonal maze",
             "family": "patterns",
-            "seed": 1,
+            "seed": 4,
+            "harmony": "sweep",
+            "lead": "cyan",
             "params": {
-                "accents": [
-                    "purple",
-                    "pink",
-                    "orange"
-                ],
                 "density": 0.5,
-                "grain": 0.25
+                "grain": 0.25,
+                "accents": [
+                    "cyan",
+                    "blue",
+                    "purple"
+                ]
             },
             "files": [
-                "dark/1920x1080/maze-1.svg",
-                "dark/2560x1440/maze-1.svg",
-                "dark/3840x2160/maze-1.svg",
-                "dark/1080x1920/maze-1.svg",
-                "dark/1440x2560/maze-1.svg",
-                "dark/2160x3840/maze-1.svg",
-                "light/1920x1080/maze-1.svg",
-                "light/2560x1440/maze-1.svg",
-                "light/3840x2160/maze-1.svg",
-                "light/1080x1920/maze-1.svg",
-                "light/1440x2560/maze-1.svg",
-                "light/2160x3840/maze-1.svg"
+                "dark/1920x1080/maze-4.svg",
+                "dark/2560x1440/maze-4.svg",
+                "dark/3840x2160/maze-4.svg",
+                "dark/1080x1920/maze-4.svg",
+                "dark/1440x2560/maze-4.svg",
+                "dark/2160x3840/maze-4.svg",
+                "light/1920x1080/maze-4.svg",
+                "light/2560x1440/maze-4.svg",
+                "light/3840x2160/maze-4.svg",
+                "light/1080x1920/maze-4.svg",
+                "light/1440x2560/maze-4.svg",
+                "light/2160x3840/maze-4.svg"
             ]
         },
         {
@@ -1127,14 +1183,17 @@
             "name": "Cells",
             "family": "patterns",
             "seed": 4,
+            "harmony": "tetrad",
+            "lead": "green",
             "params": {
-                "accents": [
-                    "purple",
-                    "blue",
-                    "pink"
-                ],
                 "density": 0.5,
-                "grain": 0.3
+                "grain": 0.3,
+                "accents": [
+                    "green",
+                    "blue",
+                    "pink",
+                    "orange"
+                ]
             },
             "files": [
                 "dark/1920x1080/cells-4.svg",
@@ -1152,33 +1211,35 @@
             ]
         },
         {
-            "id": "cells-9",
+            "id": "cells-5",
             "generator": "cells",
             "name": "Cells",
             "family": "patterns",
-            "seed": 9,
+            "seed": 5,
+            "harmony": "split",
+            "lead": "purple",
             "params": {
+                "density": 0.5,
+                "grain": 0.3,
                 "accents": [
                     "purple",
-                    "pink",
-                    "orange"
-                ],
-                "density": 0.5,
-                "grain": 0.3
+                    "orange",
+                    "green"
+                ]
             },
             "files": [
-                "dark/1920x1080/cells-9.svg",
-                "dark/2560x1440/cells-9.svg",
-                "dark/3840x2160/cells-9.svg",
-                "dark/1080x1920/cells-9.svg",
-                "dark/1440x2560/cells-9.svg",
-                "dark/2160x3840/cells-9.svg",
-                "light/1920x1080/cells-9.svg",
-                "light/2560x1440/cells-9.svg",
-                "light/3840x2160/cells-9.svg",
-                "light/1080x1920/cells-9.svg",
-                "light/1440x2560/cells-9.svg",
-                "light/2160x3840/cells-9.svg"
+                "dark/1920x1080/cells-5.svg",
+                "dark/2560x1440/cells-5.svg",
+                "dark/3840x2160/cells-5.svg",
+                "dark/1080x1920/cells-5.svg",
+                "dark/1440x2560/cells-5.svg",
+                "dark/2160x3840/cells-5.svg",
+                "light/1920x1080/cells-5.svg",
+                "light/2560x1440/cells-5.svg",
+                "light/3840x2160/cells-5.svg",
+                "light/1080x1920/cells-5.svg",
+                "light/1440x2560/cells-5.svg",
+                "light/2160x3840/cells-5.svg"
             ]
         },
         {
@@ -1187,14 +1248,16 @@
             "name": "Traces",
             "family": "patterns",
             "seed": 1,
+            "harmony": "split",
+            "lead": "blue",
             "params": {
-                "accents": [
-                    "purple",
-                    "cyan",
-                    "pink"
-                ],
                 "density": 0.5,
-                "grain": 0.25
+                "grain": 0.25,
+                "accents": [
+                    "blue",
+                    "red",
+                    "yellow"
+                ]
             },
             "files": [
                 "dark/1920x1080/traces-1.svg",
@@ -1212,33 +1275,35 @@
             ]
         },
         {
-            "id": "traces-5",
+            "id": "traces-9",
             "generator": "traces",
             "name": "Traces",
             "family": "patterns",
-            "seed": 5,
+            "seed": 9,
+            "harmony": "analogous",
+            "lead": "orange",
             "params": {
-                "accents": [
-                    "purple",
-                    "green",
-                    "cyan"
-                ],
                 "density": 0.5,
-                "grain": 0.25
+                "grain": 0.25,
+                "accents": [
+                    "orange",
+                    "yellow",
+                    "red"
+                ]
             },
             "files": [
-                "dark/1920x1080/traces-5.svg",
-                "dark/2560x1440/traces-5.svg",
-                "dark/3840x2160/traces-5.svg",
-                "dark/1080x1920/traces-5.svg",
-                "dark/1440x2560/traces-5.svg",
-                "dark/2160x3840/traces-5.svg",
-                "light/1920x1080/traces-5.svg",
-                "light/2560x1440/traces-5.svg",
-                "light/3840x2160/traces-5.svg",
-                "light/1080x1920/traces-5.svg",
-                "light/1440x2560/traces-5.svg",
-                "light/2160x3840/traces-5.svg"
+                "dark/1920x1080/traces-9.svg",
+                "dark/2560x1440/traces-9.svg",
+                "dark/3840x2160/traces-9.svg",
+                "dark/1080x1920/traces-9.svg",
+                "dark/1440x2560/traces-9.svg",
+                "dark/2160x3840/traces-9.svg",
+                "light/1920x1080/traces-9.svg",
+                "light/2560x1440/traces-9.svg",
+                "light/3840x2160/traces-9.svg",
+                "light/1080x1920/traces-9.svg",
+                "light/1440x2560/traces-9.svg",
+                "light/2160x3840/traces-9.svg"
             ]
         }
     ]
