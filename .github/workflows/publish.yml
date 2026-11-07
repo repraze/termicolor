@@ -1,8 +1,10 @@
 name: Publish palette
 
-# Publishes @repraze/termicolor when a `termicolor-v<version>` tag is pushed.
+# Stages @repraze/termicolor when a `termicolor-v<version>` tag is pushed. Nothing goes live until a
+# maintainer approves it with 2FA: npmjs.com → package → Staged, or `npm stage approve <stage-id>`.
 #
 # Supply-chain posture:
+# - npm staged publishing: CI can only stage; a human approves (2FA) before the version is installable.
 # - npm trusted publishing (OIDC): no long-lived npm token in GitHub secrets. Configure it once on
 #   npmjs.com → package settings → Trusted publisher → GitHub Actions (repraze/termicolor, publish.yml,
 #   environment "npm").
@@ -37,8 +39,9 @@ jobs:
               with:
                   node-version: 24
                   registry-url: https://registry.npmjs.org
-            - name: Require npm >= 11.5.1 (trusted publishing)
-              run: node -e 'const [a,b,c]=process.argv[1].split(".").map(Number);process.exit(a>11||(a===11&&(b>5||(b===5&&c>=1)))?0:1)' "$(npm --version)"
+            # `npm stage` needs npm 12; exact version, released weeks before it was pinned (not "latest")
+            - name: Use pinned npm
+              run: npm install -g npm@12.2.1 && npm --version
             - name: Tag matches package version
               run: test "termicolor-v$(node -p 'require("./packages/palette/package.json").version')" = "$GITHUB_REF_NAME"
             - run: npm ci --ignore-scripts
@@ -46,7 +49,7 @@ jobs:
             - run: npm run typecheck
             - name: Generated files are up to date
               run: npm run check:generated
-            - name: Publish
+            - name: Stage for approval
               working-directory: packages/palette
               # prereleases (0.1.0-alpha.0) go to the "next" dist-tag so `npm install` keeps the stable one
-              run: npm publish --provenance --access public --tag ${{ contains(github.ref_name, '-') && 'next' || 'latest' }}
+              run: npm stage publish . --provenance --access public --tag ${{ contains(github.ref_name, '-') && 'next' || 'latest' }}
