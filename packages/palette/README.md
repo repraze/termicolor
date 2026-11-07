@@ -16,7 +16,7 @@ npm install @repraze/termicolor
 ```
 
 ```html
-<html class="dark accent-cyan">
+<html class="dark accent-cyan"></html>
 ```
 
 ## TypeScript
