@@ -1,6 +1,6 @@
 {
     "name": "@repraze/termicolor",
-    "version": "0.1.0-alpha.0",
+    "version": "0.1.0-alpha.1",
     "description": "Termicolor palette: high contrast, bright, techy colors. Modes, accents, roles as CSS variables, JSON and TypeScript.",
     "keywords": [
         "termicolor",
