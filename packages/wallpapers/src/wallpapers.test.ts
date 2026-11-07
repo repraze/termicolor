@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 
-import {palette} from "@termicolor/palette";
+import {palette} from "@repraze/termicolor";
 import {test} from "vitest";
 
 import {CATALOG, renderCatalog} from "./catalog.ts";

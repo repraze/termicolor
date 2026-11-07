@@ -1,4 +1,4 @@
-import type {Mode} from "@termicolor/palette";
+import type {Mode} from "@repraze/termicolor";
 
 /**
  * TextMate token rules. Ported from repraze.com `code-themes.ts` so editor and site render code

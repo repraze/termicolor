@@ -1,5 +1,5 @@
-import type {AccentName} from "@termicolor/palette";
-import {mix} from "@termicolor/palette";
+import type {AccentName} from "@repraze/termicolor";
+import {mix} from "@repraze/termicolor";
 
 import type {Rng} from "../random.ts";
 import {el, fade, glowFilter, n, radialGradient} from "../svg.ts";

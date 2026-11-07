@@ -8,7 +8,7 @@ light, in landscape `1920x1080`, `2560x1440`, `3840x2160` and in portrait `1080x
 
 ```ts
 import {renderWallpaper, SIZES} from "@termicolor/wallpapers";
-import {palette} from "@termicolor/palette";
+import {palette} from "@repraze/termicolor";
 
 const svg = renderWallpaper({generator: "flow", seed: 2}, {palette, mode: "dark", size: SIZES.uhd});
 ```

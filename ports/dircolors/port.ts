@@ -1,5 +1,5 @@
+import {type Hex, type Mode, rgb} from "@repraze/termicolor";
 import {definePort} from "@termicolor/build";
-import {type Hex, type Mode, rgb} from "@termicolor/palette";
 
 type Style = {fg?: Hex; bg?: Hex; bold?: boolean; underline?: boolean; dim?: boolean};
 

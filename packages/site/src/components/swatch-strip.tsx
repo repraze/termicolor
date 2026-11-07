@@ -1,4 +1,4 @@
-import {ACCENTS} from "@termicolor/palette";
+import {ACCENTS} from "@repraze/termicolor";
 
 /** Accent fills (DESIGN.md §3) with their paired foreground; follows the active mode through CSS vars. */
 export function SwatchStrip() {

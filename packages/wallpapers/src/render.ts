@@ -1,4 +1,4 @@
-import {type AccentName, type ModeName, MODES, type Palette} from "@termicolor/palette";
+import {type AccentName, type ModeName, MODES, type Palette} from "@repraze/termicolor";
 
 import {colorsFor} from "./colors.ts";
 import {gradients} from "./families/gradients.ts";

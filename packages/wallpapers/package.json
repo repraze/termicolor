@@ -13,6 +13,6 @@
         "catalog": "tsx scripts/catalog-md.ts"
     },
     "dependencies": {
-        "@termicolor/palette": "*"
+        "@repraze/termicolor": "*"
     }
 }

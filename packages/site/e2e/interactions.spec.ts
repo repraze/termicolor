@@ -1,4 +1,4 @@
-import {contrast, palette, solid} from "@termicolor/palette";
+import {contrast, palette, solid} from "@repraze/termicolor";
 
 import {SITE_ACCENT} from "../src/lib/site";
 import {expect, test, THEMES, useTheme} from "./fixtures";

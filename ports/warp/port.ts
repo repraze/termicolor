@@ -1,5 +1,5 @@
+import type {Ansi, Mode} from "@repraze/termicolor";
 import {definePort} from "@termicolor/build";
-import type {Ansi, Mode} from "@termicolor/palette";
 
 const NAMES = ["black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"] as const;
 

@@ -1,4 +1,4 @@
-import type {AccentName, ModeName, Palette} from "@termicolor/palette";
+import type {AccentName, ModeName, Palette} from "@repraze/termicolor";
 
 import type {Colors} from "./colors.ts";
 import type {HarmonyName} from "./harmony.ts";

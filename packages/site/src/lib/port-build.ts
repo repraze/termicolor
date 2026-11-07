@@ -1,6 +1,6 @@
+import {type AccentName, createPalette, DEFAULT_ACCENT} from "@repraze/termicolor";
 import {queryOptions} from "@tanstack/react-query";
 import type {PortDefinition, PortFile} from "@termicolor/build";
-import {type AccentName, createPalette, DEFAULT_ACCENT} from "@termicolor/palette";
 
 /**
  * Every port's build function, lazy-loaded (one chunk per port). Ports are pure `(palette) => files`,

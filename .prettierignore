@@ -7,3 +7,4 @@ packages/site/src/routeTree.gen.ts
 ports/*/README.md
 ports/registry.json
 .claude/worktrees
+packages/palette/lib

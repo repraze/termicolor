@@ -1,5 +1,5 @@
+import {type Ansi, type Mode, solid} from "@repraze/termicolor";
 import {definePort} from "@termicolor/build";
-import {type Ansi, type Mode, solid} from "@termicolor/palette";
 
 type Value = string | string[] | {[key: string]: Value};
 type Table = {[key: string]: Value};

@@ -1,4 +1,4 @@
-import {type ModeName, MODES, type Palette} from "@termicolor/palette";
+import {type ModeName, MODES, type Palette} from "@repraze/termicolor";
 
 import {getGenerator, renderWallpaper, resolveSpec, type SizeName, SIZES, type WallpaperSpec} from "./render.ts";
 import type {Family} from "./types.ts";

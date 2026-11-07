@@ -1,4 +1,4 @@
-import {mix} from "@termicolor/palette";
+import {mix} from "@repraze/termicolor";
 
 import {lerpOklch, ramp, shade} from "../colors.ts";
 import {blurFilter, el, fade, linearGradient, n, path, radialGradient, type Stop} from "../svg.ts";

@@ -187,7 +187,7 @@ see-through is a word highlight?). Strength is always a level.
 ## 13. Derived colors: levels
 
 ```ts
-import {LEVELS, solid, tint, wash} from "@termicolor/palette";
+import {LEVELS, solid, tint, wash} from "@repraze/termicolor";
 ```
 
 | Level    | Value | Typical use                                     |

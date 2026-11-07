@@ -2,8 +2,8 @@
 @import "tw-animate-css";
 @import "@fontsource-variable/jetbrains-mono";
 @import "@fontsource-variable/geist";
-@import "@termicolor/palette/palette.css";
-@import "@termicolor/palette/shadcn.css";
+@import "@repraze/termicolor/palette.css";
+@import "@repraze/termicolor/shadcn.css";
 
 /* Nearest scope wins, so a .light preview nested in a .dark page isn't styled as dark. */
 @custom-variant dark (&:is(.dark, .dark *):not(.dark .light, .dark .light *));

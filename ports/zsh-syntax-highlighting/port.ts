@@ -1,5 +1,5 @@
+import type {Mode} from "@repraze/termicolor";
 import {definePort} from "@termicolor/build";
-import type {Mode} from "@termicolor/palette";
 
 /**
  * Styles for the main, brackets and cursor highlighters. Values use zle_highlight syntax: zsh 5.7+

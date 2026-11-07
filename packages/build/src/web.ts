@@ -1,4 +1,4 @@
-import {ACCENT_ROLES, ACCENTS, allModes, type Mode, oklch, type Palette, rgb} from "@termicolor/palette";
+import {ACCENT_ROLES, ACCENTS, allModes, type Mode, oklch, type Palette, rgb} from "@repraze/termicolor";
 
 import {json, type PortFile} from "./port.ts";
 

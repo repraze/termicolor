@@ -116,7 +116,7 @@ plus auto-published outputs.**
 ```
 termicolor/termicolor
 ├── packages/
-│   ├── palette/          # source of truth + derived json/css/scss/tailwind → npm @termicolor/palette
+│   ├── palette/          # source of truth + derived json/css/scss/tailwind → npm @repraze/termicolor
 │   ├── core/             # build CLI, Port interface, color math (oklch, contrast), validators
 │   └── wallpapers/       # generator (see 6)
 ├── ports/
@@ -145,7 +145,7 @@ port can't drift, because only the monorepo is ever edited.
 
 How consumers stay connected:
 
-- **JS/web apps** (repraze-apps, future projects): depend on `@termicolor/palette` (CSS vars + TS),
+- **JS/web apps** (repraze-apps, future projects): depend on `@repraze/termicolor` (CSS vars + TS),
   plus Renovate/Dependabot for bumps. This replaces the hex values copied into `globals.css` and
   `code-themes.ts`.
 - **Code highlighting**: `@termicolor/shiki` themes. repraze.com and Monaco import them instead of
@@ -187,7 +187,7 @@ minor version, a renamed role is a major.
 | starship           | Done locally. Ship the palette block + the powerline preset as a full `starship.toml`.                                                                                                                                                                                                             |
 | chrome             | A theme is an extension with a `manifest.json` `theme` key (frame, toolbar, tab text, NTP background as RGB arrays, optional NTP image from the wallpaper generator). Load unpacked locally right away. The Chrome Web Store needs a one-time $5 developer account. Edge accepts the same package. |
 | wallpapers         | See section 6.                                                                                                                                                                                                                                                                                     |
-| web (css/tailwind) | `@termicolor/palette` CSS vars + Tailwind `@theme`. Then migrate repraze-apps.                                                                                                                                                                                                                     |
+| web (css/tailwind) | `@repraze/termicolor` CSS vars + Tailwind `@theme`. Then migrate repraze-apps.                                                                                                                                                                                                                     |
 
 **Tier 1: high stars and nearly free once ANSI exists** (one batch, mostly one file each)
 kitty, alacritty, ghostty, wezterm, iterm, gnome-terminal, warp, fzf, bat (`.tmTheme`, converted from
@@ -293,7 +293,7 @@ removed from `packages/build/src/planned.ts`, a screenshot if possible.
 - B. terminals: ~~windows-terminal, starship~~ ✅ · kitty, alacritty, ghostty, wezterm, iterm, PSReadLine, LS_COLORS
 - C. ~~chrome (+ Edge)~~ ✅ · NTP image hook from wallpapers
 - D. wallpapers: 6b generator families 1–3 first + gallery, and 6a recolor wrapper
-- E. web: `@termicolor/palette` CSS/Tailwind + a PR migrating repraze-apps (`globals.css`, `code-themes.ts`)
+- E. web: `@repraze/termicolor` CSS/Tailwind + a PR migrating repraze-apps (`globals.css`, `code-themes.ts`)
 - F. CLI tools: fzf, lazygit, btop, zsh-syntax-highlighting, delta
 - Later batch G: nvim + vim, tmux, zed, jetbrains, obsidian, discord, firefox, dark-reader
 

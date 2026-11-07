@@ -1,5 +1,5 @@
+import {DEFAULT_ACCENT, type Hex, type Mode, solid} from "@repraze/termicolor";
 import {definePort} from "@termicolor/build";
-import {DEFAULT_ACCENT, type Hex, type Mode, solid} from "@termicolor/palette";
 
 type Gradient = [start: Hex, mid: Hex, end: Hex];
 

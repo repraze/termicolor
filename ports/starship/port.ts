@@ -1,5 +1,5 @@
+import type {Mode} from "@repraze/termicolor";
 import {definePort} from "@termicolor/build";
-import type {Mode} from "@termicolor/palette";
 
 function paletteBlock({name, accents: a, fills, onFill, roles: r}: Mode): string {
     const entries: [string, string][] = [

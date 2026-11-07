@@ -9,10 +9,10 @@
     ],
     "scripts": {
         "build": "npm run build:ports && npm run build:site",
-        "build:ports": "tsx packages/build/src/cli.ts",
+        "build:ports": "npm run build -w @repraze/termicolor && tsx packages/build/src/cli.ts",
         "build:site": "npm run build -w @termicolor/site",
         "dev": "npm run dev -w @termicolor/site",
-        "check:generated": "npm run build:ports && git diff --exit-code -- ports packages/palette/dist",
+        "check:generated": "npm run build:ports && git diff --exit-code -- ports packages/palette/dist packages/palette/lib",
         "test": "vitest run",
         "typecheck": "npm run typecheck --workspaces --if-present",
         "lint": "eslint .",

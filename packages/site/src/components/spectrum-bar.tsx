@@ -1,4 +1,4 @@
-import {ACCENTS} from "@termicolor/palette";
+import {ACCENTS} from "@repraze/termicolor";
 
 import {cn} from "@/lib/utils";
 

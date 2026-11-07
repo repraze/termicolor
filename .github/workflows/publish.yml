@@ -1,0 +1,52 @@
+name: Publish palette
+
+# Publishes @repraze/termicolor when a `termicolor-v<version>` tag is pushed.
+#
+# Supply-chain posture:
+# - npm trusted publishing (OIDC): no long-lived npm token in GitHub secrets. Configure it once on
+#   npmjs.com → package settings → Trusted publisher → GitHub Actions (repraze/termicolor, publish.yml,
+#   environment "npm").
+# - --provenance: the package page links the exact commit and workflow run that built it.
+# - Actions pinned to full commit SHAs (a moved tag can't inject code), no persisted git credentials,
+#   least-privilege permissions, install with --ignore-scripts.
+# - The "npm" environment can require a manual approval before anything is published
+#   (repo settings → Environments → npm → Required reviewers).
+
+on:
+    push:
+        tags: ["termicolor-v*"]
+
+permissions: {}
+
+concurrency:
+    group: publish-palette
+    cancel-in-progress: false
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+        environment: npm
+        permissions:
+            contents: read
+            id-token: write # OIDC for trusted publishing + provenance
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  persist-credentials: false
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+              with:
+                  node-version: 24
+                  registry-url: https://registry.npmjs.org
+            - name: Require npm >= 11.5.1 (trusted publishing)
+              run: node -e 'const [a,b,c]=process.argv[1].split(".").map(Number);process.exit(a>11||(a===11&&(b>5||(b===5&&c>=1)))?0:1)' "$(npm --version)"
+            - name: Tag matches package version
+              run: test "termicolor-v$(node -p 'require("./packages/palette/package.json").version')" = "$GITHUB_REF_NAME"
+            - run: npm ci --ignore-scripts
+            - run: npm test
+            - run: npm run typecheck
+            - name: Generated files are up to date
+              run: npm run check:generated
+            - name: Publish
+              working-directory: packages/palette
+              # prereleases (0.1.0-alpha.0) go to the "next" dist-tag so `npm install` keeps the stable one
+              run: npm publish --provenance --access public --tag ${{ contains(github.ref_name, '-') && 'next' || 'latest' }}

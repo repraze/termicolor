@@ -1,5 +1,5 @@
+import {type Mode, tint} from "@repraze/termicolor";
 import {definePort} from "@termicolor/build";
-import {type Mode, tint} from "@termicolor/palette";
 
 import {tokenColors} from "../vscode/token-colors.ts";
 import {tmTheme} from "./tmtheme.ts";

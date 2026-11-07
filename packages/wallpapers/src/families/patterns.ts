@@ -1,4 +1,4 @@
-import {mix} from "@termicolor/palette";
+import {mix} from "@repraze/termicolor";
 
 import {ramp} from "../colors.ts";
 import {fbm, perlin} from "../noise.ts";

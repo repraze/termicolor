@@ -1,4 +1,4 @@
-import type {AccentName} from "@termicolor/palette";
+import type {AccentName} from "@repraze/termicolor";
 
 import {el, fade, n, radialGradient} from "../svg.ts";
 import type {Generator, RenderContext} from "../types.ts";

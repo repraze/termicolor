@@ -1,4 +1,4 @@
-import type {Palette} from "@termicolor/palette";
+import type {Palette} from "@repraze/termicolor";
 
 export const CATEGORIES = {
     editor: "Editors",

@@ -1,4 +1,4 @@
-import type {Mode} from "@termicolor/palette";
+import type {Mode} from "@repraze/termicolor";
 import type {ComponentProps} from "react";
 
 import {cn} from "@/lib/utils";

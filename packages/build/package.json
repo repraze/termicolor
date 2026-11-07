@@ -11,6 +11,6 @@
         "typecheck": "tsc --noEmit -p ."
     },
     "dependencies": {
-        "@termicolor/palette": "*"
+        "@repraze/termicolor": "*"
     }
 }

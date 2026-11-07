@@ -7,7 +7,7 @@ import {
     NEUTRALS,
     oklch,
     type Palette,
-} from "@termicolor/palette";
+} from "@repraze/termicolor";
 
 /** Wallpaper colors for one mode, picked from the palette. */
 export type Colors = {

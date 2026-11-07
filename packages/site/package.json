@@ -33,7 +33,7 @@
         "@tanstack/react-router": "^1.170.46",
         "@tanstack/react-virtual": "^3.14.26",
         "@termicolor/build": "*",
-        "@termicolor/palette": "*",
+        "@repraze/termicolor": "*",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "cmdk": "^1.1.1",

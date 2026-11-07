@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 
-import {ACCENTS, palette} from "@termicolor/palette";
+import {ACCENTS, palette} from "@repraze/termicolor";
 import {test} from "vitest";
 
 import {CATALOG, leadCounts} from "./catalog.ts";

@@ -1,5 +1,5 @@
+import {type Mode, solid} from "@repraze/termicolor";
 import {definePort} from "@termicolor/build";
-import {type Mode, solid} from "@termicolor/palette";
 
 type Table = [string, [string, string][]];
 

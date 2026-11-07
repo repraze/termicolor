@@ -17,7 +17,7 @@ import {fileURLToPath} from "node:url";
 import {parseArgs} from "node:util";
 
 import {chromium} from "@playwright/test";
-import {type AccentName, ACCENTS, type ModeName, MODES, palette} from "@termicolor/palette";
+import {type AccentName, ACCENTS, type ModeName, MODES, palette} from "@repraze/termicolor";
 
 import {CATALOG, type CatalogEntry} from "../src/catalog.ts";
 import {HARMONY_NAMES, type HarmonyName} from "../src/harmony.ts";

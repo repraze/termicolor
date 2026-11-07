@@ -1,7 +1,7 @@
 import {useClipboard} from "@mantine/hooks";
+import {type AccentName, ACCENTS} from "@repraze/termicolor";
 import {keepPreviousData, useQuery, useSuspenseQuery} from "@tanstack/react-query";
 import {createFileRoute, Link, notFound} from "@tanstack/react-router";
-import {type AccentName, ACCENTS} from "@termicolor/palette";
 import {ArrowLeftIcon, CheckIcon, CopyIcon, DownloadIcon} from "lucide-react";
 import {useState} from "react";
 

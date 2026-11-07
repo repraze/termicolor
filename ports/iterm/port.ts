@@ -1,5 +1,5 @@
+import {type Hex, type Mode, rgb, solid} from "@repraze/termicolor";
 import {definePort} from "@termicolor/build";
-import {type Hex, type Mode, rgb, solid} from "@termicolor/palette";
 
 const ANSI_ORDER = [
     "black",

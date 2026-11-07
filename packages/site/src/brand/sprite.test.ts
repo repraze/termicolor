@@ -1,4 +1,4 @@
-import {palette} from "@termicolor/palette";
+import {palette} from "@repraze/termicolor";
 import {describe, expect, it} from "vitest";
 
 import {SPRITE, SPRITE_COLORS, SPRITE_SIZE, spriteSvg} from "./sprite";

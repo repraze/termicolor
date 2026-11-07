@@ -1,5 +1,5 @@
+import {type Hex, type Mode, rgb, solid} from "@repraze/termicolor";
 import {definePort} from "@termicolor/build";
-import {type Hex, type Mode, rgb, solid} from "@termicolor/palette";
 
 /** 24-bit SGR body, e.g. `38;2;255;76;130`. */
 function sgr(hex: Hex, layer: "fg" | "bg" = "fg"): string {

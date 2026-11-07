@@ -1,22 +1,58 @@
 {
-    "name": "@termicolor/palette",
-    "version": "0.1.0",
-    "description": "Termicolor palette - seeds, derived modes, roles",
-    "type": "module",
+    "name": "@repraze/termicolor",
+    "version": "0.1.0-alpha.0",
+    "description": "Termicolor palette: high contrast, bright, techy colors. Modes, accents, roles as CSS variables, JSON and TypeScript.",
+    "keywords": [
+        "termicolor",
+        "palette",
+        "color-scheme",
+        "theme",
+        "design-tokens",
+        "css-variables",
+        "shadcn",
+        "tailwind"
+    ],
+    "homepage": "https://repraze.github.io/termicolor/",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/repraze/termicolor.git",
+        "directory": "packages/palette"
+    },
+    "bugs": "https://github.com/repraze/termicolor/issues",
+    "author": "Thomas Dubosc (https://repraze.com)",
     "license": "MIT",
+    "type": "module",
+    "sideEffects": [
+        "*.css"
+    ],
     "exports": {
-        ".": "./src/index.ts",
+        ".": {
+            "types": "./lib/index.d.ts",
+            "default": "./lib/index.js"
+        },
         "./palette.json": "./dist/palette.json",
         "./palette.css": "./dist/palette.css",
-        "./shadcn.css": "./dist/shadcn.css"
+        "./shadcn.css": "./dist/shadcn.css",
+        "./package.json": "./package.json"
     },
+    "files": [
+        "lib",
+        "dist",
+        "src",
+        "!src/**/*.test.ts",
+        "DESIGN.md"
+    ],
     "scripts": {
+        "build": "tsc -p tsconfig.build.json",
         "typecheck": "tsc --noEmit -p ."
     },
-    "devDependencies": {
-        "@types/culori": "^4.0.1"
+    "publishConfig": {
+        "access": "public"
     },
     "dependencies": {
         "culori": "^4.0.2"
+    },
+    "devDependencies": {
+        "@types/culori": "^4.0.1"
     }
 }

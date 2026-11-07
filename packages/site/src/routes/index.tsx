@@ -1,5 +1,5 @@
+import {allModes} from "@repraze/termicolor";
 import {createFileRoute, Link} from "@tanstack/react-router";
-import {allModes} from "@termicolor/palette";
 import {ArrowRightIcon} from "lucide-react";
 
 import {ModePreview} from "@/components/mode-preview";

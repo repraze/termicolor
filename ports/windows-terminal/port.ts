@@ -1,5 +1,5 @@
+import {type Mode, solid} from "@repraze/termicolor";
 import {definePort, json} from "@termicolor/build";
-import {type Mode, solid} from "@termicolor/palette";
 
 const upper = (hex: string) => hex.toUpperCase();
 

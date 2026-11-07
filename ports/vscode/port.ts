@@ -1,5 +1,5 @@
+import {DEFAULT_ACCENT, type Mode, wash} from "@repraze/termicolor";
 import {definePort, json} from "@termicolor/build";
-import {DEFAULT_ACCENT, type Mode, wash} from "@termicolor/palette";
 
 import pkg from "../../package.json" with {type: "json"};
 import {semanticTokenColors, tokenColors} from "./token-colors.ts";

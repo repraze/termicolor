@@ -1,5 +1,5 @@
 import {type Page} from "@playwright/test";
-import {DEFAULT_ACCENT, palette} from "@termicolor/palette";
+import {DEFAULT_ACCENT, palette} from "@repraze/termicolor";
 
 import {SITE_ACCENT} from "../src/lib/site";
 import {expect, test, useTheme} from "./fixtures";

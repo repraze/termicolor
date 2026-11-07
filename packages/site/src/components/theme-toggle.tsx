@@ -1,4 +1,4 @@
-import {type AccentName, ACCENTS} from "@termicolor/palette";
+import {type AccentName, ACCENTS} from "@repraze/termicolor";
 import {ContrastIcon, MonitorIcon, MoonIcon, SunIcon} from "lucide-react";
 
 import {Button} from "@/components/ui/button";

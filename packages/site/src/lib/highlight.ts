@@ -1,4 +1,4 @@
-import {ACCENTS, type Mode, palette} from "@termicolor/palette";
+import {ACCENTS, type Mode, palette} from "@repraze/termicolor";
 import type {HighlighterCore, ThemeRegistration} from "shiki/core";
 
 import {tokenColors} from "../../../../ports/vscode/token-colors.ts";

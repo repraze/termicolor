@@ -5,7 +5,7 @@
  *
  * Every color is resolved from the dark palette mode; nothing is hardcoded.
  */
-import {mix, palette} from "@termicolor/palette";
+import {mix, palette} from "@repraze/termicolor";
 
 const dark = palette.modes.dark;
 const n = dark.neutrals;

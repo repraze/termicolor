@@ -1,4 +1,4 @@
-import {type AccentName, ACCENTS} from "@termicolor/palette";
+import {type AccentName, ACCENTS} from "@repraze/termicolor";
 
 import {createRng} from "./random.ts";
 

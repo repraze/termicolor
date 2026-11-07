@@ -1,6 +1,6 @@
 import {useClipboard} from "@mantine/hooks";
+import {ACCENTS, allModes, checkMode, contrast, type Hex, type Mode} from "@repraze/termicolor";
 import {createFileRoute} from "@tanstack/react-router";
-import {ACCENTS, allModes, checkMode, contrast, type Hex, type Mode} from "@termicolor/palette";
 import {cva} from "class-variance-authority";
 import {CopyIcon} from "lucide-react";
 

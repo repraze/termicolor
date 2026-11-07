@@ -1,7 +1,7 @@
 import {readFileSync} from "node:fs";
 import {join} from "node:path";
 
-import {DEFAULT_ACCENT} from "@termicolor/palette";
+import {DEFAULT_ACCENT} from "@repraze/termicolor";
 import {describe, expect, it} from "vitest";
 
 import {buildablePorts, buildPort, usesAccent} from "./port-build";

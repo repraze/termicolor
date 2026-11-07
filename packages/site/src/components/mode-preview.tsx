@@ -1,4 +1,4 @@
-import {ACCENTS, type Mode} from "@termicolor/palette";
+import {ACCENTS, type Mode} from "@repraze/termicolor";
 
 import {CodeBlock} from "@/components/code-block";
 import {MODE_LABELS, ModeScope} from "@/components/mode-scope";

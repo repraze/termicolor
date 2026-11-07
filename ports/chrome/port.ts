@@ -1,5 +1,5 @@
+import {type Mode, rgb} from "@repraze/termicolor";
 import {definePort, json} from "@termicolor/build";
-import {type Mode, rgb} from "@termicolor/palette";
 
 import pkg from "../../package.json" with {type: "json"};
 

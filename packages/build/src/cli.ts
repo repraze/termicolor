@@ -2,7 +2,7 @@ import {mkdir, readdir, rm, writeFile} from "node:fs/promises";
 import {dirname, join, resolve} from "node:path";
 import {fileURLToPath, pathToFileURL} from "node:url";
 
-import {type AccentName, ACCENTS, checkPalette, createPalette, palette} from "@termicolor/palette";
+import {type AccentName, ACCENTS, checkPalette, createPalette, palette} from "@repraze/termicolor";
 
 import {PLANNED} from "./planned.ts";
 import type {PortDefinition, PortFile} from "./port.ts";

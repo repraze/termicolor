@@ -1,6 +1,6 @@
+import {ACCENTS, type ModeId} from "@repraze/termicolor";
 import {queryOptions} from "@tanstack/react-query";
 import {CATEGORIES} from "@termicolor/build";
-import {ACCENTS, type ModeId} from "@termicolor/palette";
 import MiniSearch, {type Options, type SearchResult} from "minisearch";
 
 import type {RegistryEntry} from "./registry";

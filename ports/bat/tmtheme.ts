@@ -1,4 +1,4 @@
-import {flatten, type Hex} from "@termicolor/palette";
+import {flatten, type Hex} from "@repraze/termicolor";
 
 /** A VS Code / TextMate token rule, as `ports/vscode/token-colors.ts` produces them. */
 export type TokenRule = {

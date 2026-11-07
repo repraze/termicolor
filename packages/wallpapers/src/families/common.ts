@@ -1,5 +1,5 @@
-import type {AccentName, Hex} from "@termicolor/palette";
-import {rgb} from "@termicolor/palette";
+import type {AccentName, Hex} from "@repraze/termicolor";
+import {rgb} from "@repraze/termicolor";
 
 import {ramp} from "../colors.ts";
 import {el, linearGradient, n, type Stop} from "../svg.ts";

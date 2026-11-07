@@ -1,5 +1,5 @@
 import {useColorScheme} from "@mantine/hooks";
-import {type AccentName, ACCENTS, DEFAULT_ACCENT, type ModeId} from "@termicolor/palette";
+import {type AccentName, ACCENTS, DEFAULT_ACCENT, type ModeId} from "@repraze/termicolor";
 import {useEffect} from "react";
 
 import {SITE_ACCENT} from "@/lib/site";
