@@ -1,7 +1,4 @@
-import {type AccentName, ACCENTS} from "@repraze/termicolor";
-import {ContrastIcon, MonitorIcon, MoonIcon, SunIcon} from "lucide-react";
-
-import {Button} from "@/components/ui/button";
+import {Button} from "@repraze/kernelkit/components/button";
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
@@ -12,7 +9,10 @@ import {
     DropdownMenuRadioItem,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@repraze/kernelkit/components/dropdown-menu";
+import {type AccentName, ACCENTS} from "@repraze/termicolor";
+import {ContrastIcon, MonitorIcon, MoonIcon, SunIcon} from "lucide-react";
+
 import {type ThemePreference, useTheme} from "@/hooks/use-theme";
 
 const OPTIONS = [

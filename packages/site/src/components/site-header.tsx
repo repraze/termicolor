@@ -1,3 +1,5 @@
+import {Button} from "@repraze/kernelkit/components/button";
+import {Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger} from "@repraze/kernelkit/components/sheet";
 import {Link, useLocation} from "@tanstack/react-router";
 import {MenuIcon} from "lucide-react";
 import {useState} from "react";
@@ -8,8 +10,6 @@ import {PortsTree} from "@/components/ports-tree";
 import {SiteSearch} from "@/components/site-search";
 import {SpectrumBar} from "@/components/spectrum-bar";
 import {ThemeToggle} from "@/components/theme-toggle";
-import {Button} from "@/components/ui/button";
-import {Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger} from "@/components/ui/sheet";
 
 /** Spectrum bar (4px) + header row (48px) + bottom border; sticky sidebars offset by this. */
 export const HEADER_OFFSET = 53;

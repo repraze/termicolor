@@ -1,3 +1,4 @@
+import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "@repraze/kernelkit/components/collapsible";
 import {useSuspenseQuery} from "@tanstack/react-query";
 import {Link} from "@tanstack/react-router";
 import {CATEGORIES, type Category} from "@termicolor/build";
@@ -5,7 +6,6 @@ import {ChevronRightIcon} from "lucide-react";
 import {useMemo} from "react";
 
 import {PortLink} from "@/components/port-link";
-import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "@/components/ui/collapsible";
 import {type RegistryEntry, registryQuery} from "@/lib/registry";
 
 /** Ports grouped by category in CATEGORIES order; available first within a group. */
@@ -47,22 +47,26 @@ export function PortsTree({onNavigate}: {onNavigate?: () => void}) {
                         <span className="flex-1">{CATEGORIES[g.category]}</span>
                         <span className="text-muted-foreground">{g.available.length}</span>
                     </CollapsibleTrigger>
-                    <CollapsibleContent className="ml-3.5 flex flex-col border-l">
-                        {g.available.map((e) => (
-                            <PortLink key={e.id} portId={e.id} onClick={onNavigate} className={treeLink}>
-                                {e.name}
-                            </PortLink>
-                        ))}
-                        {g.planned > 0 && (
-                            <Link
-                                to="/ports"
-                                search={{category: g.category, status: "planned"}}
-                                onClick={onNavigate}
-                                className="text-muted-foreground hover:text-foreground py-1 pl-3 text-xs italic"
-                            >
-                                +{g.planned} planned
-                            </Link>
-                        )}
+                    {/* the guide line lives on an inner div: the panel clips (overflow-hidden for its height
+                        animation), and each link's -ml-px indicator must overlap a border that isn't clipped */}
+                    <CollapsibleContent>
+                        <div className="ml-3.5 flex flex-col border-l">
+                            {g.available.map((e) => (
+                                <PortLink key={e.id} portId={e.id} onClick={onNavigate} className={treeLink}>
+                                    {e.name}
+                                </PortLink>
+                            ))}
+                            {g.planned > 0 && (
+                                <Link
+                                    to="/ports"
+                                    search={{category: g.category, status: "planned"}}
+                                    onClick={onNavigate}
+                                    className="text-muted-foreground hover:text-foreground py-1 pl-3 text-xs italic"
+                                >
+                                    +{g.planned} planned
+                                </Link>
+                            )}
+                        </div>
                     </CollapsibleContent>
                 </Collapsible>
             ))}

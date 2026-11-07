@@ -1,4 +1,16 @@
 import {useDebouncedValue, useHotkeys, useOs} from "@mantine/hooks";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Button} from "@repraze/kernelkit/components/button";
+import {
+    Command,
+    CommandDialog,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
+} from "@repraze/kernelkit/components/command";
+import {Kbd} from "@repraze/kernelkit/components/kbd";
 import {useQuery, useQueryClient} from "@tanstack/react-query";
 import {useNavigate} from "@tanstack/react-router";
 import {
@@ -12,18 +24,6 @@ import {
 } from "lucide-react";
 import {type RefObject, useEffect, useMemo, useRef, useState} from "react";
 
-import {Badge} from "@/components/ui/badge";
-import {Button} from "@/components/ui/button";
-import {
-    Command,
-    CommandDialog,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-} from "@/components/ui/command";
-import {Kbd} from "@/components/ui/kbd";
 import {search, type SearchHit, searchIndexQuery, type SearchKind} from "@/lib/search";
 
 const GROUPS: {kind: SearchKind; label: string; icon: LucideIcon}[] = [

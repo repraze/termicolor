@@ -1,11 +1,11 @@
 import {useClipboard} from "@mantine/hooks";
+import {Badge} from "@repraze/kernelkit/components/badge";
 import {ACCENTS, allModes, checkMode, contrast, type Hex, type Mode} from "@repraze/termicolor";
 import {createFileRoute} from "@tanstack/react-router";
 import {cva} from "class-variance-authority";
 import {CopyIcon} from "lucide-react";
 
 import {MODE_LABELS, ModeScope} from "@/components/mode-scope";
-import {Badge} from "@/components/ui/badge";
 import {clickable} from "@/lib/interactive";
 import {cn} from "@/lib/utils";
 

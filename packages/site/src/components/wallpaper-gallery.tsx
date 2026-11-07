@@ -1,11 +1,17 @@
 import {useLocalStorage} from "@mantine/hooks";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {buttonVariants} from "@repraze/kernelkit/components/button";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from "@repraze/kernelkit/components/dialog";
+import {ToggleGroup, ToggleGroupItem} from "@repraze/kernelkit/components/toggle-group";
 import {DownloadIcon, ExpandIcon, LoaderIcon} from "lucide-react";
 import {createContext, useContext, useMemo, useState} from "react";
 
-import {Badge} from "@/components/ui/badge";
-import {buttonVariants} from "@/components/ui/button";
-import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} from "@/components/ui/dialog";
-import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
 import {clickable} from "@/lib/interactive";
 import {type RasterFormat, rasterize, saveBlob} from "@/lib/rasterize";
 import {dataUrl} from "@/lib/registry";

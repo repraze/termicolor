@@ -1,4 +1,7 @@
 import {useClipboard} from "@mantine/hooks";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Tabs, TabsList, TabsTrigger} from "@repraze/kernelkit/components/tabs";
+import {ToggleGroup, ToggleGroupItem} from "@repraze/kernelkit/components/toggle-group";
 import {type AccentName, ACCENTS} from "@repraze/termicolor";
 import {keepPreviousData, useQuery, useSuspenseQuery} from "@tanstack/react-query";
 import {createFileRoute, Link, notFound} from "@tanstack/react-router";
@@ -7,9 +10,6 @@ import {useState} from "react";
 
 import {CodeBlock} from "@/components/code-block";
 import {PortHeader, PortInstall} from "@/components/port-header";
-import {Button} from "@/components/ui/button";
-import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs";
-import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
 import {useSearchUpdate} from "@/hooks/use-search-update";
 import {usePortAccent} from "@/hooks/use-theme";
 import {langFor} from "@/lib/highlight";
@@ -90,7 +90,7 @@ function FileViewer({portId}: {portId: string}) {
             </div>
             {files && (
                 <Tabs value={active?.path} onValueChange={(value: string) => setActive(value)}>
-                    <TabsList className="flex-wrap">
+                    <TabsList variant="line" className="flex-wrap">
                         {files.map((file) => (
                             <TabsTrigger key={file.path} value={file.path}>
                                 {file.path}

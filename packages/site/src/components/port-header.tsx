@@ -1,10 +1,10 @@
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Button} from "@repraze/kernelkit/components/button";
 import {Link} from "@tanstack/react-router";
 import {CATEGORIES} from "@termicolor/build";
 import {ExternalLinkIcon} from "lucide-react";
 
 import {Markdown} from "@/components/markdown";
-import {Badge} from "@/components/ui/badge";
-import {Button} from "@/components/ui/button";
 import type {RegistryEntry} from "@/lib/registry";
 
 type AvailableEntry = Extract<RegistryEntry, {status: "available"}>;

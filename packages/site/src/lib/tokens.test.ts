@@ -3,7 +3,7 @@ import {join} from "node:path";
 
 import {describe, expect, it} from "vitest";
 
-const SRC = join(import.meta.dirname, "../..");
+const SRC = join(import.meta.dirname, "..");
 
 function sources(dir: string): string[] {
     return readdirSync(dir, {withFileTypes: true}).flatMap((e) => {

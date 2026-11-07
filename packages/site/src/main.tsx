@@ -1,11 +1,10 @@
 import "./index.css";
 
+import {TooltipProvider} from "@repraze/kernelkit/components/tooltip";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {createRouter, RouterProvider} from "@tanstack/react-router";
 import {StrictMode} from "react";
 import {createRoot} from "react-dom/client";
-
-import {TooltipProvider} from "@/components/ui/tooltip";
 
 import {routeTree} from "./routeTree.gen";
 

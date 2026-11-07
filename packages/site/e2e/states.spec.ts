@@ -21,9 +21,13 @@ for (const theme of THEMES) {
         await page.goto("ports");
         const pressed = page.getByRole("button", {name: "All", pressed: true}).first();
         await expect(pressed).toBeVisible();
-        const bg = hex(await pressed.evaluate((el) => getComputedStyle(el).backgroundColor));
+        // DESIGN.md §6: selection is a fill or a border, ≥ 3:1 against the page (WCAG 1.4.11)
+        const [bg, border] = await pressed.evaluate((el) => {
+            const c = getComputedStyle(el);
+            return [c.backgroundColor, c.borderTopColor];
+        });
         const page_ = hex(await page.evaluate(() => getComputedStyle(document.body).backgroundColor));
-        expect(contrast(bg, page_)).toBeGreaterThanOrEqual(3);
+        expect(Math.max(contrast(hex(bg), page_), contrast(hex(border), page_))).toBeGreaterThanOrEqual(3);
     });
 
     test(`search input sits on bgRaised ${theme.name}`, async ({page}) => {

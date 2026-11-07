@@ -1,10 +1,10 @@
+import {Button} from "@repraze/kernelkit/components/button";
 import {allModes} from "@repraze/termicolor";
 import {createFileRoute, Link} from "@tanstack/react-router";
 import {ArrowRightIcon} from "lucide-react";
 
 import {ModePreview} from "@/components/mode-preview";
 import {SwatchStrip} from "@/components/swatch-strip";
-import {Button} from "@/components/ui/button";
 import {registryQuery} from "@/lib/registry";
 
 export const Route = createFileRoute("/")({

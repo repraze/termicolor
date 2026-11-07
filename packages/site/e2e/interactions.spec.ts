@@ -41,9 +41,8 @@ for (const theme of THEMES) {
         await page.getByTestId("theme-menu").click();
         const popup = page.locator('[data-slot="dropdown-menu-content"]');
         await expect(popup).toBeVisible();
-        const shadow = await popup.evaluate((el) => getComputedStyle(el).boxShadow);
-        const ring = shadow.match(/rgba?\([^)]*\)/g)?.map(hex) ?? [];
-        expect(ring).toContain(r.border);
+        // the outline is a real border (kernelkit popupSurface), in the mode's border role
+        expect(hex(await popup.evaluate((el) => getComputedStyle(el).borderTopColor))).toBe(r.border);
         const item = popup.getByRole("menuitemradio", {name: "Dark"});
         await item.hover();
         await expect

@@ -1,4 +1,7 @@
 import {useDebouncedValue} from "@mantine/hooks";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Input} from "@repraze/kernelkit/components/input";
+import {ToggleGroup, ToggleGroupItem} from "@repraze/kernelkit/components/toggle-group";
 import {useSuspenseQuery} from "@tanstack/react-query";
 import {useWindowVirtualizer} from "@tanstack/react-virtual";
 import {CATEGORIES, type Category} from "@termicolor/build";
@@ -7,9 +10,6 @@ import {ArrowRightIcon, FilterIcon} from "lucide-react";
 import {useEffect, useMemo, useRef, useState} from "react";
 
 import {PortLink} from "@/components/port-link";
-import {Badge} from "@/components/ui/badge";
-import {Input} from "@/components/ui/input";
-import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
 import {clickable} from "@/lib/interactive";
 import {type RegistryEntry, registryQuery, searchText, type Status} from "@/lib/registry";
 import {cn} from "@/lib/utils";
