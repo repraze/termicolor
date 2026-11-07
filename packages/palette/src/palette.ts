@@ -25,6 +25,10 @@ export type Roles = {
     onAccent: Hex;
     accentTint: Hex; // opaque accent wash: highlighted menu item, selected row (fg text on it)
     accentBright: Hex;
+    // vivid solid accent surface (primary buttons, checked boxes): the fill tier, text on it is onAccentFill.
+    // `accent` is the text tier, darkened in light mode for contrast on white.
+    accentFill: Hex;
+    onAccentFill: Hex;
     cursor: Hex;
     selection: Hex; // translucent
     selectionInactive: Hex; // translucent
@@ -258,6 +262,8 @@ export const ACCENT_ROLES = [
     "onAccent",
     "accentTint",
     "accentBright",
+    "accentFill",
+    "onAccentFill",
     "cursor",
     "selection",
     "selectionInactive",
@@ -268,13 +274,15 @@ export type AccentRoles = Pick<Roles, (typeof ACCENT_ROLES)[number]>;
 
 function accentRolesFor(
     n: AccentName,
-    t: {a: AccentSet; on: AccentSet; tints: AccentSet; brights: AccentSet},
+    t: {a: AccentSet; on: AccentSet; tints: AccentSet; brights: AccentSet; fills: AccentSet; onFill: AccentSet},
 ): AccentRoles {
     return {
         accent: t.a[n],
         onAccent: t.on[n],
         accentTint: t.tints[n],
         accentBright: t.brights[n],
+        accentFill: t.fills[n],
+        onAccentFill: t.onFill[n],
         cursor: t.a[n],
         selection: wash(t.a[n], "soft"),
         selectionInactive: wash(t.a[n], "subtle"),
@@ -287,7 +295,7 @@ function buildMode(name: ModeName, contrast: Contrast, accent: AccentName): Mode
     const {accents: a, brights, on, fills, onFill} = name === "dark" ? deriveDark() : deriveLight();
     const s = (contrast === "high" ? HC_SURFACES : SURFACES)[name];
     const tints = mapAccents((n) => mix(s.bg, a[n], (contrast === "high" ? RULES.tintHighContrast : RULES.tint)[name]));
-    const byAccent = mapAccentRoles((n) => accentRolesFor(n, {a, on, tints, brights}));
+    const byAccent = mapAccentRoles((n) => accentRolesFor(n, {a, on, tints, brights, fills, onFill}));
     const roles: Roles = {
         ...s,
         ...byAccent[accent],

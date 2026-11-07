@@ -144,7 +144,7 @@ export function PortSearch({params, onChange}: {params: PortSearchParams; onChan
                 {results.length === 0 ? (
                     <p className="text-muted-foreground py-8 text-center text-sm">
                         Nothing matches. Want it?{" "}
-                        <a className="text-primary underline" href="https://github.com/repraze/termicolor/issues">
+                        <a className="text-primary-text underline" href="https://github.com/repraze/termicolor/issues">
                             Open an issue
                         </a>
                         .
@@ -186,7 +186,7 @@ function PortRow({entry}: {entry: RegistryEntry}) {
                 {CATEGORIES[entry.category]}
             </Badge>
             {entry.status === "available" ? (
-                <ArrowRightIcon className={cn("text-primary size-4", clickable.arrow)} />
+                <ArrowRightIcon className={cn("text-primary-text size-4", clickable.arrow)} />
             ) : (
                 <Badge variant="secondary">planned</Badge>
             )}

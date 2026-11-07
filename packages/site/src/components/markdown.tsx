@@ -54,7 +54,7 @@ function inline(text: string): ReactNode {
         if (part.startsWith("[")) {
             const [, label, href] = /\[([^\]]+)\]\(([^)]+)\)/.exec(part)!;
             return (
-                <a key={i} href={href} className="text-primary underline">
+                <a key={i} href={href} className="text-primary-text underline">
                     {label}
                 </a>
             );

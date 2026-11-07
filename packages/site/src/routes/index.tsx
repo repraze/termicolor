@@ -20,7 +20,7 @@ function HomePage() {
         <div className="flex flex-col gap-12">
             <section className="flex flex-col gap-4">
                 <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                    High contrast. Bright. <span className="text-primary">Techy.</span>
+                    High contrast. Bright. <span className="text-primary-text">Techy.</span>
                 </h1>
                 <p className="text-muted-foreground max-w-2xl text-base leading-relaxed">
                     One palette, generated into themes for your editor, terminal, prompt, browser and code blocks. Four

@@ -77,7 +77,7 @@ export function SiteHeader() {
                 <Link to="/" className="flex items-center gap-2 font-bold tracking-widest uppercase">
                     <Logo className="size-8" />
                     <span>
-                        termicolor<span className="text-primary">_</span>
+                        termicolor<span className="text-primary-text">_</span>
                     </span>
                 </Link>
                 <nav className="hidden gap-4 md:flex" aria-label="Site">

@@ -66,8 +66,10 @@ function paletteCss(palette: Palette): string {
         "",
         "/* Accent override: put .accent-<name> on <html> (or any ancestor). Last, so it wins over mode scopes. */",
         ...ACCENTS.flatMap((n) => [
-            // doubled class: outranks the hc scopes (`:root.hc:not(.dark)` is 0,3,0) whatever the order
-            `.accent-${n}.accent-${n}:is(:root, .light, .dark),`,
+            // Doubled class: outranks the hc scopes (`:root.hc:not(.dark)` is 0,3,0) whatever the order.
+            // The scope's own class is tripled so a nested `.accent-x` beats an ancestor's
+            // `.accent-y .light` rule (both were 0,3,0 and the later accent in the file won).
+            `.accent-${n}.accent-${n}.accent-${n}:is(:root, .light, .dark),`,
             `.accent-${n}.accent-${n} :is(.light, .dark) {`,
             ...ACCENT_ROLES.map((role) => `    --tc-${kebab(role)}: var(--tc-accent-${n}-${kebab(role)});`),
             "}",
@@ -92,8 +94,10 @@ function shadcnCss(palette: Palette): string {
     --card-foreground: var(--tc-fg);
     --popover: var(--tc-bg);
     --popover-foreground: var(--tc-fg);
-    --primary: var(--tc-accent);
-    --primary-foreground: var(--tc-on-accent);
+    /* solid accent surfaces use the vivid fill tier; accent-colored text uses --primary-text */
+    --primary: var(--tc-accent-fill);
+    --primary-foreground: var(--tc-on-accent-fill);
+    --primary-text: var(--tc-accent);
     --secondary: var(--tc-bg-raised);
     --secondary-foreground: var(--tc-fg);
     --muted: var(--tc-bg-raised);
@@ -112,8 +116,8 @@ function shadcnCss(palette: Palette): string {
     --chart-5: var(--tc-orange);
     --sidebar: var(--tc-bg-sunken);
     --sidebar-foreground: var(--tc-fg);
-    --sidebar-primary: var(--tc-accent);
-    --sidebar-primary-foreground: var(--tc-on-accent);
+    --sidebar-primary: var(--tc-accent-fill);
+    --sidebar-primary-foreground: var(--tc-on-accent-fill);
     --sidebar-accent: var(--tc-accent-tint);
     --sidebar-accent-foreground: var(--tc-fg);
     --sidebar-border: var(--tc-border);

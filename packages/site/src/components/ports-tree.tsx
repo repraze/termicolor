@@ -36,7 +36,7 @@ export function PortsTree({onNavigate}: {onNavigate?: () => void}) {
                 to="/ports"
                 onClick={onNavigate}
                 activeOptions={{exact: true, includeSearch: false}}
-                className="hover:bg-hover data-[status=active]:text-primary px-2 py-1 font-mono text-xs font-bold tracking-widest uppercase"
+                className="hover:bg-hover data-[status=active]:text-primary-text px-2 py-1 font-mono text-xs font-bold tracking-widest uppercase"
             >
                 All ports
             </Link>

@@ -19,7 +19,8 @@ only, so a theme stays recognisable when you switch to it.
 
 ## 2. The accent (overridable)
 
-One accent drives every interactive role: `accent`, `onAccent`, `accentTint`, `accentBright`, `cursor`,
+One accent drives every interactive role: `accent`, `onAccent`, `accentTint`, `accentBright`,
+`accentFill`, `onAccentFill` (the vivid solid surface: primary buttons, checked boxes), `cursor`,
 `selection*`, `focusRing`, `tabIndicator` (`ACCENT_ROLES`). It's part of the theme, not the palette:
 
 | Consumer        | Accent | How                                                              |

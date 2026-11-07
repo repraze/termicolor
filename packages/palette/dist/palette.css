@@ -81,6 +81,8 @@
     --tc-on-accent: #ffffff;
     --tc-accent-tint: #f3eaff;
     --tc-accent-bright: #b262ff;
+    --tc-accent-fill: #bb7aff;
+    --tc-on-accent-fill: #1a1125;
     --tc-cursor: #a331fb;
     --tc-selection: #a331fb4d;
     --tc-selection-inactive: #a331fb26;
@@ -181,6 +183,8 @@
     --tc-accent-red-on-accent: #ffffff;
     --tc-accent-red-accent-tint: #ffe7eb;
     --tc-accent-red-accent-bright: #fc3378;
+    --tc-accent-red-accent-fill: #ff4c82;
+    --tc-accent-red-on-accent-fill: #250e13;
     --tc-accent-red-cursor: #e20064;
     --tc-accent-red-selection: #e200644d;
     --tc-accent-red-selection-inactive: #e2006426;
@@ -190,6 +194,8 @@
     --tc-accent-orange-on-accent: #ffffff;
     --tc-accent-orange-accent-tint: #f9ebe3;
     --tc-accent-orange-accent-bright: #d36b27;
+    --tc-accent-orange-accent-fill: #ff9243;
+    --tc-accent-orange-on-accent-fill: #241004;
     --tc-accent-orange-cursor: #bb5500;
     --tc-accent-orange-selection: #bb55004d;
     --tc-accent-orange-selection-inactive: #bb550026;
@@ -199,6 +205,8 @@
     --tc-accent-yellow-on-accent: #ffffff;
     --tc-accent-yellow-accent-tint: #f4ece3;
     --tc-accent-yellow-accent-bright: #b77a27;
+    --tc-accent-yellow-accent-fill: #f2c224;
+    --tc-accent-yellow-on-accent-fill: #1d1500;
     --tc-accent-yellow-cursor: #a16500;
     --tc-accent-yellow-selection: #a165004d;
     --tc-accent-yellow-selection-inactive: #a1650026;
@@ -208,6 +216,8 @@
     --tc-accent-green-on-accent: #ffffff;
     --tc-accent-green-accent-tint: #e5f0ea;
     --tc-accent-green-accent-bright: #2c9870;
+    --tc-accent-green-accent-fill: #35e0a3;
+    --tc-accent-green-on-accent-fill: #021c11;
     --tc-accent-green-cursor: #00835c;
     --tc-accent-green-selection: #00835c4d;
     --tc-accent-green-selection-inactive: #00835c26;
@@ -217,6 +227,8 @@
     --tc-accent-cyan-on-accent: #ffffff;
     --tc-accent-cyan-accent-tint: #e5eff0;
     --tc-accent-cyan-accent-bright: #2c949c;
+    --tc-accent-cyan-accent-fill: #2edfeb;
+    --tc-accent-cyan-on-accent-fill: #001a1d;
     --tc-accent-cyan-cursor: #007f87;
     --tc-accent-cyan-selection: #007f874d;
     --tc-accent-cyan-selection-inactive: #007f8726;
@@ -226,6 +238,8 @@
     --tc-accent-blue-on-accent: #ffffff;
     --tc-accent-blue-accent-tint: #e3efff;
     --tc-accent-blue-accent-bright: #3885ff;
+    --tc-accent-blue-accent-fill: #4d91ff;
+    --tc-accent-blue-on-accent-fill: #0b1628;
     --tc-accent-blue-cursor: #006af6;
     --tc-accent-blue-selection: #006af64d;
     --tc-accent-blue-selection-inactive: #006af626;
@@ -235,6 +249,8 @@
     --tc-accent-purple-on-accent: #ffffff;
     --tc-accent-purple-accent-tint: #f3eaff;
     --tc-accent-purple-accent-bright: #b262ff;
+    --tc-accent-purple-accent-fill: #bb7aff;
+    --tc-accent-purple-on-accent-fill: #1a1125;
     --tc-accent-purple-cursor: #a331fb;
     --tc-accent-purple-selection: #a331fb4d;
     --tc-accent-purple-selection-inactive: #a331fb26;
@@ -244,6 +260,8 @@
     --tc-accent-pink-on-accent: #ffffff;
     --tc-accent-pink-accent-tint: #fee7f5;
     --tc-accent-pink-accent-bright: #ed33c2;
+    --tc-accent-pink-accent-fill: #ff60d4;
+    --tc-accent-pink-on-accent-fill: #220e1c;
     --tc-accent-pink-cursor: #d400ab;
     --tc-accent-pink-selection: #d400ab4d;
     --tc-accent-pink-selection-inactive: #d400ab26;
@@ -316,6 +334,8 @@
     --tc-on-accent: #1a1125;
     --tc-accent-tint: #2d2637;
     --tc-accent-bright: #c898ff;
+    --tc-accent-fill: #bb7aff;
+    --tc-on-accent-fill: #1a1125;
     --tc-cursor: #bb7aff;
     --tc-selection: #bb7aff4d;
     --tc-selection-inactive: #bb7aff26;
@@ -416,6 +436,8 @@
     --tc-accent-red-on-accent: #250e13;
     --tc-accent-red-accent-tint: #382226;
     --tc-accent-red-accent-bright: #ff7a9a;
+    --tc-accent-red-accent-fill: #ff4c82;
+    --tc-accent-red-on-accent-fill: #250e13;
     --tc-accent-red-cursor: #ff4c82;
     --tc-accent-red-selection: #ff4c824d;
     --tc-accent-red-selection-inactive: #ff4c8226;
@@ -425,6 +447,8 @@
     --tc-accent-orange-on-accent: #241004;
     --tc-accent-orange-accent-tint: #372920;
     --tc-accent-orange-accent-bright: #ffb17e;
+    --tc-accent-orange-accent-fill: #ff9243;
+    --tc-accent-orange-on-accent-fill: #241004;
     --tc-accent-orange-cursor: #ff9243;
     --tc-accent-orange-selection: #ff92434d;
     --tc-accent-orange-selection-inactive: #ff924326;
@@ -434,6 +458,8 @@
     --tc-accent-yellow-on-accent: #1d1500;
     --tc-accent-yellow-accent-tint: #342f20;
     --tc-accent-yellow-accent-bright: #ffd86a;
+    --tc-accent-yellow-accent-fill: #f2c224;
+    --tc-accent-yellow-on-accent-fill: #1d1500;
     --tc-accent-yellow-cursor: #f2c224;
     --tc-accent-yellow-selection: #f2c2244d;
     --tc-accent-yellow-selection-inactive: #f2c22426;
@@ -443,6 +469,8 @@
     --tc-accent-green-on-accent: #021c11;
     --tc-accent-green-accent-tint: #22322a;
     --tc-accent-green-accent-bright: #52f4b6;
+    --tc-accent-green-accent-fill: #35e0a3;
+    --tc-accent-green-on-accent-fill: #021c11;
     --tc-accent-green-cursor: #35e0a3;
     --tc-accent-green-selection: #35e0a34d;
     --tc-accent-green-selection-inactive: #35e0a326;
@@ -452,6 +480,8 @@
     --tc-accent-cyan-on-accent: #001a1d;
     --tc-accent-cyan-accent-tint: #223233;
     --tc-accent-cyan-accent-bright: #4ff3ff;
+    --tc-accent-cyan-accent-fill: #2edfeb;
+    --tc-accent-cyan-on-accent-fill: #001a1d;
     --tc-accent-cyan-cursor: #2edfeb;
     --tc-accent-cyan-selection: #2edfeb4d;
     --tc-accent-cyan-selection-inactive: #2edfeb26;
@@ -461,6 +491,8 @@
     --tc-accent-blue-on-accent: #0b1628;
     --tc-accent-blue-accent-tint: #202937;
     --tc-accent-blue-accent-bright: #6fa6ff;
+    --tc-accent-blue-accent-fill: #4d91ff;
+    --tc-accent-blue-on-accent-fill: #0b1628;
     --tc-accent-blue-cursor: #4d91ff;
     --tc-accent-blue-selection: #4d91ff4d;
     --tc-accent-blue-selection-inactive: #4d91ff26;
@@ -470,6 +502,8 @@
     --tc-accent-purple-on-accent: #1a1125;
     --tc-accent-purple-accent-tint: #2d2637;
     --tc-accent-purple-accent-bright: #c898ff;
+    --tc-accent-purple-accent-fill: #bb7aff;
+    --tc-accent-purple-on-accent-fill: #1a1125;
     --tc-accent-purple-cursor: #bb7aff;
     --tc-accent-purple-selection: #bb7aff4d;
     --tc-accent-purple-selection-inactive: #bb7aff26;
@@ -479,6 +513,8 @@
     --tc-accent-pink-on-accent: #220e1c;
     --tc-accent-pink-accent-tint: #372431;
     --tc-accent-pink-accent-bright: #ff8ddc;
+    --tc-accent-pink-accent-fill: #ff60d4;
+    --tc-accent-pink-on-accent-fill: #220e1c;
     --tc-accent-pink-cursor: #ff60d4;
     --tc-accent-pink-selection: #ff60d44d;
     --tc-accent-pink-selection-inactive: #ff60d426;
@@ -594,12 +630,14 @@
 }
 
 /* Accent override: put .accent-<name> on <html> (or any ancestor). Last, so it wins over mode scopes. */
-.accent-red.accent-red:is(:root, .light, .dark),
+.accent-red.accent-red.accent-red:is(:root, .light, .dark),
 .accent-red.accent-red :is(.light, .dark) {
     --tc-accent: var(--tc-accent-red-accent);
     --tc-on-accent: var(--tc-accent-red-on-accent);
     --tc-accent-tint: var(--tc-accent-red-accent-tint);
     --tc-accent-bright: var(--tc-accent-red-accent-bright);
+    --tc-accent-fill: var(--tc-accent-red-accent-fill);
+    --tc-on-accent-fill: var(--tc-accent-red-on-accent-fill);
     --tc-cursor: var(--tc-accent-red-cursor);
     --tc-selection: var(--tc-accent-red-selection);
     --tc-selection-inactive: var(--tc-accent-red-selection-inactive);
@@ -607,12 +645,14 @@
     --tc-tab-indicator: var(--tc-accent-red-tab-indicator);
 }
 
-.accent-orange.accent-orange:is(:root, .light, .dark),
+.accent-orange.accent-orange.accent-orange:is(:root, .light, .dark),
 .accent-orange.accent-orange :is(.light, .dark) {
     --tc-accent: var(--tc-accent-orange-accent);
     --tc-on-accent: var(--tc-accent-orange-on-accent);
     --tc-accent-tint: var(--tc-accent-orange-accent-tint);
     --tc-accent-bright: var(--tc-accent-orange-accent-bright);
+    --tc-accent-fill: var(--tc-accent-orange-accent-fill);
+    --tc-on-accent-fill: var(--tc-accent-orange-on-accent-fill);
     --tc-cursor: var(--tc-accent-orange-cursor);
     --tc-selection: var(--tc-accent-orange-selection);
     --tc-selection-inactive: var(--tc-accent-orange-selection-inactive);
@@ -620,12 +660,14 @@
     --tc-tab-indicator: var(--tc-accent-orange-tab-indicator);
 }
 
-.accent-yellow.accent-yellow:is(:root, .light, .dark),
+.accent-yellow.accent-yellow.accent-yellow:is(:root, .light, .dark),
 .accent-yellow.accent-yellow :is(.light, .dark) {
     --tc-accent: var(--tc-accent-yellow-accent);
     --tc-on-accent: var(--tc-accent-yellow-on-accent);
     --tc-accent-tint: var(--tc-accent-yellow-accent-tint);
     --tc-accent-bright: var(--tc-accent-yellow-accent-bright);
+    --tc-accent-fill: var(--tc-accent-yellow-accent-fill);
+    --tc-on-accent-fill: var(--tc-accent-yellow-on-accent-fill);
     --tc-cursor: var(--tc-accent-yellow-cursor);
     --tc-selection: var(--tc-accent-yellow-selection);
     --tc-selection-inactive: var(--tc-accent-yellow-selection-inactive);
@@ -633,12 +675,14 @@
     --tc-tab-indicator: var(--tc-accent-yellow-tab-indicator);
 }
 
-.accent-green.accent-green:is(:root, .light, .dark),
+.accent-green.accent-green.accent-green:is(:root, .light, .dark),
 .accent-green.accent-green :is(.light, .dark) {
     --tc-accent: var(--tc-accent-green-accent);
     --tc-on-accent: var(--tc-accent-green-on-accent);
     --tc-accent-tint: var(--tc-accent-green-accent-tint);
     --tc-accent-bright: var(--tc-accent-green-accent-bright);
+    --tc-accent-fill: var(--tc-accent-green-accent-fill);
+    --tc-on-accent-fill: var(--tc-accent-green-on-accent-fill);
     --tc-cursor: var(--tc-accent-green-cursor);
     --tc-selection: var(--tc-accent-green-selection);
     --tc-selection-inactive: var(--tc-accent-green-selection-inactive);
@@ -646,12 +690,14 @@
     --tc-tab-indicator: var(--tc-accent-green-tab-indicator);
 }
 
-.accent-cyan.accent-cyan:is(:root, .light, .dark),
+.accent-cyan.accent-cyan.accent-cyan:is(:root, .light, .dark),
 .accent-cyan.accent-cyan :is(.light, .dark) {
     --tc-accent: var(--tc-accent-cyan-accent);
     --tc-on-accent: var(--tc-accent-cyan-on-accent);
     --tc-accent-tint: var(--tc-accent-cyan-accent-tint);
     --tc-accent-bright: var(--tc-accent-cyan-accent-bright);
+    --tc-accent-fill: var(--tc-accent-cyan-accent-fill);
+    --tc-on-accent-fill: var(--tc-accent-cyan-on-accent-fill);
     --tc-cursor: var(--tc-accent-cyan-cursor);
     --tc-selection: var(--tc-accent-cyan-selection);
     --tc-selection-inactive: var(--tc-accent-cyan-selection-inactive);
@@ -659,12 +705,14 @@
     --tc-tab-indicator: var(--tc-accent-cyan-tab-indicator);
 }
 
-.accent-blue.accent-blue:is(:root, .light, .dark),
+.accent-blue.accent-blue.accent-blue:is(:root, .light, .dark),
 .accent-blue.accent-blue :is(.light, .dark) {
     --tc-accent: var(--tc-accent-blue-accent);
     --tc-on-accent: var(--tc-accent-blue-on-accent);
     --tc-accent-tint: var(--tc-accent-blue-accent-tint);
     --tc-accent-bright: var(--tc-accent-blue-accent-bright);
+    --tc-accent-fill: var(--tc-accent-blue-accent-fill);
+    --tc-on-accent-fill: var(--tc-accent-blue-on-accent-fill);
     --tc-cursor: var(--tc-accent-blue-cursor);
     --tc-selection: var(--tc-accent-blue-selection);
     --tc-selection-inactive: var(--tc-accent-blue-selection-inactive);
@@ -672,12 +720,14 @@
     --tc-tab-indicator: var(--tc-accent-blue-tab-indicator);
 }
 
-.accent-purple.accent-purple:is(:root, .light, .dark),
+.accent-purple.accent-purple.accent-purple:is(:root, .light, .dark),
 .accent-purple.accent-purple :is(.light, .dark) {
     --tc-accent: var(--tc-accent-purple-accent);
     --tc-on-accent: var(--tc-accent-purple-on-accent);
     --tc-accent-tint: var(--tc-accent-purple-accent-tint);
     --tc-accent-bright: var(--tc-accent-purple-accent-bright);
+    --tc-accent-fill: var(--tc-accent-purple-accent-fill);
+    --tc-on-accent-fill: var(--tc-accent-purple-on-accent-fill);
     --tc-cursor: var(--tc-accent-purple-cursor);
     --tc-selection: var(--tc-accent-purple-selection);
     --tc-selection-inactive: var(--tc-accent-purple-selection-inactive);
@@ -685,12 +735,14 @@
     --tc-tab-indicator: var(--tc-accent-purple-tab-indicator);
 }
 
-.accent-pink.accent-pink:is(:root, .light, .dark),
+.accent-pink.accent-pink.accent-pink:is(:root, .light, .dark),
 .accent-pink.accent-pink :is(.light, .dark) {
     --tc-accent: var(--tc-accent-pink-accent);
     --tc-on-accent: var(--tc-accent-pink-on-accent);
     --tc-accent-tint: var(--tc-accent-pink-accent-tint);
     --tc-accent-bright: var(--tc-accent-pink-accent-bright);
+    --tc-accent-fill: var(--tc-accent-pink-accent-fill);
+    --tc-on-accent-fill: var(--tc-accent-pink-on-accent-fill);
     --tc-cursor: var(--tc-accent-pink-cursor);
     --tc-selection: var(--tc-accent-pink-selection);
     --tc-selection-inactive: var(--tc-accent-pink-selection-inactive);
