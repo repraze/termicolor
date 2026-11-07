@@ -23,6 +23,8 @@ function spaFallback(): Plugin {
 // GitHub Pages serves the site under /<repo>/; override with BASE_PATH for other hosts.
 export default defineConfig({
     base: process.env.BASE_PATH ?? "/termicolor/",
+    // Fixed port so the suite's doc sites run side by side (termicolor 5170, kernelkit 5175, nullsec 5199).
+    server: {port: 5170, strictPort: true},
     define: {
         // Cache-busts data files (registry, catalog, thumbnails, SVGs) per deploy: GitHub Pages caches
         // everything for 10 min, and an old catalog next to new thumbnails shows broken images.
