@@ -6,14 +6,14 @@
 export const clickable = {
     /** the card / row container */
     surface:
-        "group/click transition-colors hover:border-primary focus-within:border-primary has-[:focus-visible]:border-primary",
+        "group/click transition-colors hover:border-primary-text focus-within:border-primary-text has-[:focus-visible]:border-primary-text",
     /**
      * a list row: an accent bar slides in on the left. A row keeps its divider (`border-b`), so it
      * can't recolor its border like a card does: that would paint the divider too.
      */
-    row: "group/click relative outline-none before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:origin-left before:scale-x-0 before:bg-primary before:transition-transform hover:before:scale-x-100 focus-visible:before:scale-x-100",
+    row: "group/click relative outline-none before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:origin-left before:scale-x-0 before:bg-primary-text before:transition-transform hover:before:scale-x-100 focus-visible:before:scale-x-100",
     /** its title or name */
-    title: "transition-colors group-hover/click:text-primary group-focus-within/click:text-primary",
+    title: "transition-colors group-hover/click:text-primary-text group-focus-within/click:text-primary-text",
     /** an arrow that nudges toward where the click goes */
     arrow: "transition-transform group-hover/click:translate-x-1 group-focus-within/click:translate-x-1",
     /** an icon/label that appears on hover (preview, copy) */

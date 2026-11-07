@@ -43,7 +43,8 @@ for (const theme of THEMES) {
             await useTheme(page, theme, accent);
             await page.goto("");
             const button = page.getByText(/Browse \d+ ports/);
-            const expected = mode.accentRoles[accent ?? SITE_ACCENT].accent;
+            // a solid primary surface is the vivid fill tier (accentFill), not the text tier
+            const expected = mode.accentRoles[accent ?? SITE_ACCENT].accentFill;
             expect(hex(await button.evaluate((el) => getComputedStyle(el).backgroundColor))).toBe(expected);
             // nested mode previews follow the page accent too
             const nested = page.locator('[data-mode="light"]');

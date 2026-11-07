@@ -24,7 +24,7 @@ export function groupPorts(registry: RegistryEntry[]) {
 
 // DESIGN.md §6: the current page gets an accent indicator, not a shade.
 const treeLink =
-    "text-muted-foreground hover:text-foreground hover:bg-hover -ml-px block border-l py-1 pr-2 pl-3 text-xs data-[status=active]:border-primary data-[status=active]:text-foreground data-[status=active]:font-medium";
+    "text-muted-foreground hover:text-foreground hover:bg-hover -ml-px block border-l py-1 pr-2 pl-3 text-xs data-[status=active]:border-primary-text data-[status=active]:text-foreground data-[status=active]:font-medium";
 
 /** Category tree of ports. `onNavigate` lets the mobile sheet close itself. */
 export function PortsTree({onNavigate}: {onNavigate?: () => void}) {
