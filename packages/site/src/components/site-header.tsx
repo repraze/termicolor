@@ -1,8 +1,8 @@
 import {Button} from "@repraze/kernelkit/components/button";
+import {Separator} from "@repraze/kernelkit/components/separator";
 import {
     SiteHeader as SiteHeaderRoot,
     SiteHeaderActions,
-    SiteHeaderBanner,
     SiteHeaderBrand,
     SiteHeaderContent,
     SiteHeaderMenu,
@@ -16,7 +16,6 @@ import {Logo} from "@/brand/logo";
 import {GithubIcon} from "@/components/github-icon";
 import {PortsTree} from "@/components/ports-tree";
 import {SiteSearch} from "@/components/site-search";
-import {SpectrumBar} from "@/components/spectrum-bar";
 import {ThemeToggle} from "@/components/theme-toggle";
 
 const NAV = [
@@ -50,30 +49,27 @@ function Brand({className}: {className?: string}) {
     return (
         <span className={className}>
             <Logo className="size-7" />
-            <span className="tracking-widest uppercase">
-                termicolor<span className="text-primary-text">_</span>
+            <span className="font-mono text-sm font-semibold tracking-tight">
+                termi<span className="text-primary-text">color</span>
             </span>
         </span>
     );
 }
 
-/** The suite's site header (kernelkit SiteHeader) with Termicolor's spectrum bar as its banner. */
+/** The suite's site header (kernelkit SiteHeader): brand, sections, search, theme, repository. */
 export function SiteHeader() {
     const pathname = useLocation({select: (l) => l.pathname});
     const [open, setOpen] = useState(false);
     useEffect(() => setOpen(false), [pathname]);
     return (
         <SiteHeaderRoot>
-            <SiteHeaderBanner>
-                <SpectrumBar className="h-1" />
-            </SiteHeaderBanner>
             <SiteHeaderContent>
                 <SiteHeaderMenu
-                    title={<Brand className="flex items-center gap-2 font-mono text-sm font-semibold" />}
+                    title={<Brand className="flex items-center gap-2" />}
                     open={open}
                     onOpenChange={setOpen}
                 >
-                    <nav aria-label="Site" className="flex flex-col gap-3 px-2 pt-2">
+                    <nav aria-label="Site" className="flex flex-col gap-1 px-2 pt-2">
                         <NavLinks />
                     </nav>
                     <PortsTree />
@@ -86,6 +82,10 @@ export function SiteHeader() {
                 </SiteNav>
                 <SiteHeaderActions>
                     <SiteSearch />
+                    <Separator
+                        orientation="vertical"
+                        className="mx-1 hidden data-vertical:h-5 data-vertical:self-center sm:block"
+                    />
                     <ThemeToggle />
                     <Button
                         variant="ghost"
