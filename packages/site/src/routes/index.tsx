@@ -56,7 +56,7 @@ function HomePage() {
         <main className="flex flex-1 flex-col">
             <Hero>
                 <HeroMedia>
-                    <Logo className="size-24 md:size-28" />
+                    <Logo className="size-16 md:size-20" />
                 </HeroMedia>
                 <HeroEyebrow>
                     <Badge variant="outline" className="font-mono">
@@ -79,7 +79,7 @@ function HomePage() {
                     </Button>
                 </HeroActions>
                 <HeroFooter>
-                    <SwatchStrip className="w-full max-w-3xl" />
+                    <SwatchStrip className="w-full max-w-3xl [&>div]:h-12" />
                 </HeroFooter>
             </Hero>
 

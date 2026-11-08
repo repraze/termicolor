@@ -28,14 +28,14 @@ export default defineConfig({
     retries: process.env.CI ? 1 : 0,
     reporter: process.env.CI ? "github" : "list",
     use: {
-        baseURL: `http://localhost:${PORT}/termicolor/`,
+        baseURL: `http://localhost:${PORT}/`,
         trace: "retain-on-failure",
         launchOptions,
     },
     projects: [{name: "chromium", use: {...devices["Desktop Chrome"], viewport: {width: 1280, height: 900}}}],
     webServer: {
         command: `npm run dev -- --port ${PORT} --strictPort`,
-        url: `http://localhost:${PORT}/termicolor/`,
+        url: `http://localhost:${PORT}/`,
         reuseExistingServer: !process.env.CI,
         timeout: 60_000,
     },

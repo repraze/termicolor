@@ -20,9 +20,9 @@ function spaFallback(): Plugin {
     };
 }
 
-// GitHub Pages serves the site under /<repo>/; override with BASE_PATH for other hosts.
+// Served at the root locally; the Pages workflow sets BASE_PATH=/<repo>/ (like kernelkit).
 export default defineConfig({
-    base: process.env.BASE_PATH ?? "/termicolor/",
+    base: process.env.BASE_PATH ?? "/",
     // Fixed port so the suite's doc sites run side by side (termicolor 5170, kernelkit 5175, nullsec 5199).
     server: {port: 5170, strictPort: true},
     define: {
