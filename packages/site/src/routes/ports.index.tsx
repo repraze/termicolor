@@ -1,3 +1,4 @@
+import {PageHeader, PageHeaderDescription, PageHeaderTitle} from "@repraze/kernelkit/components/page-header";
 import {createFileRoute} from "@tanstack/react-router";
 import {CATEGORIES} from "@termicolor/build";
 
@@ -25,13 +26,13 @@ function PortsIndex() {
     const updateSearch = useSearchUpdate<PortSearchParams>();
     return (
         <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-2">
-                <h1 className="text-2xl font-bold">Ports</h1>
-                <p className="text-muted-foreground text-sm">
+            <PageHeader>
+                <PageHeaderTitle>Ports</PageHeaderTitle>
+                <PageHeaderDescription>
                     Every port is generated from the same palette in one build. Planned ones are ranked by how much
                     people use them.
-                </p>
-            </div>
+                </PageHeaderDescription>
+            </PageHeader>
             <PortSearch params={search} onChange={updateSearch} />
         </div>
     );

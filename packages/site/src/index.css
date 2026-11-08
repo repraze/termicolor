@@ -10,6 +10,8 @@
     --kk-font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
     --kk-font-heading: var(--kk-font-mono);
     --kk-radius: 0px;
+    /* the spectrum bar (SiteHeaderBanner, 4px) sits above the 3.5rem header row */
+    --kk-header-height: calc(3.5rem + 4px);
 }
 
 @layer base {

@@ -1,5 +1,7 @@
 import {useClipboard} from "@mantine/hooks";
 import {Badge} from "@repraze/kernelkit/components/badge";
+import {PageHeader, PageHeaderDescription, PageHeaderTitle} from "@repraze/kernelkit/components/page-header";
+import {SiteContainer} from "@repraze/kernelkit/components/site-layout";
 import {ACCENTS, allModes, checkMode, contrast, type Hex, type Mode} from "@repraze/termicolor";
 import {createFileRoute} from "@tanstack/react-router";
 import {cva} from "class-variance-authority";
@@ -15,20 +17,20 @@ export const Route = createFileRoute("/palette")({
 
 function PalettePage() {
     return (
-        <div className="flex flex-col gap-12">
-            <section className="flex flex-col gap-2">
-                <h1 className="text-2xl font-bold">Palette</h1>
-                <p className="text-muted-foreground max-w-2xl text-sm">
+        <SiteContainer render={<main />} className="flex flex-col gap-12 py-8 lg:py-10">
+            <PageHeader>
+                <PageHeaderTitle>Palette</PageHeaderTitle>
+                <PageHeaderDescription>
                     Dark accents are the hand-tuned seeds. Light accents keep the same hue and are darkened in OKLCH
                     until they reach 4.8:1 on white; each accent gets a paired foreground for solid fills. High contrast
                     variants keep the accents and change only surfaces, borders and secondary text. Click any swatch to
                     copy its hex.
-                </p>
-            </section>
+                </PageHeaderDescription>
+            </PageHeader>
             {allModes().map((mode) => (
                 <ModeSection key={mode.id} mode={mode} />
             ))}
-        </div>
+        </SiteContainer>
     );
 }
 

@@ -1,8 +1,7 @@
+import {SiteLayout, SiteMain, SiteSidebar} from "@repraze/kernelkit/components/site-layout";
 import {createFileRoute, Outlet} from "@tanstack/react-router";
-import {useStickyBox} from "react-sticky-box";
 
 import {PortsTree} from "@/components/ports-tree";
-import {HEADER_OFFSET} from "@/components/site-header";
 import {registryQuery} from "@/lib/registry";
 
 export const Route = createFileRoute("/ports")({
@@ -11,18 +10,15 @@ export const Route = createFileRoute("/ports")({
 });
 
 function PortsLayout() {
-    // Same approach as repraze.com post pages: a sidebar taller than the viewport scrolls with the
-    // page until its end is visible, then sticks - no inner scrollbar, nothing unreachable.
-    const sidebarRef = useStickyBox({offsetTop: HEADER_OFFSET + 16, offsetBottom: 16});
     return (
-        <div className="flex gap-8">
-            {/* on mobile the tree lives in the header menu sheet */}
-            <aside className="hidden w-52 shrink-0 self-start md:block" ref={sidebarRef}>
+        <SiteLayout>
+            {/* on phones the tree lives in the header menu sheet */}
+            <SiteSidebar aria-label="Ports">
                 <PortsTree />
-            </aside>
-            <div className="min-w-0 flex-1">
+            </SiteSidebar>
+            <SiteMain>
                 <Outlet />
-            </div>
-        </div>
+            </SiteMain>
+        </SiteLayout>
     );
 }

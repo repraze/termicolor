@@ -1,4 +1,5 @@
 import {Button} from "@repraze/kernelkit/components/button";
+import {SiteContainer} from "@repraze/kernelkit/components/site-layout";
 import {allModes} from "@repraze/termicolor";
 import {createFileRoute, Link} from "@tanstack/react-router";
 import {ArrowRightIcon} from "lucide-react";
@@ -17,7 +18,7 @@ function HomePage() {
         select: (r) => ({available: r.filter((e) => e.status === "available").length}),
     });
     return (
-        <div className="flex flex-col gap-12">
+        <SiteContainer render={<main />} className="flex flex-col gap-12 py-8 lg:py-10">
             <section className="flex flex-col gap-4">
                 <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
                     High contrast. Bright. <span className="text-primary-text">Techy.</span>
@@ -48,6 +49,6 @@ function HomePage() {
                     ))}
                 </div>
             </section>
-        </div>
+        </SiteContainer>
     );
 }

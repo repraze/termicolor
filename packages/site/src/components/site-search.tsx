@@ -1,6 +1,5 @@
-import {useDebouncedValue, useHotkeys, useOs} from "@mantine/hooks";
+import {useDebouncedValue} from "@mantine/hooks";
 import {Badge} from "@repraze/kernelkit/components/badge";
-import {Button} from "@repraze/kernelkit/components/button";
 import {
     Command,
     CommandDialog,
@@ -11,18 +10,11 @@ import {
     CommandList,
 } from "@repraze/kernelkit/components/command";
 import {Kbd} from "@repraze/kernelkit/components/kbd";
+import {SearchTrigger, useSearchHotkeys} from "@repraze/kernelkit/components/search-trigger";
 import {useQuery, useQueryClient} from "@tanstack/react-query";
 import {useNavigate} from "@tanstack/react-router";
-import {
-    CornerDownLeftIcon,
-    FileTextIcon,
-    ImageIcon,
-    type LucideIcon,
-    PackageIcon,
-    PaletteIcon,
-    SearchIcon,
-} from "lucide-react";
-import {type RefObject, useEffect, useMemo, useRef, useState} from "react";
+import {CornerDownLeftIcon, FileTextIcon, ImageIcon, type LucideIcon, PackageIcon, PaletteIcon} from "lucide-react";
+import {type RefObject, useCallback, useEffect, useMemo, useRef, useState} from "react";
 
 import {search, type SearchHit, searchIndexQuery, type SearchKind} from "@/lib/search";
 
@@ -68,33 +60,19 @@ const SUGGESTED: SearchHit[] = [
 export function SiteSearch() {
     const [open, setOpen] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
-    const os = useOs();
     const queryClient = useQueryClient();
     const prefetch = () => void queryClient.prefetchQuery(searchIndexQuery);
-    const mod = os === "macos" || os === "ios" ? "⌘" : "Ctrl";
-    useHotkeys([
-        ["mod+K", () => setOpen((o) => !o)],
-        ["/", () => setOpen(true)],
-    ]);
+    // the suite's search shortcuts and trigger (kernelkit): Ctrl/⌘ K toggles, / opens
+    useSearchHotkeys(useCallback((toggle: boolean) => setOpen((o) => (toggle ? !o : true)), []));
 
     return (
         <>
-            <Button
-                variant="outline"
-                size="sm"
+            <SearchTrigger
                 onClick={() => setOpen(true)}
                 // fetch the index on intent so the first open is instant
                 onPointerEnter={prefetch}
                 onFocus={prefetch}
-                className="text-muted-foreground hidden w-56 justify-start font-sans font-normal sm:inline-flex"
-            >
-                <SearchIcon />
-                <span className="flex-1 text-left">Search…</span>
-                <Kbd>{mod} K</Kbd>
-            </Button>
-            <Button variant="ghost" size="icon" onClick={() => setOpen(true)} aria-label="Search" className="sm:hidden">
-                <SearchIcon />
-            </Button>
+            />
             <CommandDialog
                 open={open}
                 onOpenChange={setOpen}

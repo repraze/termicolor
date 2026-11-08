@@ -14,9 +14,10 @@ function RootLayout() {
     return (
         <div className="flex min-h-svh flex-col">
             <SiteHeader />
-            <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8">
+            {/* pages pick their layout: SiteLayout (with the ports sidebar) or SiteContainer */}
+            <div className="flex flex-1 flex-col">
                 <Outlet />
-            </main>
+            </div>
             <footer className="text-muted-foreground border-t py-4 text-center font-mono text-xs">
                 MIT · built from one palette ·{" "}
                 <a className="hover:text-foreground underline" href="https://repraze.com">

@@ -18,11 +18,15 @@ test("header stays on screen while scrolling", async ({page}) => {
     await expect(page.locator("header").first()).toBeInViewport();
 });
 
-test("desktop: a long sidebar scrolls with the page, then its end stays reachable", async ({page}) => {
+test("desktop: the sidebar stays below the header and scrolls on its own to its end", async ({page}) => {
+    // the suite's SiteSidebar (kernelkit): sticky under the header, its own scroll area
     await page.setViewportSize({width: 1280, height: 500});
     await page.goto("ports");
-    const sidebar = page.getByRole("complementary");
+    const sidebar = page.getByRole("complementary", {name: "Ports"});
     await expect(page.getByText("Alacritty").last()).toBeVisible();
+    await page.mouse.wheel(0, 3000);
+    await expect(sidebar.getByText("All ports")).toBeInViewport();
+    await sidebar.hover();
     for (let i = 0; i < 10; i++) {
         await page.mouse.wheel(0, 400);
     }
