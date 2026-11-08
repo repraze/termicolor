@@ -1,24 +1,13 @@
-import {queryOptions, useSuspenseQuery} from "@tanstack/react-query";
+import {useSuspenseQuery} from "@tanstack/react-query";
 import {createFileRoute} from "@tanstack/react-router";
 
 import {PortHeader, PortInstall} from "@/components/port-header";
 import {type GalleryFilter, WallpaperGallery} from "@/components/wallpaper-gallery";
 import {useSearchUpdate} from "@/hooks/use-search-update";
 import {useTheme} from "@/hooks/use-theme";
-import {dataUrl, registryQuery} from "@/lib/registry";
-import {MODES, type Orientation, ORIENTATIONS, type WallpaperCatalog, type WallpaperMode} from "@/lib/wallpapers";
-
-const catalogQuery = queryOptions({
-    queryKey: ["wallpaper-catalog"],
-    queryFn: async () => {
-        const res = await fetch(dataUrl("ports/wallpapers/dist/catalog.json"));
-        if (!res.ok) {
-            throw new Error(`catalog.json: ${res.status} ${res.statusText}`);
-        }
-        return res.json() as Promise<WallpaperCatalog>;
-    },
-    staleTime: Infinity,
-});
+import {registryQuery} from "@/lib/registry";
+import {catalogQuery} from "@/lib/wallpaper-catalog";
+import {MODES, type Orientation, ORIENTATIONS, type WallpaperMode} from "@/lib/wallpapers";
 
 type Search = {family?: string; mode?: WallpaperMode; orientation?: Orientation};
 

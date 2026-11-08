@@ -1,19 +1,11 @@
 import {useDebouncedValue} from "@mantine/hooks";
 import {Badge} from "@repraze/kernelkit/components/badge";
-import {
-    Command,
-    CommandDialog,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-} from "@repraze/kernelkit/components/command";
-import {Kbd} from "@repraze/kernelkit/components/kbd";
+import {Command, CommandEmpty, CommandGroup, CommandInput, CommandList} from "@repraze/kernelkit/components/command";
+import {SearchDialog, SearchFooter, SearchItem} from "@repraze/kernelkit/components/search-dialog";
 import {SearchTrigger, useSearchHotkeys} from "@repraze/kernelkit/components/search-trigger";
 import {useQuery, useQueryClient} from "@tanstack/react-query";
 import {useNavigate} from "@tanstack/react-router";
-import {CornerDownLeftIcon, FileTextIcon, ImageIcon, type LucideIcon, PackageIcon, PaletteIcon} from "lucide-react";
+import {FileTextIcon, ImageIcon, type LucideIcon, PackageIcon, PaletteIcon} from "lucide-react";
 import {type RefObject, useCallback, useEffect, useMemo, useRef, useState} from "react";
 
 import {search, type SearchHit, searchIndexQuery, type SearchKind} from "@/lib/search";
@@ -73,15 +65,14 @@ export function SiteSearch() {
                 onPointerEnter={prefetch}
                 onFocus={prefetch}
             />
-            <CommandDialog
+            <SearchDialog
                 open={open}
                 onOpenChange={setOpen}
-                title="Search"
                 description="Search ports and pages"
                 initialFocus={inputRef}
             >
                 {open && <SearchPanel inputRef={inputRef} onDone={() => setOpen(false)} />}
-            </CommandDialog>
+            </SearchDialog>
         </>
     );
 }
@@ -136,30 +127,20 @@ function SearchPanel({inputRef, onDone}: {inputRef: RefObject<HTMLInputElement |
                 {groups.map(({kind, label, icon: Icon, hits: group}) => (
                     <CommandGroup key={kind} heading={label}>
                         {group.map((hit) => (
-                            <CommandItem key={hit.id} value={hit.id} onSelect={() => go(hit)}>
-                                <Icon className="text-muted-foreground" />
-                                <div className="flex min-w-0 flex-1 flex-col">
-                                    <span className="truncate font-medium">{hit.title}</span>
-                                    <span className="text-muted-foreground truncate">{hit.summary}</span>
-                                </div>
-                                {hit.planned && <Badge variant="secondary">planned</Badge>}
-                                <CornerDownLeftIcon className="text-muted-foreground hidden group-data-[selected=true]/command-item:block" />
-                            </CommandItem>
+                            <SearchItem
+                                key={hit.id}
+                                value={hit.id}
+                                onSelect={() => go(hit)}
+                                icon={<Icon />}
+                                title={hit.title}
+                                description={hit.summary}
+                                meta={hit.planned ? <Badge variant="secondary">planned</Badge> : null}
+                            />
                         ))}
                     </CommandGroup>
                 ))}
             </CommandList>
-            <div className="text-muted-foreground flex items-center gap-3 border-t px-3 py-2 text-xs">
-                <span>
-                    <Kbd>↑</Kbd> <Kbd>↓</Kbd> move
-                </span>
-                <span>
-                    <Kbd>↵</Kbd> open
-                </span>
-                <span>
-                    <Kbd>esc</Kbd> close
-                </span>
-            </div>
+            <SearchFooter />
         </Command>
     );
 }

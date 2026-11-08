@@ -1,7 +1,9 @@
+import {readFileSync} from "node:fs";
+
 import {palette} from "@repraze/termicolor";
 import {describe, expect, it} from "vitest";
 
-import {SPRITE, SPRITE_COLORS, SPRITE_SIZE, spriteSvg} from "./sprite";
+import {outlineCells, SPRITE, SPRITE_COLORS, SPRITE_SIZE, spriteSvg} from "./sprite";
 
 describe("brand sprite", () => {
     it("is a 32x32 grid", () => {
@@ -29,11 +31,11 @@ describe("brand sprite", () => {
     });
 
     it("emits a deterministic, crisp, scalable svg", () => {
-        const svg = spriteSvg();
-        expect(spriteSvg()).toBe(svg);
+        const svg = spriteSvg({outline: false});
+        expect(spriteSvg({outline: false})).toBe(svg);
         expect(svg).toContain('viewBox="0 0 32 32"');
         expect(svg).toContain('shape-rendering="crispEdges"');
-        expect(spriteSvg({scale: 16})).toContain('width="512" height="512"');
+        expect(spriteSvg({scale: 16, outline: false})).toContain('width="512" height="512"');
     });
 
     it("merges horizontal runs into one rect each", () => {
@@ -41,7 +43,7 @@ describe("brand sprite", () => {
             const matches = row.match(/([^.])\1*/g) ?? [];
             return count + matches.length;
         }, 0);
-        expect(spriteSvg().match(/<rect /g)).toHaveLength(runs);
+        expect(spriteSvg({outline: false}).match(/<rect /g)).toHaveLength(runs);
     });
 
     it("leads with the red accent for the glow", () => {
@@ -51,9 +53,27 @@ describe("brand sprite", () => {
         expect(SPRITE.join("")).toContain("RRRRRRRR");
     });
 
+    it("rings the silhouette in white within a 1px margin", () => {
+        const svg = spriteSvg();
+        expect(svg).toContain('viewBox="0 0 34 34"');
+        expect(svg).toContain(`fill="${palette.modes.dark.neutrals[0]}"`);
+        const cells = outlineCells();
+        expect(cells.length).toBeGreaterThan(0);
+        for (const [x, y] of cells) {
+            expect(SPRITE[y]?.[x] ?? ".").toBe(".");
+            expect(x).toBeGreaterThanOrEqual(-1);
+            expect(y).toBeLessThan(SPRITE_SIZE);
+        }
+    });
+
     it("wraps the sprite in a red-bordered badge", () => {
         const badge = spriteSvg({badge: true});
         expect(badge).toContain('viewBox="0 0 36 36"');
         expect(badge).toContain(`stroke="${palette.modes.dark.fills.red}"`);
+    });
+
+    it("matches the checked-in favicon (regenerate with npx tsx scripts/brand.ts)", () => {
+        const favicon = readFileSync(new URL("../../public/favicon.svg", import.meta.url), "utf8");
+        expect(favicon.trim()).toBe(spriteSvg());
     });
 });

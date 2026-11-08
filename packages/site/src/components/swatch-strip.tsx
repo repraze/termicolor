@@ -1,9 +1,11 @@
 import {ACCENTS} from "@repraze/termicolor";
 
+import {cn} from "@/lib/utils";
+
 /** Accent fills (DESIGN.md §3) with their paired foreground; follows the active mode through CSS vars. */
-export function SwatchStrip() {
+export function SwatchStrip({className}: {className?: string}) {
     return (
-        <div className="grid grid-cols-4 border sm:grid-cols-8">
+        <div className={cn("grid grid-cols-4 border sm:grid-cols-8", className)}>
             {ACCENTS.map((name) => (
                 <div
                     key={name}

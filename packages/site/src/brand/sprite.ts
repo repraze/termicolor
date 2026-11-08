@@ -86,16 +86,42 @@ export type SpriteSvgOptions = {
     scale?: number;
     /** Wrap the sprite in a square bordered badge (dark fill, 1px red border). */
     badge?: boolean;
+    /**
+     * A 1px white ring around the silhouette (in a reserved 1px margin), so the dark outline still reads
+     * on dark pages. Not drawn along the bottom edge, where the bust is cropped. Default true; off in a badge.
+     */
+    outline?: boolean;
 };
 
 const BADGE_PAD = 2;
+const OUTLINE_PAD = 1;
+
+/** Transparent cells that touch the silhouette (4-neighborhood), in sprite coordinates. */
+export function outlineCells(sprite: readonly string[] = SPRITE): [number, number][] {
+    const filled = (x: number, y: number) => (sprite[y]?.[x] ?? ".") !== ".";
+    const cells: [number, number][] = [];
+    for (let y = -1; y < sprite.length; y++) {
+        for (let x = -1; x <= SPRITE_SIZE; x++) {
+            if (!filled(x, y) && (filled(x - 1, y) || filled(x + 1, y) || filled(x, y - 1) || filled(x, y + 1))) {
+                cells.push([x, y]);
+            }
+        }
+    }
+    return cells;
+}
 
 /** Emits a compact SVG: one rect per horizontal run of the same key, crisp edges, viewBox-scaled. */
 export function spriteSvg(opts: SpriteSvgOptions = {}): string {
     const {scale = 1, badge = false} = opts;
-    const offset = badge ? BADGE_PAD : 0;
+    const outline = !badge && (opts.outline ?? true);
+    const offset = badge ? BADGE_PAD : outline ? OUTLINE_PAD : 0;
     const size = SPRITE_SIZE + offset * 2;
     const parts: string[] = [];
+    if (outline) {
+        for (const [x, y] of outlineCells()) {
+            parts.push(`<rect x="${x + offset}" y="${y + offset}" width="1" height="1" fill="${n[0]}"/>`);
+        }
+    }
     if (badge) {
         parts.push(`<rect width="${size}" height="${size}" fill="${dark.roles.bgSunken}"/>`);
         parts.push(
