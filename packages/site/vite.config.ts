@@ -1,3 +1,4 @@
+import {lstatSync} from "node:fs";
 import {copyFile} from "node:fs/promises";
 import {join} from "node:path";
 import {fileURLToPath, URL} from "node:url";
@@ -20,6 +21,21 @@ function spaFallback(): Plugin {
     };
 }
 
+/**
+ * `npm link @repraze/kernelkit` (a symlink to a kernelkit checkout): serve kernelkit from its TypeScript
+ * sources (its "@repraze/source" exports condition), unbundled, so edits there hot-reload here.
+ * Installed from npm: use its built dist like any dependency, pre-bundled with its CJS deps.
+ */
+const kernelkitLinked = (() => {
+    try {
+        return lstatSync(
+            fileURLToPath(new URL("../../node_modules/@repraze/kernelkit", import.meta.url)),
+        ).isSymbolicLink();
+    } catch {
+        return false;
+    }
+})();
+
 // Served at the root locally; the Pages workflow sets BASE_PATH=/<repo>/ (like kernelkit).
 export default defineConfig({
     base: process.env.BASE_PATH ?? "/",
@@ -33,12 +49,9 @@ export default defineConfig({
     plugins: [tanstackRouter({target: "react", autoCodeSplitting: true}), react(), tailwindcss(), spaFallback()],
     resolve: {
         alias: {"@": fileURLToPath(new URL("./src", import.meta.url))},
-        // Kernelkit from its TypeScript sources (its "@repraze/source" exports condition): with
-        // `npm link @repraze/kernelkit`, edits in the kernelkit checkout hot-reload here.
-        conditions: ["@repraze/source", ...defaultClientConditions],
+        conditions: [...(kernelkitLinked ? ["@repraze/source"] : []), ...defaultClientConditions],
         // a linked kernelkit sits outside this tree: force one copy of React-context packages
         dedupe: ["react", "react-dom", "@base-ui/react", "@tanstack/react-virtual", "cmdk", "lucide-react"],
     },
-    // served as source, not pre-bundled, so kernelkit edits are seen
-    optimizeDeps: {exclude: ["@repraze/kernelkit"]},
+    optimizeDeps: kernelkitLinked ? {exclude: ["@repraze/kernelkit"]} : {},
 });
