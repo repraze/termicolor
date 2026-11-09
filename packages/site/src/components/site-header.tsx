@@ -48,7 +48,7 @@ function NavLinks() {
 function Brand({className}: {className?: string}) {
     return (
         <span className={className}>
-            <Logo className="size-7" />
+            <Logo className="size-8" />
             <span className="font-mono text-sm font-semibold tracking-tight">
                 Termi<span className="text-primary-text">Color</span>
             </span>

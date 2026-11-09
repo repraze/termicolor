@@ -66,7 +66,7 @@ function HomePage() {
         <main className="flex flex-1 flex-col">
             <Hero>
                 <HeroMedia>
-                    <Logo className="size-16 md:size-20" />
+                    <Logo className="size-16 md:size-24" />
                 </HeroMedia>
                 <HeroEyebrow>
                     <Badge variant="outline" className="font-mono">

@@ -1,21 +1,20 @@
-import {spriteSvg} from "./sprite";
+import {markSvg} from "./mark";
 
-/** Fill the wrapper box instead of the sprite's intrinsic pixel size. */
-const fluid = (svg: string) => svg.replace(/width="\d+" height="\d+"/, 'width="100%" height="100%"');
+const SVG = markSvg();
 
-const SVG = fluid(spriteSvg());
-const BADGE_SVG = fluid(spriteSvg({badge: true}));
-
-/** The TermiColor cyborg head, inlined. Size it with className (e.g. `size-8`); the SVG fills the box. */
-export function Logo({className, badge = false}: {className?: string; badge?: boolean}) {
+/**
+ * The TermiColor skull, inlined. Size it with className in multiples of 32px so it stays pixel-sharp:
+ * `size-8` in the header, `size-16`/`size-24` in a hero (16px for a favicon).
+ */
+export function Logo({className}: {className?: string}) {
     return (
         <span
             role="img"
             aria-label="TermiColor"
             className={className}
             style={{display: "inline-block", lineHeight: 0}}
-            // Static markup generated from our own sprite grid, never from user input.
-            dangerouslySetInnerHTML={{__html: badge ? BADGE_SVG : SVG}}
+            // Static markup generated from our own mark shapes, never from user input.
+            dangerouslySetInnerHTML={{__html: SVG}}
         />
     );
 }
