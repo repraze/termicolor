@@ -11,3 +11,4 @@ packages/site/e2e/.results/
 packages/site/e2e/.snaps/
 playwright-report/
 out/
+.tanstack/
