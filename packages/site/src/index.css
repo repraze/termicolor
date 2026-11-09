@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "@fontsource-variable/jetbrains-mono";
 @import "@fontsource-variable/geist";
-/* Kernelkit: Termicolor palette, shadcn tokens, components' classes, color/radius/field/code tokens. */
+/* KernelKit: TermiColor palette, shadcn tokens, components' classes, color/radius/field/code tokens. */
 @import "@repraze/kernelkit/styles.css";
 
 /* The site's own look on top of the kit: Geist to read, JetBrains Mono for titles, square corners. */

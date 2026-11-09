@@ -23,7 +23,7 @@ const SUGGESTED: SearchHit[] = [
         id: "page:ports",
         kind: "page",
         title: "All ports",
-        summary: "Every app termicolor themes.",
+        summary: "Every app TermiColor themes.",
         to: "/ports",
         score: 0,
     },

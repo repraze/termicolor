@@ -6,6 +6,7 @@ import {type GalleryFilter, WallpaperGallery} from "@/components/wallpaper-galle
 import {useSearchUpdate} from "@/hooks/use-search-update";
 import {useTheme} from "@/hooks/use-theme";
 import {registryQuery} from "@/lib/registry";
+import {usePageTitle} from "@/lib/site";
 import {catalogQuery} from "@/lib/wallpaper-catalog";
 import {MODES, type Orientation, ORIENTATIONS, type WallpaperMode} from "@/lib/wallpapers";
 
@@ -29,6 +30,7 @@ export const Route = createFileRoute("/ports/wallpapers")({
 });
 
 function WallpapersPage() {
+    usePageTitle("Wallpapers");
     const {data: registry} = useSuspenseQuery(registryQuery);
     const {data: catalog} = useSuspenseQuery(catalogQuery);
     const search = Route.useSearch();

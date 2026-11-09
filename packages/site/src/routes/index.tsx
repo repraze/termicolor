@@ -1,6 +1,14 @@
 import {Badge} from "@repraze/kernelkit/components/badge";
 import {Button} from "@repraze/kernelkit/components/button";
-import {Card, CardDescription, CardHeader, CardTitle} from "@repraze/kernelkit/components/card";
+import {
+    CardAction,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+    LinkCard,
+    LinkCardArrow,
+    LinkCardMedia,
+} from "@repraze/kernelkit/components/card";
 import {
     Hero,
     HeroActions,
@@ -33,6 +41,7 @@ import {PortLink} from "@/components/port-link";
 import {SwatchStrip} from "@/components/swatch-strip";
 import {useTheme} from "@/hooks/use-theme";
 import {dataUrl, registryQuery} from "@/lib/registry";
+import {usePageTitle} from "@/lib/site";
 import {catalogQuery} from "@/lib/wallpaper-catalog";
 import {thumbPath} from "@/lib/wallpapers";
 
@@ -50,6 +59,7 @@ const palette = createPalette({accent: "pink"});
 palette.modes.dark.roles.bg; // "#171717"`;
 
 function HomePage() {
+    usePageTitle();
     const available = Route.useLoaderData({select: (r) => r.filter((e) => e.status === "available")});
     const featured = FEATURED.flatMap((id) => available.filter((e) => e.id === id));
     return (
@@ -100,23 +110,20 @@ function HomePage() {
                     </SectionHeader>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         {featured.map((port) => (
-                            <PortLink
-                                key={port.id}
-                                portId={port.id}
-                                className="group/port focus-visible:ring-ring/50 outline-none focus-visible:ring-3"
-                            >
-                                <Card className="group-hover/port:bg-hover h-full transition-colors">
-                                    <CardHeader>
-                                        <CardTitle className="flex items-center gap-2">
-                                            {port.name}
-                                            <Badge variant="outline" className="ml-auto font-mono">
-                                                {CATEGORIES[port.category]}
-                                            </Badge>
-                                        </CardTitle>
-                                        <CardDescription>{port.description}</CardDescription>
-                                    </CardHeader>
-                                </Card>
-                            </PortLink>
+                            <LinkCard key={port.id} render={<PortLink portId={port.id} />}>
+                                <CardHeader>
+                                    <CardTitle>{port.name}</CardTitle>
+                                    <CardDescription>{port.description}</CardDescription>
+                                    <CardAction>
+                                        <LinkCardArrow />
+                                    </CardAction>
+                                </CardHeader>
+                                <div className="mt-auto px-(--card-spacing)">
+                                    <Badge variant="outline" className="font-mono">
+                                        {CATEGORIES[port.category]}
+                                    </Badge>
+                                </div>
+                            </LinkCard>
                         ))}
                     </div>
                 </Section>
@@ -196,19 +203,22 @@ function WallpaperPreview() {
     return (
         <div className="grid gap-4 sm:grid-cols-3">
             {picks.map((w) => (
-                <Link
-                    key={w.id}
-                    to="/ports/wallpapers"
-                    search={{family: w.family}}
-                    className="group/wp focus-visible:ring-ring/50 overflow-hidden border outline-none focus-visible:ring-3"
-                >
-                    <img
-                        src={dataUrl(`ports/wallpapers/${thumbPath(w.id, mode, "landscape")}`)}
-                        alt={`${w.name} wallpaper`}
-                        className="aspect-video w-full object-cover transition-transform group-hover/wp:scale-[1.02] motion-reduce:transition-none"
-                        loading="lazy"
-                    />
-                </Link>
+                <LinkCard key={w.id} render={<Link to="/ports/wallpapers" search={{family: w.family}} />}>
+                    <LinkCardMedia>
+                        <img
+                            src={dataUrl(`ports/wallpapers/${thumbPath(w.id, mode, "landscape")}`)}
+                            alt=""
+                            className="aspect-video w-full object-cover"
+                            loading="lazy"
+                        />
+                    </LinkCardMedia>
+                    <CardHeader>
+                        <CardTitle>{catalog?.families[w.family] ?? w.name}</CardTitle>
+                        <CardAction>
+                            <LinkCardArrow />
+                        </CardAction>
+                    </CardHeader>
+                </LinkCard>
             ))}
         </div>
     );

@@ -4,6 +4,7 @@ import {CATEGORIES} from "@termicolor/build";
 
 import {PortSearch, type PortSearchParams} from "@/components/port-search";
 import {useSearchUpdate} from "@/hooks/use-search-update";
+import {usePageTitle} from "@/lib/site";
 
 const STATUSES = ["all", "available", "planned"] as const;
 
@@ -22,6 +23,7 @@ export const Route = createFileRoute("/ports/")({
 });
 
 function PortsIndex() {
+    usePageTitle("Ports");
     const search = Route.useSearch();
     const updateSearch = useSearchUpdate<PortSearchParams>();
     return (

@@ -97,7 +97,7 @@ export function buildDocs({registry, catalog, design}: SearchSources): SearchDoc
             id: "page:ports",
             kind: "page",
             title: "All ports",
-            summary: "Every app termicolor themes, available and planned.",
+            summary: "Every app TermiColor themes, available and planned.",
             body: Object.values(CATEGORIES).join(" "),
             to: "/ports",
         },

@@ -50,7 +50,7 @@ function Brand({className}: {className?: string}) {
         <span className={className}>
             <Logo className="size-7" />
             <span className="font-mono text-sm font-semibold tracking-tight">
-                termi<span className="text-primary-text">color</span>
+                Termi<span className="text-primary-text">Color</span>
             </span>
         </span>
     );
@@ -74,7 +74,7 @@ export function SiteHeader() {
                     </nav>
                     <PortsTree />
                 </SiteHeaderMenu>
-                <SiteHeaderBrand aria-label="Termicolor home" render={<Link to="/" />}>
+                <SiteHeaderBrand aria-label="TermiColor home" render={<Link to="/" />}>
                     <Brand className="flex items-center gap-2" />
                 </SiteHeaderBrand>
                 <SiteNav aria-label="Site">

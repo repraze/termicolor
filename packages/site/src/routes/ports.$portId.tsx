@@ -16,6 +16,7 @@ import {langFor} from "@/lib/highlight";
 import {portBuildQuery, usesAccentQuery} from "@/lib/port-build";
 import {saveBlob} from "@/lib/rasterize";
 import {registryQuery} from "@/lib/registry";
+import {usePageTitle} from "@/lib/site";
 
 export const Route = createFileRoute("/ports/$portId")({
     validateSearch: (search: Record<string, unknown>): {accent?: AccentName} => ({
@@ -43,6 +44,7 @@ function PortPage() {
     const {portId} = Route.useParams();
     const {data: registry} = useSuspenseQuery(registryQuery);
     const entry = registry.find((e) => e.id === portId);
+    usePageTitle(entry?.name);
     if (!entry || entry.status !== "available") {
         return null;
     }

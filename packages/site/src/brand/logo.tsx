@@ -6,12 +6,12 @@ const fluid = (svg: string) => svg.replace(/width="\d+" height="\d+"/, 'width="1
 const SVG = fluid(spriteSvg());
 const BADGE_SVG = fluid(spriteSvg({badge: true}));
 
-/** The termicolor cyborg head, inlined. Size it with className (e.g. `size-8`); the SVG fills the box. */
+/** The TermiColor cyborg head, inlined. Size it with className (e.g. `size-8`); the SVG fills the box. */
 export function Logo({className, badge = false}: {className?: string; badge?: boolean}) {
     return (
         <span
             role="img"
-            aria-label="termicolor"
+            aria-label="TermiColor"
             className={className}
             style={{display: "inline-block", lineHeight: 0}}
             // Static markup generated from our own sprite grid, never from user input.

@@ -9,6 +9,7 @@ import {CopyIcon} from "lucide-react";
 
 import {MODE_LABELS, ModeScope} from "@/components/mode-scope";
 import {clickable} from "@/lib/interactive";
+import {usePageTitle} from "@/lib/site";
 import {cn} from "@/lib/utils";
 
 export const Route = createFileRoute("/palette")({
@@ -16,6 +17,7 @@ export const Route = createFileRoute("/palette")({
 });
 
 function PalettePage() {
+    usePageTitle("Palette");
     return (
         <SiteContainer render={<main />} className="flex flex-col gap-12 py-8 lg:py-10">
             <PageHeader>

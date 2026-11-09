@@ -1,5 +1,5 @@
 /**
- * Termicolor brand mark: a 32x32 pixel-art split-face portrait, drawn Doom-HUD style with fake 3D shading
+ * TermiColor brand mark: a 32x32 pixel-art split-face portrait, drawn Doom-HUD style with fake 3D shading
  * (light from the top left, dithered ramps, a red rim light on the right). The left half is human; the right
  * half is a machine whose slit eye glows red like a terminal `_` cursor, with the glow spilling onto the socket.
  *
