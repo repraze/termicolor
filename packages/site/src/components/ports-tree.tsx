@@ -33,6 +33,13 @@ export function groupPorts(registry: RegistryEntry[]) {
         .filter((g) => g.available.length || g.planned);
 }
 
+/** The available ports before and after `portId`, in sidebar order (for the page's Pager). */
+export function portNeighbors(registry: RegistryEntry[], portId: string) {
+    const order = groupPorts(registry).flatMap((g) => g.available);
+    const i = order.findIndex((e) => e.id === portId);
+    return {prev: i > 0 ? order[i - 1] : undefined, next: i >= 0 ? order[i + 1] : undefined};
+}
+
 /**
  * Category tree of ports, on the suite's sidebar parts (same items as the kernelkit docs sidebar).
  * `onNavigate` lets the mobile sheet close itself.

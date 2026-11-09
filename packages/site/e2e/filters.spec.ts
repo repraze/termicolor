@@ -6,7 +6,7 @@ for (const {name, path, click} of [
     {name: "ports status", path: "ports", click: "Planned"},
 ]) {
     test(`${name} filter updates the URL in place`, async ({page}) => {
-        await page.setViewportSize({width: 1280, height: 600});
+        await page.setViewportSize({width: 1280, height: 720});
         await page.goto(path);
         const button = page.getByRole("button", {name: click, exact: true}).first();
         await button.waitFor();

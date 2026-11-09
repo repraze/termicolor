@@ -1,13 +1,14 @@
 import {useClipboard} from "@mantine/hooks";
 import {Badge} from "@repraze/kernelkit/components/badge";
 import {PageHeader, PageHeaderDescription, PageHeaderTitle} from "@repraze/kernelkit/components/page-header";
-import {SiteContainer} from "@repraze/kernelkit/components/site-layout";
+import {SiteAside, SiteLayout, SiteMain} from "@repraze/kernelkit/components/site-layout";
 import {ACCENTS, allModes, checkMode, contrast, type Hex, type Mode} from "@repraze/termicolor";
 import {createFileRoute} from "@tanstack/react-router";
 import {cva} from "class-variance-authority";
 import {CopyIcon} from "lucide-react";
 
 import {MODE_LABELS, ModeScope} from "@/components/mode-scope";
+import {PageToc} from "@/components/page-toc";
 import {clickable} from "@/lib/interactive";
 import {usePageTitle} from "@/lib/site";
 import {cn} from "@/lib/utils";
@@ -19,20 +20,25 @@ export const Route = createFileRoute("/palette")({
 function PalettePage() {
     usePageTitle("Palette");
     return (
-        <SiteContainer render={<main />} className="flex flex-col gap-12 py-8 lg:py-10">
-            <PageHeader>
-                <PageHeaderTitle>Palette</PageHeaderTitle>
-                <PageHeaderDescription>
-                    Dark accents are the hand-tuned seeds. Light accents keep the same hue and are darkened in OKLCH
-                    until they reach 4.8:1 on white; each accent gets a paired foreground for solid fills. High contrast
-                    variants keep the accents and change only surfaces, borders and secondary text. Click any swatch to
-                    copy its hex.
-                </PageHeaderDescription>
-            </PageHeader>
-            {allModes().map((mode) => (
-                <ModeSection key={mode.id} mode={mode} />
-            ))}
-        </SiteContainer>
+        <SiteLayout>
+            <SiteMain>
+                <PageHeader>
+                    <PageHeaderTitle>Palette</PageHeaderTitle>
+                    <PageHeaderDescription>
+                        Dark accents are the hand-tuned seeds. Light accents keep the same hue and are darkened in OKLCH
+                        until they reach 4.8:1 on white; each accent gets a paired foreground for solid fills. High
+                        contrast variants keep the accents and change only surfaces, borders and secondary text. Click
+                        any swatch to copy its hex.
+                    </PageHeaderDescription>
+                </PageHeader>
+                {allModes().map((mode) => (
+                    <ModeSection key={mode.id} mode={mode} />
+                ))}
+            </SiteMain>
+            <SiteAside>
+                <PageToc sections={allModes().map((mode) => ({id: mode.id, title: MODE_LABELS[mode.id]}))} />
+            </SiteAside>
+        </SiteLayout>
     );
 }
 
@@ -44,7 +50,7 @@ function ModeSection({mode}: {mode: Mode}) {
         <ModeScope
             id={mode.id}
             mode={mode}
-            className="bg-card flex scroll-mt-16 flex-col gap-4 border p-4"
+            className="bg-card flex scroll-mt-24 flex-col gap-4 border p-3 sm:p-4"
             data-testid={`mode-${mode.id}`}
         >
             <h2 className="text-lg font-bold">{MODE_LABELS[mode.id]}</h2>
@@ -77,21 +83,24 @@ function ModeSection({mode}: {mode: Mode}) {
             </Group>
 
             <Group title="ANSI 16 · dim">
-                <div className="grid grid-cols-8">
+                {/* 4 columns on phones: 8 hex labels don't fit side by side under ~640px */}
+                <div className="grid grid-cols-4 sm:grid-cols-8">
                     {Object.entries(mode.ansi).map(([name, hex]) => (
                         <Swatch
                             key={name}
                             hex={hex}
                             label={String(Object.keys(mode.ansi).indexOf(name))}
                             text={readable(hex, r)}
+                            stacked
                         />
                     ))}
                     {Object.entries(mode.ansiDim).map(([name, hex]) => (
                         <Swatch
                             key={`dim-${name}`}
                             hex={hex}
-                            label="dim"
+                            label={`dim ${Object.keys(mode.ansiDim).indexOf(name)}`}
                             text={readable(hex, r, "#000000", "#ffffff")}
+                            stacked
                         />
                     ))}
                 </div>
@@ -133,17 +142,33 @@ function Group({title, children}: {title: string; children: React.ReactNode}) {
 const swatchVariants = cva(
     "group/click relative flex items-end justify-between p-2 text-left text-xs outline-none hover:shadow-[inset_0_0_0_2px_currentColor] focus-visible:shadow-[inset_0_0_0_2px_currentColor]",
     {
-        variants: {tall: {true: "h-16", false: "h-8"}},
-        defaultVariants: {tall: false},
+        variants: {
+            tall: {true: "h-16", false: "h-8"},
+            /** label over hex, for narrow cells (the ANSI grid) */
+            stacked: {true: "h-auto min-w-0 flex-col items-start justify-end gap-0.5", false: ""},
+        },
+        defaultVariants: {tall: false, stacked: false},
     },
 );
 
-function Swatch({hex, label, text, tall}: {hex: Hex; label: string; text: Hex; tall?: boolean}) {
+function Swatch({
+    hex,
+    label,
+    text,
+    tall,
+    stacked,
+}: {
+    hex: Hex;
+    label: string;
+    text: Hex;
+    tall?: boolean;
+    stacked?: boolean;
+}) {
     const clipboard = useClipboard({timeout: 1000});
     return (
         <button
             type="button"
-            className={swatchVariants({tall})}
+            className={cn(swatchVariants({tall, stacked}))}
             style={{background: hex, color: text}}
             onClick={() => clipboard.copy(hex)}
             title={`Copy ${hex}`}

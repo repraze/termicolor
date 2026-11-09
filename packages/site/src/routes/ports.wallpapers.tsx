@@ -1,7 +1,10 @@
+import {SiteAside, SiteMain} from "@repraze/kernelkit/components/site-layout";
 import {useSuspenseQuery} from "@tanstack/react-query";
 import {createFileRoute} from "@tanstack/react-router";
 
+import {PageToc} from "@/components/page-toc";
 import {PortHeader, PortInstall} from "@/components/port-header";
+import {PortPager} from "@/components/port-pager";
 import {type GalleryFilter, WallpaperGallery} from "@/components/wallpaper-gallery";
 import {useSearchUpdate} from "@/hooks/use-search-update";
 import {useTheme} from "@/hooks/use-theme";
@@ -47,20 +50,31 @@ function WallpapersPage() {
         orientation: search.orientation ?? "landscape",
     };
     return (
-        <div className="flex flex-col gap-8">
-            <PortHeader entry={entry} />
-            <PortInstall entry={entry} />
-            <WallpaperGallery
-                catalog={catalog}
-                filter={filter}
-                onFilterChange={(next) =>
-                    updateSearch({
-                        family: next.family,
-                        mode: next.mode === resolved ? undefined : next.mode,
-                        orientation: next.orientation === "landscape" ? undefined : next.orientation,
-                    })
-                }
-            />
-        </div>
+        <>
+            <SiteMain>
+                <PortHeader entry={entry} />
+                <PortInstall entry={entry} />
+                <WallpaperGallery
+                    catalog={catalog}
+                    filter={filter}
+                    onFilterChange={(next) =>
+                        updateSearch({
+                            family: next.family,
+                            mode: next.mode === resolved ? undefined : next.mode,
+                            orientation: next.orientation === "landscape" ? undefined : next.orientation,
+                        })
+                    }
+                />
+                <PortPager portId={entry.id} />
+            </SiteMain>
+            <SiteAside>
+                <PageToc
+                    sections={[
+                        {id: "install", title: "Install"},
+                        {id: "gallery", title: "Gallery"},
+                    ]}
+                />
+            </SiteAside>
+        </>
     );
 }

@@ -1,4 +1,5 @@
 import {PageHeader, PageHeaderDescription, PageHeaderTitle} from "@repraze/kernelkit/components/page-header";
+import {SiteMain} from "@repraze/kernelkit/components/site-layout";
 import {createFileRoute} from "@tanstack/react-router";
 import {CATEGORIES} from "@termicolor/build";
 
@@ -27,7 +28,7 @@ function PortsIndex() {
     const search = Route.useSearch();
     const updateSearch = useSearchUpdate<PortSearchParams>();
     return (
-        <div className="flex flex-col gap-6">
+        <SiteMain className="gap-6">
             <PageHeader>
                 <PageHeaderTitle>Ports</PageHeaderTitle>
                 <PageHeaderDescription>
@@ -36,6 +37,6 @@ function PortsIndex() {
                 </PageHeaderDescription>
             </PageHeader>
             <PortSearch params={search} onChange={updateSearch} />
-        </div>
+        </SiteMain>
     );
 }

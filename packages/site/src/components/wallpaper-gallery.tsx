@@ -247,9 +247,9 @@ export function WallpaperGallery({
 
     return (
         <FormatContext value={format}>
-            <section className="flex flex-col gap-4" aria-labelledby="gallery-heading">
+            <section id="gallery" className="flex scroll-mt-24 flex-col gap-4" aria-labelledby="gallery-heading">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <h2 id="gallery-heading" className="text-lg font-bold">
+                    <h2 id="gallery-heading" className="font-heading text-xl font-semibold">
                         Gallery
                     </h2>
                     <span className="text-muted-foreground font-mono text-xs">

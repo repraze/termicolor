@@ -1,5 +1,6 @@
 import {useClipboard} from "@mantine/hooks";
 import {Button} from "@repraze/kernelkit/components/button";
+import {SiteAside, SiteMain} from "@repraze/kernelkit/components/site-layout";
 import {Tabs, TabsList, TabsTrigger} from "@repraze/kernelkit/components/tabs";
 import {ToggleGroup, ToggleGroupItem} from "@repraze/kernelkit/components/toggle-group";
 import {type AccentName, ACCENTS} from "@repraze/termicolor";
@@ -9,7 +10,9 @@ import {ArrowLeftIcon, CheckIcon, CopyIcon, DownloadIcon} from "lucide-react";
 import {useState} from "react";
 
 import {CodeBlock} from "@/components/code-block";
+import {PageToc} from "@/components/page-toc";
 import {PortHeader, PortInstall} from "@/components/port-header";
+import {PortPager} from "@/components/port-pager";
 import {useSearchUpdate} from "@/hooks/use-search-update";
 import {usePortAccent} from "@/hooks/use-theme";
 import {langFor} from "@/lib/highlight";
@@ -31,12 +34,12 @@ export const Route = createFileRoute("/ports/$portId")({
     },
     component: PortPage,
     notFoundComponent: () => (
-        <div className="flex flex-col items-start gap-4">
+        <SiteMain className="items-start gap-4">
             <p className="text-sm">That port isn't available yet.</p>
             <Button variant="outline" render={<Link to="/ports" />}>
                 <ArrowLeftIcon /> All ports
             </Button>
-        </div>
+        </SiteMain>
     ),
 });
 
@@ -49,12 +52,22 @@ function PortPage() {
         return null;
     }
     return (
-        <div className="flex flex-col gap-8">
-            <PortHeader entry={entry} />
-            <PortInstall entry={entry} />
-
-            <FileViewer portId={entry.id} />
-        </div>
+        <>
+            <SiteMain>
+                <PortHeader entry={entry} />
+                <PortInstall entry={entry} />
+                <FileViewer portId={entry.id} />
+                <PortPager portId={entry.id} />
+            </SiteMain>
+            <SiteAside>
+                <PageToc
+                    sections={[
+                        {id: "install", title: "Install"},
+                        {id: "files", title: "Files"},
+                    ]}
+                />
+            </SiteAside>
+        </>
     );
 }
 
@@ -75,9 +88,9 @@ function FileViewer({portId}: {portId: string}) {
     const clipboard = useClipboard({timeout: 1500});
 
     return (
-        <section className="flex flex-col gap-3" data-testid="port-files">
+        <section id="files" className="flex scroll-mt-24 flex-col gap-3" data-testid="port-files">
             <div className="flex flex-wrap items-end justify-between gap-3">
-                <h2 className="text-lg font-bold">Files</h2>
+                <h2 className="font-heading text-xl font-semibold">Files</h2>
                 {accentDriven && (
                     <AccentPicker
                         value={accent}

@@ -58,7 +58,7 @@ export function PortHeader({entry}: {entry: AvailableEntry}) {
 /** The registry entry's install notes. */
 export function PortInstall({entry}: {entry: AvailableEntry}) {
     return (
-        <section className="flex flex-col gap-3">
+        <section id="install" className="flex scroll-mt-24 flex-col gap-3">
             <h2 className="font-heading text-xl font-semibold">Install</h2>
             <Markdown source={entry.install} />
         </section>
