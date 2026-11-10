@@ -35,19 +35,26 @@ for (const theme of THEMES) {
             .toBeGreaterThanOrEqual(theme.contrast ? 1.35 : 1.05);
     });
 
-    test(`menu popup has the mode's border and a visible highlight ${theme.name}`, async ({page}) => {
+    test(`theme menu popup has the mode's border and visible item states ${theme.name}`, async ({page}) => {
         await useTheme(page, theme);
         await page.goto("");
         await page.getByTestId("theme-menu").click();
-        const popup = page.locator('[data-slot="dropdown-menu-content"]');
+        const popup = page.locator('[data-slot="theme-menu-content"]');
         await expect(popup).toBeVisible();
         // the outline is a real border (kernelkit popupSurface), in the mode's border role
         expect(hex(await popup.evaluate((el) => getComputedStyle(el).borderTopColor))).toBe(r.border);
-        const item = popup.getByRole("menuitemradio", {name: "Dark"});
-        await item.hover();
-        await expect
-            .poll(async () => hex(await item.evaluate((el) => getComputedStyle(el).backgroundColor)))
-            .toBe(mode.accentRoles[SITE_ACCENT].accentTint);
+        // the current mode is a pressed toggle, on the accent tint
+        const modes = popup.getByRole("group", {name: "Mode"});
+        const current = modes.getByRole("button", {name: theme.scheme === "dark" ? "Dark" : "Light"});
+        await expect(current).toHaveAttribute("aria-pressed", "true");
+        expect(hex(await current.evaluate((el) => getComputedStyle(el).backgroundColor))).toBe(
+            mode.accentRoles[SITE_ACCENT].accentTint,
+        );
+        // another mode shows a hover wash it doesn't have at rest
+        const other = modes.getByRole("button", {name: "System"});
+        const rest = await other.evaluate((el) => getComputedStyle(el).backgroundColor);
+        await other.hover();
+        await expect.poll(async () => other.evaluate((el) => getComputedStyle(el).backgroundColor)).not.toBe(rest);
     });
 }
 

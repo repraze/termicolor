@@ -4,12 +4,12 @@
 /* KernelKit: TermiColor palette, shadcn tokens, components' classes, color/radius/field/code tokens. */
 @import "@repraze/kernelkit/styles.css";
 
-/* The site's own look on top of the kit: Geist to read, JetBrains Mono for titles, square corners. */
+/* The site's own look on top of the kit: Geist to read, JetBrains Mono for titles. Square corners are the
+   theme's default radius (SITE_THEME, a .radius-none class), so the theme menu can change them. */
 :root {
     --kk-font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
     --kk-font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
     --kk-font-heading: var(--kk-font-mono);
-    --kk-radius: 0px;
 }
 
 @layer base {

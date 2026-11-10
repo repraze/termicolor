@@ -9,26 +9,7 @@
             content="TermiColor - a high contrast, bright, techy color system for your editor, terminal, browser and more."
         />
         <title>TermiColor</title>
-        <script>
-            // Apply the stored theme before first paint (keys match src/hooks/use-theme.ts).
-            (function () {
-                var read = function (key, fallback) {
-                    try {
-                        return JSON.parse(localStorage.getItem(key)) || fallback;
-                    } catch (e) {
-                        return fallback;
-                    }
-                };
-                var pref = read("termicolor-theme", "system");
-                var dark =
-                    pref === "dark" || (pref === "system" && !matchMedia("(prefers-color-scheme: light)").matches);
-                var root = document.documentElement.classList;
-                root.toggle("dark", dark);
-                root.toggle("light", !dark);
-                root.toggle("hc", read("termicolor-contrast", "normal") === "high");
-                root.add("accent-" + read("termicolor-accent", "red"));
-            })();
-        </script>
+        <!-- termicolor:theme-script -->
     </head>
     <body>
         <div id="root"></div>

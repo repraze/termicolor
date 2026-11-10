@@ -1,4 +1,5 @@
 import {SiteAside, SiteMain} from "@repraze/kernelkit/components/site-layout";
+import {useTheme} from "@repraze/kernelkit/provider";
 import {useSuspenseQuery} from "@tanstack/react-query";
 import {createFileRoute} from "@tanstack/react-router";
 
@@ -7,7 +8,6 @@ import {PortHeader, PortInstall} from "@/components/port-header";
 import {PortPager} from "@/components/port-pager";
 import {type GalleryFilter, WallpaperGallery} from "@/components/wallpaper-gallery";
 import {useSearchUpdate} from "@/hooks/use-search-update";
-import {useTheme} from "@/hooks/use-theme";
 import {registryQuery} from "@/lib/registry";
 import {usePageTitle} from "@/lib/site";
 import {catalogQuery} from "@/lib/wallpaper-catalog";
@@ -38,7 +38,7 @@ function WallpapersPage() {
     const {data: catalog} = useSuspenseQuery(catalogQuery);
     const search = Route.useSearch();
     const updateSearch = useSearchUpdate();
-    const {resolved} = useTheme();
+    const {resolvedMode: resolved} = useTheme();
     const entry = registry.find((e) => e.id === "wallpapers");
     if (!entry || entry.status !== "available") {
         return null;

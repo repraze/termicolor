@@ -9,6 +9,7 @@ import {
     SiteNav,
     SiteNavLink,
 } from "@repraze/kernelkit/components/site-header";
+import {ThemeMenu} from "@repraze/kernelkit/components/theme-menu";
 import {Link, useLocation} from "@tanstack/react-router";
 import {useEffect, useState} from "react";
 
@@ -16,7 +17,6 @@ import {Logo} from "@/brand/logo";
 import {GithubIcon} from "@/components/github-icon";
 import {PortsTree} from "@/components/ports-tree";
 import {SiteSearch} from "@/components/site-search";
-import {ThemeToggle} from "@/components/theme-toggle";
 
 const NAV = [
     {to: "/ports", label: "Ports"},
@@ -86,7 +86,7 @@ export function SiteHeader() {
                         orientation="vertical"
                         className="mx-1 hidden data-vertical:h-5 data-vertical:self-center sm:block"
                     />
-                    <ThemeToggle />
+                    <ThemeMenu data-testid="theme-menu" />
                     <Button
                         variant="ghost"
                         size="icon"

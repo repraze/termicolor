@@ -28,6 +28,7 @@ import {
     SectionTitle,
 } from "@repraze/kernelkit/components/section";
 import {SiteContainer} from "@repraze/kernelkit/components/site-layout";
+import {useTheme} from "@repraze/kernelkit/provider";
 import {ACCENTS, allModes} from "@repraze/termicolor";
 import {useQuery} from "@tanstack/react-query";
 import {createFileRoute, Link} from "@tanstack/react-router";
@@ -41,7 +42,6 @@ import {InstallCommand} from "@/components/install-command";
 import {ModePreview} from "@/components/mode-preview";
 import {PortLink} from "@/components/port-link";
 import {SwatchStrip} from "@/components/swatch-strip";
-import {useTheme} from "@/hooks/use-theme";
 import {dataUrl, registryQuery} from "@/lib/registry";
 import {usePageTitle} from "@/lib/site";
 import {catalogQuery} from "@/lib/wallpaper-catalog";
@@ -203,7 +203,7 @@ function HomePage() {
 /** One wallpaper per family, in the current mode. */
 function WallpaperPreview() {
     const {data: catalog} = useQuery(catalogQuery);
-    const mode = useTheme().resolved === "light" ? "light" : "dark";
+    const mode = useTheme().resolvedMode === "light" ? "light" : "dark";
     const picks = catalog
         ? Object.keys(catalog.families).flatMap((family) =>
               catalog.wallpapers.filter((w) => w.family === family).slice(0, 1),

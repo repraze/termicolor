@@ -3,10 +3,13 @@ import {copyFile} from "node:fs/promises";
 import {join} from "node:path";
 import {fileURLToPath, URL} from "node:url";
 
+import {themeScript} from "@repraze/kernelkit/theme";
 import tailwindcss from "@tailwindcss/vite";
 import {tanstackRouter} from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import {defaultClientConditions, defineConfig, type Plugin} from "vite";
+
+import {LEGACY_THEME_MIGRATION, SITE_THEME, THEME_KEY} from "./src/lib/theme.ts";
 
 /** GitHub Pages has no SPA rewrites: serve the app for unknown paths so deep links work. */
 function spaFallback(): Plugin {
@@ -17,6 +20,23 @@ function spaFallback(): Plugin {
             if (dir) {
                 await copyFile(join(dir, "index.html"), join(dir, "404.html"));
             }
+        },
+    };
+}
+
+/**
+ * Inline the pre-paint theme script (KernelKit's, with the site's key and defaults) so the stored mode,
+ * contrast, accent and radius apply before first paint; the legacy migration runs first.
+ */
+function themeScriptPlugin(): Plugin {
+    return {
+        name: "termicolor-theme-script",
+        transformIndexHtml(html) {
+            const script = themeScript({storageKey: THEME_KEY, defaults: SITE_THEME});
+            return html.replace(
+                "<!-- termicolor:theme-script -->",
+                `<script>${LEGACY_THEME_MIGRATION}\n${script}</script>`,
+            );
         },
     };
 }
@@ -46,7 +66,13 @@ export default defineConfig({
         // everything for 10 min, and an old catalog next to new thumbnails shows broken images.
         "import.meta.env.VITE_BUILD_ID": JSON.stringify(process.env.GITHUB_SHA?.slice(0, 12) ?? "dev"),
     },
-    plugins: [tanstackRouter({target: "react", autoCodeSplitting: true}), react(), tailwindcss(), spaFallback()],
+    plugins: [
+        tanstackRouter({target: "react", autoCodeSplitting: true}),
+        react(),
+        tailwindcss(),
+        themeScriptPlugin(),
+        spaFallback(),
+    ],
     resolve: {
         alias: {"@": fileURLToPath(new URL("./src", import.meta.url))},
         conditions: [...(kernelkitLinked ? ["@repraze/source"] : []), ...defaultClientConditions],

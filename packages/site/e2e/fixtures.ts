@@ -1,5 +1,7 @@
 import {type Page, test as base} from "@playwright/test";
 
+import {THEME_KEY} from "../src/lib/theme";
+
 export const THEMES = [
     {name: "dark", scheme: "dark", contrast: false},
     {name: "light", scheme: "light", contrast: false},
@@ -8,18 +10,15 @@ export const THEMES = [
 ] as const;
 export type Theme = (typeof THEMES)[number];
 
-/** Seeds the persisted theme before any page script runs. */
+/**
+ * Seeds the persisted theme before any page script runs: KernelKit's ThemeProvider object under
+ * THEME_KEY. Fields left out (accent, radius) fall back to the site's defaults.
+ */
 export async function useTheme(page: Page, theme: Theme, accent?: string) {
-    await page.addInitScript(
-        ([scheme, contrast, accent]) => {
-            localStorage.setItem("termicolor-theme", JSON.stringify(scheme));
-            localStorage.setItem("termicolor-contrast", JSON.stringify(contrast ? "high" : "normal"));
-            if (accent) {
-                localStorage.setItem("termicolor-accent", JSON.stringify(accent));
-            }
-        },
-        [theme.scheme, theme.contrast, accent] as const,
-    );
+    await page.addInitScript(([key, value]) => localStorage.setItem(key, value), [
+        THEME_KEY,
+        JSON.stringify({mode: theme.scheme, contrast: theme.contrast ? "high" : "normal", ...(accent && {accent})}),
+    ] as const);
 }
 
 /** Fails the test on uncaught page errors and console errors. */
