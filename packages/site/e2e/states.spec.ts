@@ -51,7 +51,7 @@ for (const theme of THEMES) {
             const expected = mode.accentRoles[accent ?? SITE_ACCENT].accentFill;
             expect(hex(await button.evaluate((el) => getComputedStyle(el).backgroundColor))).toBe(expected);
             // nested mode previews follow the page accent too
-            const nested = page.locator('[data-mode="light"]');
+            const nested = page.locator('[data-mode="light"]').first();
             const nestedAccent = await nested.evaluate((el) =>
                 getComputedStyle(el).getPropertyValue("--tc-accent").trim(),
             );

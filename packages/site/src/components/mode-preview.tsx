@@ -2,6 +2,7 @@ import {ACCENTS, type Mode} from "@repraze/termicolor";
 
 import {CodeBlock} from "@/components/code-block";
 import {MODE_LABELS, ModeScope} from "@/components/mode-scope";
+import {cn} from "@/lib/utils";
 
 const SAMPLE = `// one palette, every app
 type Mode = "dark" | "light";
@@ -14,9 +15,9 @@ export function accent(mode: Mode, hc = false): string {
 const ansi = (name: string) => ({color: `var(--tc-ansi-${name})`});
 
 /** A mini "editor + terminal" rendered in one palette mode. */
-export function ModePreview({mode}: {mode: Mode}) {
+export function ModePreview({mode, className}: {mode: Mode; className?: string}) {
     return (
-        <ModeScope mode={mode} className="flex flex-col border">
+        <ModeScope mode={mode} className={cn("flex min-w-0 flex-col border", className)}>
             <div className="flex items-center justify-between border-b px-3 py-2">
                 <h3 className="text-xs font-bold tracking-widest uppercase">{MODE_LABELS[mode.id]}</h3>
                 <code className="text-muted-foreground text-[0.65rem]">
@@ -35,7 +36,7 @@ export function ModePreview({mode}: {mode: Mode}) {
                     </div>
                 ))}
             </div>
-            <CodeBlock code={SAMPLE} lang="tsx" className="border-x-0 border-t-0" />
+            <CodeBlock code={SAMPLE} lang="tsx" className="flex-1 border-x-0 border-t-0" />
             <pre className="bg-card p-3 font-mono text-xs leading-relaxed">
                 <span style={ansi("green")}>repraze</span>
                 <span className="text-muted-foreground">@</span>

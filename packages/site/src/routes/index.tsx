@@ -12,10 +12,11 @@ import {
 import {
     Hero,
     HeroActions,
+    HeroBody,
     HeroDescription,
     HeroEyebrow,
     HeroFooter,
-    HeroMedia,
+    HeroShowcase,
     HeroTitle,
 } from "@repraze/kernelkit/components/hero";
 import {
@@ -33,9 +34,10 @@ import {createFileRoute, Link} from "@tanstack/react-router";
 import {CATEGORIES} from "@termicolor/build";
 import {ArrowRightIcon} from "lucide-react";
 
-import {Logo} from "@/brand/logo";
 import {CodeBlock} from "@/components/code-block";
 import {GithubIcon} from "@/components/github-icon";
+import {PaletteShowcase} from "@/components/hero-showcase";
+import {InstallCommand} from "@/components/install-command";
 import {ModePreview} from "@/components/mode-preview";
 import {PortLink} from "@/components/port-link";
 import {SwatchStrip} from "@/components/swatch-strip";
@@ -64,33 +66,40 @@ function HomePage() {
     const featured = FEATURED.flatMap((id) => available.filter((e) => e.id === id));
     return (
         <main className="flex flex-1 flex-col">
-            <Hero>
-                <HeroMedia>
-                    <Logo className="size-16 md:size-24" />
-                </HeroMedia>
-                <HeroEyebrow>
-                    <Badge variant="outline" className="font-mono">
-                        {available.length} ports · {allModes().length} modes · {ACCENTS.length} accents
-                    </Badge>
-                </HeroEyebrow>
-                <HeroTitle>
-                    High contrast. Bright. <span className="text-primary-text">Techy.</span>
-                </HeroTitle>
-                <HeroDescription>
-                    One palette, generated into themes for your editor, terminal, prompt, browser and code blocks. Every
-                    color checked for contrast on every build.
-                </HeroDescription>
-                <HeroActions>
-                    <Button size="lg" render={<Link to="/ports" />}>
-                        Browse {available.length} ports <ArrowRightIcon data-icon="inline-end" />
-                    </Button>
-                    <Button size="lg" variant="outline" render={<Link to="/palette" />}>
-                        Explore the palette
-                    </Button>
-                </HeroActions>
-                <HeroFooter>
-                    <SwatchStrip className="w-full max-w-3xl [&>div]:h-12" />
-                </HeroFooter>
+            <Hero layout="split">
+                <HeroBody>
+                    <HeroEyebrow>
+                        <Badge variant="outline" className="font-mono">
+                            {available.length} ports · {allModes().length} modes · {ACCENTS.length} accents
+                        </Badge>
+                    </HeroEyebrow>
+                    <HeroTitle>
+                        High contrast. Bright. <span className="text-primary-text">Techy.</span>
+                    </HeroTitle>
+                    <HeroDescription>
+                        One palette, generated into themes for your editor, terminal, prompt, browser and code blocks.
+                        Every color checked for contrast on every build.
+                    </HeroDescription>
+                    <HeroActions>
+                        <Button size="lg" render={<Link to="/ports" />}>
+                            Browse {available.length} ports <ArrowRightIcon data-icon="inline-end" />
+                        </Button>
+                        <Button size="lg" variant="outline" render={<Link to="/palette" />}>
+                            Explore the palette
+                        </Button>
+                    </HeroActions>
+                    <HeroFooter>
+                        {/* the carousel shows the accents from lg; below it, the strip does */}
+                        <SwatchStrip className="w-full max-w-3xl lg:hidden [&>div]:h-12" />
+                        <InstallCommand
+                            pkg="@repraze/termicolor"
+                            className="hidden w-full max-w-sm text-left lg:block"
+                        />
+                    </HeroFooter>
+                </HeroBody>
+                <HeroShowcase>
+                    <PaletteShowcase />
+                </HeroShowcase>
             </Hero>
 
             <SiteContainer className="divide-border flex flex-col divide-y">
