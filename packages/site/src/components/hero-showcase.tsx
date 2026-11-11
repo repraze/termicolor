@@ -39,7 +39,7 @@ function AccentTiers() {
     return (
         <div className={`${SLIDE} bg-card flex flex-col border`}>
             <div className="flex items-center justify-between border-b px-3 py-2">
-                <h3 className="text-xs font-bold tracking-widest uppercase">8 accents · 4 tiers</h3>
+                <h3 className="font-mono text-xs font-bold tracking-widest uppercase">8 accents · 4 tiers</h3>
                 <code className="text-muted-foreground text-[0.65rem]">fill · text · tint · bright</code>
             </div>
             <div className="grid flex-1 grid-cols-4">

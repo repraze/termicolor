@@ -19,7 +19,7 @@ export function ModePreview({mode, className}: {mode: Mode; className?: string})
     return (
         <ModeScope mode={mode} className={cn("flex min-w-0 flex-col border", className)}>
             <div className="flex items-center justify-between border-b px-3 py-2">
-                <h3 className="text-xs font-bold tracking-widest uppercase">{MODE_LABELS[mode.id]}</h3>
+                <h3 className="font-mono text-xs font-bold tracking-widest uppercase">{MODE_LABELS[mode.id]}</h3>
                 <code className="text-muted-foreground text-[0.65rem]">
                     {mode.roles.bg} / {mode.roles.fg}
                 </code>

@@ -29,6 +29,7 @@ import {
 } from "@repraze/kernelkit/components/section";
 import {SiteContainer} from "@repraze/kernelkit/components/site-layout";
 import {useTheme} from "@repraze/kernelkit/provider";
+import {GithubIcon, usePageTitle} from "@repraze/kernelkit/site";
 import {ACCENTS, allModes} from "@repraze/termicolor";
 import {useQuery} from "@tanstack/react-query";
 import {createFileRoute, Link} from "@tanstack/react-router";
@@ -36,14 +37,13 @@ import {CATEGORIES} from "@termicolor/build";
 import {ArrowRightIcon} from "lucide-react";
 
 import {CodeBlock} from "@/components/code-block";
-import {GithubIcon} from "@/components/github-icon";
 import {PaletteShowcase} from "@/components/hero-showcase";
 import {InstallCommand} from "@/components/install-command";
 import {ModePreview} from "@/components/mode-preview";
 import {PortLink} from "@/components/port-link";
 import {SwatchStrip} from "@/components/swatch-strip";
 import {dataUrl, registryQuery} from "@/lib/registry";
-import {usePageTitle} from "@/lib/site";
+import {SITE_NAME} from "@/lib/site";
 import {catalogQuery} from "@/lib/wallpaper-catalog";
 import {thumbPath} from "@/lib/wallpapers";
 
@@ -61,7 +61,7 @@ const palette = createPalette({accent: "pink"});
 palette.modes.dark.roles.bg; // "#171717"`;
 
 function HomePage() {
-    usePageTitle();
+    usePageTitle(undefined, SITE_NAME);
     const available = Route.useLoaderData({select: (r) => r.filter((e) => e.status === "available")});
     const featured = FEATURED.flatMap((id) => available.filter((e) => e.id === id));
     return (

@@ -38,8 +38,9 @@ describe("brand mark", () => {
         expect(markSvg({size: 512})).toContain('width="512" height="512"');
     });
 
-    it("matches the checked-in favicon (regenerate with npx tsx scripts/brand.ts)", () => {
-        const favicon = readFileSync(new URL("../../public/favicon.svg", import.meta.url), "utf8");
-        expect(favicon.trim()).toBe(markSvg());
+    // the favicon is generated from markSvg() at build time (the kit's faviconPlugin), so only this file is checked in
+    it("matches the checked-in 512px mark (regenerate with npx tsx scripts/brand.ts)", () => {
+        const mark = readFileSync(new URL("../../public/brand/termicolor-512.svg", import.meta.url), "utf8");
+        expect(mark.trim()).toBe(markSvg({size: 512}));
     });
 });

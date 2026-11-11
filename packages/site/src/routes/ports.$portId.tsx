@@ -3,6 +3,7 @@ import {Button} from "@repraze/kernelkit/components/button";
 import {SiteAside, SiteMain} from "@repraze/kernelkit/components/site-layout";
 import {Tabs, TabsList, TabsTrigger} from "@repraze/kernelkit/components/tabs";
 import {ToggleGroup, ToggleGroupItem} from "@repraze/kernelkit/components/toggle-group";
+import {usePageTitle} from "@repraze/kernelkit/site";
 import {type AccentName, ACCENTS} from "@repraze/termicolor";
 import {keepPreviousData, useQuery, useSuspenseQuery} from "@tanstack/react-query";
 import {createFileRoute, Link, notFound} from "@tanstack/react-router";
@@ -19,7 +20,7 @@ import {langFor} from "@/lib/highlight";
 import {portBuildQuery, usesAccentQuery} from "@/lib/port-build";
 import {saveBlob} from "@/lib/rasterize";
 import {registryQuery} from "@/lib/registry";
-import {usePageTitle} from "@/lib/site";
+import {SITE_NAME} from "@/lib/site";
 
 export const Route = createFileRoute("/ports/$portId")({
     validateSearch: (search: Record<string, unknown>): {accent?: AccentName} => ({
@@ -47,7 +48,7 @@ function PortPage() {
     const {portId} = Route.useParams();
     const {data: registry} = useSuspenseQuery(registryQuery);
     const entry = registry.find((e) => e.id === portId);
-    usePageTitle(entry?.name);
+    usePageTitle(entry?.name, SITE_NAME);
     if (!entry || entry.status !== "available") {
         return null;
     }

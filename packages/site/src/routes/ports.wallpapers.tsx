@@ -1,5 +1,6 @@
 import {SiteAside, SiteMain} from "@repraze/kernelkit/components/site-layout";
 import {useTheme} from "@repraze/kernelkit/provider";
+import {usePageTitle} from "@repraze/kernelkit/site";
 import {useSuspenseQuery} from "@tanstack/react-query";
 import {createFileRoute} from "@tanstack/react-router";
 
@@ -9,7 +10,7 @@ import {PortPager} from "@/components/port-pager";
 import {type GalleryFilter, WallpaperGallery} from "@/components/wallpaper-gallery";
 import {useSearchUpdate} from "@/hooks/use-search-update";
 import {registryQuery} from "@/lib/registry";
-import {usePageTitle} from "@/lib/site";
+import {SITE_NAME} from "@/lib/site";
 import {catalogQuery} from "@/lib/wallpaper-catalog";
 import {MODES, type Orientation, ORIENTATIONS, type WallpaperMode} from "@/lib/wallpapers";
 
@@ -33,7 +34,7 @@ export const Route = createFileRoute("/ports/wallpapers")({
 });
 
 function WallpapersPage() {
-    usePageTitle("Wallpapers");
+    usePageTitle("Wallpapers", SITE_NAME);
     const {data: registry} = useSuspenseQuery(registryQuery);
     const {data: catalog} = useSuspenseQuery(catalogQuery);
     const search = Route.useSearch();

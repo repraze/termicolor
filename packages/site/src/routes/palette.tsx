@@ -2,6 +2,7 @@ import {useClipboard} from "@mantine/hooks";
 import {Badge} from "@repraze/kernelkit/components/badge";
 import {PageHeader, PageHeaderDescription, PageHeaderTitle} from "@repraze/kernelkit/components/page-header";
 import {SiteAside, SiteLayout, SiteMain} from "@repraze/kernelkit/components/site-layout";
+import {usePageTitle} from "@repraze/kernelkit/site";
 import {ACCENTS, allModes, checkMode, contrast, type Hex, type Mode} from "@repraze/termicolor";
 import {createFileRoute} from "@tanstack/react-router";
 import {cva} from "class-variance-authority";
@@ -10,7 +11,7 @@ import {CopyIcon} from "lucide-react";
 import {MODE_LABELS, ModeScope} from "@/components/mode-scope";
 import {PageToc} from "@/components/page-toc";
 import {clickable} from "@/lib/interactive";
-import {usePageTitle} from "@/lib/site";
+import {SITE_NAME} from "@/lib/site";
 import {cn} from "@/lib/utils";
 
 export const Route = createFileRoute("/palette")({
@@ -18,7 +19,7 @@ export const Route = createFileRoute("/palette")({
 });
 
 function PalettePage() {
-    usePageTitle("Palette");
+    usePageTitle("Palette", SITE_NAME);
     return (
         <SiteLayout>
             <SiteMain>
@@ -53,7 +54,7 @@ function ModeSection({mode}: {mode: Mode}) {
             className="bg-card flex scroll-mt-24 flex-col gap-4 border p-3 sm:p-4"
             data-testid={`mode-${mode.id}`}
         >
-            <h2 className="text-lg font-bold">{MODE_LABELS[mode.id]}</h2>
+            <h2 className="font-heading text-lg font-bold">{MODE_LABELS[mode.id]}</h2>
 
             <Group title="Accent tiers · fill · text · tint · bright">
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -132,7 +133,7 @@ function readable(hex: Hex, r: Mode["roles"], ...extra: Hex[]): Hex {
 function Group({title, children}: {title: string; children: React.ReactNode}) {
     return (
         <div className="flex flex-col gap-2">
-            <h3 className="text-muted-foreground text-xs tracking-widest uppercase">{title}</h3>
+            <h3 className="text-muted-foreground font-mono text-xs tracking-widest uppercase">{title}</h3>
             {children}
         </div>
     );

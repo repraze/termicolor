@@ -1,26 +1,5 @@
 @import "tailwindcss";
-@import "@fontsource-variable/jetbrains-mono";
-@import "@fontsource-variable/geist";
-/* KernelKit: TermiColor palette, shadcn tokens, components' classes, color/radius/field/code tokens. */
-@import "@repraze/kernelkit/styles.css";
-
-/* The site's own look on top of the kit: Geist to read, JetBrains Mono for titles. Square corners are the
-   theme's default radius (SITE_THEME, a .radius-none class), so the theme menu can change them. */
-:root {
-    --kk-font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
-    --kk-font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
-    --kk-font-heading: var(--kk-font-mono);
-}
-
-@layer base {
-    /* Mono for titles, labels and code; Geist for reading. */
-    h1,
-    h2,
-    h3,
-    h4,
-    code,
-    kbd,
-    pre {
-        @apply font-mono;
-    }
-}
+/* KernelKit: TermiColor palette, shadcn tokens, components' classes, color/radius/field/code tokens, and the
+   suite fonts (Geist to read, JetBrains Mono for code and labels). Square corners are the theme's default
+   radius (SITE_THEME, a .radius-none class), so the theme menu can change them. */
+@import "@repraze/kernelkit/site.css";

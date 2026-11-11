@@ -1,11 +1,12 @@
 import {PageHeader, PageHeaderDescription, PageHeaderTitle} from "@repraze/kernelkit/components/page-header";
 import {SiteMain} from "@repraze/kernelkit/components/site-layout";
+import {usePageTitle} from "@repraze/kernelkit/site";
 import {createFileRoute} from "@tanstack/react-router";
 import {CATEGORIES} from "@termicolor/build";
 
 import {PortSearch, type PortSearchParams} from "@/components/port-search";
 import {useSearchUpdate} from "@/hooks/use-search-update";
-import {usePageTitle} from "@/lib/site";
+import {SITE_NAME} from "@/lib/site";
 
 const STATUSES = ["all", "available", "planned"] as const;
 
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/ports/")({
 });
 
 function PortsIndex() {
-    usePageTitle("Ports");
+    usePageTitle("Ports", SITE_NAME);
     const search = Route.useSearch();
     const updateSearch = useSearchUpdate<PortSearchParams>();
     return (
