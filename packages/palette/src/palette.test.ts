@@ -16,6 +16,29 @@ test("every contrast guarantee holds", () => {
     );
 });
 
+/** Perceptual distance (OKLab ΔE ×100). Contrast ratios miss chroma, so they understate a tint on grey. */
+function deltaE(a: string, b: string): number {
+    const lab = (hex: string) => {
+        const {l, c, h} = oklch(hex);
+        const rad = (h * Math.PI) / 180;
+        return [l, c * Math.cos(rad), c * Math.sin(rad)];
+    };
+    const [x, y] = [lab(a), lab(b)];
+    return Math.hypot(x[0]! - y[0]!, x[1]! - y[1]!, x[2]! - y[2]!) * 100;
+}
+
+test("tints (accentTint: menu highlight, selected row) stand out on every surface", () => {
+    for (const mode of allModes(palette)) {
+        const r = mode.roles;
+        for (const name of ACCENTS) {
+            for (const [surface, hex] of Object.entries({bg: r.bg, bgSunken: r.bgSunken, bgRaised: r.bgRaised})) {
+                const d = deltaE(mode.tints[name], hex);
+                assert.ok(d >= 4.5, `${mode.id}: tint-${name} on ${surface} ΔE ${d.toFixed(1)} < 4.5`);
+            }
+        }
+    }
+});
+
 test("dark accents are the brand seeds", () => {
     assert.deepEqual(palette.modes.dark.accents, DARK_ACCENTS);
 });

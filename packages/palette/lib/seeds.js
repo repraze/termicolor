@@ -57,7 +57,7 @@ export const RULES = {
     /** Text on a solid accent fill must reach this contrast. */
     onAccentContrast: 4.5,
     /** Tints: opaque accent washes for badges, diff lines and selected rows (share of accent over bg). */
-    tint: { dark: 0.16, light: 0.12 },
+    tint: { dark: 0.2, light: 0.18 },
     /** High contrast tints: stronger, so a tinted state reads on the single flat surface. */
     tintHighContrast: { dark: 0.42, light: 0.22 },
     /** ANSI faint/dim: each ANSI color mixed this far toward bg. */

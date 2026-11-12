@@ -41,10 +41,10 @@
     merge-conflict-theirs-diff-header-decoration-style = "#404040" box
     # restyles git's --color-moved output (set diff.colorMoved = default)
     map-styles = \
-        bold purple => syntax "#2d2637", \
-        bold blue => syntax "#202937", \
-        bold cyan => syntax "#223233", \
-        bold yellow => syntax "#342f20"
+        bold purple => syntax "#332a3f", \
+        bold blue => syntax "#222d3f", \
+        bold cyan => syntax "#24393b", \
+        bold yellow => syntax "#3c3522"
 
 [delta "termicolor-light"]
     light = true
@@ -86,7 +86,7 @@
     merge-conflict-theirs-diff-header-decoration-style = "#d4d4d4" box
     # restyles git's --color-moved output (set diff.colorMoved = default)
     map-styles = \
-        bold purple => syntax "#f3eaff", \
-        bold blue => syntax "#e3efff", \
-        bold cyan => syntax "#e5eff0", \
-        bold yellow => syntax "#f4ece3"
+        bold purple => syntax "#eedfff", \
+        bold blue => syntax "#d5e6ff", \
+        bold cyan => syntax "#d8e7e9", \
+        bold yellow => syntax "#efe3d6"

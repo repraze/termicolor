@@ -52,7 +52,7 @@ tier by **what sits on top of it**.
 | **text**  | `accents`       | colored text, icons, links, syntax, borders, indicators                             | ≥ 4.5:1 on `bg`                 |
 | **fill**  | `fills`         | vivid solid surfaces: buttons, badges, swatches, powerline segments, active matches | text on it is `onFill`, ≥ 4.5:1 |
 | on accent | `on`            | text on an `accents` surface, when a slot must reuse the text color as a fill       | ≥ 4.5:1                         |
-| **tint**  | `tints`         | opaque wash behind **`fg`** text: soft badges, diff lines, selected list rows       | `fg` on it ≥ 12:1               |
+| **tint**  | `tints`         | opaque wash behind **`fg`** text: soft badges, diff lines, selected list rows       | `fg` on it ≥ 11:1               |
 | bright    | `brights`       | ANSI 9–14, hover states of accent-colored elements                                  | none (decorative)               |
 
 Rules:

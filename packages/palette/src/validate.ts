@@ -23,7 +23,7 @@ export function checkMode(mode: Mode): Check[] {
             `fg on tint-${n}`,
             r.fg,
             tints[n],
-            mode.contrast === "high" ? 7 : 12,
+            mode.contrast === "high" ? 7 : 11,
         ]),
         // a tinted state (menu highlight, selected row) must be visible on the flat hc surface
         ...(mode.contrast === "high"
@@ -50,7 +50,7 @@ export function checkMode(mode: Mode): Check[] {
         // every accent must be a valid choice, not just the default
         ...ACCENTS.flatMap((n): [string, Hex, Hex, number][] => [
             [`fg on selection (${n})`, r.fg, solid(mode.accentRoles[n].selection, r.bg), 7],
-            [`fg on accentTint (${n})`, r.fg, mode.accentRoles[n].accentTint, mode.contrast === "high" ? 7 : 12],
+            [`fg on accentTint (${n})`, r.fg, mode.accentRoles[n].accentTint, mode.contrast === "high" ? 7 : 11],
         ]),
         ["ansi black on bg", ansi.black, r.bg, mode.type === "dark" ? 1.5 : 7],
         ["ansi brightBlack on bg", ansi.brightBlack, r.bg, 3.5],
