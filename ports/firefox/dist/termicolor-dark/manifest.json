@@ -1,0 +1,58 @@
+{
+    "manifest_version": 2,
+    "name": "Termicolor Dark",
+    "version": "0.1.0",
+    "description": "High contrast, bright, techy color theme",
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "termicolor-dark@repraze.com"
+        }
+    },
+    "theme": {
+        "colors": {
+            "frame": "#0a0a0a",
+            "frame_inactive": "#0a0a0a",
+            "tab_selected": "#171717",
+            "tab_text": "#fafafa",
+            "tab_background_text": "#a3a3a3",
+            "tab_background_separator": "#262626",
+            "tab_line": "#bb7aff",
+            "tab_loading": "#bb7aff",
+            "toolbar": "#171717",
+            "toolbar_text": "#fafafa",
+            "toolbar_top_separator": "#262626",
+            "toolbar_bottom_separator": "#262626",
+            "toolbar_vertical_separator": "#262626",
+            "bookmark_text": "#a3a3a3",
+            "icons": "#a3a3a3",
+            "icons_attention": "#bb7aff",
+            "button_background_hover": "#fafafa26",
+            "button_background_active": "#fafafa4d",
+            "toolbar_field": "#262626",
+            "toolbar_field_text": "#fafafa",
+            "toolbar_field_border": "#404040",
+            "toolbar_field_focus": "#262626",
+            "toolbar_field_text_focus": "#fafafa",
+            "toolbar_field_border_focus": "#bb7aff",
+            "toolbar_field_highlight": "#bb7aff4d",
+            "toolbar_field_highlight_text": "#fafafa",
+            "popup": "#262626",
+            "popup_text": "#fafafa",
+            "popup_border": "#404040",
+            "popup_highlight": "#332a3f",
+            "popup_highlight_text": "#fafafa",
+            "sidebar": "#0a0a0a",
+            "sidebar_text": "#fafafa",
+            "sidebar_border": "#262626",
+            "sidebar_highlight": "#332a3f",
+            "sidebar_highlight_text": "#fafafa",
+            "ntp_background": "#0a0a0a",
+            "ntp_text": "#fafafa",
+            "ntp_card_background": "#262626"
+        },
+        "properties": {
+            "color_scheme": "dark",
+            "content_color_scheme": "dark"
+        }
+    }
+}
