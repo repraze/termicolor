@@ -10,12 +10,13 @@ for (const {name, path, click} of [
         await page.goto(path);
         const button = page.getByRole("button", {name: click, exact: true}).first();
         await button.waitFor();
-        // scroll a little, keeping the button on screen (Playwright scrolls hidden targets into view)
-        await page.evaluate(() => window.scrollTo(0, 120));
+        // scroll a little, keeping the button on screen (Playwright scrolls hidden targets into view);
+        // small enough that the filtered page (only a few planned ports) can still hold it
+        await page.evaluate(() => window.scrollTo(0, 40));
         const historyBefore = await page.evaluate(() => history.length);
         await button.click();
         await expect(page).toHaveURL(new RegExp(`${click.toLowerCase()}`));
-        expect(await page.evaluate(() => scrollY)).toBe(120);
+        expect(await page.evaluate(() => scrollY)).toBe(40);
         expect(await page.evaluate(() => history.length)).toBe(historyBefore);
     });
 }

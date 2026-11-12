@@ -83,6 +83,49 @@
         ]
     },
     {
+        "id": "dark-reader",
+        "name": "Dark Reader",
+        "category": "browser",
+        "description": "Background, text, selection and scrollbar colors for Dark Reader's dark and light schemes.",
+        "homepage": "https://darkreader.org",
+        "tags": [
+            "darkreader",
+            "extension",
+            "chrome",
+            "firefox",
+            "edge",
+            "safari",
+            "browser"
+        ],
+        "install": "\n**By hand (recommended):** open Dark Reader → **Settings** (or **See all options**) → **Colors** and type in the\nvalues from `colors.md`. Background and text are stored per scheme: enter the dark values while the mode is\n**Dark**, then switch to **Light** and enter the light values. These colors apply to the **Dynamic** engine.\n\n**Import:** `termicolor.json` holds both schemes plus selection and scrollbar colors. In **Settings** →\n**Advanced** → **Import Settings**, pick the file. Import is not a merge within the theme: it replaces Dark\nReader's whole global theme (brightness, contrast, sepia, grayscale, font and engine go back to defaults, mode to\nDark). Site lists, per-site themes and other settings are left alone. Use **Export Settings** first to keep a\nbackup.\n",
+        "status": "available",
+        "source": "https://github.com/repraze/termicolor/tree/main/ports/dark-reader",
+        "files": [
+            "termicolor.json",
+            "colors.md"
+        ]
+    },
+    {
+        "id": "discord",
+        "name": "Discord",
+        "category": "app",
+        "description": "Vencord / BetterDiscord CSS",
+        "homepage": "https://discord.com/",
+        "tags": [
+            "chat",
+            "vencord",
+            "betterdiscord",
+            "css"
+        ],
+        "install": "\nNeeds a client mod that loads custom CSS. Client mods break Discord's Terms of Service, so use them at your own risk.\n\n- **Vencord / Equicord**: **Settings → Vencord → Themes → Open Themes Folder**, drop\n  `termicolor-dark.theme.css` and/or `termicolor-light.theme.css` in, then enable it in the list. Or paste the\n  file's raw GitHub URL under **Online Themes**.\n- **BetterDiscord**: **Settings → BetterDiscord → Themes → Open Themes Folder**, drop the file in, and toggle it on.\n\nEach file only styles its own mode: set **User Settings → Appearance** to *Dark* (Darker and Midnight work too) for\n`termicolor-dark`, or *Light* for `termicolor-light`. Enable both to follow whichever you pick.\n",
+        "status": "available",
+        "source": "https://github.com/repraze/termicolor/tree/main/ports/discord",
+        "files": [
+            "termicolor-dark.theme.css",
+            "termicolor-light.theme.css"
+        ]
+    },
+    {
         "id": "firefox",
         "name": "Firefox",
         "category": "browser",
@@ -312,6 +355,26 @@
         ]
     },
     {
+        "id": "nilesoft-shell",
+        "name": "Nilesoft Shell",
+        "category": "system",
+        "description": "Windows context menu theme: menu surface, highlighted item, border, separators and glyphs.",
+        "homepage": "https://nilesoft.org",
+        "tags": [
+            "windows",
+            "context-menu",
+            "explorer"
+        ],
+        "install": "\nOpen the Shell folder: hold **Shift**, right-click the taskbar, then *Shell → directory*.\n\n1. Copy `termicolor.nss` (follows the Windows light/dark setting), or `termicolor-dark.nss` /\n   `termicolor-light.nss` for a fixed mode, into the `imports` folder.\n2. In `shell.nss`, replace the theme import with yours:\n\n   ```\n   import 'imports/termicolor.nss'\n   ```\n\n3. Reload: hold **Shift**, right-click the taskbar and choose *Exit Explorer* (Explorer restarts on its own).\n",
+        "status": "available",
+        "source": "https://github.com/repraze/termicolor/tree/main/ports/nilesoft-shell",
+        "files": [
+            "termicolor.nss",
+            "termicolor-dark.nss",
+            "termicolor-light.nss"
+        ]
+    },
+    {
         "id": "obsidian",
         "name": "Obsidian",
         "category": "app",
@@ -373,6 +436,25 @@
         ]
     },
     {
+        "id": "spicetify",
+        "name": "Spotify (Spicetify)",
+        "category": "app",
+        "description": "Spotify theme",
+        "homepage": "https://spicetify.app/",
+        "tags": [
+            "spotify",
+            "music",
+            "spicetify"
+        ],
+        "install": "\nNeeds [Spicetify](https://spicetify.app/). Copy the `Termicolor` folder into Spicetify's `Themes` folder, so you\nend up with `Themes/Termicolor/color.ini` and `user.css`:\n\n| OS            | Path                            |\n| ------------- | ------------------------------- |\n| Linux / macOS | `~/.config/spicetify/Themes/` |\n| Windows       | `%APPDATA%\\spicetify\\Themes\\` |\n\n(`spicetify path userdata` prints the folder that holds `Themes`.) Then pick the theme and a color scheme,\n`dark` or `light`, and apply:\n\n```sh\nspicetify config current_theme Termicolor color_scheme dark\nspicetify apply\n```\n",
+        "status": "available",
+        "source": "https://github.com/repraze/termicolor/tree/main/ports/spicetify",
+        "files": [
+            "Termicolor/color.ini",
+            "Termicolor/user.css"
+        ]
+    },
+    {
         "verified": {
             "date": "2026-11-12"
         },
@@ -399,6 +481,25 @@
         ]
     },
     {
+        "id": "telegram",
+        "name": "Telegram",
+        "category": "app",
+        "description": "Telegram Desktop palettes: chat list, bubbles, menus, folders side bar, media viewer and calls.",
+        "homepage": "https://desktop.telegram.org/",
+        "tags": [
+            "tdesktop",
+            "chat",
+            "messenger"
+        ],
+        "install": "\n**Load it:** in Telegram Desktop open **Settings → Chat Settings → Chat background → Choose from file** and pick\n`termicolor-dark.tdesktop-palette` or `termicolor-light.tdesktop-palette`, then **Apply** in the preview.\n\nOr send the file to your **Saved Messages** and click it there to preview and apply it.\n\n**Chat background:** a palette has no wallpaper, so pick a plain one under **Chat background** afterwards (a dark\nsolid color for the dark palette) so the bubbles sit on a quiet surface.\n\n**Make a `.tdesktop-theme`** (to share it, or to bundle a wallpaper): rename the palette to\n`colors.tdesktop-theme` and zip it, optionally next to a `background.jpg` (or `tiled.jpg` to tile it):\n\n```sh\ncp termicolor-dark.tdesktop-palette colors.tdesktop-theme\nzip termicolor-dark.tdesktop-theme colors.tdesktop-theme  # add background.jpg here if you have one\n```\n\nThis covers Telegram Desktop (Windows, macOS, Linux) only; the mobile apps use other theme formats.\n",
+        "status": "available",
+        "source": "https://github.com/repraze/termicolor/tree/main/ports/telegram",
+        "files": [
+            "termicolor-dark.tdesktop-palette",
+            "termicolor-light.tdesktop-palette"
+        ]
+    },
+    {
         "id": "tmux",
         "name": "tmux",
         "category": "terminal",
@@ -416,6 +517,24 @@
         "files": [
             "termicolor-dark.conf",
             "termicolor-light.conf"
+        ]
+    },
+    {
+        "id": "userstyles",
+        "name": "Userstyles",
+        "category": "browser",
+        "description": "Website restyles (GitHub first)",
+        "homepage": "https://github.com/openstyles/stylus",
+        "tags": [
+            "stylus",
+            "github",
+            "usercss"
+        ],
+        "install": "\nInstall the [Stylus](https://github.com/openstyles/stylus) extension for your browser, then open a style's raw URL.\nStylus spots the `.user.css` and offers to install it, and checks the same URL for updates:\n\n- **GitHub**: [`github.user.css`](https://github.com/repraze/termicolor/raw/main/ports/userstyles/dist/github.user.css)\n\nOr download the file and use **Manage → Import** in Stylus.\n\n**GitHub:** the style follows GitHub's own theme setting (**Settings → Appearance**): any dark theme gets the\nTermicolor dark colors, any light theme the light ones, and *Sync with system* switches with your OS. It recolors\nGitHub's Primer variables, so pages GitHub hasn't moved to them yet may keep some stock colors.\n",
+        "status": "available",
+        "source": "https://github.com/repraze/termicolor/tree/main/ports/userstyles",
+        "files": [
+            "github.user.css"
         ]
     },
     {
@@ -1015,6 +1134,31 @@
         ]
     },
     {
+        "id": "windows-theme",
+        "name": "Windows theme pack",
+        "category": "system",
+        "description": "Windows 11 themes: dark or light mode, the accent color on Start, taskbar and controls, and a slideshow of Termicolor wallpapers.",
+        "homepage": "https://support.microsoft.com/windows/personalize-your-computer",
+        "tags": [
+            "windows",
+            "windows 11",
+            "theme",
+            "deskthemepack",
+            "accent",
+            "wallpaper",
+            "slideshow",
+            "personalization"
+        ],
+        "install": "\n1. **Wallpapers:** Windows can't use SVG, and the repo only commits SVG, so download the landscape wallpapers\n   you want from the [wallpaper gallery](https://repraze.github.io/termicolor/ports/wallpapers) as **JPG** (the default), dark ones for the Dark\n   theme and light ones for the Light theme. Each theme starts on a 4K gradient led by its accent, then\n   shuffles through every image in its folder every 30 minutes.\n2. **Install:** put `install.ps1` and both `.theme` files in one folder and run\n\n   ```powershell\n   powershell -ExecutionPolicy Bypass -File install.ps1 -Mode Dark -Source \"$HOME\\Downloads\"\n   ```\n\n   It copies `termicolor-*-dark-*.jpg` / `-light-` landscape files into\n   `%LOCALAPPDATA%\\Microsoft\\Windows\\Themes\\Termicolor\\Dark\\` and `...\\Light\\`, installs both themes next\n   to them and applies one. Switch later in *Settings → Personalization → Themes*.\n\n**By hand:** copy the JPG/PNG wallpapers into those `Dark\\` and `Light\\` folders yourself, then double-click\n`Termicolor Dark.theme` (or *Settings → Personalization → Themes → Browse*). A missing first wallpaper is fine\nonce the folder has images: the slideshow takes over.\n\nThe accent is fixed (`AutoColorization=0`). To also color the taskbar and title bars, turn on *Show accent color\non Start and taskbar* and *on title bars* in *Settings → Personalization → Colors* (Start and taskbar need dark\nmode).\n\nA single-file `.deskthemepack` is a CAB archive with the wallpapers rendered to JPG inside; that needs a binary\nbuild step (CI) and isn't produced yet.\n",
+        "status": "available",
+        "source": "https://github.com/repraze/termicolor/tree/main/ports/windows-theme",
+        "files": [
+            "Termicolor Dark.theme",
+            "Termicolor Light.theme",
+            "install.ps1"
+        ]
+    },
+    {
         "id": "zed",
         "name": "Zed",
         "category": "editor",
@@ -1049,75 +1193,6 @@
             "termicolor-dark.zsh",
             "termicolor-light.zsh"
         ]
-    },
-    {
-        "id": "windows-theme",
-        "name": "Windows theme pack",
-        "category": "system",
-        "description": "Wallpapers + accent color in one install",
-        "tier": 1,
-        "tags": [
-            "deskthemepack"
-        ],
-        "status": "planned"
-    },
-    {
-        "id": "discord",
-        "name": "Discord",
-        "category": "app",
-        "description": "Vencord / BetterDiscord CSS",
-        "tier": 2,
-        "catppuccinStars": 1456,
-        "status": "planned"
-    },
-    {
-        "id": "dark-reader",
-        "name": "Dark Reader",
-        "category": "browser",
-        "description": "Dark Reader preset",
-        "tier": 2,
-        "catppuccinStars": 466,
-        "status": "planned"
-    },
-    {
-        "id": "userstyles",
-        "name": "Userstyles",
-        "category": "browser",
-        "description": "Website restyles (GitHub first)",
-        "tier": 2,
-        "catppuccinStars": 1146,
-        "tags": [
-            "stylus",
-            "github"
-        ],
-        "status": "planned"
-    },
-    {
-        "id": "spicetify",
-        "name": "Spotify (Spicetify)",
-        "category": "app",
-        "description": "Spotify theme",
-        "tier": 2,
-        "catppuccinStars": 604,
-        "status": "planned"
-    },
-    {
-        "id": "telegram",
-        "name": "Telegram",
-        "category": "app",
-        "description": "Desktop theme",
-        "tier": 2,
-        "catppuccinStars": 307,
-        "status": "planned"
-    },
-    {
-        "id": "nilesoft-shell",
-        "name": "Nilesoft Shell",
-        "category": "system",
-        "description": "Windows context menu",
-        "tier": 2,
-        "catppuccinStars": 299,
-        "status": "planned"
     },
     {
         "id": "kde",

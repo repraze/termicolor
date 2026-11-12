@@ -35,7 +35,7 @@ describe("site search", () => {
     });
 
     it("sends planned ports to the filtered list", () => {
-        const hit = search(index, "windows theme pack").find((h) => h.planned);
+        const hit = search(index, "hyprland wayland").find((h) => h.planned);
         expect(hit).toMatchObject({to: "/ports", search: {status: "planned"}});
     });
 

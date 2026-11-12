@@ -1,0 +1,118 @@
+/**
+ * Every color key Telegram Desktop reads from a theme palette, in upstream order.
+ *
+ * Key names only, listed from `ui/colors.palette` in desktop-app/lib_ui (master @ 88ab21aa181e, 2026-11), the
+ * default palette Telegram Desktop is built with. No upstream values or comments are copied. Refresh the list from
+ * that file when Telegram adds keys; `port.test.ts` fails until the new keys get a color.
+ */
+export const KEYS: readonly string[] = `
+    windowBg windowFg windowBgOver windowBgRipple windowFgOver windowSubTextFg windowSubTextFgOver windowBoldFg
+    windowBoldFgOver windowBgActive windowFgActive windowActiveTextFg windowShadowFg windowShadowFgFallback shadowFg
+    slideFadeOutBg slideFadeOutShadowFg imageBg imageBgTransparent activeButtonBg activeButtonBgOver
+    activeButtonBgRipple activeButtonFg activeButtonFgOver activeButtonSecondaryFg activeButtonSecondaryFgOver
+    activeLineFg activeLineFgError lightButtonBg lightButtonBgOver lightButtonBgRipple lightButtonFg lightButtonFgOver
+    attentionButtonFg attentionButtonFgOver attentionButtonBgOver attentionButtonBgRipple menuBg menuBgOver
+    menuBgRipple menuIconFg menuIconFgOver menuSubmenuArrowFg menuFgDisabled menuSeparatorFg scrollBarBg
+    scrollBarBgOver scrollBg scrollBgOver smallCloseIconFg smallCloseIconFgOver radialFg radialBg placeholderFg
+    placeholderFgActive inputBorderFg filterInputBorderFg filterInputActiveBg filterInputInactiveBg checkboxFg botKbBg
+    botKbDownBg botKbColor botKbPrimaryBg botKbDangerBg botKbSuccessBg botKbInlinePrimaryBg botKbInlineDangerBg
+    botKbInlineSuccessBg sliderBgInactive sliderBgActive tooltipBg tooltipFg tooltipBorderFg titleShadow titleBg
+    titleBgActive titleButtonBg titleButtonFg titleButtonBgOver titleButtonFgOver titleButtonBgActive
+    titleButtonFgActive titleButtonBgActiveOver titleButtonFgActiveOver titleButtonCloseBg titleButtonCloseFg
+    titleButtonCloseBgOver titleButtonCloseFgOver titleButtonCloseBgActive titleButtonCloseFgActive
+    titleButtonCloseBgActiveOver titleButtonCloseFgActiveOver titleFg titleFgActive trayCounterBg trayCounterBgMute
+    trayCounterFg trayCounterBgMacInvert trayCounterFgMacInvert layerBg cancelIconFg cancelIconFgOver boxBg boxTextFg
+    boxTextFgGood boxTextFgError boxTitleFg boxSearchBg boxTitleAdditionalFg boxTitleCloseFg boxTitleCloseFgOver
+    boxDividerBg boxDividerFg paymentsTipActive membersAboutLimitFg contactsBg contactsBgOver contactsNameFg
+    contactsStatusFg contactsStatusFgOver contactsStatusFgOnline photoCropFadeBg photoCropPointFg callArrowFg
+    callArrowMissedFg introBg introTitleFg introDescriptionFg introCoverTopBg introCoverBottomBg introCoverIconsFg
+    introCoverPlaneTrace introCoverPlaneInner introCoverPlaneOuter introCoverPlaneTop dialogsMenuIconFg
+    dialogsMenuIconFgOver dialogsBg dialogsNameFg dialogsChatIconFg dialogsDateFg dialogsTextFg dialogsTextFgService
+    dialogsDraftFg dialogsVerifiedIconBg dialogsVerifiedIconFg dialogsSendingIconFg dialogsSentIconFg dialogsUnreadBg
+    dialogsUnreadBgMuted dialogsUnreadFg dialogsArchiveFg dialogsOnlineBadgeFg dialogsScamFg dialogsBgOver
+    dialogsNameFgOver dialogsChatIconFgOver dialogsDateFgOver dialogsTextFgOver dialogsTextFgServiceOver
+    dialogsDraftFgOver dialogsVerifiedIconBgOver dialogsVerifiedIconFgOver dialogsSendingIconFgOver
+    dialogsSentIconFgOver dialogsUnreadBgOver dialogsUnreadBgMutedOver dialogsUnreadFgOver dialogsArchiveFgOver
+    dialogsScamFgOver dialogsBgActive dialogsNameFgActive dialogsChatIconFgActive dialogsDateFgActive
+    dialogsTextFgActive dialogsTextFgServiceActive dialogsDraftFgActive dialogsVerifiedIconBgActive
+    dialogsVerifiedIconFgActive dialogsSendingIconFgActive dialogsSentIconFgActive dialogsUnreadBgActive
+    dialogsUnreadBgMutedActive dialogsUnreadFgActive dialogsOnlineBadgeFgActive dialogsScamFgActive dialogsRippleBg
+    dialogsRippleBgActive searchedBarBg searchedBarFg searchedTextMatchBg searchedTextMatchFg
+    searchedTextCurrentMatchBg searchedTextCurrentMatchFg topBarBg emojiPanBg emojiPanCategories emojiPanHeaderFg
+    emojiPanHeaderBg emojiIconFg emojiSubIconFgActive stickerPanDeleteBg stickerPanDeleteFg stickerPreviewBg
+    stickerPanPremium1 stickerPanPremium2 historyTextInFg historyTextInFgSelected historyTextOutFg
+    historyTextOutFgSelected historyLinkInFg historyLinkInFgSelected historyLinkOutFg historyLinkOutFgSelected
+    historyFileNameInFg historyFileNameInFgSelected historyFileNameOutFg historyFileNameOutFgSelected historyOutIconFg
+    historyOutIconFgSelected historyIconFgInverted historySendingOutIconFg historySendingInIconFg
+    historySendingInvertedIconFg historyCallArrowInFg historyCallArrowInFgSelected historyCallArrowMissedInFg
+    historyCallArrowMissedInFgSelected historyCallArrowOutFg historyCallArrowOutFgSelected historyUnreadBarBg
+    historyUnreadBarBorder historyUnreadBarFg historyForwardChooseBg historyForwardChooseFg historyPeer1NameFg
+    historyPeer1NameFgSelected historyPeer1UserpicBg historyPeer2NameFg historyPeer2NameFgSelected
+    historyPeer2UserpicBg historyPeer3NameFg historyPeer3NameFgSelected historyPeer3UserpicBg historyPeer4NameFg
+    historyPeer4NameFgSelected historyPeer4UserpicBg historyPeer5NameFg historyPeer5NameFgSelected
+    historyPeer5UserpicBg historyPeer6NameFg historyPeer6NameFgSelected historyPeer6UserpicBg historyPeer7NameFg
+    historyPeer7NameFgSelected historyPeer7UserpicBg historyPeer8NameFg historyPeer8NameFgSelected
+    historyPeer8UserpicBg historyPeerUserpicFg historyPeerSavedMessagesBg historyPeerArchiveUserpicBg
+    historyPeer1UserpicBg2 historyPeer2UserpicBg2 historyPeer3UserpicBg2 historyPeer4UserpicBg2 historyPeer5UserpicBg2
+    historyPeer6UserpicBg2 historyPeer7UserpicBg2 historyPeer8UserpicBg2 historyPeerSavedMessagesBg2 settingsIconBg1
+    settingsIconBg2 settingsIconBg3 settingsIconBg4 settingsIconBg5 settingsIconBg6 settingsIconBg8
+    settingsIconBgArchive settingsIconFg historyScrollBarBg historyScrollBarBgOver historyScrollBg historyScrollBgOver
+    msgInBg msgInBgSelected msgOutBg msgOutBgSelected msgSelectOverlay msgStickerOverlay msgInServiceFg
+    msgInServiceFgSelected msgOutServiceFg msgOutServiceFgSelected msgInShadow msgInShadowSelected msgOutShadow
+    msgOutShadowSelected msgInDateFg msgInDateFgSelected msgOutDateFg msgOutDateFgSelected msgServiceFg msgServiceBg
+    msgServiceBgSelected msgInReplyBarColor msgInReplyBarSelColor msgOutReplyBarColor msgOutReplyBarSelColor
+    msgImgReplyBarColor msgInMonoFg msgOutMonoFg msgInMonoFgSelected msgOutMonoFgSelected msgDateImgFg msgDateImgBg
+    msgDateImgBgOver msgDateImgBgSelected msgFileThumbLinkInFg msgFileThumbLinkInFgSelected msgFileThumbLinkOutFg
+    msgFileThumbLinkOutFgSelected msgFileInBg msgFileInBgOver msgFileInBgSelected msgFileOutBg msgFileOutBgSelected
+    msgFile1Bg msgFile1BgDark msgFile1BgOver msgFile1BgSelected msgFile2Bg msgFile2BgDark msgFile2BgOver
+    msgFile2BgSelected msgFile3Bg msgFile3BgDark msgFile3BgOver msgFile3BgSelected msgFile4Bg msgFile4BgDark
+    msgFile4BgOver msgFile4BgSelected historyFileInIconFg historyFileInIconFgSelected historyFileInRadialFg
+    historyFileInRadialFgSelected historyFileOutIconFg historyFileOutIconFgSelected historyFileOutRadialFg
+    historyFileOutRadialFgSelected historyFileThumbIconFg historyFileThumbIconFgSelected historyFileThumbRadialFg
+    historyFileThumbRadialFgSelected historyVideoMessageProgressFg msgWaveformInActive msgWaveformInActiveSelected
+    msgWaveformInInactive msgWaveformInInactiveSelected msgWaveformOutActive msgWaveformOutActiveSelected
+    msgWaveformOutInactive msgWaveformOutInactiveSelected msgBotKbOverBgAdd msgBotKbIconFg msgBotKbRippleBg mediaInFg
+    mediaInFgSelected mediaOutFg mediaOutFgSelected youtubePlayIconBg youtubePlayIconFg videoPlayIconBg videoPlayIconFg
+    toastBg toastFg historyToDownBg historyToDownBgOver historyToDownBgRipple historyToDownFg historyToDownFgOver
+    historyToDownShadow historyComposeAreaBg historyComposeAreaFg historyComposeAreaFgService historyComposeIconFg
+    historyComposeIconFgOver historySendIconFg historySendIconFgOver historyPinnedBg historyReplyBg historyReplyIconFg
+    historyReplyCancelFg historyReplyCancelFgOver historyComposeButtonBg historyComposeButtonBgOver
+    historyComposeButtonBgRipple mapPointDrop mapPointDot overviewCheckBg overviewCheckBgActive overviewCheckBorder
+    overviewCheckFgActive overviewPhotoSelectOverlay profileStatusFgOver profileVerifiedCheckBg profileVerifiedCheckFg
+    profileAdminStartFg notificationsBoxMonitorFg notificationsBoxScreenBg notificationSampleUserpicFg
+    notificationSampleCloseFg notificationSampleTextFg notificationSampleNameFg mainMenuBg mainMenuCoverBg
+    mainMenuCloudFg mainMenuCloudBg mediaPlayerBg mediaPlayerActiveFg mediaPlayerInactiveFg mediaPlayerDisabledFg
+    mediaviewFileBg mediaviewFileNameFg mediaviewFileSizeFg mediaviewFileRedCornerFg mediaviewFileYellowCornerFg
+    mediaviewFileGreenCornerFg mediaviewFileBlueCornerFg mediaviewFileExtFg mediaviewMenuBg mediaviewMenuBgOver
+    mediaviewMenuBgRipple mediaviewMenuFg mediaviewBg mediaviewVideoBg mediaviewControlBg mediaviewControlFg
+    mediaviewCaptionBg mediaviewCaptionFg mediaviewTextLinkFg mediaviewSaveMsgBg mediaviewSaveMsgFg
+    mediaviewPlaybackActive mediaviewPlaybackInactive mediaviewPlaybackActiveOver mediaviewPlaybackInactiveOver
+    mediaviewPlaybackProgressFg mediaviewPlaybackIconFg mediaviewPlaybackIconFgOver mediaviewPlaybackIconRipple
+    mediaviewPipControlsFg mediaviewPipControlsFgOver mediaviewPipPlaybackActive mediaviewPipPlaybackInactive
+    mediaviewTransparentBg mediaviewTransparentFg notificationBg callBg callBgOpaque callBgButton callNameFg
+    callStatusFg callIconBg callIconFg callIconBgActive callIconFgActive callIconActiveRipple callAnswerBg
+    callAnswerRipple callAnswerBgOuter callHangupBg callHangupRipple callMuteRipple groupCallBg groupCallActiveFg
+    groupCallMembersBg groupCallMembersBgOver groupCallMembersBgRipple groupCallMembersFg groupCallMemberActiveIcon
+    groupCallMemberActiveStatus groupCallMemberInactiveIcon groupCallMemberInactiveStatus groupCallMemberMutedIcon
+    groupCallMemberNotJoinedStatus groupCallIconFg groupCallLive1 groupCallLive2 groupCallMuted1 groupCallMuted2
+    groupCallForceMutedBar1 groupCallForceMutedBar2 groupCallForceMutedBar3 groupCallForceMuted1 groupCallForceMuted2
+    groupCallForceMuted3 groupCallMenuBg groupCallMenuBgOver groupCallMenuBgRipple groupCallLeaveBg
+    groupCallLeaveBgRipple groupCallVideoTextFg groupCallVideoSubTextFg callBarBg callBarMuteRipple callBarBgMuted
+    callBarFg importantTooltipBg importantTooltipFg importantTooltipFgLink outdatedFg outdateSoonBg outdatedBg
+    spellUnderline walletTitleBg walletTitleBgActive walletTitleButtonBg walletTitleButtonFg walletTitleButtonBgOver
+    walletTitleButtonFgOver walletTitleButtonBgActive walletTitleButtonFgActive walletTitleButtonBgActiveOver
+    walletTitleButtonFgActiveOver walletTitleButtonCloseBg walletTitleButtonCloseFg walletTitleButtonCloseBgOver
+    walletTitleButtonCloseFgOver walletTitleButtonCloseBgActive walletTitleButtonCloseFgActive
+    walletTitleButtonCloseBgActiveOver walletTitleButtonCloseFgActiveOver walletTopBg walletBalanceFg
+    walletSubBalanceFg walletTopLabelFg walletTopIconFg walletTopIconRipple sideBarBg sideBarBgActive sideBarBgRipple
+    sideBarTextFg sideBarTextFgActive sideBarIconFg sideBarIconFgActive sideBarBadgeBg sideBarBadgeBgActive
+    sideBarBadgeBgMuted sideBarBadgeBgMutedActive sideBarBadgeFg songCoverOverlayFg photoEditorItemBaseHandleFg
+    premiumButtonBg1 premiumButtonBg2 premiumButtonBg3 premiumButtonFg premiumIconBg1 premiumIconBg2 premiumIconBg3
+    statisticsChartInactive statisticsChartActive statisticsChartLineBlue statisticsChartLineGreen
+    statisticsChartLineRed statisticsChartLineGolden statisticsChartLineLightblue statisticsChartLineLightgreen
+    statisticsChartLineOrange statisticsChartLineIndigo statisticsChartLinePurple statisticsChartLineCyan creditsBg1
+    creditsBg2 creditsBg3 creditsFg creditsStroke currencyFg rankAdminFg rankOwnerFg rankUserFg dialogsMentionIconFg
+    dialogsReactionIconFg dialogsPollIconFg
+`
+    .trim()
+    .split(/\s+/);
