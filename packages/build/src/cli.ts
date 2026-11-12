@@ -5,12 +5,11 @@ import {fileURLToPath, pathToFileURL} from "node:url";
 import {type AccentName, ACCENTS, checkPalette, createPalette, palette} from "@repraze/termicolor";
 
 import {PLANNED} from "./planned.ts";
-import type {PortDefinition, PortFile} from "./port.ts";
+import {type PortDefinition, type PortFile, REPO_URL, testReportUrl} from "./port.ts";
 import {buildWeb} from "./web.ts";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const PORTS_DIR = join(ROOT, "ports");
-const REPO_URL = "https://github.com/repraze/termicolor";
 
 async function writeFiles(dir: string, files: PortFile[]) {
     await rm(dir, {recursive: true, force: true});
@@ -38,11 +37,22 @@ async function loadPorts(only?: string): Promise<PortDefinition[]> {
     return ports.sort((a, b) => a.name.localeCompare(b.name));
 }
 
+function testing(port: PortDefinition): string {
+    if (port.verified) {
+        const report = port.verified.issue ? ` ([report](${REPO_URL}/issues/${port.verified.issue}))` : "";
+        return `> **Verified** in ${port.name} on ${port.verified.date}${report}.`;
+    }
+    return `> **Needs testing.** This port hasn't been checked in ${port.name} yet. If you try it, please
+> [report how it looks](${testReportUrl(port)}) with a screenshot - see [TESTING.md](../../TESTING.md).`;
+}
+
 function readme(port: PortDefinition, files: PortFile[]): string {
     return `<!-- Generated from port.ts - do not edit -->
 # Termicolor for ${port.name}
 
 ${port.description}
+
+${testing(port)}
 
 ## Install
 

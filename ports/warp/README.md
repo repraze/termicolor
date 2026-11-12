@@ -3,6 +3,9 @@
 
 Dark and light custom themes for the Warp terminal.
 
+> **Needs testing.** This port hasn't been checked in Warp yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+Warp&port=warp) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 1. Copy `termicolor_dark.yaml` and `termicolor_light.yaml` into Warp's themes folder (create it if missing):

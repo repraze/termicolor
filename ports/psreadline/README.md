@@ -3,6 +3,9 @@
 
 Command-line syntax colors for PowerShell (PSReadLine), in dark and light.
 
+> **Needs testing.** This port hasn't been checked in PowerShell PSReadLine yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+PowerShell+PSReadLine&port=psreadline) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 1. Save `termicolor-dark.ps1` (or `-light`) somewhere, for example next to your profile.

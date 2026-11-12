@@ -3,6 +3,9 @@
 
 Resource monitor themes covering every btop theme key, graphs and meters included.
 
+> **Needs testing.** This port hasn't been checked in btop yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+btop&port=btop) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 Copy the theme files to the user themes folder:

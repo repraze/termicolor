@@ -3,6 +3,9 @@
 
 Git TUI theme: borders, selection, cherry-pick and rebase markers.
 
+> **Needs testing.** This port hasn't been checked in lazygit yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+lazygit&port=lazygit) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 Merge one of the files into your lazygit `config.yml`:

@@ -3,6 +3,9 @@
 
 Fish-like command line highlighting for zsh, in the same syntax colors as the editor themes.
 
+> **Needs testing.** This port hasn't been checked in zsh-syntax-highlighting yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+zsh-syntax-highlighting&port=zsh-syntax-highlighting) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 Copy `termicolor-dark.zsh` (or `-light`) to `~/.config/zsh/` and source it in `~/.zshrc`, before the plugin

@@ -49,6 +49,7 @@ function theme({type, roles: r}: Mode) {
 }
 
 export default definePort({
+    verified: {date: "2026-11-12"},
     id: "windows-terminal",
     name: "Windows Terminal",
     category: "terminal",

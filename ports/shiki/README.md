@@ -3,6 +3,9 @@
 
 Syntax highlighting themes for shiki (and Monaco via @shikijs/monaco). Same token rules as VS Code.
 
+> **Needs testing.** This port hasn't been checked in Shiki & Monaco yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+Shiki+%26+Monaco&port=shiki) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 The files are TextMate themes - load them directly:

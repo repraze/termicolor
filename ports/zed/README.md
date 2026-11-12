@@ -3,6 +3,9 @@
 
 Dark and light Zed themes in one family: UI, git, terminal ANSI, collaborators and syntax.
 
+> **Needs testing.** This port hasn't been checked in Zed yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+Zed&port=zed) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 Copy `themes/termicolor.json` into Zed's themes folder: `~/.config/zed/themes/` on Linux and macOS,

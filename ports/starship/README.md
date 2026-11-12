@@ -3,6 +3,8 @@
 
 Palette blocks and a rainbow powerline preset for the Starship prompt.
 
+> **Verified** in Starship on 2026-11-12.
+
 ## Install
 
 **Full preset:** copy `starship-dark.toml` (or `-light`) to `~/.config/starship.toml`.

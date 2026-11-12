@@ -3,6 +3,9 @@
 
 Dark and light kitty themes: ANSI colors plus cursor, selection, borders, tab bar and marks.
 
+> **Needs testing.** This port hasn't been checked in kitty yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+kitty&port=kitty) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 **Theme kitten:** copy `termicolor-dark.conf` and `termicolor-light.conf` into `~/.config/kitty/themes/`,

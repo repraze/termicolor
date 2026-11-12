@@ -373,6 +373,9 @@
         ]
     },
     {
+        "verified": {
+            "date": "2026-11-12"
+        },
         "id": "starship",
         "name": "Starship",
         "category": "shell",
@@ -416,6 +419,9 @@
         ]
     },
     {
+        "verified": {
+            "date": "2026-11-12"
+        },
         "id": "vscode",
         "name": "Visual Studio Code",
         "category": "editor",
@@ -439,6 +445,9 @@
         ]
     },
     {
+        "verified": {
+            "date": "2026-11-12"
+        },
         "id": "wallpapers",
         "name": "Wallpapers",
         "category": "wallpaper",
@@ -983,6 +992,9 @@
         ]
     },
     {
+        "verified": {
+            "date": "2026-11-12"
+        },
         "id": "windows-terminal",
         "name": "Windows Terminal",
         "category": "terminal",

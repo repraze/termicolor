@@ -12,7 +12,7 @@ import {useState} from "react";
 
 import {CodeBlock} from "@/components/code-block";
 import {PageToc} from "@/components/page-toc";
-import {PortHeader, PortInstall} from "@/components/port-header";
+import {PortHeader, PortInstall, PortTesting} from "@/components/port-header";
 import {PortPager} from "@/components/port-pager";
 import {useSearchUpdate} from "@/hooks/use-search-update";
 import {usePortAccent} from "@/hooks/use-theme";
@@ -56,6 +56,7 @@ function PortPage() {
         <>
             <SiteMain>
                 <PortHeader entry={entry} />
+                <PortTesting entry={entry} />
                 <PortInstall entry={entry} />
                 <FileViewer portId={entry.id} />
                 <PortPager portId={entry.id} />
@@ -63,6 +64,7 @@ function PortPage() {
             <SiteAside>
                 <PageToc
                     sections={[
+                        {id: "testing", title: entry.verified ? "Verified" : "Needs testing"},
                         {id: "install", title: "Install"},
                         {id: "files", title: "Files"},
                     ]}

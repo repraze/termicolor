@@ -3,6 +3,9 @@
 
 Terminal multiplexer: status bar, window list, pane borders, copy mode, messages, popups and menus.
 
+> **Needs testing.** This port hasn't been checked in tmux yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+tmux&port=tmux) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 Copy `termicolor-dark.conf` (or `-light`) to `~/.config/tmux/` and source it from `~/.tmux.conf`

@@ -10,6 +10,7 @@ import {
 } from "@termicolor/wallpapers";
 
 export default definePort({
+    verified: {date: "2026-11-12"},
     id: "wallpapers",
     name: "Wallpapers",
     category: "wallpaper",

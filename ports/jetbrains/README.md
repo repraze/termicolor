@@ -3,6 +3,9 @@
 
 Editor color schemes and UI themes for IntelliJ IDEA, WebStorm, PyCharm and the other JetBrains IDEs.
 
+> **Needs testing.** This port hasn't been checked in JetBrains IDEs yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+JetBrains+IDEs&port=jetbrains) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 **Editor color scheme (no plugin needed):** *Settings → Editor → Color Scheme*, click the gear next to

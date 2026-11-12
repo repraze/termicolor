@@ -320,6 +320,7 @@ export function vscodeTheme(mode: Mode) {
 }
 
 export default definePort({
+    verified: {date: "2026-11-12"},
     id: "vscode",
     name: "Visual Studio Code",
     category: "editor",

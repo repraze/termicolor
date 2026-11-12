@@ -1,9 +1,9 @@
 import {queryOptions} from "@tanstack/react-query";
-import type {Category, PortMeta} from "@termicolor/build";
+import type {Category, PortMeta, Verified} from "@termicolor/build";
 
 export type RegistryEntry = PortMeta &
     (
-        | {status: "available"; install: string; source: string; files: string[]}
+        | {status: "available"; install: string; source: string; files: string[]; verified?: Verified}
         | {status: "planned"; tier: 1 | 2 | 3; catppuccinStars?: number}
     );
 
@@ -26,9 +26,17 @@ export const registryQuery = queryOptions({
     staleTime: Infinity,
 });
 
+/** An available port nobody has checked in the real app yet (TESTING.md). */
+export function needsTesting(entry: RegistryEntry): boolean {
+    return entry.status === "available" && !entry.verified;
+}
+
 /** Lowercased haystack for client-side search. */
 export function searchText(entry: RegistryEntry, categoryLabel: string): string {
-    return [entry.id, entry.name, entry.description, categoryLabel, ...(entry.tags ?? [])].join(" ").toLowerCase();
+    const testing = entry.status !== "available" ? [] : entry.verified ? ["verified"] : ["needs testing", "untested"];
+    return [entry.id, entry.name, entry.description, categoryLabel, ...(entry.tags ?? []), ...testing]
+        .join(" ")
+        .toLowerCase();
 }
 
 export type {Category};

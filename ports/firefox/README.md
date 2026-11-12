@@ -3,6 +3,9 @@
 
 Browser theme: frame, tabs, toolbar, address bar, menus, sidebars and new tab page for Firefox.
 
+> **Needs testing.** This port hasn't been checked in Firefox yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+Firefox&port=firefox) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 **Try it:** open `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on…** → pick

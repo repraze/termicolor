@@ -3,6 +3,9 @@
 
 Lua colorschemes for Neovim 0.9+: editor UI, diagnostics, treesitter, LSP semantic tokens, terminal colors and popular plugins (gitsigns, telescope, nvim-cmp, blink.cmp, which-key, neo-tree, ...).
 
+> **Needs testing.** This port hasn't been checked in Neovim yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+Neovim&port=nvim) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 The `dist/` folder is a plugin (it has a `colors/` directory). Neovim only (Lua); plain Vim isn't supported.

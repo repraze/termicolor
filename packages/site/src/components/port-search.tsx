@@ -11,7 +11,7 @@ import {useEffect, useMemo, useRef, useState} from "react";
 
 import {PortLink} from "@/components/port-link";
 import {clickable} from "@/lib/interactive";
-import {type RegistryEntry, registryQuery, searchText, type Status} from "@/lib/registry";
+import {needsTesting, type RegistryEntry, registryQuery, searchText, type Status} from "@/lib/registry";
 import {cn} from "@/lib/utils";
 
 export type PortSearchParams = {
@@ -185,6 +185,11 @@ function PortRow({entry}: {entry: RegistryEntry}) {
             <Badge variant="outline" className="hidden sm:inline-flex">
                 {CATEGORIES[entry.category]}
             </Badge>
+            {needsTesting(entry) && (
+                <Badge variant="outline" color="warning" className="hidden sm:inline-flex">
+                    needs testing
+                </Badge>
+            )}
             {entry.status === "available" ? (
                 <ArrowRightIcon className={cn("text-primary-text size-4", clickable.arrow)} />
             ) : (

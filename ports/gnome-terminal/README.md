@@ -3,6 +3,9 @@
 
 Dark and light profiles for GNOME Terminal, installed through gsettings or dconf.
 
+> **Needs testing.** This port hasn't been checked in GNOME Terminal yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+GNOME+Terminal&port=gnome-terminal) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 **Script:** run `install.sh` to add *Termicolor Dark* and *Termicolor Light* profiles:

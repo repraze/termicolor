@@ -3,6 +3,9 @@
 
 Fuzzy finder colors as FZF_DEFAULT_OPTS snippets for bash, zsh, fish and PowerShell.
 
+> **Needs testing.** This port hasn't been checked in fzf yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+fzf&port=fzf) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 Copy the files you need to `~/.config/fzf/` (any folder works, adjust the paths below).

@@ -3,6 +3,9 @@
 
 TextMate themes for bat, also used by git-delta, plus a delta config with matching diff colors.
 
+> **Needs testing.** This port hasn't been checked in bat yet. If you try it, please
+> [report how it looks](https://github.com/repraze/termicolor/issues/new?template=port-test.yml&title=%5Btest%5D+bat&port=bat) with a screenshot - see [TESTING.md](../../TESTING.md).
+
 ## Install
 
 ### bat

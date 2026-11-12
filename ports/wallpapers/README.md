@@ -3,6 +3,8 @@
 
 Abstract generated wallpapers: gradients, lines and patterns in the palette, dark and light. Seeded, reproducible SVG.
 
+> **Verified** in Wallpapers on 2026-11-12.
+
 ## Install
 
 **Easiest:** pick one in the gallery below and download it as **JPG** (the default) at 1080p, QHD or 4K. It's

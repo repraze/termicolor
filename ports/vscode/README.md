@@ -3,6 +3,8 @@
 
 Dark and light color themes for VS Code and VSCodium, matching repraze.com code blocks.
 
+> **Verified** in Visual Studio Code on 2026-11-12.
+
 ## Install
 
 Not on the Marketplace yet. Package and install the extension folder:

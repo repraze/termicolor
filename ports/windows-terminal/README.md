@@ -3,6 +3,8 @@
 
 Color schemes plus a matching window/tab theme for Windows Terminal.
 
+> **Verified** in Windows Terminal on 2026-11-12.
+
 ## Install
 
 **Option A - fragment (auto-loads):** copy `termicolor.json` to

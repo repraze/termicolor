@@ -194,6 +194,7 @@ ${paletteBlock(mode)}
 }
 
 export default definePort({
+    verified: {date: "2026-11-12"},
     id: "starship",
     name: "Starship",
     category: "shell",
