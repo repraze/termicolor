@@ -186,7 +186,7 @@ function PortRow({entry}: {entry: RegistryEntry}) {
                 {CATEGORIES[entry.category]}
             </Badge>
             {needsTesting(entry) && (
-                <Badge variant="outline" color="warning" className="hidden sm:inline-flex">
+                <Badge variant="soft" color="warning" className="hidden sm:inline-flex">
                     needs testing
                 </Badge>
             )}

@@ -70,11 +70,11 @@ export function PortInstall({entry}: {entry: AvailableEntry}) {
 /** Whether someone checked the port in the real app (TESTING.md). */
 export function TestingBadge({entry}: {entry: AvailableEntry}) {
     return entry.verified ? (
-        <Badge variant="outline" color="success" data-testid="testing-badge">
+        <Badge variant="soft" color="success" data-testid="testing-badge">
             <BadgeCheckIcon data-icon="inline-start" /> verified
         </Badge>
     ) : (
-        <Badge variant="outline" color="warning" data-testid="testing-badge">
+        <Badge variant="soft" color="warning" data-testid="testing-badge">
             <FlaskConicalIcon data-icon="inline-start" /> needs testing
         </Badge>
     );
@@ -88,7 +88,7 @@ export function PortTesting({entry}: {entry: AvailableEntry}) {
     return (
         <section id="testing" className="scroll-mt-24">
             {verified ? (
-                <Callout color="success" variant="outline" icon={<BadgeCheckIcon />} title="Verified">
+                <Callout color="success" variant="soft" icon={<BadgeCheckIcon />} title="Verified">
                     <p>
                         Checked in {entry.name} on {verified.date}
                         {verified.issue ? (
@@ -101,7 +101,7 @@ export function PortTesting({entry}: {entry: AvailableEntry}) {
                     </p>
                 </Callout>
             ) : (
-                <Callout color="warning" variant="outline" icon={<FlaskConicalIcon />} title="Needs testing">
+                <Callout color="warning" variant="soft" icon={<FlaskConicalIcon />} title="Needs testing">
                     <p>
                         This port is generated from the app's documented theme format, but nobody has checked it in{" "}
                         {entry.name} yet. If you use it, a screenshot helps a lot: install it, open the{" "}
