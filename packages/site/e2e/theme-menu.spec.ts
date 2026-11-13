@@ -16,10 +16,15 @@ test.describe("theme menu", () => {
             const trigger = page.getByTestId("theme-menu");
             const github = actions.locator('a[aria-label="GitHub"]');
             const search = actions.locator('[data-slot="search-trigger"]');
-            const [t, g, s] = await Promise.all([trigger.evaluate(box), github.evaluate(box), search.evaluate(box)]);
-            // same box as the GitHub icon button, on the search field's center line
+            const [t, g] = await Promise.all([trigger.evaluate(box), github.evaluate(box)]);
+            // same box as the GitHub icon button
             expect(t).toEqual(g);
-            expect(t.centerY).toBe(s.centerY);
+            // on the search field's center line; below md the search moves into the phone menu
+            if (width >= 768) {
+                expect(t.centerY).toBe((await search.evaluate(box)).centerY);
+            } else {
+                await expect(search).toBeHidden();
+            }
             // same icon size and position inside it
             const [ti, gi] = await Promise.all([
                 trigger.locator("svg").evaluate(box),
